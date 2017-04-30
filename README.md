@@ -159,20 +159,20 @@
   - [Interviews with statistics graduate students][islr-interviews-video-4]
 
 [gareth-james-usc-islr-site]: http://www-bcf.usc.edu/~gareth/ISL/index.html "An Introduction to Statistical Learning - USC.edu"
-[introduction-to-statistical-learning-6th-printing-pdf-local]: /pdf/islr-6th-printing.pdf "An Introduction to Statistical Learning with Applications in R - Corrected 6th Printing PDF"
+[introduction-to-statistical-learning-6th-printing-pdf-local]: pdf/islr-6th-printing.pdf "An Introduction to Statistical Learning with Applications in R - Corrected 6th Printing PDF"
 [introduction-to-statistical-learning-6th-printing-pdf-remote]: http://www-bcf.usc.edu/~gareth/ISL/ISLR%20Sixth%20Printing.pdf "An Introduction to Statistical Learning with Applications in R - Corrected 6th Printing PDF"
 [data-school-islr]: http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/ "In-depth introduction to machine learning in 15 hours of expert videos | dataschool.io"
-[islr-cover]: /images/ISLR.jpg "An Introduction to Statistical Learning with Applications in R Cover"
+[islr-cover]: images/ISLR.jpg "An Introduction to Statistical Learning with Applications in R Cover"
 [jekyll-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes | tdg5.github.io"
 
 [islr-chapter-1-slides]: https://lagunita.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/introduction.pdf "ISLR: Chapter 1 - Slides"
-[islr-chapter-1-slides-local]: /pdf/islr-chapter-01-slides.pdf "ISLR: Chapter 1 - Slides"
+[islr-chapter-1-slides-local]: pdf/islr-chapter-01-slides.pdf "ISLR: Chapter 1 - Slides"
 [islr-chapter-1-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5ICcUhueCyu25slvsGp8IDTa "ISLR: Chapter 1 - Lecture Videos Playlist"
 [islr-chapter-1-video-1]: https://www.youtube.com/watch?v=2wLfFB_6SKI "ISLR: Chapter 1 - Opening Remarks and Examples"
 [islr-chapter-1-video-2]: https://www.youtube.com/watch?v=LvaTokhYnDw "ISLR: Chapter 1 - Supervised and Unsupervised Learning"
 
 [islr-chapter-2-slides]: https://class.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/statistical_learning.pdf "ISLR: Chapter 2 - Slides"
-[islr-chapter-2-slides-local]: /pdf/islr-chapter-02-slides.pdf "ISLR: Chapter 2 - Slides"
+[islr-chapter-2-slides-local]: pdf/islr-chapter-02-slides.pdf "ISLR: Chapter 2 - Slides"
 [islr-chapter-2-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5IDvuFPNoSqheihPOQNJpzyy "ISLR: Chapter 2 - Lecture Videos Playlist"
 [islr-chapter-2-video-1]: https://www.youtube.com/watch?v=WjyuiK5taS8 "ISLR: Chapter 2 - Statistical Learning and Regression"
 [islr-chapter-2-video-2]: https://www.youtube.com/watch?v=UvxHOkYQl8g "ISLR: Chapter 2 - Curse of Dimensionality and Parametric Models"
@@ -181,7 +181,7 @@
 [islr-chapter-2-video-5]: https://www.youtube.com/watch?v=jwBgGS_4RQA "ISLR: Chapter 2 - Lab: Introduction to R"
 
 [islr-chapter-3-slides]: https://class.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/linear_regression.pdf "ISLR: Chapter 3 - Slides"
-[islr-chapter-3-slides-local]: /pdf/islr-chapter-03-slides.pdf "ISLR: Chapter 3 - Slides"
+[islr-chapter-3-slides-local]: pdf/islr-chapter-03-slides.pdf "ISLR: Chapter 3 - Slides"
 [islr-chapter-3-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5IBSSCPANhTgrw82ws7w_or9 "ISLR: Chapter 3 - Lecture Videos Playlist"
 [islr-chapter-3-video-1]: https://www.youtube.com/watch?v=PsE9UqoWtS4 "ISLR: Chapter 3 - Simple Linear Regression and Confidence Intervals"
 [islr-chapter-3-video-2]: https://www.youtube.com/watch?v=J6AdoiNUyWI "ISLR: Chapter 3 - Hypothesis Testing"
@@ -191,7 +191,7 @@
 [islr-chapter-3-video-6]: https://www.youtube.com/watch?v=5ONFqIk3RFg "ISLR: Chapter 3 - Lab: Linear Regression"
 
 [islr-chapter-4-slides]: https://class.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/classification.pdf "ISLR: Chapter 4 - Slides"
-[islr-chapter-4-slides-local]: /pdf/islr-chapter-04-slides.pdf "ISLR: Chapter 4 - Slides"
+[islr-chapter-4-slides-local]: pdf/islr-chapter-04-slides.pdf "ISLR: Chapter 4 - Slides"
 [islr-chapter-4-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5IC4vaDba5ClatUmFppXLAhE "ISLR: Chapter 4 - Lecture Videos Playlist"
 [islr-chapter-4-video-1]: https://www.youtube.com/watch?v=sqq21-VIa1c "ISLR: Chapter 4 - Introduction to Classification"
 [islr-chapter-4-video-2]: https://www.youtube.com/watch?v=31Q5FGRnxt4 "ISLR: Chapter 4 - Logistic Regression and Maximum Likelihood"
@@ -206,7 +206,7 @@
 [islr-chapter-4-video-11]: https://www.youtube.com/watch?v=9TVVF7CS3F4 "ISLR: Chapter 4 - Lab: K-Nearest Neighbors"
 
 [islr-chapter-5-slides]: https://class.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/cv_boot.pdf "ISLR: Chapter 5 - Slides"
-[islr-chapter-5-slides-local]: /pdf/islr-chapter-05-slides.pdf "ISLR: Chapter 5 - Slides"
+[islr-chapter-5-slides-local]: pdf/islr-chapter-05-slides.pdf "ISLR: Chapter 5 - Slides"
 [islr-chapter-5-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5IA6E6ZNXu7dp89_uv8yocmf "ISLR: Chapter 5 - Lecture Videos Playlist"
 [islr-chapter-5-video-1]: https://www.youtube.com/watch?v=_2ij6eaaSl0 "ISLR: Chapter 5 - Estimating Prediction Error and Validation Set Approach"
 [islr-chapter-5-video-2]: https://www.youtube.com/watch?v=nZAM5OXrktY "ISLR: Chapter 5 - K-fold Cross-Validation"
@@ -217,7 +217,7 @@
 [islr-chapter-5-video-7]: https://www.youtube.com/watch?v=YVSmsWoBKnA "ISLR: Chapter 5 - Lab: The Bootstrap"
 
 [islr-chapter-6-slides]: https://class.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/model_selection.pdf "ISLR: Chapter 6 - Slides"
-[islr-chapter-6-slides-local]: /pdf/islr-chapter-06-slides.pdf "ISLR: Chapter 6 - Slides"
+[islr-chapter-6-slides-local]: pdf/islr-chapter-06-slides.pdf "ISLR: Chapter 6 - Slides"
 [islr-chapter-6-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5IB-Xdpj_uXJpLGiRfv9UVXI "ISLR: Chapter 6 - Lecture Videos Playlist"
 [islr-chapter-6-video-1]: https://www.youtube.com/watch?v=91si52nk3LA" "ISLR: Chapter 6 - Linear Model Selection and Best Subset Selection"
 [islr-chapter-6-video-2]: https://www.youtube.com/watch?v=nLpJd_iKmrE" "ISLR: Chapter 6 - Forward Stepwise Selection"
@@ -235,7 +235,7 @@
 [islr-chapter-6-video-14]: https://www.youtube.com/watch?v=1REe3qSotx8" "ISLR: Chapter 6 - Lab: Ridge Regression and Lasso"
 
 [islr-chapter-7-slides]: https://class.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/nonlinear.pdf "ISLR: Chapter 7 - Slides"
-[islr-chapter-7-slides-local]: /pdf/islr-chapter-07-slides.pdf "ISLR: Chapter 7 - Slides"
+[islr-chapter-7-slides-local]: pdf/islr-chapter-07-slides.pdf "ISLR: Chapter 7 - Slides"
 [islr-chapter-7-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5IBn84fvhh-u2MU80jvo8OoR "ISLR: Chapter 7 - Lecture Videos Playlist"
 [islr-chapter-7-video-1]: https://www.youtube.com/watch?v=gtXQXA7qF3c "ISLR: Chapter 7 - Polynomial Regression and Step Functions"
 [islr-chapter-7-video-2]: https://www.youtube.com/watch?v=7ZIqzTNB8lk "ISLR: Chapter 7 - Piecewise Polynomials and Splines"
@@ -245,7 +245,7 @@
 [islr-chapter-7-video-6]: https://www.youtube.com/watch?v=DCn83aXXuHc "ISLR: Chapter 7 - Lab: Splines and Generalized Additive Models"
 
 [islr-chapter-8-slides]: https://class.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/trees.pdf "ISLR: Chapter 8 - Slides"
-[islr-chapter-8-slides-local]: /pdf/islr-chapter-08-slides.pdf "ISLR: Chapter 8 - Slides"
+[islr-chapter-8-slides-local]: pdf/islr-chapter-08-slides.pdf "ISLR: Chapter 8 - Slides"
 [islr-chapter-8-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5IB23TLuA8ZgVGC8hV8ZAdGh "ISLR: Chapter 8 - Lecture Videos Playlist"
 [islr-chapter-8-video-1]: https://www.youtube.com/watch?v=6ENTbK3yQUQ "ISLR: Chapter 8 - Decision Trees"
 [islr-chapter-8-video-2]: https://www.youtube.com/watch?v=GfPR7Xhdokc "ISLR: Chapter 8 - Pruning a Decision Tree"
@@ -256,7 +256,7 @@
 [islr-chapter-8-video-7]: https://www.youtube.com/watch?v=IY7oWGXb77o "ISLR: Chapter 8 - Lab: Random Forests and Boosting"
 
 [islr-chapter-9-slides]: https://class.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/svm.pdf "ISLR: Chapter 9 - Slides"
-[islr-chapter-9-slides-local]: /pdf/islr-chapter-09-slides.pdf "ISLR: Chapter 9 - Slides"
+[islr-chapter-9-slides-local]: pdf/islr-chapter-09-slides.pdf "ISLR: Chapter 9 - Slides"
 [islr-chapter-9-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5IDl6MkmovVdZwyYOhpCxo5o "ISLR: Chapter 9 - Lecture Videos Playlist"
 [islr-chapter-9-video-1]: https://www.youtube.com/watch?v=QpbynqiTCsY "ISLR: Chapter 9 - Maximal Margin Classifier"
 [islr-chapter-9-video-2]: https://www.youtube.com/watch?v=xKsTsGE7KpI "ISLR: Chapter 9 - Support Vector Classifier"
@@ -266,7 +266,7 @@
 [islr-chapter-9-video-6]: https://www.youtube.com/watch?v=L3n2VF7yKkk "ISLR: Chapter 9 - Lab: Nonlinear Support Vector Machine"
 
 [islr-chapter-10-slides]: https://class.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/unsupervised.pdf "ISLR: Chapter 10 - Slides"
-[islr-chapter-10-slides-local]: /pdf/islr-chapter-10-slides.pdf "ISLR: Chapter 10 - Slides"
+[islr-chapter-10-slides-local]: pdf/islr-chapter-10-slides.pdf "ISLR: Chapter 10 - Slides"
 [islr-chapter-10-playlist]: https://www.youtube.com/playlist?list=PL5-da3qGB5IBC-MneTc9oBZz0C6kNJ-f2 "ISLR: Chapter 10 - Lecture Videos Playlist"
 [islr-chapter-10-video-1]: https://www.youtube.com/watch?v=ipyxSYXgzjQ "ISLR: Chapter 10 - Unsupervised Learning and Principal Components Analysis"
 [islr-chapter-10-video-2]: https://www.youtube.com/watch?v=dbuSGWCgdzw "ISLR: Chapter 10 - Exploring Principal Components Analysis and Proportion of Variance Explained"
