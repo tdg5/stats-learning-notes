@@ -4,12 +4,14 @@
 
 ## Resources
 
-- [Co-Author Gareth James' ISLR website][gareth-james-usc-islr-site]
+### An Introduction to Statistical Learning with Applications in R
+
+- [Co-Author Gareth James' ISLR Website][gareth-james-usc-islr-site]
 - [An Introduction to Statistical Learning with Applications in R - Corrected 6th Printing PDF][introduction-to-statistical-learning-6th-printing-pdf-remote]
   - [Local mirror][introduction-to-statistical-learning-6th-printing-pdf-local]
 - [DataSchool.io - In-depth introduction to machine learning in 15 hours of expert videos][data-school-islr]
 
-### Chapter 1: Introduction
+#### Chapter 1: Introduction
 
 - [Lecture Slides][islr-chapter-1-slides]
   - [Local mirror][islr-chapter-1-slides-local]
@@ -17,7 +19,7 @@
   - [Opening Remarks and Examples][islr-chapter-1-video-1]
   - [Supervised and Unsupervised Learning][islr-chapter-1-video-2]
 
-### Chapter 2: Statistical Learning
+#### Chapter 2: Statistical Learning
 
 - [Lecture Slides][islr-chapter-2-slides]
   - [Local mirror][islr-chapter-2-slides-local]
@@ -28,7 +30,7 @@
   - [Classification Problems and K-Nearest Neighbors][islr-chapter-2-video-4]
   - [Lab: Introduction to R][islr-chapter-2-video-5]
 
-### Chapter 3: Linear Regression
+#### Chapter 3: Linear Regression
 
 - [Lecture Slides][islr-chapter-3-slides]
   - [Local mirror][islr-chapter-3-slides-local]
@@ -40,7 +42,7 @@
   - [Interactions and Nonlinearity][islr-chapter-3-video-5]
   - [Lab: Linear Regression][islr-chapter-3-video-6]
 
-### Chapter 4: Classification
+#### Chapter 4: Classification
 
 - [Lecture Slides][islr-chapter-4-slides]
   - [Local mirror][islr-chapter-4-slides-local]
@@ -57,7 +59,7 @@
   - [Lab: Linear Discriminant Analysis][islr-chapter-4-video-10]
   - [Lab: K-Nearest Neighbors][islr-chapter-4-video-11]
 
-### Chapter 5: Resampling Methods
+#### Chapter 5: Resampling Methods
 
 - [Lecture Slides][islr-chapter-5-slides]
   - [Local mirror][islr-chapter-5-slides-local]
@@ -70,7 +72,7 @@
   - [Lab: Cross-Validation][islr-chapter-5-video-6]
   - [Lab: The Bootstrap][islr-chapter-5-video-7]
 
-### Chapter 6: Linear Model Selection and Regularization
+#### Chapter 6: Linear Model Selection and Regularization
 
 - [Lecture Slides][islr-chapter-6-slides]
   - [Local mirror][islr-chapter-6-slides-local]
@@ -90,7 +92,7 @@
   - [Lab: Model Selection Using Cross-Validation][islr-chapter-6-video-13]
   - [Lab: Ridge Regression and Lasso][islr-chapter-6-video-14]
 
-### Chapter 7: Moving Beyond Linearity
+#### Chapter 7: Moving Beyond Linearity
 
 - [Lecture Slides][islr-chapter-7-slides]
   - [Local mirror][islr-chapter-7-slides-local]
@@ -102,7 +104,7 @@
   - [Lab: Polynomials][islr-chapter-7-video-5]
   - [Lab: Splines and Generalized Additive Models][islr-chapter-7-video-6]
 
-### Chapter 8: Tree-Based Methods
+#### Chapter 8: Tree-Based Methods
 
 - [Lecture Slides][islr-chapter-8-slides]
   - [Local mirror][islr-chapter-8-slides-local]
@@ -115,7 +117,7 @@
   - [Lab: Decision Trees][islr-chapter-8-video-6]
   - [Lab: Random Forests and Boosting][islr-chapter-8-video-7]
 
-### Chapter 9: Support Vector Machines
+#### Chapter 9: Support Vector Machines
 
 - [Lecture Slides][islr-chapter-9-slides]
   - [Local mirror][islr-chapter-9-slides-local]
@@ -127,7 +129,7 @@
   - [Lab: Support Vector Machine for Classification][islr-chapter-9-video-5]
   - [Lab: Nonlinear Support Vector Machine][islr-chapter-9-video-6]
 
-### Chapter 10: Unsupervised Learning
+#### Chapter 10: Unsupervised Learning
 
 - [Lecture Slides][islr-chapter-10-slides]
   - [Local mirror][islr-chapter-10-slides-local]
@@ -141,7 +143,7 @@
   - [Lab: K-means Clustering][islr-chapter-10-video-7]
   - [Lab: Hierarchical Clustering][islr-chapter-10-video-8]
 
-### Exercise Solutions
+#### Exercise Solutions
 
 - [asadoughi/stat-learning][asadoughi-stat-learning-github]
   - [Website][asadoughi-stat-learning-web]
@@ -150,7 +152,7 @@
 - [John Weatherwax's Solutions to Applied Exercises][weatherwax-applied-solutions]
 - [Pierre Paquay's Exercise Solutions][paquay-solutions]
 
-### ISLR Video Interviews
+#### ISLR Video Interviews
 
 - [ISLR Interview Videos Playlist][islr-interviews-playlist]
   - [Interview with John Chambers][islr-interviews-video-1]
@@ -158,12 +160,21 @@
   - [Interview with Jerome Friedman][islr-interviews-video-3]
   - [Interviews with statistics graduate students][islr-interviews-video-4]
 
+### Elements of Statistical Learning
+
+- [Co-Author Robert Tibshirani's ESL Website][robert-tibshirani-stanford-esl-site]
+- [Elements of Statistical Learning, 2nd Edition, 10th Printing PDF][elements-of-statistical-learning-2nd-edition-10th-printing-pdf-remote]
+  - [Local mirror][elements-of-statistical-learning-2nd-edition-10th-printing-pdf-local]
+
 [gareth-james-usc-islr-site]: http://www-bcf.usc.edu/~gareth/ISL/index.html "An Introduction to Statistical Learning - USC.edu"
 [introduction-to-statistical-learning-6th-printing-pdf-local]: pdf/islr-6th-printing.pdf "An Introduction to Statistical Learning with Applications in R - Corrected 6th Printing PDF"
 [introduction-to-statistical-learning-6th-printing-pdf-remote]: http://www-bcf.usc.edu/~gareth/ISL/ISLR%20Sixth%20Printing.pdf "An Introduction to Statistical Learning with Applications in R - Corrected 6th Printing PDF"
 [data-school-islr]: http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/ "In-depth introduction to machine learning in 15 hours of expert videos | dataschool.io"
 [islr-cover]: images/ISLR.jpg "An Introduction to Statistical Learning with Applications in R Cover"
-[jekyll-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes | tdg5.github.io"
+
+[robert-tibshirani-stanford-esl-site]: https://statweb.stanford.edu/~tibs/ElemStatLearn/ "Elements of Statistical Learning | stanford.edu"
+[elements-of-statistical-learning-2nd-edition-10th-printing-pdf-local]: pdf/esl-2nd-edition-10th-printing.pdf "Elements of Statistical Learning, 2nd Edition, 10th Printing PDF"
+[elements-of-statistical-learning-2nd-edition-10th-printing-pdf-remote]: http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf "Elements of Statistical Learning, 2nd Edition, 10th Printing PDF"
 
 [islr-chapter-1-slides]: https://lagunita.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/introduction.pdf "ISLR: Chapter 1 - Slides"
 [islr-chapter-1-slides-local]: pdf/islr-chapter-01-slides.pdf "ISLR: Chapter 1 - Slides"
@@ -289,3 +300,5 @@
 [weatherwax-applied-solutions]: http://www.waxworksmath.com/Authors/G_M/James/james.html "John Weatherwax's Solutions to Applied Exercises"
 [yahwes-islr-github]: https://github.com/yahwes/ISLR "ISLR student solutions | GitHub"
 [yahwes-islr-web]: https://yahwes.github.io/ISLR/ "ISLR student solutions | yahwes.github.io"
+
+[jekyll-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes | tdg5.github.io"
