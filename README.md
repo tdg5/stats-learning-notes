@@ -169,10 +169,10 @@
 [gareth-james-usc-islr-site]: http://www-bcf.usc.edu/~gareth/ISL/index.html "An Introduction to Statistical Learning - USC.edu"
 [introduction-to-statistical-learning-6th-printing-pdf-local]: pdf/islr-6th-printing.pdf "An Introduction to Statistical Learning with Applications in R - Corrected 6th Printing PDF"
 [introduction-to-statistical-learning-6th-printing-pdf-remote]: http://www-bcf.usc.edu/~gareth/ISL/ISLR%20Sixth%20Printing.pdf "An Introduction to Statistical Learning with Applications in R - Corrected 6th Printing PDF"
-[data-school-islr]: http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/ "In-depth introduction to machine learning in 15 hours of expert videos | dataschool.io"
+[data-school-islr]: http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/ "In-depth introduction to machine learning in 15 hours of expert videos -- dataschool.io"
 [islr-cover]: images/ISLR.jpg "An Introduction to Statistical Learning with Applications in R Cover"
 
-[robert-tibshirani-stanford-esl-site]: https://statweb.stanford.edu/~tibs/ElemStatLearn/ "Elements of Statistical Learning | stanford.edu"
+[robert-tibshirani-stanford-esl-site]: https://statweb.stanford.edu/~tibs/ElemStatLearn/ "Elements of Statistical Learning -- stanford.edu"
 [elements-of-statistical-learning-2nd-edition-10th-printing-pdf-local]: pdf/esl-2nd-edition-10th-printing.pdf "Elements of Statistical Learning, 2nd Edition, 10th Printing PDF"
 [elements-of-statistical-learning-2nd-edition-10th-printing-pdf-remote]: http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf "Elements of Statistical Learning, 2nd Edition, 10th Printing PDF"
 
@@ -294,11 +294,11 @@
 [islr-interviews-video-3]: https://www.youtube.com/watch?v=79tR7BvYE6w "ISLR: Interview with Jerome Friedman"
 [islr-interviews-video-4]: https://www.youtube.com/watch?v=MEMGOlJxxz0 "ISLR: Interviews with statistics graduate students"
 
-[asadoughi-stat-learning-github]: https://github.com/asadoughi/stat-learning "ISLR notes and exercise attempts | GitHub"
-[asadoughi-stat-learning-web]: http://blog.princehonest.com/stat-learning/ "ISLR notes and exercise attempts | blog.princehonest.com"
-[paquay-solutions]: https://rpubs.com/ppaquay/ "Pierre Paquay's Exercise Solutions | RPubs"
+[asadoughi-stat-learning-github]: https://github.com/asadoughi/stat-learning "ISLR notes and exercise attempts -- GitHub"
+[asadoughi-stat-learning-web]: http://blog.princehonest.com/stat-learning/ "ISLR notes and exercise attempts -- blog.princehonest.com"
+[paquay-solutions]: https://rpubs.com/ppaquay/ "Pierre Paquay's Exercise Solutions -- RPubs"
 [weatherwax-applied-solutions]: http://www.waxworksmath.com/Authors/G_M/James/james.html "John Weatherwax's Solutions to Applied Exercises"
-[yahwes-islr-github]: https://github.com/yahwes/ISLR "ISLR student solutions | GitHub"
-[yahwes-islr-web]: https://yahwes.github.io/ISLR/ "ISLR student solutions | yahwes.github.io"
+[yahwes-islr-github]: https://github.com/yahwes/ISLR "ISLR student solutions -- GitHub"
+[yahwes-islr-web]: https://yahwes.github.io/ISLR/ "ISLR student solutions -- yahwes.github.io"
 
-[jekyll-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes | tdg5.github.io"
+[jekyll-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes -- tdg5.github.io"
