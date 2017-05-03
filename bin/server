@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SCRIPT_PATH="`dirname \"$0\"`"
+ENV_FILE_PATH="$SCRIPT_PATH/../dev.env"
+
+test -e $ENV_FILE_PATH && source $ENV_FILE_PATH
+jekyll build
+jekyll serve
