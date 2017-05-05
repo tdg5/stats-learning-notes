@@ -2,6 +2,10 @@
 
 ![An Introduction to Statistical Learning with Applications in R Cover][islr-cover]
 
+## Notes
+
+[Chapter 2: Statistical Learning][chapter-02-statistical-learning]
+
 ## Resources
 
 ### An Introduction to Statistical Learning with Applications in R
@@ -302,3 +306,4 @@
 [yahwes-islr-web]: https://yahwes.github.io/ISLR/ "ISLR student solutions -- yahwes.github.io"
 
 [jekyll-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes -- tdg5.github.io"
+[chapter-02-statistical-learning]: chapter-02.html "stats-learning-notes -- Chapter 02 - Statistical Learning"

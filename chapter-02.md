@@ -3,7 +3,7 @@ layout: default
 use_math: true
 ---
 
-## Chapter 2 - Statistical Learning
+## [Chapter 2 - Statistical Learning][jekyll-site-chapter-2]
 
 [Inputs][glossary-input], also known as predictors, independent variables, features, or more
 generally, variables.
@@ -128,19 +128,186 @@ whether the response is qualitative or quantitative.
 
 ### Measuring Quality of Fit
 
-[glossary-classification-problem]: glossary#classification-problem "stats-learning-notes \| Glossary - Classification Problem"
-[glossary-cluster-analysis]: glossary#cluster-analysis "stats-learning-notes \| Glossary - Cluster Analysis"
-[glossary-error-term]: glossary#error-term "stats-learning-notes \| Glossary - Error Term"
-[glossary-input]: glossary#input "stats-learning-notes \| Glossary - Input"
-[glossary-irreducible-error]: glossary#irreducible-error "stats-learning-notes \| Glossary - Irreduicible Error"
-[glossary-non-parametric]: glossary#non-parametic "stats-learning-notes \| Glossary - Non-Parametric"
-[glossary-non-parametric-methods]: glossary#non-parametic-methods "stats-learning-notes \| Glossary - Non-Parametric methods"
-[glossary-output]: glossary#output "stats-learning-notes \| Glossary - Output"
-[glossary-overfitting]: glossary#overfitting "stats-learning-notes \| Glossary - Overfitting"
-[glossary-parametric-methods]: glossary#parametic-methods "stats-learning-notes \| Glossary - Parametric methods"
-[glossary-parametric]: glossary#parametic "stats-learning-notes \| Glossary - Parametric"
-[glossary-regression-problem]: glossary#regression-problem "stats-learning-notes \| Glossary - Regression Problem"
-[glossary-qualitative-value]: glossary#qualitative-value "stats-learning-notes \| Glossary - Qualitative Value"
-[glossary-quantitative-value]: glossary#quantitative-value "stats-learning-notes \| Glossary - Quantitative Value"
-[glossary-supervised-learning]: glossary#supervised-learning "stats-learning-notes \| Glossary - Supervised Learning"
-[glossary-unsupervised-learning]: glossary#unsupervised-learning "stats-learning-notes \| Glossary - Unsupervised Learning"
+To evaluate the performance of a model it is necessary to evaluate how well the
+model's predictions match the observed data, to quantify to what extent the
+predicted response is close to the observed response data.
+
+[Mean squared error][glossary-mean-squared-error] is one common measure in the
+regression setting.
+
+Mean squared error is defined as
+
+$$ \frac{1}{n} \sum_{i=1}^{n} \lgroup y_i - \hat{f}(x_{i}) \rgroup ^{2} $$
+
+The mean squared error will be small when the predicted responses are close to
+the true responses and large if there's a substantial difference between the
+predicted response and the observed response for some observations.
+
+Mean squared error is applied both when training a model and when testing a
+model.
+
+Though it may be tempting to optimize the [training mean squared
+error][glossary-training-mean-squared-error], the reality is that the model is
+judged by the accuracy of its predictions against unseen test data. As such,
+**the model that yields the best [test mean squared
+error][glossary-test-mean-squared-error] is preferable** to the model that
+yields the best training mean squared error.
+
+#### The Bias-Variance Trade-Off
+
+The number of [degrees of freedom][glossary-degrees-of-freedom] is the number of
+values in the model that are free to vary. The degrees of freedom is a quality
+that summarizes the flexibility of a curve.
+
+As a model's flexibility increases, the training mean squared error will
+decrease, but the test mean squared error may not. When the training mean
+squared error is small but the test mean squared error is large, the model is
+described as overfitting the data. That said, the training mean squared error
+will almost always be less than the test mean squared error because most methods
+either directly or indirectly aim to minimize the training mean squared error.
+
+Overfitting refers specifically to scenarios in which a less flexible model
+would have yielded a smaller test mean squared error.
+
+The expected test mean squared error for a given value $$ x_{0} $$ can be
+decomposed into the sum of three quantities: The variance of $$ \hat{f}(x_{0})
+$$, the squared bias of $$ \hat{f}(x_{0}) $$, and the variance of the error
+term, $$ \epsilon $$. Formally,
+
+$$ \mathrm{E} \lgroup y_{0} - \hat{f}(x_{0}) \rgroup^2 =
+\mathrm{Var}\lgroup\hat{f}(x_{0})\rgroup +
+[\mathrm{Bias} \lgroup\hat{f}(x_{0})\rgroup]^2 +
+\mathrm{Var}(\epsilon). $$
+
+To minimize expected test error, it's necessary to choose a method that achieves
+both low variance and low bias. It can be seen that the expected test mean
+squared error can never be less than $$ \mathrm{Var}(\epsilon) $$, the
+irreducible error.
+
+[Variance][glossary-variance] refers to the amount by which $$ \hat{f} $$ would change if it were
+estimated using a different training data set. In general, more flexible methods
+have higher variance.
+
+[Bias][glossary-bias] refers to the error that is introduced by approximating a potentially
+complex function using a simple model. More flexible models tend to have less
+bias.
+
+In general, the more flexible the statistical learning method, the more variance
+will increase and bias decrease.
+
+The relationship between bias, variance, and test set mean squared error is
+referred to as the [bias-variance trade-off][glossary-bias-variance-trade-off].
+It is called a trade-off because it is a challenge to find a model that has both
+a low variance and a low squared bias.
+
+#### Assessing Classification Accuracy
+
+In classification scenarios, the most common means of quantifying the accuracy
+of $$ \hat{f} $$ is the training error rate. The training error rate is the
+proportion of errors that are made when applying $$ \hat{f} $$ to the training
+observations. Formally stated as,
+
+$$ \frac{1}{n} \sum_{i=1}^{n} \mathrm{I}(y_{i} \neq \hat{y}) $$
+
+where $$ \mathrm{I} $$ is an indicator variable that equals $$ 0 $$ when $$ y =
+\hat{y} $$ and equals $$ 1 $$ when $$ y \neq \hat{y} $$.
+
+In simple terms, the error rate is the ratio of incorrect classifications to the
+observation count.
+
+As in the regression scenario, a good classifier is one for which the test error
+rate is smallest.
+
+##### The Bayes Classifier
+
+It is possible to show that the test error rate is minimized on average by a
+very simple classifier that assigns each observation to the most likely class
+given its predictor variables.
+
+In Bayesian terms, a test observation should be classified for the predictor
+vector $$ x_{0} $$ to the class $$ j $$ for which
+
+$$ \mathrm{Pr}(Y=j|X=x_{0}) $$
+
+is largest. That is, the conditional probability that $$ Y=j $$, given the
+observed predictor vector $$ x_{0} $$. This classifier is called the [Bayes
+Classifier][glossary-bayes-classifier].
+
+In a two-class scenario, this can be restated as $$ \mathrm{Pr}(Y=1|X=x_{0}) >
+0.5 $$ matching class A when true and class B when false.
+
+The threshold where the classification probability is exactly 50% is known as
+the [Bayes decision boundary][glossary-bayes-decision-boundary].
+
+The Bayes classifier yields the lowest possible test error rate since it will
+always choose the class with the highest probability. The [Bayes error
+rate][glossary-bayes-error-rate] can be stated formally as
+
+$$ 1 - \mathrm{E} \lgroup \max_{j} \mathrm{Pr}(Y=j|X) \rgroup . $$
+
+The Bayes error rate can also be described as the ratio of observations that lie
+on the "wrong" side of the decision boundary.
+
+Unfortunately, the conditional distribution of $$ Y $$ given $$ X $$ is often
+unknown, so the Bayes classifier is most often unattainable.
+
+##### K-Nearest Neighbors
+
+Many modeling techniques try to compute the conditional distribution of $$ Y $$
+given $$ X $$ and then provide estimated classifications based on the highest
+estimated probability. [K-Nearest Neighbors][glossary-k-nearest-neighbors] is
+one such method.
+
+The K-Nearest Neighbor classifier takes a positive integer $$ K $$ and first
+identifies the $$ K $$ points that are nearest to $$ x_{0} $$, represented by $$
+N_{0} $$. It next estimates the conditional probability for class $$ j $$
+based on the fraction of points in $$ N_{0} $$ who have a response equal to
+$$ j $$.  Formally, the estimated conditional probability can be stated as
+
+$$ \mathrm{Pr}(Y=j|X=x_{0}) =
+\frac{1}{k} \sum_{i \in N_{0}}\mathrm{I}(y_{i}=j) $$
+
+The K-Nearest Neighbor classifier then applies Bayes rule and yields the
+classification with the highest probability.
+
+Despite its simplicity, the K-Nearest Neighbor classifier often yields results
+that are surprisingly close to the optimal Bayes classifier.
+
+The choice of $$ K $$ can have a drastic effect on the yielded classifier. Too
+low a $$ K $$ yields a classifier that is too flexible, has too high a variance,
+and low bias.
+
+Conversely, as $$ K $$ increases, the yielded classifier becomes less flexible,
+with a low variance, but high bias.
+
+In both regression and classification scenarios, choosing the correct level of
+flexibility is critical to the success of the model.
+
+[glossary-bayes-classifier]: glossary#bayes-classifier "stats-learning-notes -- Glossary - Bayes Classifier"
+[glossary-bayes-decision-boundary]: glossary#bayes-decision-boundary "stats-learning-notes -- Glossary - Bayes Decision Boundary"
+[glossary-bayes-error-rate]: glossary#bayes-error-rate "stats-learning-notes -- Glossary - Bayes Error Rate"
+[glossary-bias]: glossary#bias "stats-learning-notes -- Glossary - Bias"
+[glossary-bias-variance-trade-off]: glossary#bias-variance-trade-off "stats-learning-notes -- Glossary - Bias-Variance Trade-Off"
+[glossary-classification-problem]: glossary#classification-problem "stats-learning-notes -- Glossary - Classification Problem"
+[glossary-cluster-analysis]: glossary#cluster-analysis "stats-learning-notes -- Glossary - Cluster Analysis"
+[glossary-degrees-of-freedom]: glossary#degrees-of-freedom "stats-learning-notes -- Glossary - Degrees of Freedom"
+[glossary-error-term]: glossary#error-term "stats-learning-notes -- Glossary - Error Term"
+[glossary-input]: glossary#input "stats-learning-notes -- Glossary - Input"
+[glossary-irreducible-error]: glossary#irreducible-error "stats-learning-notes -- Glossary - Irreduicible Error"
+[glossary-k-nearest-neighbors]: glossary#k-nearest-neighbors "stats-learning-notes -- Glossary - K-Nearest Neighbors"
+[glossary-mean-squared-error]: glossary#mean-squared-error "stats-learning-notes -- Glossary - Mean Squared Error"
+[glossary-non-parametric]: glossary#non-parametic "stats-learning-notes -- Glossary - Non-Parametric"
+[glossary-non-parametric-methods]: glossary#non-parametic-methods "stats-learning-notes -- Glossary - Non-Parametric methods"
+[glossary-output]: glossary#output "stats-learning-notes -- Glossary - Output"
+[glossary-overfitting]: glossary#overfitting "stats-learning-notes -- Glossary - Overfitting"
+[glossary-parametric-methods]: glossary#parametic-methods "stats-learning-notes -- Glossary - Parametric methods"
+[glossary-parametric]: glossary#parametic "stats-learning-notes -- Glossary - Parametric"
+[glossary-regression-problem]: glossary#regression-problem "stats-learning-notes -- Glossary - Regression Problem"
+[glossary-qualitative-value]: glossary#qualitative-value "stats-learning-notes -- Glossary - Qualitative Value"
+[glossary-quantitative-value]: glossary#quantitative-value "stats-learning-notes -- Glossary - Quantitative Value"
+[glossary-supervised-learning]: glossary#supervised-learning "stats-learning-notes -- Glossary - Supervised Learning"
+[glossary-test-mean-squared-error]: glossary#test-mean-squared-error "stats-learning-notes -- Glossary - Test Mean Squared Error"
+[glossary-training-mean-squared-error]: glossary#training-mean-squared-error "stats-learning-notes -- Glossary - Training Mean Squared Error"
+[glossary-unsupervised-learning]: glossary#unsupervised-learning "stats-learning-notes -- Glossary - Unsupervised Learning"
+[glossary-variance]: glossary#variance "stats-learning-notes -- Glossary - Variance"
+[jekyll-site-chapter-2]: https://tdg5.github.io/stats-learning-notes/chapter-02.html "stats-learning-notes -- Chapter 2"
