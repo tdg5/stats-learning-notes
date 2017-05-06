@@ -4,9 +4,11 @@
 
 ## Notes
 
-[Chapter 2: Statistical Learning][chapter-02-statistical-learning]
+[Chapter 2: Statistical Learning][jekyll-site-chapter-02-statistical-learning]
 
-[Chapter 3: Linear Regression][chapter-03-linear-regression]
+[Chapter 3: Linear Regression][jekyll-site-chapter-03-linear-regression]
+
+[Glossary][jekyll-site-glossary]
 
 ## Resources
 
@@ -308,5 +310,6 @@
 [yahwes-islr-web]: https://yahwes.github.io/ISLR/ "ISLR student solutions -- yahwes.github.io"
 
 [jekyll-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes -- tdg5.github.io"
-[chapter-02-statistical-learning]: chapter-02.html "stats-learning-notes -- Chapter 02 - Statistical Learning"
-[chapter-03-linear-regression]: chapter-03.html "stats-learning-notes -- Chapter 03 - Linear Regression"
+[jekyll-site-glossary]: https://tdg5.github.io/stats-learning-notes/glossary.html "stats-learning-notes -- Glossary"
+[jekyll-site-chapter-02-statistical-learning]: https://tdg5.github.io/stats-learning-notes/chapter-02.html "stats-learning-notes -- Chapter 02 - Statistical Learning"
+[jekyll-site-chapter-03-linear-regression]: https://tdg5.github.io/stats-learning-notes/chapter-03.html "stats-learning-notes -- Chapter 03 - Linear Regression"
