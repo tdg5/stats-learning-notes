@@ -310,4 +310,4 @@ flexibility is critical to the success of the model.
 [glossary-training-mean-squared-error]: glossary#training-mean-squared-error "stats-learning-notes -- Glossary - Training Mean Squared Error"
 [glossary-unsupervised-learning]: glossary#unsupervised-learning "stats-learning-notes -- Glossary - Unsupervised Learning"
 [glossary-variance]: glossary#variance "stats-learning-notes -- Glossary - Variance"
-[jekyll-site-chapter-2]: https://tdg5.github.io/stats-learning-notes/chapter-02.html "stats-learning-notes -- Chapter 2"
+[jekyll-site-chapter-2]: https://tdg5.github.io/stats-learning-notes/chapter-02.html "stats-learning-notes -- Chapter 2 - Statistical Learning"

@@ -6,6 +6,8 @@
 
 [Chapter 2: Statistical Learning][chapter-02-statistical-learning]
 
+[Chapter 3: Linear Regression][chapter-03-linear-regression]
+
 ## Resources
 
 ### An Introduction to Statistical Learning with Applications in R
@@ -307,3 +309,4 @@
 
 [jekyll-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes -- tdg5.github.io"
 [chapter-02-statistical-learning]: chapter-02.html "stats-learning-notes -- Chapter 02 - Statistical Learning"
+[chapter-03-linear-regression]: chapter-03.html "stats-learning-notes -- Chapter 03 - Linear Regression"

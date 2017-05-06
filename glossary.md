@@ -25,6 +25,9 @@ layout: default
 <a id="cluster-analysis"></a>
 [**Cluster Analysis**][#cluster-analysis]:
 
+<a id="coefficient"></a>
+[**Coefficient**][#coefficient]:
+
 <a id="degrees-of-freedom"></a>
 [**Degrees of Freedom**][#degrees-of-freedom]:
 
@@ -34,11 +37,17 @@ layout: default
 <a id="input"></a>
 [**Input**][#input]:
 
+<a id="intercept"></a>
+[**Intercept**][#intercept]:
+
 <a id="irreducible-error"></a>
 [**Irreducible Error**][#irreducible-error]:
 
 <a id="k-nearest-neighbors"></a>
 [**K-Nearest Neighbors**][#k-nearest-neighbors]:
+
+<a id="least-squares-line"></a>
+[**Least Squares Line**][#least-squares-line]:
 
 <a id="mean-square-error"></a>
 [**Mean Squared Error**][#mean-squared-error]:
@@ -55,11 +64,17 @@ layout: default
 <a id="overfitting"></a>
 [**Overfitting**][#overfitting]:
 
+<a id="parameter"></a>
+[**Parameter**][#parameter]:
+
 <a id="parametric"></a>
 [**Parametric**][#parametric]:
 
 <a id="parametric-methods"></a>
 [**Parametric Methods**][#parametric-methods]:
+
+<a id="population-regression-line"></a>
+[**Population Regression Line**][#population-regression-line]:
 
 <a id="qualitative-value"></a>
 [**Qualitative Value**][#qualitiative-value]:
@@ -69,6 +84,15 @@ layout: default
 
 <a id="regression-problem"></a>
 [**Regression Problem**][#regression-problem]:
+
+<a id="residual"></a>
+[**Residual**][#residual]:
+
+<a id="simple-linear-regression"></a>
+[**Simple Linear Regression**][#simple-linear-regression]:
+
+<a id="slope"></a>
+[**Slope**][#slope]:
 
 <a id="supervised-learning"></a>
 [**Supervised Learning**][#supervised-learning]:
@@ -91,21 +115,29 @@ layout: default
 [#bias-variance-trade-off]: #bias-variance-trade-off "Bias-Variance Trade-Off"
 [#classification-problem]: #classification-problem "Classification Problem"
 [#cluster-analysis]: #cluster-analysis "Cluster Analysis"
+[#coefficient]: #coefficient "Coefficient"
 [#degrees-of-freedom]: #degrees-of-freedom "Degrees of Freedom"
 [#error-term]: #error-term "Error Term"
 [#input]: #input "Input"
+[#intercept]: #intercept "Intercept"
 [#irreducible-error]: #irreducible-error "Irreducible Error"
 [#k-nearest-neighbors]: #k-nearest-neighbors "K-Nearest Neighbors"
+[#least-squares-line]: #least-squares-line "Least Squares Line"
 [#mean-squared-error]: #mean-squared-error "Mean Squared Error"
 [#non-parametric]: #non-parametric "Non-Parametric"
 [#non-parametric-methods]: #non-parametric-methods "Non-Parametric Methods"
 [#output]: #output "Output"
 [#overfitting]: #overfitting "Overfitting"
-[#parametric-methods]: #parametric-methods "Parametric Methods"
+[#parameter]: #parameter "Parameter"
 [#parametric]: #parametric "Parametric"
+[#parametric-methods]: #parametric-methods "Parametric Methods"
+[#population-regression-line]: #population-regression-line "Population Regression Line"
 [#qualitative-value]: #qualitative-value "Qualitative Value"
 [#quantitative-value]: #quantitative-value "Quantitative Value"
 [#regression-problem]: #regression-problem "Regression Problem"
+[#residual]: #residual "Residual"
+[#simple-linear-regression]: #simple-linear-regression "Simple Linear Regression"
+[#slope]: #slope "Slope"
 [#supervised-learning]: #supervised-learning "Supervised Learning"
 [#test-mean-squared-error]: #test-mean-squared-error "Test Mean Squared Error"
 [#training-mean-squared-error]: #training-mean-squared-error "Training Mean Squared Error"
