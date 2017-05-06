@@ -77,7 +77,7 @@ layout: default
 [**Population Regression Line**][#population-regression-line]:
 
 <a id="qualitative-value"></a>
-[**Qualitative Value**][#qualitiative-value]:
+[**Qualitative Value**][#qualitative-value]:
 
 <a id="quantitative-value"></a>
 [**Quantitative Value**][#quantitative-value]:
@@ -111,6 +111,7 @@ layout: default
 
 [#bayes-classifier]: #bayes-classifier "Bayes Classifier"
 [#bayes-decision-boundary]: #bayes-decision-boundary "Bayes Decision Boundary"
+[#bayes-error-rate]: #bayes-error-rate "Bayes Error Rate"
 [#bias]: #bias "Bias"
 [#bias-variance-trade-off]: #bias-variance-trade-off "Bias-Variance Trade-Off"
 [#classification-problem]: #classification-problem "Classification Problem"
