@@ -32,6 +32,9 @@ use_math: true
 <a id="coefficient"></a>
 **[Coefficient][#coefficient]**:
 
+<a id="collinearity"></a>
+**[Collinearity][#collinearity]**:
+
 <a id="confidence-interval"></a>
 **[Confidence Interval][#confidence-interval]**: A range of values such that
 there's an X% likelihood that the range will contain the true, unknown value of
@@ -42,8 +45,14 @@ parameter.
 <a id="correlation"></a>
 **[Correlation][#correlation]**:
 
+<a id="curse-of-dimensionality"></a>
+**[Curse of Dimensionality][#curse-of-dimensionality]**:
+
 <a id="degrees-of-freedom"></a>
 **[Degrees of Freedom][#degrees-of-freedom]**:
+
+<a id="dummy-variable"></a>
+**[Dummy Variable][#dummy-variable]**:
 
 <a id="error-term"></a>
 **[Error Term][#error-term]**:
@@ -57,11 +66,23 @@ parameter.
 <a id="forward-selection"></a>
 **[Forward Selection][#forward-selection]**:
 
+<a id="hierarchical-principle"></a>
+**[Hierarchical Principle][#hierarchical-principle]**:
+
+<a id="high-leverage"></a>
+**[High Leverage][#high-leverage]**:
+
 <a id="hypothesis-test"></a>
 **[Hypothesis Test][#hypothesis-test]**:
 
 <a id="input"></a>
 **[Input][#input]**:
+
+<a id="indicator-variable"></a>
+**[Indicator Variable][#indicator-variable]**:
+
+<a id="interaction-term"></a>
+**[Interaction Term][#interaction-term]**:
 
 <a id="intercept"></a>
 **[Intercept][#intercept]**:
@@ -81,6 +102,9 @@ parameter.
 <a id="mixed-selection"></a>
 **[Mixed Selection][#mixed-selection]**:
 
+<a id="multicollinearity"></a>
+**[Multicollinearity][#multicollinearity]**:
+
 <a id="multiple-linear-regression"></a>
 **[Multiple Linear Regression][#multiple-linear-regression]**:
 
@@ -99,6 +123,9 @@ parameter.
 <a id="null-model"></a>
 **[Null Model][#null-model]**: In linear regression, a model that includes an
 intercept, but no predictors.
+
+<a id="outlier"></a>
+**[Outlier][#outlier]**:
 
 <a id="output"></a>
 **[Output][#output]**:
@@ -151,6 +178,9 @@ intercept, but no predictors.
 <a id="standard-error"></a>
 **[Standard Error][#standard-error]**:
 
+<a id="studentized-residual"></a>
+**[Studentized Residual][#studentized-residual]**:
+
 <a id="supervised-learning"></a>
 **[Supervised Learning][#supervised-learning]**:
 
@@ -176,6 +206,9 @@ a quantity a quantity is from zero.
 <a id="variance"></a>
 **[Variance][#variance]**:
 
+<a id="variance-inflation-factor"></a>
+**[Variance Inflation Factor][#variance-inflation-factor]**:
+
 [#backwards-selection]: #backwards-selection "Backwards Selection"
 [#bayes-classifier]: #bayes-classifier "Bayes Classifier"
 [#bayes-decision-boundary]: #bayes-decision-boundary "Bayes Decision Boundary"
@@ -185,21 +218,29 @@ a quantity a quantity is from zero.
 [#classification-problem]: #classification-problem "Classification Problem"
 [#cluster-analysis]: #cluster-analysis "Cluster Analysis"
 [#coefficient]: #coefficient "Coefficient"
+[#collinearity]: #collinearity "Collinearity"
 [#confidence-interval]: #confidence-interval "Confidence Interval"
 [#correlation]: #correlation "Correlation"
+[#curse-of-dimensionality]: #curse-of-dimensionality "Curse of Dimensionality"
 [#degrees-of-freedom]: #degrees-of-freedom "Degrees of Freedom"
+[#dummy-variable]: #dummy-variable "Dummy Variable"
 [#error-term]: #error-term "Error Term"
 [#f-distribution]: #f-distribution "F-Distribution"
 [#f-statistic]: #f-statistic "F-Statistic"
 [#forward-selection]: #forward-selection "Forward Selection"
+[#hierarchical-principle]: #hierarchical-principle "Hierarchical Principle"
+[#high-leverage]: #high-leverage "High Leverage"
 [#hypothesis-test]: #hypothesis-test "Hypothesis Test"
 [#input]: #input "Input"
+[#indicator-variable]: #indicator-variable "Indicator Variable"
+[#interaction-term]: #interaction-term "Interaction Term"
 [#intercept]: #intercept "Intercept"
 [#irreducible-error]: #irreducible-error "Irreducible Error"
 [#k-nearest-neighbors]: #k-nearest-neighbors "K-Nearest Neighbors"
 [#least-squares-line]: #least-squares-line "Least Squares Line"
 [#mean-squared-error]: #mean-squared-error "Mean Squared Error"
 [#mixed-selection]: #mixed-selection "Mixed Selection"
+[#multicollinearity]: #multicollinearity "Multicollinearity"
 [#multiple-linear-regression]: #multiple-linear-regression "Multiple Linear Regression"
 [#normal-distribution]: #normal-distribution "Normal Distribution"
 [#non-parametric]: #non-parametric "Non-Parametric"
@@ -207,6 +248,7 @@ a quantity a quantity is from zero.
 [#null-hypothesis]: #null-hypothesis "Null Hypothesis"
 [#null-model]: #null-model "Null Model"
 [#output]: #output "Output"
+[#outlier]: #outlier "Outlier"
 [#overfitting]: #overfitting "Overfitting"
 [#p-value]: #p-value "P-Value"
 [#parameter]: #parameter "Parameter"
@@ -223,6 +265,7 @@ a quantity a quantity is from zero.
 [#simple-linear-regression]: #simple-linear-regression "Simple Linear Regression"
 [#slope]: #slope "Slope"
 [#standard-error]: #standard-error "Standard Error"
+[#studentized-residual]: #studentized-residual "Studentized Residual"
 [#supervised-learning]: #supervised-learning "Supervised Learning"
 [#test-mean-squared-error]: #test-mean-squared-error "Test Mean Squared Error"
 [#training-mean-squared-error]: #training-mean-squared-error "Training Mean Squared Error"
@@ -231,3 +274,4 @@ a quantity a quantity is from zero.
 [#unsupervised-learning]: #unsupervised-learning "Unsupervised Learning"
 [#variable-selection]: #variable-selection "Variable Selection"
 [#variance]: #variance "Variance"
+[#variance-inflation-factor]: #variance-inflation-factor "Variance Inflation Factor"
