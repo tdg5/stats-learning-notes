@@ -6,175 +6,175 @@ use_math: true
 # Glossary
 
 <a id="backwards-selection"></a>
-[**Backwards Selection**][#backwards-selection]:
+**[Backwards Selection][#backwards-selection]**:
 
 <a id="bayes-classifier"></a>
-[**Bayes Classifier**][#bayes-classifier]:
+**[Bayes Classifier][#bayes-classifier]**:
 
 <a id="bayes-decision-boundary"></a>
-[**Bayes Decision Boundary**][#bayes-decision-boundary]:
+**[Bayes Decision Boundary][#bayes-decision-boundary]**:
 
 <a id="bayes-error-rate"></a>
-[**Bayes Error Rate**][#bayes-error-rate]:
+**[Bayes Error Rate][#bayes-error-rate]**:
 
 <a id="bias"></a>
-[**Bias**][#bias]:
+**[Bias][#bias]**:
 
 <a id="bias-variance-trade-off"></a>
-[**Bias-Variance Trade-Off**][#bias-variance-trade-off]:
+**[Bias-Variance Trade-Off][#bias-variance-trade-off]**:
 
 <a id="classification-problem"></a>
-[**Classification Problem**][#classification-problem]:
+**[Classification Problem][#classification-problem]**:
 
 <a id="cluster-analysis"></a>
-[**Cluster Analysis**][#cluster-analysis]:
+**[Cluster Analysis][#cluster-analysis]**:
 
 <a id="coefficient"></a>
-[**Coefficient**][#coefficient]:
+**[Coefficient][#coefficient]**:
 
 <a id="confidence-interval"></a>
-[**Confidence Interval**][#confidence-interval]: A range of values such that
+**[Confidence Interval][#confidence-interval]**: A range of values such that
 there's an X% likelihood that the range will contain the true, unknown value of
 the parameter. For example, a 95% confidence interval is a range of values such
 that there's a 95% chance that the range contains the true unknown value of the
 parameter.
 
 <a id="correlation"></a>
-[**Correlation**][#correlation]:
+**[Correlation][#correlation]**:
 
 <a id="degrees-of-freedom"></a>
-[**Degrees of Freedom**][#degrees-of-freedom]:
+**[Degrees of Freedom][#degrees-of-freedom]**:
 
 <a id="error-term"></a>
-[**Error Term**][#error-term]:
+**[Error Term][#error-term]**:
 
 <a id="f-distribution"></a>
-[**F-Distribution**][#f-distribution]:
+**[F-Distribution][#f-distribution]**:
 
 <a id="f-statistic"></a>
-[**F-Statistic**][#f-statistic]:
+**[F-Statistic][#f-statistic]**:
 
 <a id="forward-selection"></a>
-[**Forward Selection**][#forward-selection]:
+**[Forward Selection][#forward-selection]**:
 
 <a id="hypothesis-test"></a>
-[**Hypothesis Test**][#hypothesis-test]:
+**[Hypothesis Test][#hypothesis-test]**:
 
 <a id="input"></a>
-[**Input**][#input]:
+**[Input][#input]**:
 
 <a id="intercept"></a>
-[**Intercept**][#intercept]:
+**[Intercept][#intercept]**:
 
 <a id="irreducible-error"></a>
-[**Irreducible Error**][#irreducible-error]:
+**[Irreducible Error][#irreducible-error]**:
 
 <a id="k-nearest-neighbors"></a>
-[**K-Nearest Neighbors**][#k-nearest-neighbors]:
+**[K-Nearest Neighbors][#k-nearest-neighbors]**:
 
 <a id="least-squares-line"></a>
-[**Least Squares Line**][#least-squares-line]:
+**[Least Squares Line][#least-squares-line]**:
 
 <a id="mean-square-error"></a>
-[**Mean Squared Error**][#mean-squared-error]:
+**[Mean Squared Error][#mean-squared-error]**:
 
 <a id="mixed-selection"></a>
-[**Mixed Selection**][#mixed-selection]:
+**[Mixed Selection][#mixed-selection]**:
 
 <a id="multiple-linear-regression"></a>
-[**Multiple Linear Regression**][#multiple-linear-regression]:
+**[Multiple Linear Regression][#multiple-linear-regression]**:
 
 <a id="non-parametric"></a>
-[**Non-Parametric**][#non-parametric]:
+**[Non-Parametric][#non-parametric]**:
 
 <a id="non-parametric-methods"></a>
-[**Non-Parametric Methods**][#non-parametric-methods]:
+**[Non-Parametric Methods][#non-parametric-methods]**:
 
 <a id="normal-distribution"></a>
-[**Normal Distribution**][#normal-distribution]:
+**[Normal Distribution][#normal-distribution]**:
 
 <a id="null-hypothesis"></a>
-[**Null Hypothesis**][#null-hypothesis]:
+**[Null Hypothesis][#null-hypothesis]**:
 
 <a id="null-model"></a>
 **[Null Model][#null-model]**: In linear regression, a model that includes an
 intercept, but no predictors.
 
 <a id="output"></a>
-[**Output**][#output]:
+**[Output][#output]**:
 
 <a id="overfitting"></a>
-[**Overfitting**][#overfitting]:
+**[Overfitting][#overfitting]**:
 
 <a id="p-value"></a>
-[**P-Value**][#p-value]:
+**[P-Value][#p-value]**:
 
 <a id="parameter"></a>
-[**Parameter**][#parameter]:
+**[Parameter][#parameter]**:
 
 <a id="parametric"></a>
-[**Parametric**][#parametric]:
+**[Parametric][#parametric]**:
 
 <a id="parametric-methods"></a>
-[**Parametric Methods**][#parametric-methods]:
+**[Parametric Methods][#parametric-methods]**:
 
 <a id="population-regression-line"></a>
-[**Population Regression Line**][#population-regression-line]:
+**[Population Regression Line][#population-regression-line]**:
 
 <a id="qualitative-value"></a>
-[**Qualitative Value**][#qualitative-value]:
+**[Qualitative Value][#qualitative-value]**:
 
 <a id="quantitative-value"></a>
-[**Quantitative Value**][#quantitative-value]:
+**[Quantitative Value][#quantitative-value]**:
 
 <a id="r-squared-statistic"></a>
-[**$$ R^{2} $$ Statistic**][#r-squared-statistic]:
+**[$$ R^{2} $$ Statistic][#r-squared-statistic]**:
 
 <a id="regression-problem"></a>
-[**Regression Problem**][#regression-problem]:
+**[Regression Problem][#regression-problem]**:
 
 <a id="residual"></a>
-[**Residual**][#residual]:
+**[Residual][#residual]**:
 
 <a id="residual-standard-error"></a>
-[**Residual Standard Error**][#residual-standard-error]:
+**[Residual Standard Error][#residual-standard-error]**:
 
 <a id="residual-sum-of-squares"></a>
-[**Residual Sum of Squares**][#residual-sum-of-squares]:
+**[Residual Sum of Squares][#residual-sum-of-squares]**:
 
 <a id="simple-linear-regression"></a>
-[**Simple Linear Regression**][#simple-linear-regression]:
+**[Simple Linear Regression][#simple-linear-regression]**:
 
 <a id="slope"></a>
-[**Slope**][#slope]:
+**[Slope][#slope]**:
 
 <a id="standard-error"></a>
-[**Standard Error**][#standard-error]:
+**[Standard Error][#standard-error]**:
 
 <a id="supervised-learning"></a>
-[**Supervised Learning**][#supervised-learning]:
+**[Supervised Learning][#supervised-learning]**:
 
 <a id="t-distribution"></a>
-[**T-Distribution**][#t-distribution]:
+**[T-Distribution][#t-distribution]**:
 
 <a id="t-statistic"></a>
-[**T-Statistic**][#t-statistic]: A measure of the number of standard deviations
+**[T-Statistic][#t-statistic]**: A measure of the number of standard deviations
 a quantity a quantity is from zero.
 
 <a id="test-mean-squared-error"></a>
-[**Test Mean Squared Error**][#test-mean-squared-error]:
+**[Test Mean Squared Error][#test-mean-squared-error]**:
 
 <a id="training-mean-squared-error"></a>
-[**Training Mean Squared Error**][#training-mean-squared-error]:
+**[Training Mean Squared Error][#training-mean-squared-error]**:
 
 <a id="unsupervised-learning"></a>
-[**Unsupervised Learning**][#unsupervised-learning]:
+**[Unsupervised Learning][#unsupervised-learning]**:
 
 <a id="variable-selection"></a>
-[**Variable Selection**][#variable-selection]:
+**[Variable Selection][#variable-selection]**:
 
 <a id="variance"></a>
-[**Variance**][#variance]:
+**[Variance][#variance]**:
 
 [#backwards-selection]: #backwards-selection "Backwards Selection"
 [#bayes-classifier]: #bayes-classifier "Bayes Classifier"
