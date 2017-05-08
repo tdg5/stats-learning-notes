@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /chapter-09-support-vector-machines
 use_math: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /chapter-03-linear-regression
 use_math: true
 ---
 

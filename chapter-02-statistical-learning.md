@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /chapter-02-statistical-learning
 use_math: true
 ---
 

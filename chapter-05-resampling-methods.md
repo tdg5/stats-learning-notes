@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /chapter-05-resampling-methods
 use_math: true
 ---
 

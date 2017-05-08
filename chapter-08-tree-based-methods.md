@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /chapter-08-tree-based-methods
 use_math: true
 ---
 

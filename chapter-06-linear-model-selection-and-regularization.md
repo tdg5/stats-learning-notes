@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /chapter-06-linear-model-selection-and-regularization
 use_math: true
 ---
 

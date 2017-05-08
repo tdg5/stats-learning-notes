@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /chapter-10-unsupervised-learning
 use_math: true
 ---
 
