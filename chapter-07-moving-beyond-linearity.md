@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /chapter-07-moving-beyond-linearity
 use_math: true
 ---
 

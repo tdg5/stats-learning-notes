@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /chapter-04-classification
 use_math: true
 ---
 
