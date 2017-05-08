@@ -148,6 +148,9 @@ intercept, but no predictors.
 <a id="population-regression-line"></a>
 **[Population Regression Line][#population-regression-line]**:
 
+<a id="prediction-interval"></a>
+**[Prediction Interval][#prediction-interval]**:
+
 <a id="qualitative-value"></a>
 **[Qualitative Value][#qualitative-value]**:
 
@@ -196,6 +199,11 @@ a quantity a quantity is from zero.
 
 <a id="training-mean-squared-error"></a>
 **[Training Mean Squared Error][#training-mean-squared-error]**:
+
+<a id="unbiased-estimator"></a>
+**[Unbiased Estimator][#unbiased-estimator]**: A model that does not
+systematically overestimate or underestimate when generating predictions of the
+true response value.
 
 <a id="unsupervised-learning"></a>
 **[Unsupervised Learning][#unsupervised-learning]**:
@@ -255,6 +263,7 @@ a quantity a quantity is from zero.
 [#parametric]: #parametric "Parametric"
 [#parametric-methods]: #parametric-methods "Parametric Methods"
 [#population-regression-line]: #population-regression-line "Population Regression Line"
+[#prediction-interval]: #prediction-interval "Prediction Interval"
 [#qualitative-value]: #qualitative-value "Qualitative Value"
 [#quantitative-value]: #quantitative-value "Quantitative Value"
 [#r-squared-statistic]: #r-squared-statistic "R Squared Statistic"
@@ -272,6 +281,7 @@ a quantity a quantity is from zero.
 [#t-distribution]: #t-distribution "T-Distribution"
 [#t-statistic]: #t-statistic "T-Statistic"
 [#unsupervised-learning]: #unsupervised-learning "Unsupervised Learning"
+[#unbiased-estimator]: #unbiased-estimator "Unbiased Estimator"
 [#variable-selection]: #variable-selection "Variable Selection"
 [#variance]: #variance "Variance"
 [#variance-inflation-factor]: #variance-inflation-factor "Variance Inflation Factor"

@@ -8,8 +8,8 @@ use_math: true
 ### Simple Linear Regression
 
 [Simple linear regression][glossary-simple-linear-regression] predicts a
-quantitative response $$ Y $$ on the basis of a single predictor variable $$ X
-$$. It assumes an approximately linear relationship between $$ X $$ and $$ Y $$.
+quantitative response $$ Y $$ on the basis of a single predictor variable $$ X .
+$$ It assumes an approximately linear relationship between $$ X $$ and $$ Y . $$
 Formally,
 
 $$ Y \approx \beta_{0} + \beta_{1}X $$
@@ -17,7 +17,7 @@ $$ Y \approx \beta_{0} + \beta_{1}X $$
 where $$ \beta_{0} $$ represents the [intercept][glossary-intercept] or the
 value of $$ Y $$ when $$ X $$ is equal to $$ 0 $$ and $$ \beta_{1} $$ represents the
 [slope][glossary-slope] of the line or the average amount of change in $$ Y $$
-for each one-unit increase in $$ X $$.
+for each one-unit increase in $$ X . $$
 
 Together, $$ \beta_{0} $$ and $$ \beta_{1} $$ are known as the model
 [coefficients][glossary-coefficient] or [parameters][glossary-parameter].
@@ -76,31 +76,27 @@ as
 
 $$ Y = \beta_{0} + \beta_{1}X + \epsilon $$
 
-where
-
-$$ \beta_{0} $$ is the intercept term, or the value of $$ Y $$ when $$ X = 0 $$
-
-$$ \beta_{1} $$ is the slope, or average increase in $$ Y $$ associated with a
-one-unit increase in $$ X $$
-
-$$ \epsilon $$ is the error term which acts as a catchall for what is missed by
-the simple model: the true relationship likely isn't linear; there may be other
-variables that affect $$ Y $$; there may be error in the observed measurements.
-The error term is typically assumed to be independent of $$ X $$.
+where $$ \beta_{0} $$ is the intercept term, or the value of $$ Y $$ when $$ X =
+0 $$; $$ \beta_{1} $$ is the slope, or average increase in $$ Y $$ associated
+with a one-unit increase in $$ X $$; and $$ \epsilon $$ is the error term which
+acts as a catchall for what is missed by the simple model given that the true
+relationship likely isn't linear, there may be other variables that affect $$ Y
+$$, and/or there may be error in the observed measurements. The error term is
+typically assumed to be independent of $$ X . $$
 
 The model used by simple linear regression defines the [population
 regression line][glossary-population-regression-line], which describes the best
 linear approximation to the true relationship between $$ X $$ and $$ Y $$ for
 the population.
 
-The least squares regression coefficient estimates characterize the [least
-squares line][glossary-least-squares-line],
+The coefficient estimates yielded by least squares regression characterize the
+[least squares line][glossary-least-squares-line],
 
 $$ \hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i} . $$
 
 The difference between the population regression line and the least squares
-line is similar to using a sample to estimate the characteristics of a large
-population.
+line is similar to the difference that emerges when using a sample to estimate
+the characteristics of a large population.
 
 In linear regression, the unknown coefficients, $$ \beta_{0} $$ and $$ \beta_{1}
 $$ define the population regression line, whereas the estimates of those
@@ -108,8 +104,9 @@ coefficients, $$ \hat{\beta_{0}} $$ and $$ \hat{\beta_{1}} $$ define the least
 squares line.
 
 Though the parameter estimates for a given sample may overestimate or
-underestimate the value of a particular parameter, an unbiased estimator does
-not systemically overestimate or underestimate the true parameter.
+underestimate the value of a particular parameter, an [unbiased
+estimator][glossary-unbiased-estimator] does not systemically overestimate or
+underestimate the true parameter.
 
 This means that using an unbiased estimator and a large number of data sets, the
 values of the coefficients $$ \beta_{0} $$ and $$ \beta_{1} $$ could be
@@ -117,43 +114,45 @@ determined by averaging the coefficient estimates from each of those data sets.
 
 To estimate the accuracy of a single estimated value, such as an average, it can
 be helpful to calculate the [standard error][glossary-standard-error] of the
-estimated value $$ \hat{\mu} $$, which can be accomplished like so:
+estimated value $$ \hat{\mu} $$, which can be accomplished like so
 
 $$ \mathrm{Var}(\hat{\mu}) = \mathrm{SE}(\hat{\mu})^2 = \frac{\sigma^{2}}{n} $$
 
-where $$ \sigma $$ is the standard deviation of each $$ y_{i} $$.
+where $$ \sigma $$ is the standard deviation of each $$ y_{i} . $$
 
 Roughly, the standard error describes the average amount that the estimate $$
-\hat{\mu} $$ differs from $$ \mu $$.
+\hat{\mu} $$ differs from $$ \mu . $$
 
 The more observations, the larger $$ n $$, the smaller the standard error.
 
 To compute the standard errors associated with $$ \beta_{0} $$ and $$ \beta_{1}
 $$, the following formulas can be used:
 
-$$ \mathrm{SE}(\beta_{0})^{2} = \sigma^{2}[\frac{1}{n} +
-\frac{\bar{x}^{2}}{\sum_{i=1}^{n}(x_{i} - \bar{x})^2}] $$
+$$ \mathrm{SE}(\beta_{0})^{2} = \sigma^{2}\bigg[\frac{1}{n} +
+\frac{\bar{x}^{2}}{\sum_{i=1}^{n}(x_{i} - \bar{x})^2}\bigg] $$
 
 and
 
 $$ \mathrm{SE}(\beta_{1})^{2} = \frac{\sigma^{2}}{\sum_{i=1}^{n}(x_{i} - \bar{x})^2} $$
 
 where $$ \sigma^{2} = \mathrm{Var}(\epsilon) $$ and $$ \epsilon_{i} $$ is not
-correlated with $$ \sigma^{2} $$.
+correlated with $$ \sigma^{2} . $$
 
 $$ \sigma^{2} $$ generally isn't known, but can be estimated from the data. The
 estimate of $$ \sigma $$ is known as the [residual standard
 error][glossary-residual-standard-error] and can be calculated with the
 following formula
 
-$$ \mathrm{RSE} = \sqrt{\frac{\mathrm{RSS}}{(n - 2)}} . $$
+$$ \mathrm{RSE} = \sqrt{\frac{\mathrm{RSS}}{(n - 2)}} $$
 
 where $$ \mathrm{RSS} $$ is the residual sum of squares.
 
-Standard errors can be used to compute confidence intervals. A [confidence
-interval][glossary-confidence-interval] is defined as a range of values such
-that there's a certain likelihood that the range will contain the true unknown
-value of the parameter.
+Standard errors can be used to compute confidence intervals and prediction
+intervals.
+
+A [confidence interval][glossary-confidence-interval] is defined as a range of
+values such that there's a certain likelihood that the range will contain the
+true unknown value of the parameter.
 
 For simple linear regression the 95% confidence interval for $$ \beta_{1} $$ can be
 approximated by
@@ -162,14 +161,14 @@ $$ \hat{\beta_{1}} \pm 2 \times \mathrm{SE}(\hat{\beta_{1}}) . $$
 
 Similarly, a confidence interval for $$ \beta_{0} $$ can be approximated as
 
-$$ \hat{\beta_{0}} \pm 2 \times \mathrm{SE}(\hat{\beta_{0}}) $$
+$$ \hat{\beta_{0}} \pm 2 \times \mathrm{SE}(\hat{\beta_{0}}) . $$
 
 The accuracy of an estimated prediction depends on whether we wish to predict an
 individual response, $$ y = f(x) + \epsilon $$, or the average response, $$ f(x)
-$$.
+. $$
 
-When predicting an individual response, $$ y = f(x) + \epsilon $$, a prediction
-interval is used.
+When predicting an individual response, $$ y = f(x) + \epsilon $$, a [prediction
+interval][glossary-prediction-interval] is used.
 
 When predicting an average response, $$ f(x) $$, a confidence interval is used.
 
@@ -187,21 +186,21 @@ $$ H_{0} $$: There is no relationship between $$ X $$ and $$ Y $$
 
 versus the alternative hypothesis
 
-$$ H_{1} $$: Thee is some relationship between $$ X $$ and $$ Y $$.
+$$ H_{1} $$: Thee is some relationship between $$ X $$ and $$ Y . $$
 
 In mathematical terms, the null hypothesis corresponds to testing if $$
 \beta_{1} = 0 $$, which reduces to
 
 $$ Y = \beta_{0} + \epsilon $$
 
-which evidences that $$ X $$ is not related to $$ Y $$.
+which evidences that $$ X $$ is not related to $$ Y . $$
 
 To test the null hypothesis, it is necessary to determine whether the estimate
 of $$ \beta_{1} $$, $$ \hat{\beta_{1}} $$, is sufficiently far from zero to provide
 confidence that $$ \beta_{1} $$ is non-zero.
 
-How close is close enough depends on $$ \mathrm{SE}(\hat{\beta_{1}}) $$. When $$
-\mathrm{SE}(\hat{\beta_{1}}) $$ is small, then small values of $$
+How close is close enough depends on $$ \mathrm{SE}(\hat{\beta_{1}}) . $$ When
+$$ \mathrm{SE}(\hat{\beta_{1}}) $$ is small, then small values of $$
 \hat{\beta_{1}} $$ may provide strong evidence that $$ \beta_{1} $$ is not zero.
 Conversely, if $$ \mathrm{SE}(\hat{\beta_{1}}) $$ is large, then $$
 \hat{\beta_{1}} $$ will need to be large in order to reject the null hypothesis.
@@ -220,8 +219,8 @@ If there is no relationship between $$ X $$ and $$ Y $$, it is expected that a
 should be yielded.
 
 With such a distribution, it is possible to calculate the probability of
-observing a value of $$ |t| $$ or larger assuming that $$ \hat{\beta_{1}} = 0
-$$. This probability, called the [p-value][glossary-p-value], can indicate an
+observing a value of $$ |t| $$ or larger assuming that $$ \hat{\beta_{1}} = 0 .
+$$ This probability, called the [p-value][glossary-p-value], can indicate an
 association between the predictor and the response if sufficiently small.
 
 #### Assessing Model Accuracy
@@ -249,13 +248,13 @@ for some values, the RSE may be large, indiating that the model doesn't fit the
 data well.
 
 The RSE provides an absolute measure of the lack of fit of the model in the
-units of $$ Y $$. This can make it difficult to know what constitutes a good
+units of $$ Y . $$ This can make it difficult to know what constitutes a good
 RSE.
 
 The [$$ R^{2} $$ statistic][glossary-r-squared-statistic] is an alternative measure of
 fit that takes the form of a proportion. The $$ R^{2} $$ statistic captures the
 proportion of variance explained as a value between $$ 0 $$ and $$ 1 $$,
-independent of the unit of $$ Y $$.
+independent of the unit of $$ Y . $$
 
 To calculate the $$ R^2 $$ statistic, the following formula may be used
 
@@ -271,13 +270,13 @@ and
 $$ \mathrm{TSS} = \sum_{i=1}^{n}(y_{i} - \bar{y}_{i})^{2} $$
 
 The total sum of squares, TSS, measures the total variance in the response $$ Y
-$$. The TSS can be thought of as the total variability in the response before
+. $$ The TSS can be thought of as the total variability in the response before
 applying linear regression. Conversely, the residual sum of squares, RSS,
 measures the amount of variability left after performing the regression.
 
 Ergo, $$ TSS - RSS $$ measures the amount of variability in the response that is
 explained by the model. $$ R^{2} $$ measures the proportion of variability in $$
-Y $$ that can be explained by $$ X $$. An $$ R^{2} $$ statistic close to $$ 1 $$
+Y $$ that can be explained by $$ X . $$ An $$ R^{2} $$ statistic close to $$ 1 $$
 indicates that a large portion of the variability in the response is explained
 by the model. An $$ R^{2} $$ near $$ 0 $$ indicates that the model accounted for
 very little of the variability of the model.
@@ -291,10 +290,10 @@ value is. Frequently, what constitutes a good $$ R^{2} $$ value depends on the
 application and what is known about the problem.
 
 The $$ R^{2} $$ statistic is a measure of the linear relationship between $$ X
-$$ and $$ Y $$.
+$$ and $$ Y . $$
 
 [Correlation][glossary-correlation] is another measure of the linear
-relationship between $$ X $$ and $$ Y $$. Correlation of can be calculated as
+relationship between $$ X $$ and $$ Y . $$ Correlation of can be calculated as
 
 $$ \mathrm{Cor}(X,Y) = \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} -
 \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_{i} -
@@ -302,7 +301,7 @@ $$ \mathrm{Cor}(X,Y) = \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} -
 
 This suggests that $$ r = \mathrm{Cor}(X,Y) $$ could be used instead of $$ R^{2}
 $$ to assess the fit of the linear model, however for simple linear regression
-it can be shown that $$ R^{2} = r^{2} $$. More concisely, for simple linear
+it can be shown that $$ R^{2} = r^{2} . $$ More concisely, for simple linear
 regression, the squared correlation and the $$ R^{2} $$ statistic are
 equivalent. Though this is the case for simple linear regression, correlation
 does not extend to multiple linear regression since correlation quantifies the
@@ -384,10 +383,10 @@ Conversely, if the null hypothesis is true, it can be shown that
 $$ \mathrm{E}\{\frac{\mathrm{TSS} - \mathrm{RSS}}{p}\} = \sigma^{2} $$
 
 This means that when there is no relationship between the response and the
-predictors the F-statisitic takes on a value close to $$ 1 $$.
+predictors the F-statisitic takes on a value close to $$ 1 . $$
 
 Conversely, if the alternative hypothesis is true, then the F-statistic will
-take on a value greater than $$ 1 $$.
+take on a value greater than $$ 1 . $$
 
 When $$ n $$ is large, an F-statistic only slightly greater than $$ 1 $$ may
 provide evidence against the null hypothesis. If $$ n $$ is small, a large
@@ -401,7 +400,7 @@ F-statistic. Based on the obtained p-value, the validity of the null hypothesis
 can be determined.
 
 It is sometimes desirable to test that a particular subset of $$ q $$
-coefficients are $$ 0 $$. This equates to a null hypothesis of
+coefficients are $$ 0 . $$ This equates to a null hypothesis of
 
 $$ H_{0}: \beta_{p - q + 1} = \beta_{p - q + 2} = \ldots = \beta_{p} = 0 . $$
 
@@ -424,7 +423,7 @@ $$ 0.05 $$ about 5% of the time regardless of the number of predictors or the
 number of observations.
 
 The F-statistic works best when $$ p $$ is relatively small or when $$ p $$ is
-relatively small compared to $$ n $$.
+relatively small compared to $$ n . $$
 
 When $$ p $$ is greater than $$ n $$, multiple linear regression using least
 squares will not work, and similarly, the F-statistic cannot be used either.
@@ -457,7 +456,7 @@ extraneous variables.
 [Backwards selection][glossary-backwards-selection] begins with a model that
 includes all the predictors and proceeds by removing the variable with the
 highest p-value each iteration until some stopping condition is met. Backwards
-selection cannot be used when $$ p > n $$.
+selection cannot be used when $$ p > n . $$
 
 [Mixed selection][glossary-mixed-selection] begins with a null model, like
 forward selection, repeatedly adding whichever predictor yields the best fit. As
@@ -496,7 +495,7 @@ $$ RSE = \sqrt{\frac{\mathrm{RSS}}{n - 2}} . $$
 
 Given the definition of RSE for multiple linear regression, it can be seen that
 models with more variables can have a higher RSE if the decrease in RSS is small
-relative to the increase in $$ p $$.
+relative to the increase in $$ p . $$
 
 In addition to $$ \mathrm{R}^{2} $$ and RSE, it can also be useful to plot the
 data to verify the model.
@@ -515,7 +514,7 @@ of uncertainty.
 \beta_{1}, \ldots, \beta_{p}. $$ That is to say, the least squares plane is only
 an estimate of the true population regression plane. The error introduced by
 this inaccuracy is reducible error and a confidence interval can be computed to
-determine how close $$ \hat{y} $$ is to $$ f(X) $$.
+determine how close $$ \hat{y} $$ is to $$ f(X) . $$
 
 2. Assuming a linear model for $$ f(X) $$ is almost always an approximation of
 reality, which means additional reducible error is introduced due to model bias.
@@ -636,7 +635,7 @@ predictors.
 
 The linear assumption implies that the change in the response $$ Y $$ due to a
 one-unit change in $$ X_{j} $$ is constant regardless of the value of $$ X_{j}
-$$.
+. $$
 
 The additive assumption ignores the possibility of an interaction between
 predictors. One way to account for an interaction effect is to include an
@@ -725,8 +724,8 @@ prediction accuracy can be significantly reduced.
 
 Residual plots are a useful graphical tool for identifying non-linearity. For
 simple linear regression this consists of graphing the residuals, $$ e_{i} =
-y_{i} - \hat{y}_{i} $$ versus the predicted or fitted values of $$ \hat{y}_{i}
-$$.
+y_{i} - \hat{y}_{i} $$ versus the predicted or fitted values of $$ \hat{y}_{i} .
+$$
 
 If a residual plot indicates non-linearity in the model, then a simple approach
 is to use non-linear transformations of the predictors, such as $$ \log{x} $$,
@@ -759,14 +758,14 @@ Standard errors, confidence intervals, and hypothesis testing all depend on this
 assumption.
 
 Residual plots can help identify non-constant variances in the error, or
-heteroscedasticity, if a funnel shape is present.
+[heteroscedasticity][glossary-heteroscedasticity], if a funnel shape is present.
 
 ![Residual plot with funnel shape due to non-constant variance of error
 terms][graph-residual-funnel]
 
 One way to address this problem is to transform the response $$ Y $$ using a
-concave function such as $$ \log{Y} $$ or $$ \sqrt{Y} $$. This results in a
-greater amount of shrinkage of the larger responses, leading to a reductin in
+concave function such as $$ \log{Y} $$ or $$ \sqrt{Y} . $$ This results in a
+greater amount of shrinkage of the larger responses, leading to a reduction in
 heteroscedasticity.
 
 ###### 4. Outliers
@@ -795,7 +794,7 @@ missing predictor or other deficiency in the model.
 While outliers relate to observations for which the response $$ y_{i} $$ is
 unusual given the predictor $$ x_{i} $$, in contrast, observations with [high
 leverage][glossary-high-leverage] are those that have an unusual value for the
-predictor $$ x_{i} $$ for the given response $$ y_{i} $$.
+predictor $$ x_{i} $$ for the given response $$ y_{i} . $$
 
 High leverage observations tend to have a sizable impact on the estimated
 regression line and as a result, removing them can yield improvements in model
@@ -814,10 +813,10 @@ A large leverage statistic indicates an observation with high leverage.
 For simple linear regression, the leverage statistic can be computed as
 
 $$ h_{i} = \frac{1}{n} + \frac{(x_{i} - \bar{x})^{2}}{\sum_{j=1}^{n}(x_{j} -
-\bar{x})^{2}} $$
+\bar{x})^{2}} . $$
 
 The leverage statistic always falls between $$ \frac{1}{n} $$ and $$ 1 $$ and
-the average leverage is always equal to $$ \frac{p + 1}{n} $$. So, if an
+the average leverage is always equal to $$ \frac{p + 1}{n} . $$ So, if an
 observation has a leverage statistic greatly exceeds $$ \frac{p + 1}{n} $$ then
 it may be evidence that the corresponding point has high leverage.
 
@@ -880,16 +879,17 @@ regression which is closely related to the k-nearest neighbors classifier.
 
 Given a value for $$ K $$ and a prediction point $$ x_{0} $$, k-nearest
 neighbors regression first identifies the $$ K $$ observations that are closest
-to $$ x_{0} $$, represented by $$ N_{0} $$. $$ f(x_{0}) $$ is then estimated
+to $$ x_{0} $$, represented by $$ N_{0} . $$ $$ f(x_{0}) $$ is then estimated
 using the average of $$ N_{0i} $$ like so
 
 $$ \hat{f}(x_{0}) = \frac{1}{k}\sum_{x_{i} \in N_{0}}y_{i} $$
 
 A parametric approach will outperform a non-parametric approach if the
-parametric form is close to the true form of $$ f(X) $$.
+parametric form is close to the true form of $$ f(X) . $$
 
 The choice of a parametric approach versus a non-parametric approach will depend
-largely on the bias-variance trade-off and the shape of the function $$ f(X) $$.
+largely on the bias-variance trade-off and the shape of the function $$ f(X) .
+$$
 
 When the true relationship is linear, it is difficult for a non-parametric
 approach to compete with linear regression because the non-parametric approach
@@ -915,6 +915,7 @@ models when there are only a small number of observations per predictor.
 [glossary-f-distribution]: glossary#f-distribution "stats-learning-notes -- Glossary - F-Distribution"
 [glossary-f-statistic]: glossary#f-statistic "stats-learning-notes -- Glossary - F-Statistic"
 [glossary-forward-selection]: glossary#forward-selection "stats-learning-notes -- Glossary - Forward Selection"
+[glossary-heteroscedasticity]: glossary#heteroscedasticity "stats-learning-notes -- Glossary - Heteroscedasticity"
 [glossary-high-leverage]: glossary#high-leverage "stats-learning-notes -- Glossary - High Leverage"
 [glossary-hierarchical-principle]: glossary#hierarchical-principle "stats-learning-notes -- Glossary - Hierarchical Principle"
 [glossary-hypothesis-test]: glossary#hypothesis-test "stats-learning-notes -- Glossary - Hypothesis Test"
@@ -931,6 +932,7 @@ models when there are only a small number of observations per predictor.
 [glossary-p-value]: glossary#p-value "stats-learning-notes -- Glossary - P-Value"
 [glossary-parameter]: glossary#parameter "stats-learning-notes -- Glossary - Parameter"
 [glossary-population-regression-line]: glossary#population-regression-line "stats-learning-notes -- Glossary - Population Regression Line"
+[glossary-prediction-interval]: glossary#prediction-interval "stats-learning-notes -- Glossary - Prediction Interval"
 [glossary-outlier]: glossary#outlier "stats-learning-notes -- Glossary - Outlier"
 [glossary-r-squared-statistic]: glossary#r-squared-statistic "stats-learning-notes -- Glossary - R-Squared Statistic"
 [glossary-residual]: glossary#residual "stats-learning-notes -- Glossary - Residual"
@@ -942,9 +944,8 @@ models when there are only a small number of observations per predictor.
 [glossary-studentized-residual]: glossary#studentized-residual "stats-learning-notes -- Glossary - Studentized Residual"
 [glossary-t-distribution]: glossary#t-distribution "stats-learning-notes -- Glossary - T-Distribution"
 [glossary-t-statistic]: glossary#t-statistic "stats-learning-notes -- Glossary - T-Statistic"
+[glossary-unbiased-estimator]: glossary#unbiased-estimator "stats-learning-notes -- Glossary - Unbiased Estimator"
 [glossary-variable-selection]: glossary#variable-selection "stats-learning-notes -- Glossary - Varirable Selection"
 [glossary-variance-inflation-factor]: glossary#variance-inflation-factor "stats-learning-notes -- Glossary - Variance Inflation Factor"
 [graph-residual-funnel]: images/residual-funnel.jpg "Residual plot with funnel shape due to non-constant variance of error terms"
 [jekyll-site-chapter-3]: https://tdg5.github.io/stats-learning-notes/chapter-03.html "stats-learning-notes -- Chapter 3 - Linear Regression"
-
-<a id="bottom"></a>

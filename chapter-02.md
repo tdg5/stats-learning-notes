@@ -11,7 +11,7 @@ generally, variables.
 [Outputs][glossary-output], also known as response or dependent variable.
 
 Suppose an observed quantitative response $$ {Y} $$ and $$ {p} $$ different
-predictors $$ x_{1}, x_{2}, \ldots, x_{p} $$. The assumed relationship between $$
+predictors $$ x_{1}, x_{2}, \ldots, x_{p} . $$ The assumed relationship between $$
 {Y} $$ and $$ X = (x_{1}, x_{2}, \ldots, x_{p}) $$ can be generalized as:
 
 $$ {Y} = f(X) + \epsilon $$
@@ -19,19 +19,19 @@ $$ {Y} = f(X) + \epsilon $$
 where $$ {f} $$ is some fixed, but unknown function of $$ {X} $$ and $$ \epsilon
 $$ is a random [error term][glossary-irreducible-error] that is independent of
 $$ {X} $$ and has a mean of zero. In such a scenario, $$ f $$ represents the
-systematic information that $$ X $$ provides about $$ Y $$.
+systematic information that $$ X $$ provides about $$ Y . $$
 
 In general, an estimation of $$ f $$, denoted by $$ \hat{f} $$, will not be
 perfect and will introduce error.
 
 The error introduced by the discrepancy between $$ f $$ and $$ \hat{f} $$ is
 known as [irreducible error][glossary-irreducible-error] because it can never be
-reduced regardless of the accuracy $$ \hat{f} $$.
+reduced regardless of the accuracy $$ \hat{f} . $$
 
 The irreducible error will be larger than zero because $$ \epsilon $$ may
 contain unmeasured variables needed to predict $$ {Y} $$ or $$ \epsilon $$ may
 contain unmeasured variation. The irreducible error always enforces an upper
-bound on the accuracy of predicting $$ {Y} $$. In practice, this bound is almost
+bound on the accuracy of predicting $$ {Y} . $$ In practice, this bound is almost
 always unknown.
 
 ### Estimating $$ {f} $$
@@ -43,29 +43,31 @@ always unknown.
 [Parametric methods][glossary-parametric-methods] utilize a two-step model-based
 approach.
 
-1. First, make an assumption about the functional nature, or shape, of $$ {f}
-$$. For example, assume that $$ {f} $$ is linear, yielding a linear model.
-2. Once a model has been selected, use training data to fit, or train, the
-model. In the case of a linear model of the form
+1. First, make an assumption about the functional nature, or shape, of $$ {f} .
+$$ For example, assume that $$ {f} $$ is linear, yielding a linear model.  2.
+Once a model has been selected, use training data to fit, or train, the model.
+In the case of a linear model of the form
 
-$$ f(x) = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \ldots + \beta_{p}x_{p}, $$
+$$ f(x) = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \ldots + \beta_{p}x_{p},
+$$
 
 the training procedure should yield estimates for the parameters $$ \beta_{0},
 \beta_{1}, \beta_{2}, \ldots, \beta_{p} $$ such that
 
-$$ {Y} \approx f({X}) \approx \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \ldots + \beta_{p}x_{p}. $$
+$$ {Y} \approx f({X}) \approx \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} +
+\ldots + \beta_{p}x_{p}. $$
 
 A model-based approach like that outlined above is referred to as
 [parametric][glossary-parametric] because it simplifies the problem of
 estimating $$ {f} $$ down to estimating a set of parameters.
 
 In general, it is much simpler to estimate a set of parameters than it is to
-estimate an entirely arbitrary function $$ {f} $$. A disadvantage of this
-approach is that the specified model won't usually match the true form of $$ f
-$$.
+estimate an entirely arbitrary function $$ {f} . $$ A disadvantage of this
+approach is that the specified model won't usually match the true form of $$ f .
+$$
 
 Using more flexible models is one means to attempt to combat inaccuracies in the
-chosen mode. However, more flexible models have the disadvantage of requiring a
+chosen model. However, more flexible models have the disadvantage of requiring a
 greater number of parameters to be estimated and they are also more susceptible
 to overfitting.
 
@@ -85,7 +87,7 @@ preferring smoothness instead.
 range of possible shapes for $$ {f} $$ since essentially no assumptions about
 the form of $$ {f} $$ are made. However, since non-parametric approaches don't
 simplify the problem of estimating $$ {f} $$, they tend to require a very large
-number of observations to accurately estimate $$ {f} $$.
+number of observations to accurately estimate $$ {f} . $$
 
 A thin-plate spline is one example of a non-parametric method.
 
@@ -97,14 +99,14 @@ predictors to the output is more easily understood.
 
 [Supervised learning][glossary-supervised-learning] refers to those scenarios in
 which for each observation of the predictor measurements $$ X_{i} $$ there is an
-associated response measurement $$ Y_{i} $$. In such a scenario, it is often
+associated response measurement $$ Y_{i} . $$ In such a scenario, it is often
 desirable to generate a model that relates the predictors to the response with
 the goal of accurately predicting future observations or of better inferring the
 relationship between the predictors and the response.
 
 [Unsupervised learning][glossary-unsupervised-learning] refers to those
 scenarios in which for each observation of the predictor measurements $$ X_{i}
-$$, there is no associated response $$ Y_{i} $$. This is referred to as
+$$, there is no associated response $$ Y_{i} . $$ This is referred to as
 unsupervised because there is no response variable that can supervise the
 analysis that goes into generating a model.
 
@@ -118,9 +120,9 @@ learning.
 response, take on numerical values. Problems with a quantitative response are
 often referred to as [regression problems][glossary-regression-problem].
 
-[Qualitative values][glossary-qualitative-value] whether a variable or response,
-take on values in one of $$ K $$ different class or categories. Problems with a
-qualitative response are often referred to as [classification
+[Qualitative values][glossary-qualitative-value], whether a variable or
+response, take on values in one of $$ K $$ different classes or categories.
+Problems with a qualitative response are often referred to as [classification
 problems][glossary-classification-problem].
 
 Which statistical learning method is best suited to a problem tends to depend on
@@ -155,9 +157,9 @@ yields the best training mean squared error.
 
 #### The Bias-Variance Trade-Off
 
-The number of [degrees of freedom][glossary-degrees-of-freedom] is the number of
-values in the model that are free to vary. The degrees of freedom is a quality
-that summarizes the flexibility of a curve.
+The number of [degrees of freedom][glossary-degrees-of-freedom] quantifies the
+number of values in the model that are free to vary. The degrees of freedom is a
+quality that summarizes the flexibility of a curve.
 
 As a model's flexibility increases, the training mean squared error will
 decrease, but the test mean squared error may not. When the training mean
@@ -172,11 +174,11 @@ would have yielded a smaller test mean squared error.
 The expected test mean squared error for a given value $$ x_{0} $$ can be
 decomposed into the sum of three quantities: The variance of $$ \hat{f}(x_{0})
 $$, the squared bias of $$ \hat{f}(x_{0}) $$, and the variance of the error
-term, $$ \epsilon $$. Formally,
+term, $$ \epsilon . $$ Formally,
 
-$$ \mathrm{E} \lgroup y_{0} - \hat{f}(x_{0}) \rgroup^2 =
-\mathrm{Var}\lgroup\hat{f}(x_{0})\rgroup +
-[\mathrm{Bias} \lgroup\hat{f}(x_{0})\rgroup]^2 +
+$$ \mathrm{E} \lgroup y_{i} - \hat{f}(x_{i}) \rgroup^2 =
+\mathrm{Var}\lgroup\hat{f}(x_{i})\rgroup +
+[\mathrm{Bias} \lgroup\hat{f}(x_{i})\rgroup]^2 +
 \mathrm{Var}(\epsilon). $$
 
 To minimize expected test error, it's necessary to choose a method that achieves
@@ -210,7 +212,7 @@ observations. Formally stated as,
 $$ \frac{1}{n} \sum_{i=1}^{n} \mathrm{I}(y_{i} \neq \hat{y}) $$
 
 where $$ \mathrm{I} $$ is an indicator variable that equals $$ 0 $$ when $$ y =
-\hat{y} $$ and equals $$ 1 $$ when $$ y \neq \hat{y} $$.
+\hat{y} $$ and equals $$ 1 $$ when $$ y \neq \hat{y} . $$
 
 In simple terms, the error rate is the ratio of incorrect classifications to the
 observation count.
@@ -230,7 +232,7 @@ vector $$ x_{0} $$ to the class $$ j $$ for which
 $$ \mathrm{Pr}(Y=j|X=x_{0}) $$
 
 is largest. That is, the conditional probability that $$ Y=j $$, given the
-observed predictor vector $$ x_{0} $$. This classifier is called the [Bayes
+observed predictor vector $$ x_{0} . $$ This classifier is called the [Bayes
 Classifier][glossary-bayes-classifier].
 
 In a two-class scenario, this can be restated as $$ \mathrm{Pr}(Y=1|X=x_{0}) >
@@ -260,9 +262,9 @@ one such method.
 
 The K-Nearest Neighbor classifier takes a positive integer $$ K $$ and first
 identifies the $$ K $$ points that are nearest to $$ x_{0} $$, represented by $$
-N_{0} $$. It next estimates the conditional probability for class $$ j $$
+N_{0} . $$ It next estimates the conditional probability for class $$ j $$
 based on the fraction of points in $$ N_{0} $$ who have a response equal to
-$$ j $$.  Formally, the estimated conditional probability can be stated as
+$$ j . $$ Formally, the estimated conditional probability can be stated as
 
 $$ \mathrm{Pr}(Y=j|X=x_{0}) =
 \frac{1}{k} \sum_{i \in N_{0}}\mathrm{I}(y_{i}=j) $$
