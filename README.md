@@ -1,14 +1,30 @@
-# [Intro to Statistical Learning Notes][jekyll-site]
+[View on GitHub Pages][github-pages-site]
+
+# [Intro to Statistical Learning Notes][home]
 
 ![An Introduction to Statistical Learning with Applications in R Cover][islr-cover]
 
 ## Notes
 
-[Chapter 2: Statistical Learning][jekyll-site-chapter-02-statistical-learning]
+[Chapter 2: Statistical Learning][chapter-02-statistical-learning]
 
-[Chapter 3: Linear Regression][jekyll-site-chapter-03-linear-regression]
+[Chapter 3: Linear Regression][chapter-03-linear-regression]
 
-[Glossary][jekyll-site-glossary]
+[Chapter 4: Classification][chapter-04-classification]
+
+[Chapter 5: Resampling Methods][chapter-05-resampling-methods]
+
+[Chapter 6: Linear Model Selection and Regularization][chapter-06-linear-model-selection-and-regularization]
+
+[Chapter 7: Moving Beyond Linearity][chapter-07-moving-beyond-linearity]
+
+[Chapter 8: Tree-Based Methods][chapter-08-tree-based-methods]
+
+[Chapter 9: Support Vector Machines][chapter-09-support-vector-machines]
+
+[Chapter 10: Unsupervised Learning][chapter-10-unsupervised-learning]
+
+[Glossary][glossary]
 
 ## Resources
 
@@ -309,7 +325,15 @@
 [yahwes-islr-github]: https://github.com/yahwes/ISLR "ISLR student solutions -- GitHub"
 [yahwes-islr-web]: https://yahwes.github.io/ISLR/ "ISLR student solutions -- yahwes.github.io"
 
-[jekyll-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes -- tdg5.github.io"
-[jekyll-site-glossary]: https://tdg5.github.io/stats-learning-notes/glossary.html "stats-learning-notes -- Glossary"
-[jekyll-site-chapter-02-statistical-learning]: https://tdg5.github.io/stats-learning-notes/chapter-02.html "stats-learning-notes -- Chapter 02 - Statistical Learning"
-[jekyll-site-chapter-03-linear-regression]: https://tdg5.github.io/stats-learning-notes/chapter-03.html "stats-learning-notes -- Chapter 03 - Linear Regression"
+[github-pages-site]: https://tdg5.github.io/stats-learning-notes/ "stats-learning-notes -- tdg5.github.io"
+[glossary]: glossary.html "stats-learning-notes -- Glossary"
+[home]: ./ "stats-learning-notes -- Home"
+[chapter-02-statistical-learning]: chapter-02.html "stats-learning-notes -- Chapter 02 - Statistical Learning"
+[chapter-03-linear-regression]: chapter-03.html "stats-learning-notes -- Chapter 03 - Linear Regression"
+[chapter-04-classification]: chapter-04.html "stats-learning-notes -- Chapter 04 - Classification"
+[chapter-05-resampling-methods]: chapter-05.html "stats-learning-notes -- Chapter 05 - Resampling Methods"
+[chapter-06-linear-model-selection-and-regularization]: chapter-06.html "stats-learning-notes -- Chapter 06 - Linear Model Selection and Regularization"
+[chapter-07-moving-beyond-linearity]: chapter-07.html "stats-learning-notes -- Chapter 07 - Moving Beyond Linearity"
+[chapter-08-tree-based-methods]: chapter-08.html "stats-learning-notes -- Chapter 08 - Tree-Based Methods"
+[chapter-09-support-vector-machines]: chapter-09.html "stats-learning-notes -- Chapter 09 - Support Vector Machines"
+[chapter-10-unsupervised-learning]: chapter-10.html "stats-learning-notes -- Chapter 10 - Unsupervised Learning"

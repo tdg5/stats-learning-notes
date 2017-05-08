@@ -3,7 +3,7 @@ layout: default
 use_math: true
 ---
 
-## [Chapter 3 - Linear Regression][jekyll-site-chapter-3]
+## [Chapter 3 - Linear Regression][chapter-3]
 
 ### Simple Linear Regression
 
@@ -905,6 +905,10 @@ poor prediction of $$ f(x_{0}) $$ and a poor KNN fit.
 As a general rule, parametric models will tend to outperform non-parametric
 models when there are only a small number of observations per predictor.
 
+---
+
+[Next: Chapter 4 - Classification][chapter-4]
+
 [glossary-backwards-selection]: glossary#backwards-selection "stats-learning-notes -- Glossary - Backwards Selection"
 [glossary-coefficient]: glossary#coefficient "stats-learning-notes -- Glossary - Coefficient"
 [glossary-collinearity]: glossary#collinearity "stats-learning-notes -- Glossary - Collinearity"
@@ -948,4 +952,5 @@ models when there are only a small number of observations per predictor.
 [glossary-variable-selection]: glossary#variable-selection "stats-learning-notes -- Glossary - Varirable Selection"
 [glossary-variance-inflation-factor]: glossary#variance-inflation-factor "stats-learning-notes -- Glossary - Variance Inflation Factor"
 [graph-residual-funnel]: images/residual-funnel.jpg "Residual plot with funnel shape due to non-constant variance of error terms"
-[jekyll-site-chapter-3]: https://tdg5.github.io/stats-learning-notes/chapter-03.html "stats-learning-notes -- Chapter 3 - Linear Regression"
+[chapter-3]: chapter-03.html "stats-learning-notes -- Chapter 3 - Linear Regression"
+[chapter-4]: chapter-04.html "stats-learning-notes -- Chapter 4 - Classification"

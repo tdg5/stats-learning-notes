@@ -285,6 +285,10 @@ with a low variance, but high bias.
 In both regression and classification scenarios, choosing the correct level of
 flexibility is critical to the success of the model.
 
+---
+
+[Next: Chapter 3 - Linear Regression][jekyll-site-chapter-3]
+
 [glossary-bayes-classifier]: glossary#bayes-classifier "stats-learning-notes -- Glossary - Bayes Classifier"
 [glossary-bayes-decision-boundary]: glossary#bayes-decision-boundary "stats-learning-notes -- Glossary - Bayes Decision Boundary"
 [glossary-bayes-error-rate]: glossary#bayes-error-rate "stats-learning-notes -- Glossary - Bayes Error Rate"
@@ -312,4 +316,5 @@ flexibility is critical to the success of the model.
 [glossary-training-mean-squared-error]: glossary#training-mean-squared-error "stats-learning-notes -- Glossary - Training Mean Squared Error"
 [glossary-unsupervised-learning]: glossary#unsupervised-learning "stats-learning-notes -- Glossary - Unsupervised Learning"
 [glossary-variance]: glossary#variance "stats-learning-notes -- Glossary - Variance"
-[jekyll-site-chapter-2]: https://tdg5.github.io/stats-learning-notes/chapter-02.html "stats-learning-notes -- Chapter 2 - Statistical Learning"
+[jekyll-site-chapter-2]: chapter-02.html "stats-learning-notes -- Chapter 2 - Statistical Learning"
+[jekyll-site-chapter-3]: chapter-03.html "stats-learning-notes -- Chapter 3 - Linear Regression"
