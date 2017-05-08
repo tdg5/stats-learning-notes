@@ -953,5 +953,5 @@ models when there are only a small number of observations per predictor.
 [glossary-variable-selection]: glossary#variable-selection "stats-learning-notes -- Glossary - Variable Selection"
 [glossary-variance-inflation-factor]: glossary#variance-inflation-factor "stats-learning-notes -- Glossary - Variance Inflation Factor"
 [graph-residual-funnel]: images/residual-funnel.jpg "Residual plot with funnel shape due to non-constant variance of error terms"
-[chapter-03-linear-regression]: /chapter-03-linear-regression "stats-learning-notes -- Chapter 3 - Linear Regression"
-[chapter-04-classification]: /chapter-04-classification "stats-learning-notes -- Chapter 4 - Classification"
+[chapter-03-linear-regression]: chapter-03-linear-regression "stats-learning-notes -- Chapter 3 - Linear Regression"
+[chapter-04-classification]: chapter-04-classification "stats-learning-notes -- Chapter 4 - Classification"

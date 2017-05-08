@@ -12,5 +12,5 @@ use_math: true
 
 <a id="bottom"></a>
 
-[chapter-05-resampling-methods]: /chapter-05-resampling-methods "stats-learning-notes -- Chapter 5 - Resampling Methods"
-[chapter-06-linear-model-selection-and-regularization]: /chapter-06-linear-model-selection-and-regularization "stats-learning-notes -- Chapter 6 - Linear Model Selection and Regularization"
+[chapter-05-resampling-methods]: chapter-05-resampling-methods "stats-learning-notes -- Chapter 5 - Resampling Methods"
+[chapter-06-linear-model-selection-and-regularization]: chapter-06-linear-model-selection-and-regularization "stats-learning-notes -- Chapter 6 - Linear Model Selection and Regularization"

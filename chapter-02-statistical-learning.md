@@ -317,5 +317,5 @@ flexibility is critical to the success of the model.
 [glossary-training-mean-squared-error]: glossary#training-mean-squared-error "stats-learning-notes -- Glossary - Training Mean Squared Error"
 [glossary-unsupervised-learning]: glossary#unsupervised-learning "stats-learning-notes -- Glossary - Unsupervised Learning"
 [glossary-variance]: glossary#variance "stats-learning-notes -- Glossary - Variance"
-[chapter-02-statistical-learning]: /chapter-02-statistical-learning "stats-learning-notes -- Chapter 2 - Statistical Learning"
-[chapter-03-linear-regression]: /chapter-03-linear-regression "stats-learning-notes -- Chapter 3 - Linear Regression"
+[chapter-02-statistical-learning]: chapter-02-statistical-learning "stats-learning-notes -- Chapter 2 - Statistical Learning"
+[chapter-03-linear-regression]: chapter-03-linear-regression "stats-learning-notes -- Chapter 3 - Linear Regression"

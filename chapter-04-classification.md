@@ -12,5 +12,5 @@ use_math: true
 
 <a id="bottom"></a>
 
-[chapter-04-classification]: /chapter-04-classification "stats-learning-notes -- Chapter 4 - Classification"
-[chapter-05-resampling-methods]: /chapter-05-resampling-methods "stats-learning-notes -- Chapter 5 - Resampling Methods"
+[chapter-04-classification]: chapter-04-classification "stats-learning-notes -- Chapter 4 - Classification"
+[chapter-05-resampling-methods]: chapter-05-resampling-methods "stats-learning-notes -- Chapter 5 - Resampling Methods"
