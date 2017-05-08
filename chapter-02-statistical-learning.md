@@ -3,7 +3,7 @@ layout: default
 use_math: true
 ---
 
-## [Chapter 2 - Statistical Learning][jekyll-site-chapter-2]
+## [Chapter 2 - Statistical Learning][chapter-02-statistical-learning]
 
 [Inputs][glossary-input], also known as predictors, independent variables, features, or more
 generally, variables.
@@ -287,7 +287,7 @@ flexibility is critical to the success of the model.
 
 ---
 
-[Next: Chapter 3 - Linear Regression][jekyll-site-chapter-3]
+[Next: Chapter 3 - Linear Regression][chapter-03-linear-regression]
 
 [glossary-bayes-classifier]: glossary#bayes-classifier "stats-learning-notes -- Glossary - Bayes Classifier"
 [glossary-bayes-decision-boundary]: glossary#bayes-decision-boundary "stats-learning-notes -- Glossary - Bayes Decision Boundary"
@@ -316,5 +316,5 @@ flexibility is critical to the success of the model.
 [glossary-training-mean-squared-error]: glossary#training-mean-squared-error "stats-learning-notes -- Glossary - Training Mean Squared Error"
 [glossary-unsupervised-learning]: glossary#unsupervised-learning "stats-learning-notes -- Glossary - Unsupervised Learning"
 [glossary-variance]: glossary#variance "stats-learning-notes -- Glossary - Variance"
-[jekyll-site-chapter-2]: chapter-02.html "stats-learning-notes -- Chapter 2 - Statistical Learning"
-[jekyll-site-chapter-3]: chapter-03.html "stats-learning-notes -- Chapter 3 - Linear Regression"
+[chapter-02-statistical-learning]: /chapter-02-statistical-learning "stats-learning-notes -- Chapter 2 - Statistical Learning"
+[chapter-03-linear-regression]: /chapter-03-linear-regression "stats-learning-notes -- Chapter 3 - Linear Regression"

@@ -3,7 +3,7 @@ layout: default
 use_math: true
 ---
 
-## [Chapter 3 - Linear Regression][chapter-3]
+## [Chapter 3 - Linear Regression][chapter-03-linear-regression]
 
 ### Simple Linear Regression
 
@@ -907,7 +907,7 @@ models when there are only a small number of observations per predictor.
 
 ---
 
-[Next: Chapter 4 - Classification][chapter-4]
+[Next: Chapter 4 - Classification][chapter-04-classification]
 
 [glossary-backwards-selection]: glossary#backwards-selection "stats-learning-notes -- Glossary - Backwards Selection"
 [glossary-coefficient]: glossary#coefficient "stats-learning-notes -- Glossary - Coefficient"
@@ -924,7 +924,7 @@ models when there are only a small number of observations per predictor.
 [glossary-hierarchical-principle]: glossary#hierarchical-principle "stats-learning-notes -- Glossary - Hierarchical Principle"
 [glossary-hypothesis-test]: glossary#hypothesis-test "stats-learning-notes -- Glossary - Hypothesis Test"
 [glossary-indicator-variable]: glossary#indicator-variable "stats-learning-notes -- Glossary - Indicator Variable"
-[glossary-interaction-term]: glossary#inteaction-termt "stats-learning-notes -- Glossary - Interaction Term"
+[glossary-interaction-term]: glossary#interaction-term "stats-learning-notes -- Glossary - Interaction Term"
 [glossary-intercept]: glossary#intercept "stats-learning-notes -- Glossary - Intercept"
 [glossary-least-squares-line]: glossary#least-squares-line "stats-learning-notes -- Glossary - Least Squares Line"
 [glossary-mixed-selection]: glossary#mixed-selection "stats-learning-notes -- Glossary - Mixed Selection"
@@ -941,7 +941,7 @@ models when there are only a small number of observations per predictor.
 [glossary-r-squared-statistic]: glossary#r-squared-statistic "stats-learning-notes -- Glossary - R-Squared Statistic"
 [glossary-residual]: glossary#residual "stats-learning-notes -- Glossary - Residual"
 [glossary-residual-standard-error]: glossary#residual-standard-error "stats-learning-notes -- Glossary - Residual Standard Error"
-[glossary-residual-sum-of-squares]: glossary#residual-sum-of-squares "stats-learning-notes -- Glossary - Residual Sum of Sqaures"
+[glossary-residual-sum-of-squares]: glossary#residual-sum-of-squares "stats-learning-notes -- Glossary - Residual Sum of Squares"
 [glossary-simple-linear-regression]: glossary#simple-linear-regression "stats-learning-notes -- Glossary - Simple Linear Regression"
 [glossary-slope]: glossary#slope "stats-learning-notes -- Glossary - Slope"
 [glossary-standard-error]: glossary#standard-error "stats-learning-notes -- Glossary - Standard Error"
@@ -949,8 +949,8 @@ models when there are only a small number of observations per predictor.
 [glossary-t-distribution]: glossary#t-distribution "stats-learning-notes -- Glossary - T-Distribution"
 [glossary-t-statistic]: glossary#t-statistic "stats-learning-notes -- Glossary - T-Statistic"
 [glossary-unbiased-estimator]: glossary#unbiased-estimator "stats-learning-notes -- Glossary - Unbiased Estimator"
-[glossary-variable-selection]: glossary#variable-selection "stats-learning-notes -- Glossary - Varirable Selection"
+[glossary-variable-selection]: glossary#variable-selection "stats-learning-notes -- Glossary - Variable Selection"
 [glossary-variance-inflation-factor]: glossary#variance-inflation-factor "stats-learning-notes -- Glossary - Variance Inflation Factor"
 [graph-residual-funnel]: images/residual-funnel.jpg "Residual plot with funnel shape due to non-constant variance of error terms"
-[chapter-3]: chapter-03.html "stats-learning-notes -- Chapter 3 - Linear Regression"
-[chapter-4]: chapter-04.html "stats-learning-notes -- Chapter 4 - Classification"
+[chapter-03-linear-regression]: /chapter-03-linear-regression "stats-learning-notes -- Chapter 3 - Linear Regression"
+[chapter-04-classification]: /chapter-04-classification "stats-learning-notes -- Chapter 4 - Classification"
