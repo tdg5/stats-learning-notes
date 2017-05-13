@@ -167,6 +167,14 @@
   - [Lab: K-means Clustering][islr-chapter-10-video-7]
   - [Lab: Hierarchical Clustering][islr-chapter-10-video-8]
 
+#### ISLR Video Interviews
+
+- [ISLR Interview Videos Playlist][islr-interviews-playlist]
+  - [Interview with John Chambers][islr-interviews-video-1]
+  - [Interview with Bradley Efron][islr-interviews-video-2]
+  - [Interview with Jerome Friedman][islr-interviews-video-3]
+  - [Interviews with statistics graduate students][islr-interviews-video-4]
+
 #### Exercise Solutions
 
 - [asadoughi/stat-learning][asadoughi-stat-learning-github]
@@ -175,14 +183,6 @@
   - [Website][yahwes-islr-web]
 - [John Weatherwax's Solutions to Applied Exercises][weatherwax-applied-solutions]
 - [Pierre Paquay's Exercise Solutions][paquay-solutions]
-
-#### ISLR Video Interviews
-
-- [ISLR Interview Videos Playlist][islr-interviews-playlist]
-  - [Interview with John Chambers][islr-interviews-video-1]
-  - [Interview with Bradley Efron][islr-interviews-video-2]
-  - [Interview with Jerome Friedman][islr-interviews-video-3]
-  - [Interviews with statistics graduate students][islr-interviews-video-4]
 
 ### Elements of Statistical Learning
 
