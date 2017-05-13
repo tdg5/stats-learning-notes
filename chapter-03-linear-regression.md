@@ -3,6 +3,10 @@ layout: default
 use_math: true
 ---
 
+[Previous: Chapter 2 - Statistical Learning][chapter-02-statistical-learning]
+
+---
+
 ## [Chapter 3 - Linear Regression][chapter-03-linear-regression]
 
 ### Simple Linear Regression
@@ -952,5 +956,6 @@ models when there are only a small number of observations per predictor.
 [glossary-variable-selection]: glossary#variable-selection "stats-learning-notes -- Glossary - Variable Selection"
 [glossary-variance-inflation-factor]: glossary#variance-inflation-factor "stats-learning-notes -- Glossary - Variance Inflation Factor"
 [graph-residual-funnel]: images/residual-funnel.jpg "Residual plot with funnel shape due to non-constant variance of error terms"
+[chapter-02-statistical-learning]: chapter-02-statistical-learning "stats-learning-notes -- Chapter 2 - Statistical Learning"
 [chapter-03-linear-regression]: chapter-03-linear-regression "stats-learning-notes -- Chapter 3 - Linear Regression"
 [chapter-04-classification]: chapter-04-classification "stats-learning-notes -- Chapter 4 - Classification"
