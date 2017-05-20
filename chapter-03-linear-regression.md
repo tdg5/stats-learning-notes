@@ -16,12 +16,12 @@ quantitative response $$ Y $$ on the basis of a single predictor variable $$ X .
 $$ It assumes an approximately linear relationship between $$ X $$ and $$ Y . $$
 Formally,
 
-$$ Y \approx \beta_{0} + \beta_{1}X $$
+$$ \normalsize Y \approx \beta_{0} + \beta_{1}X $$
 
 where $$ \beta_{0} $$ represents the [intercept][glossary-intercept] or the
-value of $$ Y $$ when $$ X $$ is equal to $$ 0 $$ and $$ \beta_{1} $$ represents the
-[slope][glossary-slope] of the line or the average amount of change in $$ Y $$
-for each one-unit increase in $$ X . $$
+value of $$ Y $$ when $$ X $$ is equal to $$ 0 $$ and $$ \beta_{1} $$ represents
+the [slope][glossary-slope] of the line or the average amount of change in $$ Y
+$$ for each one-unit increase in $$ X . $$
 
 Together, $$ \beta_{0} $$ and $$ \beta_{1} $$ are known as the model
 [coefficients][glossary-coefficient] or [parameters][glossary-parameter].
@@ -40,45 +40,46 @@ between the $$ i $$th observed value and the $$ i $$th predicted value.
 
 Assuming the $$ i $$th prediction of $$ Y $$ is described as
 
-$$ \hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i} $$
+$$ \normalsize \hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i} $$
 
 then the $$ i $$th residual can be represented as
 
-$$ e_{i} = y_{i} - \hat{y_{i}} = y_{i} - \hat{\beta_{0}} - \hat{\beta_{1}}x_{i} . $$
+$$ \normalsize e_{i} = y_{i} - \hat{y_{i}} = y_{i} - \hat{\beta_{0}} -
+\hat{\beta_{1}}x_{i} . $$
 
 The [residual sum of squares][glossary-residual-sum-of-squares] can then be
 described as
 
-$$ RSS = e_{1}^2 + e_{2}^2 + \ldots + e_{n}^2 $$
+$$ \normalsize RSS = e_{1}^2 + e_{2}^2 + \ldots + e_{n}^2 $$
 
 or
 
-$$ RSS = (y_{1} - \hat{\beta_{0}} - \hat{\beta_{1}}x_{1})^2 + (y_{2} -
-\hat{\beta_{0}} - \hat{\beta_{1}}x_{2})^2 + \ldots + (y_{n} - \hat{\beta_{0}} -
-\hat{\beta_{1}}x_{n})^2 .$$
+$$ \normalsize RSS = (y_{1} - \hat{\beta_{0}} - \hat{\beta_{1}}x_{1})^2 + (y_{2}
+- \hat{\beta_{0}} - \hat{\beta_{1}}x_{2})^2 + \ldots + (y_{n} - \hat{\beta_{0}}
+- \hat{\beta_{1}}x_{n})^2 .$$
 
 Assuming sample means of
 
-$$ \bar{y} = \frac{1}{n} \sum_{i=1}^{n} y_{i} $$
+$$ \normalsize \bar{y} = \frac{1}{n} \sum_{i=1}^{n} y_{i} $$
 
 and
 
-$$ \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_{i} , $$
+$$ \normalsize \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_{i} , $$
 
 calculus can be applied to estimate the least squares coefficient estimates for
 linear regression to minimize the residual sum of squares like so
 
-$$ \beta_{1} = \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} -
+$$ \normalsize \beta_{1} = \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} -
 \bar{y})}{\sum_{i=1}^{n}(x_{i} - \bar{x})^2} $$
 
-$$ \beta_{0} = \bar{y} - \hat{\beta_{1}}\bar{x} $$
+$$ \normalsize \beta_{0} = \bar{y} - \hat{\beta_{1}}\bar{x} $$
 
 #### Assessing Coefficient Estimate Accuracy
 
 Simple linear regression represents the relationship between $$ Y $$ and $$ X $$
 as
 
-$$ Y = \beta_{0} + \beta_{1}X + \epsilon $$
+$$ \normalsize Y = \beta_{0} + \beta_{1}X + \epsilon $$
 
 where $$ \beta_{0} $$ is the intercept term, or the value of $$ Y $$ when $$ X =
 0 $$; $$ \beta_{1} $$ is the slope, or average increase in $$ Y $$ associated
@@ -96,7 +97,7 @@ the population.
 The coefficient estimates yielded by least squares regression characterize the
 [least squares line][glossary-least-squares-line],
 
-$$ \hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i} . $$
+$$ \normalsize \hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i} . $$
 
 The difference between the population regression line and the least squares
 line is similar to the difference that emerges when using a sample to estimate
@@ -120,7 +121,8 @@ To estimate the accuracy of a single estimated value, such as an average, it can
 be helpful to calculate the [standard error][glossary-standard-error] of the
 estimated value $$ \hat{\mu} $$, which can be accomplished like so
 
-$$ \mathrm{Var}(\hat{\mu}) = \mathrm{SE}(\hat{\mu})^2 = \frac{\sigma^{2}}{n} $$
+$$ \normalsize \mathrm{Var}(\hat{\mu}) = \mathrm{SE}(\hat{\mu})^2 =
+\frac{\sigma^{2}}{n} $$
 
 where $$ \sigma $$ is the standard deviation of each $$ y_{i} . $$
 
@@ -132,12 +134,13 @@ The more observations, the larger $$ n $$, the smaller the standard error.
 To compute the standard errors associated with $$ \beta_{0} $$ and $$ \beta_{1}
 $$, the following formulas can be used:
 
-$$ \mathrm{SE}(\beta_{0})^{2} = \sigma^{2}\bigg[\frac{1}{n} +
+$$ \normalsize \mathrm{SE}(\beta_{0})^{2} = \sigma^{2}\bigg[\frac{1}{n} +
 \frac{\bar{x}^{2}}{\sum_{i=1}^{n}(x_{i} - \bar{x})^2}\bigg] $$
 
 and
 
-$$ \mathrm{SE}(\beta_{1})^{2} = \frac{\sigma^{2}}{\sum_{i=1}^{n}(x_{i} - \bar{x})^2} $$
+$$ \normalsize \mathrm{SE}(\beta_{1})^{2} =
+\frac{\sigma^{2}}{\sum_{i=1}^{n}(x_{i} - \bar{x})^2} $$
 
 where $$ \sigma^{2} = \mathrm{Var}(\epsilon) $$ and $$ \epsilon_{i} $$ is not
 correlated with $$ \sigma^{2} . $$
@@ -147,7 +150,7 @@ estimate of $$ \sigma $$ is known as the [residual standard
 error][glossary-residual-standard-error] and can be calculated with the
 following formula
 
-$$ \mathrm{RSE} = \sqrt{\frac{\mathrm{RSS}}{(n - 2)}} $$
+$$ \normalsize \mathrm{RSE} = \sqrt{\frac{\mathrm{RSS}}{(n - 2)}} $$
 
 where $$ \mathrm{RSS} $$ is the residual sum of squares.
 
@@ -161,11 +164,11 @@ true unknown value of the parameter.
 For simple linear regression the 95% confidence interval for $$ \beta_{1} $$ can be
 approximated by
 
-$$ \hat{\beta_{1}} \pm 2 \times \mathrm{SE}(\hat{\beta_{1}}) . $$
+$$ \normalsize \hat{\beta_{1}} \pm 2 \times \mathrm{SE}(\hat{\beta_{1}}) . $$
 
 Similarly, a confidence interval for $$ \beta_{0} $$ can be approximated as
 
-$$ \hat{\beta_{0}} \pm 2 \times \mathrm{SE}(\hat{\beta_{0}}) . $$
+$$ \normalsize \hat{\beta_{0}} \pm 2 \times \mathrm{SE}(\hat{\beta_{0}}) . $$
 
 The accuracy of an estimated prediction depends on whether we wish to predict an
 individual response, $$ y = f(x) + \epsilon $$, or the average response, $$ f(x)
@@ -195,7 +198,7 @@ $$ H_{1} $$: Thee is some relationship between $$ X $$ and $$ Y . $$
 In mathematical terms, the null hypothesis corresponds to testing if $$
 \beta_{1} = 0 $$, which reduces to
 
-$$ Y = \beta_{0} + \epsilon $$
+$$ \normalsize Y = \beta_{0} + \epsilon $$
 
 which evidences that $$ X $$ is not related to $$ Y . $$
 
@@ -216,7 +219,7 @@ the null hypothesis.
 
 A T-statistic can be computed as follows
 
-$$ t = \frac{\hat{\beta}_{1} - 0}{\mathrm{SE}(\hat{\beta_{1}})} $$
+$$ \normalsize t = \frac{\hat{\beta}_{1} - 0}{\mathrm{SE}(\hat{\beta_{1}})} $$
 
 If there is no relationship between $$ X $$ and $$ Y $$, it is expected that a
 [t-distribution][glossary-t-distribution] with $$ n - 2 $$ degrees of freedom
@@ -242,7 +245,7 @@ response will deviate from the true regression line.
 
 For linear regression, the residual standard error can be computed as
 
-$$ \mathrm{RSE} = \sqrt{\frac{1}{n-2}\mathrm{RSS}} =
+$$ \normalsize \mathrm{RSE} = \sqrt{\frac{1}{n-2}\mathrm{RSS}} =
 \sqrt{\frac{1}{n-2}\sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^{2}} $$
 
 The residual standard error is a measure of the lack of fit of the model to the
@@ -255,23 +258,23 @@ The RSE provides an absolute measure of the lack of fit of the model in the
 units of $$ Y . $$ This can make it difficult to know what constitutes a good
 RSE.
 
-The [$$ R^{2} $$ statistic][glossary-r-squared-statistic] is an alternative measure of
-fit that takes the form of a proportion. The $$ R^{2} $$ statistic captures the
-proportion of variance explained as a value between $$ 0 $$ and $$ 1 $$,
-independent of the unit of $$ Y . $$
+The [$$ R^{2} $$ statistic][glossary-r-squared-statistic] is an alternative
+measure of fit that takes the form of a proportion. The $$ R^{2} $$ statistic
+captures the proportion of variance explained as a value between $$ 0 $$ and $$
+1 $$, independent of the unit of $$ Y . $$
 
 To calculate the $$ R^2 $$ statistic, the following formula may be used
 
-$$ R^{2} = \frac{\mathrm{TSS}-\mathrm{RSS}}{\mathrm{TSS}} = 1 -
+$$ \normalsize R^{2} = \frac{\mathrm{TSS}-\mathrm{RSS}}{\mathrm{TSS}} = 1 -
 \frac{\mathrm{RSS}}{\mathrm{TSS}} $$
 
 where
 
-$$ \mathrm{RSS} = \sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^{2} $$
+$$ \normalsize \mathrm{RSS} = \sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^{2} $$
 
 and
 
-$$ \mathrm{TSS} = \sum_{i=1}^{n}(y_{i} - \bar{y}_{i})^{2} $$
+$$ \normalsize \mathrm{TSS} = \sum_{i=1}^{n}(y_{i} - \bar{y}_{i})^{2} $$
 
 The total sum of squares, TSS, measures the total variance in the response $$ Y
 . $$ The TSS can be thought of as the total variability in the response before
@@ -288,8 +291,8 @@ very little of the variability of the model.
 An $$ R^{2} $$ value near $$ 0 $$ may occur because the linear model is wrong
 and/or because the inherent $$ \sigma^{2} $$ is high.
 
-$$ R^{2} $$ has an advantage over RSE since it will always yield a value between $$
-0 $$ and $$ 1 $$, but it can still be tough to know what a good $$ R^{2} $$
+$$ R^{2} $$ has an advantage over RSE since it will always yield a value between
+$$ 0 $$ and $$ 1 $$, but it can still be tough to know what a good $$ R^{2} $$
 value is. Frequently, what constitutes a good $$ R^{2} $$ value depends on the
 application and what is known about the problem.
 
@@ -299,7 +302,7 @@ $$ and $$ Y . $$
 [Correlation][glossary-correlation] is another measure of the linear
 relationship between $$ X $$ and $$ Y . $$ Correlation of can be calculated as
 
-$$ \mathrm{Cor}(X,Y) = \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} -
+$$ \normalsize \mathrm{Cor}(X,Y) = \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} -
 \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_{i} -
 \bar{x})^{2}}\sqrt{\sum_{i=1}^{n}(y_{i}-\bar{y})^{2}}} $$
 
@@ -317,8 +320,8 @@ applied to multiple regression.
 The [multiple linear regression][glossary-multiple-linear-regression] model
 takes the form of
 
-$$ Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \ldots + \beta_{p}X_{p} +
-\epsilon . $$
+$$ \normalsize Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \ldots +
+\beta_{p}X_{p} + \epsilon . $$
 
 Multiple linear regression extends simple linear regression to accommodate
 multiple predictors.
@@ -334,7 +337,7 @@ are unknown, it is necessary to estimate their values. Given estimates of $$
 \hat{\beta_{0}}, \hat{\beta_{1}}, \hat{\beta_{2}}, \ldots, \hat{\beta_{p}} $$,
 estimates can be made using the formula below
 
-$$ \hat{y} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{1} + \hat{\beta_{2}}x_{2} +
+$$ \normalsize \hat{y} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{1} + \hat{\beta_{2}}x_{2} +
 \ldots + \hat{\beta_{p}}x_{p} $$
 
 The parameters $$ \hat{\beta_{0}}, \hat{\beta_{1}}, \hat{\beta_{2}}, \ldots,
@@ -343,9 +346,9 @@ employed for simple linear regression. Values are chosen for the parameters $$
 \hat{\beta_{0}}, \hat{\beta_{1}}, \hat{\beta_{2}}, \ldots, \hat{\beta_{p}} $$ such
 that the residual sum of squares is minimized
 
-$$ RSS = \sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^{2} = \sum_{i=1}^{n}(y_{i} -
-\hat{\beta_{0}} - \hat{\beta_{1}}x_{1} - \hat{\beta_{2}}x_{2} - \ldots -
-\hat{\beta_{p}}x_{p})^{2} $$
+$$ \normalsize RSS = \sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^{2} =
+\sum_{i=1}^{n}(y_{i} - \hat{\beta_{0}} - \hat{\beta_{1}}x_{1} -
+\hat{\beta_{2}}x_{2} - \ldots - \hat{\beta_{p}}x_{p})^{2} $$
 
 Estimating the values of these parameters is best achieved with matrix algebra.
 
@@ -354,7 +357,7 @@ Estimating the values of these parameters is best achieved with matrix algebra.
 Once estimates have been derived, it is next appropriate to test the null
 hypothesis
 
-$$ H_{0}: \beta_{1} = \beta_{2} = \ldots = \beta_{p} = 0 $$
+$$ \normalsize H_{0}: \beta_{1} = \beta_{2} = \ldots = \beta_{p} = 0 $$
 
 versus the alternative hypothesis
 
@@ -365,26 +368,27 @@ hypothesis holds true.
 
 The F-statistic can be computed as
 
-$$ \mathrm{F} = \frac{(\mathrm{TSS} - \mathrm{RSS})/p}{\mathrm{RSS}/(n - p - 1)}
-= \frac{\frac{\mathrm{TSS} - \mathrm{RSS}}{p}}{\frac{\mathrm{RSS}}{n - p - 1}}
-$$
+$$ \normalsize \mathrm{F} = \frac{(\mathrm{TSS} -
+\mathrm{RSS})/p}{\mathrm{RSS}/(n - p - 1)} = \frac{\frac{\mathrm{TSS} -
+\mathrm{RSS}}{p}}{\frac{\mathrm{RSS}}{n - p
+- 1}} $$
 
 where, again,
 
-$$ \mathrm{TSS} = \sum_{i=1}^{n}(y_{i} - \bar{y}_{i})^{2} $$
+$$ \normalsize \mathrm{TSS} = \sum_{i=1}^{n}(y_{i} - \bar{y}_{i})^{2} $$
 
 and
 
-$$ \mathrm{RSS} = \sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^2 $$
+$$ \normalsize \mathrm{RSS} = \sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^2 $$
 
 If the assumptions of the linear model, represented by the alternative
 hypothesis, are true it can be shown that
 
-$$ \mathrm{E}\{\frac{\mathrm{RSS}}{n - p - 1}\} = \sigma^{2} $$
+$$ \normalsize \mathrm{E}\{\frac{\mathrm{RSS}}{n - p - 1}\} = \sigma^{2} $$
 
 Conversely, if the null hypothesis is true, it can be shown that
 
-$$ \mathrm{E}\{\frac{\mathrm{TSS} - \mathrm{RSS}}{p}\} = \sigma^{2} $$
+$$ \normalsize \mathrm{E}\{\frac{\mathrm{TSS} - \mathrm{RSS}}{p}\} = \sigma^{2} $$
 
 This means that when there is no relationship between the response and the
 predictors the F-statisitic takes on a value close to $$ 1 . $$
@@ -406,13 +410,15 @@ can be determined.
 It is sometimes desirable to test that a particular subset of $$ q $$
 coefficients are $$ 0 . $$ This equates to a null hypothesis of
 
-$$ H_{0}: \beta_{p - q + 1} = \beta_{p - q + 2} = \ldots = \beta_{p} = 0 . $$
+$$ \normalsize H_{0}: \beta_{p - q + 1} = \beta_{p - q + 2} = \ldots = \beta_{p}
+= 0 . $$
 
 Supposing that the residual sum of squares for such a model is $$
 \mathrm{RSS}_{0} $$ then the F-statistic could be calculated as
 
-$$ \mathrm{F} = \frac{(\mathrm{RSS}_{0} - \mathrm{RSS})/q}{\mathrm{RSS}/(n - p -
-1)} = \frac{\frac{\mathrm{RSS}_{0} - \mathrm{RSS}}{q}}{\frac{\mathrm{RSS}}{n - p
+$$ \normalsize \mathrm{F} = \frac{(\mathrm{RSS}_{0} -
+\mathrm{RSS})/q}{\mathrm{RSS}/(n - p - 1)} = \frac{\frac{\mathrm{RSS}_{0} -
+\mathrm{RSS}}{q}}{\frac{\mathrm{RSS}}{n - p
 - 1}} . $$
 
 Even in the presence of p-values for each individual variable, it is still
@@ -491,11 +497,11 @@ necessarily yield a closer fit to the test data.
 Residual standard error, RSE, can also be used to assess the fit of a multiple
 linear regression model. In general, RSE can be calculated as
 
-$$ RSE = \sqrt{\frac{\mathrm{RSS}}{n - p - 1}} $$
+$$ \normalsize RSE = \sqrt{\frac{\mathrm{RSS}}{n - p - 1}} $$
 
 which simplifies to the following for simple linear regression
 
-$$ RSE = \sqrt{\frac{\mathrm{RSS}}{n - 2}} . $$
+$$ \normalsize RSE = \sqrt{\frac{\mathrm{RSS}}{n - 2}} . $$
 
 Given the definition of RSE for multiple linear regression, it can be seen that
 models with more variables can have a higher RSE if the decrease in RSS is small
@@ -507,8 +513,8 @@ data to verify the model.
 Once coefficients have been estimated, making predictions is a simple as
 plugging the coefficients and predictor values into the multiple linear model
 
-$$ \hat{y} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{1} + \hat{\beta_{2}}x_{2} +
-\ldots + \hat{\beta_{p}}x_{p} . $$
+$$ \normalsize \hat{y} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{1} +
+\hat{\beta_{2}}x_{2} + \ldots + \hat{\beta_{p}}x_{p} . $$
 
 However it should be noted that these predictions will be subject to three types
 of uncertainty.
@@ -548,14 +554,14 @@ values.
 
 For example, using a coding like
 
-$$ X_{i} = \left\{ \begin{array}{cc}
+$$ \normalsize X_{i} = \left\{ \begin{array}{cc}
   1&\mathrm{if\ p_{i}\ =\ class\ A}\\
   0&\mathrm{if\ p_{i}\ =\ class\ B}
 \end{array} \right. $$
 
 yields a regression equation like
 
-$$ y_{i} = \beta_{0} + \beta_{1}X_{1} + \epsilon_{i} =
+$$ \normalsize y_{i} = \beta_{0} + \beta_{1}X_{1} + \epsilon_{i} =
 \left\{ \begin{array}{cc}
     \beta_{0} + \beta_{1} + \epsilon_{i}&\mathrm{if\ p_{i}\ =\ class\ A}\\
     \beta_{0} + \epsilon_{i}&\mathrm{if\ p_{i}\ =\ class\ B}
@@ -566,14 +572,14 @@ X_{1} $$ between classes A and B.
 
 Alternatively, a dummy variable like the following could be used
 
-$$ X_{i} = \left\{ \begin{array}{cc}
+$$ \normalsize X_{i} = \left\{ \begin{array}{cc}
   1&\mathrm{if\ p_{i}\ =\ class\ A}\\
   -1&\mathrm{if\ p_{i}\ =\ class\ B}
 \end{array} \right. $$
 
 which results in a regression model like
 
-$$ y_{i} = \beta_{0} + \beta_{1}X_{1} + \epsilon_{i} =
+$$ \normalsize y_{i} = \beta_{0} + \beta_{1}X_{1} + \epsilon_{i} =
 \left\{ \begin{array}{cc}
     \beta_{0} + \beta_{1} + \epsilon_{i}&\mathrm{if\ p_{i}\ =\ class\ A}\\
     \beta_{0} - \beta_{1} + \epsilon_{i}&\mathrm{if\ p_{i}\ =\ class\ B}
@@ -593,18 +599,18 @@ number of values that the predictor can take on.
 For example, with a predictor that can take on three values, the following
 coding could be used
 
-$$ X_{i1} = \left\{ \begin{array}{cc}
+$$ \normalsize X_{i1} = \left\{ \begin{array}{cc}
   1&\mathrm{if\ p_{i}\ =\ class\ A}\\
   0&\mathrm{if\ p_{i}\ \ne\ class\ A}
 \end{array} \right. $$
 
-$$ X_{i2} = \left\{ \begin{array}{cc}
+$$ \normalsize X_{i2} = \left\{ \begin{array}{cc}
   1&\mathrm{if\ p_{i}\ =\ class\ B}\\
   0&\mathrm{if\ p_{i}\ \ne\ class\ B}
 \end{array} \right. $$
 
-$$ y_{i} = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \epsilon_{i} =
-\left\{ \begin{array}{cc}
+$$ \normalsize y_{i} = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} +
+\epsilon_{i} = \left\{ \begin{array}{cc}
     \beta_{0} + \beta_{1} + \epsilon_{i}&\mathrm{if\ p_{i}\ =\ class\ A}\\
     \beta_{0} + \beta_{2} + \epsilon_{i}&\mathrm{if\ p_{i}\ =\ class\ B}\\
     \beta_{0} + \epsilon_{i}&\mathrm{if\ p_{i}\ =\ class\ C}
@@ -651,7 +657,7 @@ that computes the product of the associated predictors.
 A simple linear regression model account for interaction between the predictors
 would look like
 
-$$ \mathrm{Y} = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} +
+$$ \normalsize \mathrm{Y} = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} +
 \beta_{3}X_{1}X_{2} + \epsilon $$
 
 $$ \beta_{3} $$ can be interpreted as the increase in effectiveness of $$
@@ -678,7 +684,7 @@ and a qualitative predictor.
 In the case of simple linear regression with a qualitative variable and without
 an interaction term, the model takes the form
 
-$$ y_{i} = \beta_{0} + \beta_{1}X_{1} +
+$$ \normalsize y_{i} = \beta_{0} + \beta_{1}X_{1} +
 \left\{ \begin{array}{cc}
     \beta_{2}&\mathrm{if\ p_{i}\ =\ class\ A}\\
     0&\mathrm{if\ p_{i}\ \ne\ class\ A}
@@ -686,14 +692,18 @@ $$ y_{i} = \beta_{0} + \beta_{1}X_{1} +
 
 with the addition of an interaction term, the model takes the form
 
-$$ y_{i} = \beta_{0} + \beta_{1}X_{1} +
+$$ \normalsize y_{i} = \beta_{0} + \beta_{1}X_{1} +
 \left\{ \begin{array}{cc}
     \beta_{2} + \beta_{3}X_{1}&\mathrm{if\ p_{i}\ =\ class\ A}\\
     0&\mathrm{if\ p_{i}\ \ne\ class\ A}
 \end{array} \right.
-= \left\{ \begin{array}{cc}
-    (\beta_{0} + \beta_{2}) + (\beta_{1} + \beta_{3})X_{1}&\mathrm{if\ p_{i}\ =\ class\ A}\\
-    \beta_{0} + \beta_{1}X_{1}&\mathrm{if\ p_{i}\ \ne\ class\ A}
+$$
+
+which is equivalent to
+
+$$ \normalsize y_{i} = \left\{ \begin{array}{cc}
+    (\beta_{0} + \beta_{2}) + (\beta_{1} + \beta_{3})X_{1}&\mathrm{if\ p_{i}\ =\
+    class\ A}\\ \beta_{0} + \beta_{1}X_{1}&\mathrm{if\ p_{i}\ \ne\ class\ A}
 \end{array} \right.
 $$
 
@@ -706,7 +716,8 @@ in the regression model.
 For example, in a scenario where a quadratic relationship seems likely, the
 following model could be used
 
-$$ Y_{i} = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{1}^{2} + \epsilon $$
+$$ \normalsize Y_{i} = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{1}^{2} +
+\epsilon $$
 
 This extension of the linear model to accommodate non-linear relationships is
 called polynomial regression.
@@ -756,7 +767,7 @@ Good experiment design is crucial to limiting correlated error terms.
 
 Linear regression also assumes that the error terms have a constant variance,
 
-$$ \mathrm{Var}(\epsilon_{i}) = \sigma^{2} . $$
+$$ \normalsize \mathrm{Var}(\epsilon_{i}) = \sigma^{2} . $$
 
 Standard errors, confidence intervals, and hypothesis testing all depend on this
 assumption.
@@ -816,8 +827,8 @@ A large leverage statistic indicates an observation with high leverage.
 
 For simple linear regression, the leverage statistic can be computed as
 
-$$ h_{i} = \frac{1}{n} + \frac{(x_{i} - \bar{x})^{2}}{\sum_{j=1}^{n}(x_{j} -
-\bar{x})^{2}} . $$
+$$ \normalsize h_{i} = \frac{1}{n} + \frac{(x_{i} -
+\bar{x})^{2}}{\sum_{j=1}^{n}(x_{j} - \bar{x})^{2}} . $$
 
 The leverage statistic always falls between $$ \frac{1}{n} $$ and $$ 1 $$ and
 the average leverage is always equal to $$ \frac{p + 1}{n} . $$ So, if an
@@ -860,8 +871,8 @@ exceed 5 or 10 indicate a problematic amount of collinearity.
 The variance inflation factor for each variable can be computed using the
 formula
 
-$$ \mathrm{VIF}(\hat{\beta_{j}}) = \frac{1}{1 - \mathrm{R}_{x_{j}|x_{-j}}^{2}}
-$$
+$$ \normalsize \mathrm{VIF}(\hat{\beta_{j}}) = \frac{1}{1 -
+\mathrm{R}_{x_{j}|x_{-j}}^{2}} $$
 
 where $$ \mathrm{R}_{x_{j}|x_{-j}} $$ is the $$ \mathrm{R}^{2} $$ from a
 regression of $$ X_{j} $$ onto all of the other predictors. If $$
@@ -886,7 +897,7 @@ neighbors regression first identifies the $$ K $$ observations that are closest
 to $$ x_{0} $$, represented by $$ N_{0} . $$ $$ f(x_{0}) $$ is then estimated
 using the average of $$ N_{0i} $$ like so
 
-$$ \hat{f}(x_{0}) = \frac{1}{k}\sum_{x_{i} \in N_{0}}y_{i} $$
+$$ \normalsize \hat{f}(x_{0}) = \frac{1}{k}\sum_{x_{i} \in N_{0}}y_{i} $$
 
 A parametric approach will outperform a non-parametric approach if the
 parametric form is close to the true form of $$ f(X) . $$

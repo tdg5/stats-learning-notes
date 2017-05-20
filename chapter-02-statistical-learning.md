@@ -14,7 +14,7 @@ Suppose an observed quantitative response $$ {Y} $$ and $$ {p} $$ different
 predictors $$ x_{1}, x_{2}, \ldots, x_{p} . $$ The assumed relationship between $$
 {Y} $$ and $$ X = (x_{1}, x_{2}, \ldots, x_{p}) $$ can be generalized as:
 
-$$ {Y} = f(X) + \epsilon $$
+$$ \normalsize {Y} = f(X) + \epsilon $$
 
 where $$ {f} $$ is some fixed, but unknown function of $$ {X} $$ and $$ \epsilon
 $$ is a random [error term][glossary-irreducible-error] that is independent of
@@ -48,14 +48,14 @@ $$ For example, assume that $$ {f} $$ is linear, yielding a linear model.  2.
 Once a model has been selected, use training data to fit, or train, the model.
 In the case of a linear model of the form
 
-$$ f(x) = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \ldots + \beta_{p}x_{p},
-$$
+$$ \normalsize f(x) = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \ldots +
+\beta_{p}x_{p}, $$
 
 the training procedure should yield estimates for the parameters $$ \beta_{0},
 \beta_{1}, \beta_{2}, \ldots, \beta_{p} $$ such that
 
-$$ {Y} \approx f({X}) \approx \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} +
-\ldots + \beta_{p}x_{p}. $$
+$$ \normalsize {Y} \approx f({X}) \approx \beta_{0} + \beta_{1}x_{1} +
+\beta_{2}x_{2} + \ldots + \beta_{p}x_{p}. $$
 
 A model-based approach like that outlined above is referred to as
 [parametric][glossary-parametric] because it simplifies the problem of
@@ -139,7 +139,8 @@ regression setting.
 
 Mean squared error is defined as
 
-$$ \frac{1}{n} \sum_{i=1}^{n} \lgroup y_i - \hat{f}(x_{i}) \rgroup ^{2} $$
+$$ \normalsize \frac{1}{n} \sum_{i=1}^{n} \lgroup y_i - \hat{f}(x_{i}) \rgroup
+^{2} $$
 
 The mean squared error will be small when the predicted responses are close to
 the true responses and large if there's a substantial difference between the
@@ -176,7 +177,7 @@ decomposed into the sum of three quantities: The variance of $$ \hat{f}(x_{0})
 $$, the squared bias of $$ \hat{f}(x_{0}) $$, and the variance of the error
 term, $$ \epsilon . $$ Formally,
 
-$$ \mathrm{E} \lgroup y_{i} - \hat{f}(x_{i}) \rgroup^2 =
+$$ \normalsize \mathrm{E} \lgroup y_{i} - \hat{f}(x_{i}) \rgroup^2 =
 \mathrm{Var}\lgroup\hat{f}(x_{i})\rgroup +
 [\mathrm{Bias} \lgroup\hat{f}(x_{i})\rgroup]^2 +
 \mathrm{Var}(\epsilon). $$
@@ -209,7 +210,7 @@ of $$ \hat{f} $$ is the training error rate. The training error rate is the
 proportion of errors that are made when applying $$ \hat{f} $$ to the training
 observations. Formally stated as,
 
-$$ \frac{1}{n} \sum_{i=1}^{n} \mathrm{I}(y_{i} \neq \hat{y}) $$
+$$ \normalsize \frac{1}{n} \sum_{i=1}^{n} \mathrm{I}(y_{i} \neq \hat{y}) $$
 
 where $$ \mathrm{I} $$ is an indicator variable that equals $$ 0 $$ when $$ y =
 \hat{y} $$ and equals $$ 1 $$ when $$ y \neq \hat{y} . $$
@@ -229,7 +230,7 @@ given its predictor variables.
 In Bayesian terms, a test observation should be classified for the predictor
 vector $$ x_{0} $$ to the class $$ j $$ for which
 
-$$ \mathrm{Pr}(Y=j|X=x_{0}) $$
+$$ \normalsize \mathrm{Pr}(Y=j|X=x_{0}) $$
 
 is largest. That is, the conditional probability that $$ Y=j $$, given the
 observed predictor vector $$ x_{0} . $$ This classifier is called the [Bayes
@@ -245,7 +246,7 @@ The Bayes classifier yields the lowest possible test error rate since it will
 always choose the class with the highest probability. The [Bayes error
 rate][glossary-bayes-error-rate] can be stated formally as
 
-$$ 1 - \mathrm{E} \lgroup \max_{j} \mathrm{Pr}(Y=j|X) \rgroup . $$
+$$ \normalsize 1 - \mathrm{E} \lgroup \max_{j} \mathrm{Pr}(Y=j|X) \rgroup . $$
 
 The Bayes error rate can also be described as the ratio of observations that lie
 on the "wrong" side of the decision boundary.
@@ -266,7 +267,7 @@ N_{0} . $$ It next estimates the conditional probability for class $$ j $$
 based on the fraction of points in $$ N_{0} $$ who have a response equal to
 $$ j . $$ Formally, the estimated conditional probability can be stated as
 
-$$ \mathrm{Pr}(Y=j|X=x_{0}) =
+$$ \normalsize \mathrm{Pr}(Y=j|X=x_{0}) =
 \frac{1}{k} \sum_{i \in N_{0}}\mathrm{I}(y_{i}=j) $$
 
 The K-Nearest Neighbor classifier then applies Bayes rule and yields the
