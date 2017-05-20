@@ -96,6 +96,24 @@ parameter.
 <a id="least-squares-line"></a>
 **[Least Squares Line][#least-squares-line]**:
 
+<a id="likelihood-function"></a>
+**[Likelihood Function][#likelihood-function]**:
+
+<a id="log-odds"></a>
+**[Log Odds][#log-odds]**:
+
+<a id="logistic-function"></a>
+**[Logistic Function][#logistic-function]**:
+
+<a id="logistic-regression"></a>
+**[Logistic Regression][#logistic-regression]**:
+
+<a id="logit"></a>
+**[Logit][#logit]**:
+
+<a id="maximum-likelihood"></a>
+**[Maximum Likelihood][#maximum-likelihood]**:
+
 <a id="mean-square-error"></a>
 **[Mean Squared Error][#mean-squared-error]**:
 
@@ -107,6 +125,9 @@ parameter.
 
 <a id="multiple-linear-regression"></a>
 **[Multiple Linear Regression][#multiple-linear-regression]**:
+
+<a id="multiple-logistic-regression"></a>
+**[Multiple Logistic Regression][#multiple-logistic-regression]**:
 
 <a id="non-parametric"></a>
 **[Non-Parametric][#non-parametric]**:
@@ -246,10 +267,17 @@ true response value.
 [#irreducible-error]: #irreducible-error "Irreducible Error"
 [#k-nearest-neighbors]: #k-nearest-neighbors "K-Nearest Neighbors"
 [#least-squares-line]: #least-squares-line "Least Squares Line"
+[#likelihood-function]: #likelihood-function "Likelihood Function"
+[#log-odds]: #log-odds "Log-Odds"
+[#logistic-function]: #logistic-function "Logistic Function"
+[#logistic-regression]: #logistic-regression "Logistic Regression"
+[#logit]: #logit "Logit"
+[#maximum-likelihood]: #maximum-likelihood "Maximum Likelihood"
 [#mean-squared-error]: #mean-squared-error "Mean Squared Error"
 [#mixed-selection]: #mixed-selection "Mixed Selection"
 [#multicollinearity]: #multicollinearity "Multicollinearity"
 [#multiple-linear-regression]: #multiple-linear-regression "Multiple Linear Regression"
+[#multiple-logistic-regression]: #multiple-logistic-regression "Multiple Logistic Regression"
 [#normal-distribution]: #normal-distribution "Normal Distribution"
 [#non-parametric]: #non-parametric "Non-Parametric"
 [#non-parametric-methods]: #non-parametric-methods "Non-Parametric Methods"
