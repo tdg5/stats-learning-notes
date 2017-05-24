@@ -114,7 +114,7 @@ classifications in the given data set.
 Similar to linear regression, dummy variables can be used to accommodate
 qualitative predictors.
 
-### Multiple Logistic Regression
+#### Multiple Logistic Regression
 
 Using a strategy similar to that employed for linear regression, [multiple
 logistic regression][glossary-multiple-logistic-regression] can be generalized
@@ -133,6 +133,159 @@ $$ \normalsize p(X) = \frac{e^{\beta_{0} + \beta_{1}X_{1} + \ldots +
 Maximum likelihood is also used to estimate $$ \beta_{0}, \beta_{1}, \ldots,
 \beta_{p} $$ in the case of multiple logistic regression.
 
+In general, the scenario in which the result obtained with a single predictor
+does not match the result with multiple predictors, especially when there is
+correlation among the predictors, is referred to as
+[confounding][glossary-confounding]. More specifically, confounding describes
+situations in which the experimental controls do not adequately allow for ruling
+out alternative explanations for the observed relationship between the
+predictors and the response.
+
+#### Logistic Regression For More Than Two Classes
+
+Though multiple-class logistic regression is possible, [discriminant
+analysis][glossary-discriminant-analysis] tends to be the preferred means of
+handling multiple-class classification.
+
+### Linear Discriminant Analysis
+
+While logistic regression models the conditional distribution of the response $$
+Y $$ given the predictor(s) $$ X , $$ [linear discriminant
+analysis][glossary-linear-discriminant-analysis] takes the approach of modeling
+the distribution of the predictor(s) $$ X $$ separately in each of the response
+classes , $$ Y $$, and then uses [Bayes' theorem][glossary-bayes-theorem] to
+invert these probabilities to estimate the conditional distribution.
+
+Linear discriminant analysis is popular when there are more than two response
+classes. Beyond its popularity, linear discriminant analysis also benefits from
+not being susceptible to some of the problems that logistic regression suffers
+from:
+
+- The parameter estimates for logistic regression can be surprisingly unstable
+  when the response classes are well separated. Linear discriminant analysis
+  does not suffer from this problem.
+- Logistic regression is more unstable than linear discriminant analysis when $$
+  n $$ is small and the distribution of the predictors $$ X $$ is approximately
+  normal in each of the response classes.
+
+#### Classification With Bayes' Theorem
+
+Assuming a qualitative variable $$ Y $$ that can take on $$ K \geq 2 $$
+distinct, unordered values, the [prior probability][glossary-prior-probability]
+describes the probability that a given observation is associated with the kth
+class of the response variable $$ Y . $$
+
+The density function of $$ X $$ for an observation that comes from the kth class
+is defined as
+
+$$ \normalsize f_{k}(X) = \mathrm{Pr}(X=x|Y=k) . $$
+
+This means that $$ f_{k}(X) $$ should be relatively large if there's a high
+probability that an observation from the kth class features $$ X = x . $$
+Conversely, $$ f_{k}(X) $$ will be relatively small if it is unlikely that an
+observation in class k would feature $$ X = x . $$
+
+Following this intuition, Bayes' theorem states
+
+$$ \normalsize \mathrm{Pr}(Y=k|X=x) = p_{k}(x) =
+\frac{\pi_{k}f_{k}(X)}{\sum_{j=1}^{k}\pi_{j}f_{j}(X)} $$
+
+where $$ \pi_{k} $$ denotes the prior probability that the chosen observation
+comes from the kth class. This equation is sometimes abbreviated as $$ p_{k}(x)
+. $$
+
+$$ p_{k}(x) = \mathrm{Pr}(Y=k|X) $$ is also known as the [posterior
+probability][glossary-posterior-probability], or the probability that an
+observation belongs to the kth class, given the predictor value for that
+observation.
+
+Estimating $$ \pi_{k}, $$ the prior probability, is easy given a random sample
+of responses from the population.
+
+Estimating the density function, $$ f_{k}(X) $$ tends to be harder, but making
+some assumptions about the form of the densities can simplify things. A good
+estimate for $$ f_{k}(X) $$ allows for developing a classifier that approximates
+the Bayes' classifier which has the lowest possible error rate since it always
+selects the class for which $$ p_{k}(x) $$ is largest.
+
+#### Linear Discriminant Analysis For One Predictor
+
+When only considering one predictor, if we assume that $$ f_{k}(X) $$ has a
+normal, or [Gaussian distribution][glossary-gaussian-distribution], the normal
+density is described by
+
+$$ \normalsize f_{k}(X) = \frac{1}{\sqrt{2\pi\sigma_{k}}}\exp \big \lgroup
+-\frac{1}{2\sigma_{k}^{2}}(x-\mu_{k})^{2} \big \rgroup $$
+
+where $$ \mu_{k} $$ is the mean paramter for the kth class and $$ \sigma_{k}^{2}
+$$ is the variable parameter for the kth class.
+
+The density function can be further simplified by assuming that the variance
+terms, $$ \sigma_{1}^{2}, \ldots, \sigma_{k}^{2} , $$ are all equal in which
+case the variance is denoted by $$ \sigma^{2} . $$
+
+Plugging the simplified normal density function into Bayes' theorem yields
+
+$$ \normalsize p_{k}(x) = \frac{\pi_{k}\frac{1}{\sqrt{2\pi\sigma}}\exp \big
+\lgroup -\frac{1}{2\sigma^{2}}(x-\mu_{k})^2 \big \rgroup}{\sum_{j = 1}^{k}
+\pi_{j}\frac{1}{\sqrt{2\pi\sigma}}\exp \big \lgroup -\frac{1}{2\sigma^{2}}(x -
+\mu_{j})^2 \big \rgroup} . $$
+
+It can be shown that by taking a $$ \log $$ of both sides and removing terms
+that are not class specific, a simpler equation can be extracted:
+
+$$ \normalsize \delta_{k}(x) = \frac{x\mu_{k}}{\sigma^{2}} - \frac{\mu_{k}^{2}}{2\sigma^{2}}
++ \log(\pi_{k}) . $$
+
+Using this equation, an observation can be classified by taking the class yields
+the largest value.
+
+Linear discriminant analysis uses the following estimated values for $$
+\hat{\mu}_{k} $$ and $$ \hat{\sigma}^{2} : $$
+
+$$ \normalsize \hat{\mu}_{k} = \frac{1}{n_{k}} \displaystyle \sum_{i:y_{i} = k}
+x_{i} $$
+
+$$ \normalsize \sigma^{2} = \frac{1}{n - k} \displaystyle \sum_{k=1}^{k}
+\displaystyle \sum_{i:y_{i} = k} (x_{i} - \mu_{k})^{2} $$
+
+where $$ n $$ is the total number of training observations and $$ n_{k} $$ is
+the number of training observations in class k.
+
+The estimate of $$ \hat{\mu}_{k} $$ is the average value of $$ x $$ for all
+training observations in class k.
+
+The estimate of $$ \hat{\sigma}^{2} $$ can be seen as a weighted average of the
+sample variance for all k classes.
+
+When the class prior probabilities, $$ \pi_{1}, \ldots, \pi_{k} , $$ is not
+known, it can be estimated using the proportion of training observations that
+fall into the kth class:
+
+$$ \normalsize \hat{\pi}_{k} = \frac{n_{k}}{n} $$
+
+Plugging the estimates for $$ \hat{\mu}_{k} $$ and $$ \hat{\sigma}_{k}^{2} $$
+into the modified Bayes' theorem yields the linear discriminant analysis
+classifer:
+
+$$ \normalsize \hat{\delta}_{k}(x) = \frac{x\hat{\mu}_{k}}{\hat{\sigma}^{2}} -
+\frac{\hat{\mu}_{k}^{2}}{2\hat{\sigma}^{2}} + \log(\hat{\pi}_{k}) $$
+
+which assigns an observation $$ X = x $$ to whichever class yields the largest
+value.
+
+This classifier is described as linear because the discriminant function $$
+\hat{\delta}_{k}(x) $$ is linear in terms of $$ x $$ and not a more complex
+function.
+
+The Bayes decision boundary for linear discriminant analysis is identified by
+the boundary where $$ \delta_{k}(x) = \delta_{j}(x) . $$
+
+The linear discriminant analysis classifier assumes that the observations from
+each class follow a normal distribution with a class specific average vector and
+constant variance, $$ \sigma^{2} $$, and uses these simplifications to build a
+Bayes' theorem based classifier.
+
 ---
 
 [Next: Chapter 5 - Resampling Methods][chapter-05-resampling-methods]
@@ -142,10 +295,16 @@ Maximum likelihood is also used to estimate $$ \beta_{0}, \beta_{1}, \ldots,
 [chapter-03-linear-regression]: chapter-03-linear-regression "stats-learning-notes -- Chapter 3 - Linear Regression"
 [chapter-04-classification]: chapter-04-classification "stats-learning-notes -- Chapter 4 - Classification"
 [chapter-05-resampling-methods]: chapter-05-resampling-methods "stats-learning-notes -- Chapter 5 - Resampling Methods"
+[glossary-bayes-theorem]: glossary#bayes-theorem "stats-learning-notes -- Glossary - Bayes Theorem"
+[glossary-confounding]: glossary#confounding "stats-learning-notes -- Glossary - Confounding"
+[glossary-discriminant-analysis]: glossary#discriminant-analysis "stats-learning-notes -- Glossary - Discriminant Analysis"
 [glossary-likelihood-function]: glossary#likelihood-function "stats-learning-notes -- Glossary - Likelihood Function"
+[glossary-linear-discriminant-analysis]: glossary#linear-discriminant-analysis "stats-learning-notes -- Glossary - Linear Discriminant Analysis"
 [glossary-log-odds]: glossary#log-odds "stats-learning-notes -- Glossary - Log-Odds"
 [glossary-logistic-function]: glossary#logistic-function "stats-learning-notes -- Glossary - Logistic Function"
 [glossary-logistic-regression]: glossary#logistic-regression "stats-learning-notes -- Glossary - Logistic Regression"
 [glossary-logit]: glossary#logit "stats-learning-notes -- Glossary - Logit"
 [glossary-maximum-likelihood]: glossary#maximum-likelihood "stats-learning-notes -- Glossary - Maximum Likelihood"
 [glossary-multiple-logistic-regression]: glossary#multiple-logistic-regression "stats-learning-notes -- Glossary - Multiple Logistic Regression"
+[glossary-posterior-probability]: glossary#posterior-probability "stats-learning-notes -- Glossary - Posterior Probability"
+[glossary-prior-probability]: glossary#prior-probability "stats-learning-notes -- Glossary - Prior Probability"

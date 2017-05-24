@@ -17,6 +17,9 @@ use_math: true
 <a id="bayes-error-rate"></a>
 **[Bayes Error Rate][#bayes-error-rate]**:
 
+<a id="bayes-theorem"></a>
+**[Bayes Theorem][#bayes-theorem]**:
+
 <a id="bias"></a>
 **[Bias][#bias]**:
 
@@ -42,6 +45,9 @@ the parameter. For example, a 95% confidence interval is a range of values such
 that there's a 95% chance that the range contains the true unknown value of the
 parameter.
 
+<a id="confounding"></a>
+**[Confounding][#confounding]**:
+
 <a id="correlation"></a>
 **[Correlation][#correlation]**:
 
@@ -50,6 +56,9 @@ parameter.
 
 <a id="degrees-of-freedom"></a>
 **[Degrees of Freedom][#degrees-of-freedom]**:
+
+<a id="discriminant-analysis"></a>
+**[Discriminant Analysis][#discriminant-analysis]**:
 
 <a id="dummy-variable"></a>
 **[Dummy Variable][#dummy-variable]**:
@@ -65,6 +74,9 @@ parameter.
 
 <a id="forward-selection"></a>
 **[Forward Selection][#forward-selection]**:
+
+<a id="gaussian-distribution"></a>
+**[Gaussian Distribution][#gaussian-distribution]**:
 
 <a id="hierarchical-principle"></a>
 **[Hierarchical Principle][#hierarchical-principle]**:
@@ -98,6 +110,9 @@ parameter.
 
 <a id="likelihood-function"></a>
 **[Likelihood Function][#likelihood-function]**:
+
+<a id="linear-discriminant-analysis"></a>
+**[Linear Discriminant Analysis][#linear-discriminant-analysis]**:
 
 <a id="log-odds"></a>
 **[Log Odds][#log-odds]**:
@@ -169,8 +184,14 @@ intercept, but no predictors.
 <a id="population-regression-line"></a>
 **[Population Regression Line][#population-regression-line]**:
 
+<a id="posterior-probability"></a>
+**[Posterior Probability][#posterior-probability]**:
+
 <a id="prediction-interval"></a>
 **[Prediction Interval][#prediction-interval]**:
+
+<a id="prior-probability"></a>
+**[Prior Probability][#prior-probability]**:
 
 <a id="qualitative-value"></a>
 **[Qualitative Value][#qualitative-value]**:
@@ -242,6 +263,7 @@ true response value.
 [#bayes-classifier]: #bayes-classifier "Bayes Classifier"
 [#bayes-decision-boundary]: #bayes-decision-boundary "Bayes Decision Boundary"
 [#bayes-error-rate]: #bayes-error-rate "Bayes Error Rate"
+[#bayes-theorem]: #bayes-theorem "Bayes Theorem"
 [#bias]: #bias "Bias"
 [#bias-variance-trade-off]: #bias-variance-trade-off "Bias-Variance Trade-Off"
 [#classification-problem]: #classification-problem "Classification Problem"
@@ -249,14 +271,17 @@ true response value.
 [#coefficient]: #coefficient "Coefficient"
 [#collinearity]: #collinearity "Collinearity"
 [#confidence-interval]: #confidence-interval "Confidence Interval"
+[#confounding]: #confounding "Confounding"
 [#correlation]: #correlation "Correlation"
 [#curse-of-dimensionality]: #curse-of-dimensionality "Curse of Dimensionality"
 [#degrees-of-freedom]: #degrees-of-freedom "Degrees of Freedom"
+[#discriminant-analysis]: #discriminant-analysis "Discriminant Analysis"
 [#dummy-variable]: #dummy-variable "Dummy Variable"
 [#error-term]: #error-term "Error Term"
 [#f-distribution]: #f-distribution "F-Distribution"
 [#f-statistic]: #f-statistic "F-Statistic"
 [#forward-selection]: #forward-selection "Forward Selection"
+[#gaussian-distribution]: #gaussian-distribution "Gaussian Distribution"
 [#hierarchical-principle]: #hierarchical-principle "Hierarchical Principle"
 [#high-leverage]: #high-leverage "High Leverage"
 [#hypothesis-test]: #hypothesis-test "Hypothesis Test"
@@ -268,6 +293,7 @@ true response value.
 [#k-nearest-neighbors]: #k-nearest-neighbors "K-Nearest Neighbors"
 [#least-squares-line]: #least-squares-line "Least Squares Line"
 [#likelihood-function]: #likelihood-function "Likelihood Function"
+[#linear-discriminant-analysis]: #linear-discriminant-analysis "Linear Discriminant Analysis"
 [#log-odds]: #log-odds "Log-Odds"
 [#logistic-function]: #logistic-function "Logistic Function"
 [#logistic-regression]: #logistic-regression "Logistic Regression"
@@ -291,7 +317,9 @@ true response value.
 [#parametric]: #parametric "Parametric"
 [#parametric-methods]: #parametric-methods "Parametric Methods"
 [#population-regression-line]: #population-regression-line "Population Regression Line"
+[#posterior-probability]: #posterior-probability "Posterior Probability"
 [#prediction-interval]: #prediction-interval "Prediction Interval"
+[#prior-probability]: #prior-probability "Prior Probability"
 [#qualitative-value]: #qualitative-value "Qualitative Value"
 [#quantitative-value]: #quantitative-value "Quantitative Value"
 [#r-squared-statistic]: #r-squared-statistic "R Squared Statistic"
