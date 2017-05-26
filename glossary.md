@@ -144,6 +144,9 @@ parameter.
 <a id="multiple-logistic-regression"></a>
 **[Multiple Logistic Regression][#multiple-logistic-regression]**:
 
+<a id="multivariate-gaussian-distribution"></a>
+**[Multivariate Gaussian Distribution][#multivariate-gaussian-distribution]**:
+
 <a id="non-parametric"></a>
 **[Non-Parametric][#non-parametric]**:
 
@@ -214,11 +217,20 @@ intercept, but no predictors.
 <a id="residual-sum-of-squares"></a>
 **[Residual Sum of Squares][#residual-sum-of-squares]**:
 
+<a id="roc-curve"></a>
+**[ROC Curve][#roc-curve]**:
+
+<a id="sensitivity"></a>
+**[Sensitivity][#sensitivity]**:
+
 <a id="simple-linear-regression"></a>
 **[Simple Linear Regression][#simple-linear-regression]**:
 
 <a id="slope"></a>
 **[Slope][#slope]**:
+
+<a id="specificity"></a>
+**[Specificity][#specificity]**:
 
 <a id="standard-error"></a>
 **[Standard Error][#standard-error]**:
@@ -304,6 +316,7 @@ true response value.
 [#multicollinearity]: #multicollinearity "Multicollinearity"
 [#multiple-linear-regression]: #multiple-linear-regression "Multiple Linear Regression"
 [#multiple-logistic-regression]: #multiple-logistic-regression "Multiple Logistic Regression"
+[#multivariate-gaussian-distribution]: #multivariate-gaussian-distribution "Multivariate Gaussian Distribution"
 [#normal-distribution]: #normal-distribution "Normal Distribution"
 [#non-parametric]: #non-parametric "Non-Parametric"
 [#non-parametric-methods]: #non-parametric-methods "Non-Parametric Methods"
@@ -327,8 +340,11 @@ true response value.
 [#residual]: #residual "Residual"
 [#residual-standard-error]: #residual-standard-error "Residual Standard Error"
 [#residual-sum-of-squares]: #residual-sum-of-squares "Residual Sum of Squares"
+[#roc-curve]: #roc-curve "ROC Curve"
+[#sensitivity]: #sensitivity "Sensitivity"
 [#simple-linear-regression]: #simple-linear-regression "Simple Linear Regression"
 [#slope]: #slope "Slope"
+[#specificity]: #specificity "Specificity"
 [#standard-error]: #standard-error "Standard Error"
 [#studentized-residual]: #studentized-residual "Studentized Residual"
 [#supervised-learning]: #supervised-learning "Supervised Learning"

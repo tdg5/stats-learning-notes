@@ -211,8 +211,9 @@ selects the class for which $$ p_{k}(x) $$ is largest.
 #### Linear Discriminant Analysis For One Predictor
 
 When only considering one predictor, if we assume that $$ f_{k}(X) $$ has a
-normal, or [Gaussian distribution][glossary-gaussian-distribution], the normal
-density is described by
+[normal distribution][glossary-normal-distribution], or [Gaussian
+distribution][glossary-gaussian-distribution], the normal density is described
+by
 
 $$ \normalsize f_{k}(X) = \frac{1}{\sqrt{2\pi\sigma_{k}}}\exp \big \lgroup
 -\frac{1}{2\sigma_{k}^{2}}(x-\mu_{k})^{2} \big \rgroup $$
@@ -286,6 +287,97 @@ each class follow a normal distribution with a class specific average vector and
 constant variance, $$ \sigma^{2} $$, and uses these simplifications to build a
 Bayes' theorem based classifier.
 
+#### Linear Discriminant Analysis with Multiple Predictors
+
+Multivariate linear discriminant analysis assumes that $$ X = (X_{1}, X_{2},
+\ldots, X_{p}) $$ comes from a multivariate normal distribution with a
+class-specific mean vector and a common covariance matrix.
+
+The [multivariate Gaussian
+distribution][glossary-multivariate-gaussian-distribution] used by linear
+discriminant analysis assumes that each predictor follows a one-dimensional
+normal distribution with some correlation between the predictors. The more
+correlation between predictors, the more the bell shape of the normal
+distribution will be distorted.
+
+A p-dimensional variable X can be indicated to have a multivariate Gaussian
+distribution with the notation $$ X \sim N(\mu, \Sigma) $$ where $$ E(x) = \mu $$
+is the mean of $$ X $$ (a vector with p components) and $$ \mathrm{Cov}(X) =
+\Sigma $$ is the p x p covariance matrix of $$ X $$.
+
+Multivariate Gaussian density is formally defined as
+
+$$ \normalsize f(x) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}} \exp \big \lgroup
+-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x - \mu) \big \rgroup . $$
+
+For linear discriminant analysis with multiple predictors, the multivariate
+Gaussian distribution, $$ N(\mu_{k}, \Sigma) $$, is assumed to have a class
+specific mean vector, $$ \mu_{k} $$, and a covariance vector common to all
+classes, $$ \Sigma . $$
+
+Combining the multivariate Gaussian density function with Bayes' theorem yields
+the vector/matrix version of the linear discriminant analysis Bayes' classifier:
+
+$$ \delta_{k}(x) = x^{T} \Sigma^{-1} \mu_{k} - \frac{1}{2} \mu_{k}^{T}
+\Sigma^{-1} \mu_{k} + \log \pi_{k} $$
+
+Again, whichever class yields the largest value is the highest probability
+classification.
+
+The Bayes decision boundaries are defined by the values for which $$
+\delta_{j}(x) = \delta_{k}(x) $$ or more fully
+
+$$ x^{T} \Sigma^{-1} \mu_{j} - \frac{1}{2} \mu_{j}^{T} \Sigma^{-1}\mu_{j} =
+x^{T} \Sigma^{-1} \mu_{k} - \frac{1}{2} \mu_{k}^{T} \Sigma^{-1} \mu_{k} $$
+
+It should be noted that since all classes are assumed to have the same number
+of training observations, the $$ \log \pi $$ terms cancel out.
+
+As was the case for one-dimensional linear discriminant analysis, it is
+necessary to estimate the unknown parameters $$ \mu_{1}, \ldots, \mu_{k} $$, $$
+\pi_{1}, \ldots, \pi_{k} $$, and $$ \Sigma . $$ The formulas used in the
+multi-dimensional case are similar to those used with just a single dimension.
+
+Since, even in the multivariate case, the linear discriminant analysis decision
+rule relates to $$ X $$ in a linear fashion, the name linear discriminant
+analysis holds.
+
+As with other methods, the higher the ratio of parameters, p, to number of
+samples, n, the more likely overfitting will occur.
+
+In general, binary classifiers are subject to two kinds of error: false
+positives and false negatives. A confusion matrix can be a useful way to display
+these error rates. Class-specific performance is also important to consider
+because in some cases a particular class will contain the bulk of the error.
+
+In medicine and biology, the term [sensitivity][glossary-sensitivity] refers to
+the percentage of observations correctly positively classified (true positives)
+and [specificity][glossary-specificity] refers to the percentage of observations
+correctly negatively classified (true negatives).
+
+In a two-class scenario, the Bayes classifier, and by extension, linear
+discriminant analysis, uses a 50% threshold for the posterior probability when
+determining classifications. In some cases it may be desirable to lower this
+threshold.
+
+A [ROC curve][glossary-roc-curve] is a useful graphic for displaying the two
+types of error rates for all possible thresholds. ROC is a historic acronym that
+comes from communications theory and stands for receiver operating
+characteristics.
+
+![Example ROC curve][roc-curve]
+
+The overall performance of a classifier summarized over all possible thresholds
+is quantified by the area under the ROC curve.
+
+A more ideal ROC curve will hold more tightly to the top left corner which, in
+turn, will increase the area under the ROC curve. A classifier that performs no
+better than chance will have an area under the ROC curve less than or equal to
+0.5 when evaluated against a test data set.
+
+In summary, varying the classifier threshold changes its true positive and false
+positive rate, also called sensitivity and $$ (1 - \mathrm{specificity}) . $$
+
 ---
 
 [Next: Chapter 5 - Resampling Methods][chapter-05-resampling-methods]
@@ -298,6 +390,7 @@ Bayes' theorem based classifier.
 [glossary-bayes-theorem]: glossary#bayes-theorem "stats-learning-notes -- Glossary - Bayes Theorem"
 [glossary-confounding]: glossary#confounding "stats-learning-notes -- Glossary - Confounding"
 [glossary-discriminant-analysis]: glossary#discriminant-analysis "stats-learning-notes -- Glossary - Discriminant Analysis"
+[glossary-gaussian-distribution]: glossary#gaussian-distribution "stats-learning-notes -- Glossary - Gaussian Distribution"
 [glossary-likelihood-function]: glossary#likelihood-function "stats-learning-notes -- Glossary - Likelihood Function"
 [glossary-linear-discriminant-analysis]: glossary#linear-discriminant-analysis "stats-learning-notes -- Glossary - Linear Discriminant Analysis"
 [glossary-log-odds]: glossary#log-odds "stats-learning-notes -- Glossary - Log-Odds"
@@ -306,5 +399,11 @@ Bayes' theorem based classifier.
 [glossary-logit]: glossary#logit "stats-learning-notes -- Glossary - Logit"
 [glossary-maximum-likelihood]: glossary#maximum-likelihood "stats-learning-notes -- Glossary - Maximum Likelihood"
 [glossary-multiple-logistic-regression]: glossary#multiple-logistic-regression "stats-learning-notes -- Glossary - Multiple Logistic Regression"
+[glossary-multivariate-gaussian-distribution]: glossary#multivariate-gaussian-distribution "stats-learning-notes -- Glossary - Multivariate Gaussian Distribution"
+[glossary-normal-distribution]: glossary#normal-distribution "stats-learning-notes -- Glossary - Normal Distribution"
 [glossary-posterior-probability]: glossary#posterior-probability "stats-learning-notes -- Glossary - Posterior Probability"
 [glossary-prior-probability]: glossary#prior-probability "stats-learning-notes -- Glossary - Prior Probability"
+[glossary-roc-curve]: glossary#roc-curve "stats-learning-notes -- Glossary - ROC Curve"
+[glossary-sensitivity]: glossary#sensitivity "stats-learning-notes -- Glossary - Sensitivity"
+[glossary-specificity]: glossary#specificity "stats-learning-notes -- Glossary - Specificity"
+[roc-curve]: images/ROC-curve.jpg "Example ROC curve"
