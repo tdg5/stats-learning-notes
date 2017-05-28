@@ -196,6 +196,9 @@ intercept, but no predictors.
 <a id="prior-probability"></a>
 **[Prior Probability][#prior-probability]**:
 
+<a id="quadratic-discriminant-analysis"></a>
+**[Quadratic Discriminant Analysis][#quadratic-discriminant-analysis]**:
+
 <a id="qualitative-value"></a>
 **[Qualitative Value][#qualitative-value]**:
 
@@ -333,6 +336,7 @@ true response value.
 [#posterior-probability]: #posterior-probability "Posterior Probability"
 [#prediction-interval]: #prediction-interval "Prediction Interval"
 [#prior-probability]: #prior-probability "Prior Probability"
+[#quadratic-discriminant-analysis]: #quadratic-discriminant-analysis "Quadratic Discriminant Analysis"
 [#qualitative-value]: #qualitative-value "Qualitative Value"
 [#quantitative-value]: #quantitative-value "Quantitative Value"
 [#r-squared-statistic]: #r-squared-statistic "R Squared Statistic"

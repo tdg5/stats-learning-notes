@@ -318,7 +318,7 @@ classes, $$ \Sigma . $$
 Combining the multivariate Gaussian density function with Bayes' theorem yields
 the vector/matrix version of the linear discriminant analysis Bayes' classifier:
 
-$$ \delta_{k}(x) = x^{T} \Sigma^{-1} \mu_{k} - \frac{1}{2} \mu_{k}^{T}
+$$ \normalsize \delta_{k}(x) = x^{T} \Sigma^{-1} \mu_{k} - \frac{1}{2} \mu_{k}^{T}
 \Sigma^{-1} \mu_{k} + \log \pi_{k} $$
 
 Again, whichever class yields the largest value is the highest probability
@@ -327,7 +327,7 @@ classification.
 The Bayes decision boundaries are defined by the values for which $$
 \delta_{j}(x) = \delta_{k}(x) $$ or more fully
 
-$$ x^{T} \Sigma^{-1} \mu_{j} - \frac{1}{2} \mu_{j}^{T} \Sigma^{-1}\mu_{j} =
+$$ \normalsize x^{T} \Sigma^{-1} \mu_{j} - \frac{1}{2} \mu_{j}^{T} \Sigma^{-1}\mu_{j} =
 x^{T} \Sigma^{-1} \mu_{k} - \frac{1}{2} \mu_{k}^{T} \Sigma^{-1} \mu_{k} $$
 
 It should be noted that since all classes are assumed to have the same number
@@ -378,6 +378,102 @@ better than chance will have an area under the ROC curve less than or equal to
 In summary, varying the classifier threshold changes its true positive and false
 positive rate, also called sensitivity and $$ (1 - \mathrm{specificity}) . $$
 
+### Quadratic Discriminant Analysis
+
+[Quadratic discriminant analysis][glossary-quadratic-discriminant-analysis]
+offers an alternative approach to linear discriminant analysis that makes most
+of the same assumptions, except that quadratic discriminant analysis assumes
+that each class has its own covariance matrix. This amounts to assuming that an
+observation from the kth class has a distribution of the form
+
+$$ \normalsize X \sim N(\mu_{k}, \Sigma_{k}) $$
+
+where $$ \Sigma_{k} $$ is a covariance matrix for class $$ k $$.
+
+This yields a Bayes classifier that assigns an observation $$ X = x $$ to the
+class with the largest value for
+
+$$ \normalsize \delta_{k}(x) = - \frac{1}{2}(x - \mu_{k})^{T} \Sigma_{k}^{-1} (x
+- \mu_{k}) - \frac{1}{2} \log |\Sigma_{k}| + log \pi_{k} $$
+
+which is equivalent to
+
+$$ \normalsize \delta_{k}(x) = - \frac{1}{2}x^{T} \Sigma_{k}^{-1} + x^{T}
+\Sigma_{k}^{-1}\mu_{k} - \frac{1}{2}\mu_{k}^{T} \Sigma_{k}^{-1} \mu_{k} -
+\frac{1}{2} \log | \Sigma_{k} | + \log \pi_{k} . $$
+
+The quadratic discriminant analysis Bayes classifier gets its name from the fact
+that it is a quadratic function in terms of $$ x . $$
+
+The choice between a shared covariance matrix (like that assumed in linear
+discriminant analysis) and a class-specific covariance matrix (like that assumed
+in quadratic discriminant analysis) amounts to a bias-variance trade-off. This
+is because when there are $$ p $$ predictors, estimating a covariance matrix
+requires estimating $$ \frac{p(p + 1)}{2} $$ parameters. Since quadratic
+discriminant analysis estimates a separate covariance matri for each class, this
+amounts to estimating $$ \frac{Kp(p + 1)}{2} $$ parameters.
+
+By assuming a common covariance matrix, linear discriminant analysis is linear
+in terms of $$ x $$ which means $$ Kp $$ linear coefficients must be estimated.
+Because of this, linear discriminant analysis is much less flexible than
+quadratic discriminant analysis, but as a result has much lower variance. If the
+assumption of a common covariance matrix is highly inaccurate, it can cause
+linear discriminant analysis to suffer from high bias.
+
+In general terms, linear discriminant analysis tends to be a better choice if
+the importance of reducing variance is important because there are relatively
+few training examples. Conversely, quadratic discriminant analysis can be a
+better choice if the training set is large such that the variance of the
+classifier is not a concern or if the assumption of a common covariance matrix
+is not realistic.
+
+### Comparing Classification Methods
+
+Since logistic regression and linear discriminant analysis are both linear in
+terms of $$ x , $$ the primary difference between the two methods is their
+fitting procedures. Linear discriminant analysis assumes that observations come
+from a Gaussian distribution with a common covariance matrix, and as such, out
+performs logistic regression in cases where these assumptions hold true.
+
+K-nearest neighbors can outperform linear regression and linear discriminant
+analysis when the decision boundary is highly non-linear, but at the cost of a
+less interpretable model.
+
+Quadratic discriminant analysis falls somewhere between the linear approaches of
+linear discriminant analysis and logistic regression and the non-parametric
+approach of K-nearest neighbors. Since quadratic linear analysis models a
+quadratic decision boundary, it has more capacity for modeling a wider range of
+problems.
+
+Quadratic discriminant analysis is not as flexible as K-nearest neighbors,
+however it can perform better than K-nearest neighbors when there are fewer
+training observations due to its high bias.
+
+Linear discriminant analysis and logistic regression will perform well when the
+true decision boundary is linear.
+
+Quadratic discriminant analysis may give better results when the decision
+boundary is moderately non-linear.
+
+Non-parametric approaches like K-nearest neighbors may give better results when
+the decision boundary is more complex and the right level of smoothing is
+employed.
+
+As was the case in the regression setting, it is possible to apply non-linear
+transformations to the predictors to better accommodate non-linear relationships
+between the response and the predictors.
+
+The effectiveness of this approach will depend on whether or not the increase in
+variance introduced by the increase in flexibility is offset by the reduction in
+bias.
+
+It is possible to add quadratic terms and cross products to the linear
+discriminant analysis model such that it has the same form as quadratic
+discriminant analysis, however the parameter estimates for each of the models
+would be different. In this fashion, it's possible to build a model that falls
+somewhere between linear discriminant analysis and quadratic discriminant
+analysis.
+
 ---
 
 [Next: Chapter 5 - Resampling Methods][chapter-05-resampling-methods]
@@ -403,6 +499,7 @@ positive rate, also called sensitivity and $$ (1 - \mathrm{specificity}) . $$
 [glossary-normal-distribution]: glossary#normal-distribution "stats-learning-notes -- Glossary - Normal Distribution"
 [glossary-posterior-probability]: glossary#posterior-probability "stats-learning-notes -- Glossary - Posterior Probability"
 [glossary-prior-probability]: glossary#prior-probability "stats-learning-notes -- Glossary - Prior Probability"
+[glossary-quadratic-discriminant-analysis]: glossary#quadratic-discriminant-analysis "stats-learning-notes -- Glossary - Quadratic Discriminant Analysis"
 [glossary-roc-curve]: glossary#roc-curve "stats-learning-notes -- Glossary - ROC Curve"
 [glossary-sensitivity]: glossary#sensitivity "stats-learning-notes -- Glossary - Sensitivity"
 [glossary-specificity]: glossary#specificity "stats-learning-notes -- Glossary - Specificity"
