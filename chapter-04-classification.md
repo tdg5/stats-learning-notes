@@ -215,7 +215,7 @@ When only considering one predictor, if we assume that $$ f_{k}(X) $$ has a
 distribution][glossary-gaussian-distribution], the normal density is described
 by
 
-$$ \normalsize f_{k}(X) = \frac{1}{\sqrt{2\pi\sigma_{k}}}\exp \big \lgroup
+$$ \normalsize f_{k}(X) = \frac{1}{\sqrt{2\pi}\sigma_{k}}\exp \big \lgroup
 -\frac{1}{2\sigma_{k}^{2}}(x-\mu_{k})^{2} \big \rgroup $$
 
 where $$ \mu_{k} $$ is the mean paramter for the kth class and $$ \sigma_{k}^{2}
@@ -227,9 +227,9 @@ case the variance is denoted by $$ \sigma^{2} . $$
 
 Plugging the simplified normal density function into Bayes' theorem yields
 
-$$ \normalsize p_{k}(x) = \frac{\pi_{k}\frac{1}{\sqrt{2\pi\sigma}}\exp \big
+$$ \normalsize p_{k}(x) = \frac{\pi_{k}\frac{1}{\sqrt{2\pi}\sigma}\exp \big
 \lgroup -\frac{1}{2\sigma^{2}}(x-\mu_{k})^2 \big \rgroup}{\sum_{j = 1}^{k}
-\pi_{j}\frac{1}{\sqrt{2\pi\sigma}}\exp \big \lgroup -\frac{1}{2\sigma^{2}}(x -
+\pi_{j}\frac{1}{\sqrt{2\pi}\sigma}\exp \big \lgroup -\frac{1}{2\sigma^{2}}(x -
 \mu_{j})^2 \big \rgroup} . $$
 
 It can be shown that by taking a $$ \log $$ of both sides and removing terms
