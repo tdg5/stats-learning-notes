@@ -26,6 +26,9 @@ use_math: true
 <a id="bias-variance-trade-off"></a>
 **[Bias-Variance Trade-Off][#bias-variance-trade-off]**:
 
+<a id="bootstrap"></a>
+**[Bootstrap][#bootstrap]**:
+
 <a id="classification-problem"></a>
 **[Classification Problem][#classification-problem]**:
 
@@ -50,6 +53,9 @@ parameter.
 
 <a id="correlation"></a>
 **[Correlation][#correlation]**:
+
+<a id="cross-validation"></a>
+**[Cross Validation][#cross-validation]**:
 
 <a id="curse-of-dimensionality"></a>
 **[Curse of Dimensionality][#curse-of-dimensionality]**:
@@ -102,11 +108,17 @@ parameter.
 <a id="irreducible-error"></a>
 **[Irreducible Error][#irreducible-error]**:
 
+<a id="k-fold-cross-validation"></a>
+**[K-Fold Cross Validation][#k-fold-cross-validation]**:
+
 <a id="k-nearest-neighbors"></a>
 **[K-Nearest Neighbors][#k-nearest-neighbors]**:
 
 <a id="least-squares-line"></a>
 **[Least Squares Line][#least-squares-line]**:
+
+<a id="leave-one-out-cross-validation"></a>
+**[Leave-One-Out Cross Validation][#leave-one-out-cross-validation]**:
 
 <a id="likelihood-function"></a>
 **[Likelihood Function][#likelihood-function]**:
@@ -134,6 +146,14 @@ parameter.
 
 <a id="mixed-selection"></a>
 **[Mixed Selection][#mixed-selection]**:
+
+<a id="model-assessment"></a>
+**[Model Assessment][#model-assessment]**: The process of evaluating the
+performance of a given model.
+
+<a id="model-selection"></a>
+**[Model Selection][#model-selection]**: The process of selecting the
+appropriate level of flexibility for a given model.
 
 <a id="multicollinearity"></a>
 **[Multicollinearity][#multicollinearity]**:
@@ -211,6 +231,9 @@ intercept, but no predictors.
 <a id="regression-problem"></a>
 **[Regression Problem][#regression-problem]**:
 
+<a id="resampling-methods"></a>
+**[Resampling Methods][#resampling-methods]**:
+
 <a id="residual"></a>
 **[Residual][#residual]**:
 
@@ -265,6 +288,11 @@ true response value.
 <a id="unsupervised-learning"></a>
 **[Unsupervised Learning][#unsupervised-learning]**:
 
+<a id="validation-set"></a>
+**[Validation Set][#validation-set]**: A randomly selected subset of a data set
+that is withheld for the purpose of validating model fit and estimating test
+error rate.
+
 <a id="variable-selection"></a>
 **[Variable Selection][#variable-selection]**:
 
@@ -281,6 +309,7 @@ true response value.
 [#bayes-theorem]: #bayes-theorem "Bayes Theorem"
 [#bias]: #bias "Bias"
 [#bias-variance-trade-off]: #bias-variance-trade-off "Bias-Variance Trade-Off"
+[#bootstrap]: #bootstrap "Bootstrap"
 [#classification-problem]: #classification-problem "Classification Problem"
 [#cluster-analysis]: #cluster-analysis "Cluster Analysis"
 [#coefficient]: #coefficient "Coefficient"
@@ -288,6 +317,7 @@ true response value.
 [#confidence-interval]: #confidence-interval "Confidence Interval"
 [#confounding]: #confounding "Confounding"
 [#correlation]: #correlation "Correlation"
+[#cross-validation]: #cross-validation "Cross Validation"
 [#curse-of-dimensionality]: #curse-of-dimensionality "Curse of Dimensionality"
 [#degrees-of-freedom]: #degrees-of-freedom "Degrees of Freedom"
 [#discriminant-analysis]: #discriminant-analysis "Discriminant Analysis"
@@ -305,8 +335,10 @@ true response value.
 [#interaction-term]: #interaction-term "Interaction Term"
 [#intercept]: #intercept "Intercept"
 [#irreducible-error]: #irreducible-error "Irreducible Error"
+[#k-fold-cross-validation]: #k-fold-cross-validation "K-Fold Cross Validation"
 [#k-nearest-neighbors]: #k-nearest-neighbors "K-Nearest Neighbors"
 [#least-squares-line]: #least-squares-line "Least Squares Line"
+[#leave-one-out-cross-validation]: #leave-one-out-cross-validation "Leave One Out Cross Validation"
 [#likelihood-function]: #likelihood-function "Likelihood Function"
 [#linear-discriminant-analysis]: #linear-discriminant-analysis "Linear Discriminant Analysis"
 [#log-odds]: #log-odds "Log-Odds"
@@ -316,6 +348,8 @@ true response value.
 [#maximum-likelihood]: #maximum-likelihood "Maximum Likelihood"
 [#mean-squared-error]: #mean-squared-error "Mean Squared Error"
 [#mixed-selection]: #mixed-selection "Mixed Selection"
+[#model-assessment]: #model-assessment "Model Assessment"
+[#model-seletion]: #model-seletion "Model Selection"
 [#multicollinearity]: #multicollinearity "Multicollinearity"
 [#multiple-linear-regression]: #multiple-linear-regression "Multiple Linear Regression"
 [#multiple-logistic-regression]: #multiple-logistic-regression "Multiple Logistic Regression"
@@ -341,6 +375,7 @@ true response value.
 [#quantitative-value]: #quantitative-value "Quantitative Value"
 [#r-squared-statistic]: #r-squared-statistic "R Squared Statistic"
 [#regression-problem]: #regression-problem "Regression Problem"
+[#resampling-methods]: #resampling-methods "Resampling Methods"
 [#residual]: #residual "Residual"
 [#residual-standard-error]: #residual-standard-error "Residual Standard Error"
 [#residual-sum-of-squares]: #residual-sum-of-squares "Residual Sum of Squares"
@@ -358,6 +393,7 @@ true response value.
 [#t-statistic]: #t-statistic "T-Statistic"
 [#unsupervised-learning]: #unsupervised-learning "Unsupervised Learning"
 [#unbiased-estimator]: #unbiased-estimator "Unbiased Estimator"
+[#validation-set]: #validation-set "Validation Set"
 [#variable-selection]: #variable-selection "Variable Selection"
 [#variance]: #variance "Variance"
 [#variance-inflation-factor]: #variance-inflation-factor "Variance Inflation Factor"
