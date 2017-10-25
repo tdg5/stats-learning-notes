@@ -36,13 +36,14 @@ observed data points.
 
 There are many ways of measuring closeness. The most common method strives to
 minimizes the sum of the [residual][glossary-residual] square differences
-between the $$ i $$th observed value and the $$ i $$th predicted value.
+between the $$ i \text{th} $$ observed value and the $$ i \text{th} $$ predicted
+value.
 
-Assuming the $$ i $$th prediction of $$ Y $$ is described as
+Assuming the $$ i \text{th} $$ prediction of $$ Y $$ is described as
 
 $$ \normalsize \hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i} $$
 
-then the $$ i $$th residual can be represented as
+then the $$ i \text{th} $$ residual can be represented as
 
 $$ \normalsize e_{i} = y_{i} - \hat{y_{i}} = y_{i} - \hat{\beta_{0}} -
 \hat{\beta_{1}}x_{i} . $$
@@ -184,7 +185,7 @@ take into account the uncertainty associated with $$ \epsilon $$, the
 irreducible error.
 
 The standard error can also be used to perform [hypothesis
-tests][glossary-hypothesis-test] on the estimated coefficients.
+testing][glossary-hypothesis-testing] on the estimated coefficients.
 
 The most common hypothesis test involves testing the [null
 hypothesis][glossary-null-hypothesis] that states
@@ -234,8 +235,9 @@ association between the predictor and the response if sufficiently small.
 
 Once the null hypothesis has been rejected, it may be desirable to quantify to
 what extent the model fits the data. The quality of a linear regression model is
-typically assessed using residual standard error (RSE) and the $$ R^2 $$
-statistic.
+typically assessed using [residual standard
+error][glossary-residual-standard-error] (RSE) and the [$$ R^{2} $$
+statistic][glossary-r-squared-statistic] statistic.
 
 The residual standard error is an estimate of the standard deviation of $$
 \epsilon $$, the irreducible error.
@@ -251,12 +253,12 @@ $$ \normalsize \mathrm{RSE} = \sqrt{\frac{1}{n-2}\mathrm{RSS}} =
 The residual standard error is a measure of the lack of fit of the model to the
 data. When the values of $$ y_{i} \approx \hat{y}_{i} $$, the RSE will be small
 and the model will fit the data well. Conversely, if $$ y_{i} \ne \hat{y_{i}} $$
-for some values, the RSE may be large, indiating that the model doesn't fit the
+for some values, the RSE may be large, indicating that the model doesn't fit the
 data well.
 
 The RSE provides an absolute measure of the lack of fit of the model in the
 units of $$ Y . $$ This can make it difficult to know what constitutes a good
-RSE.
+RSE value.
 
 The [$$ R^{2} $$ statistic][glossary-r-squared-statistic] is an alternative
 measure of fit that takes the form of a proportion. The $$ R^{2} $$ statistic
@@ -274,19 +276,20 @@ $$ \normalsize \mathrm{RSS} = \sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^{2} $$
 
 and
 
-$$ \normalsize \mathrm{TSS} = \sum_{i=1}^{n}(y_{i} - \bar{y}_{i})^{2} $$
+$$ \normalsize \mathrm{TSS} = \sum_{i=1}^{n}(y_{i} - \bar{y}_{i})^{2} . $$
 
-The total sum of squares, TSS, measures the total variance in the response $$ Y
-. $$ The TSS can be thought of as the total variability in the response before
-applying linear regression. Conversely, the residual sum of squares, RSS,
-measures the amount of variability left after performing the regression.
+The [total sum of squares][glossary-total-sum-of-squares], TSS, measures the
+total variance in the response $$ Y . $$ The TSS can be thought of as the total
+variability in the response before applying linear regression. Conversely, the
+residual sum of squares, RSS, measures the amount of variability left after
+performing the regression.
 
 Ergo, $$ TSS - RSS $$ measures the amount of variability in the response that is
 explained by the model. $$ R^{2} $$ measures the proportion of variability in $$
 Y $$ that can be explained by $$ X . $$ An $$ R^{2} $$ statistic close to $$ 1 $$
 indicates that a large portion of the variability in the response is explained
-by the model. An $$ R^{2} $$ near $$ 0 $$ indicates that the model accounted for
-very little of the variability of the model.
+by the model. An $$ R^{2} $$ value near $$ 0 $$ indicates that the model
+accounted for very little of the variability of the model.
 
 An $$ R^{2} $$ value near $$ 0 $$ may occur because the linear model is wrong
 and/or because the inherent $$ \sigma^{2} $$ is high.
@@ -312,8 +315,8 @@ it can be shown that $$ R^{2} = r^{2} . $$ More concisely, for simple linear
 regression, the squared correlation and the $$ R^{2} $$ statistic are
 equivalent. Though this is the case for simple linear regression, correlation
 does not extend to multiple linear regression since correlation quantifies the
-association between a single pair of variables. $$ R^{2} $$ can, however, be
-applied to multiple regression.
+association between a single pair of variables. The $$ R^{2} $$ statistic can,
+however, be applied to multiple regression.
 
 ### Multiple Regression
 
@@ -326,25 +329,25 @@ $$ \normalsize Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \ldots +
 Multiple linear regression extends simple linear regression to accommodate
 multiple predictors.
 
-$$ X_{j} $$ represents the $$ j $$th predictor and $$ \beta_{j} $$ represents
+$$ X_{j} $$ represents the $$ j \text{th} $$ predictor and $$ \beta_{j} $$ represents
 the average effect of a one-unit increase in $$ X_{j} $$ on $$ Y $$, holding all
 other predictors fixed.
 
 #### Estimating Multiple Regression Coefficients
 
-Because the coefficients $$ \beta_{0}, \beta_{1}, \beta_{2}, \ldots, \beta_{p} $$
-are unknown, it is necessary to estimate their values. Given estimates of $$
-\hat{\beta_{0}}, \hat{\beta_{1}}, \hat{\beta_{2}}, \ldots, \hat{\beta_{p}} $$,
-estimates can be made using the formula below
+Because the coefficients $$ \beta_{0}, \beta_{1}, \ldots, \beta_{p} $$ are
+unknown, it is necessary to estimate their values. Given estimates of $$
+\hat{\beta_{0}}, \hat{\beta_{1}}, \ldots, \hat{\beta_{p}} $$, estimates can be
+made using the formula below
 
 $$ \normalsize \hat{y} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{1} + \hat{\beta_{2}}x_{2} +
 \ldots + \hat{\beta_{p}}x_{p} $$
 
-The parameters $$ \hat{\beta_{0}}, \hat{\beta_{1}}, \hat{\beta_{2}}, \ldots,
-\hat{\beta_{p}} $$ can be estimated using the same least squares strategy as was
-employed for simple linear regression. Values are chosen for the parameters $$
-\hat{\beta_{0}}, \hat{\beta_{1}}, \hat{\beta_{2}}, \ldots, \hat{\beta_{p}} $$ such
-that the residual sum of squares is minimized
+The parameters $$ \hat{\beta_{0}}, \hat{\beta_{1}}, \ldots, \hat{\beta_{p}} $$
+can be estimated using the same least squares strategy as was employed for
+simple linear regression. Values are chosen for the parameters $$
+\hat{\beta_{0}}, \hat{\beta_{1}}, \ldots, \hat{\beta_{p}} $$ such that the
+residual sum of squares is minimized
 
 $$ \normalsize RSS = \sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^{2} =
 \sum_{i=1}^{n}(y_{i} - \hat{\beta_{0}} - \hat{\beta_{1}}x_{1} -
@@ -428,7 +431,7 @@ in the absence of any true association between the predictors and the response.
 
 In contrast, the F-statistic does not suffer from this problem because it
 adjusts for the number of predictors. The F-statistic is not infallible and when
-the null hypothesis is true the F-statisistc can still result in p-values below
+the null hypothesis is true the F-statistic can still result in p-values below
 $$ 0.05 $$ about 5% of the time regardless of the number of predictors or the
 number of observations.
 
@@ -443,7 +446,7 @@ squares will not work, and similarly, the F-statistic cannot be used either.
 Once it has been established that at least one of the predictors is associated
 with the response, the question remains, _which_ of the predictors is related to
 the response? The process of removing extraneous predictors that don't relate to
-the response is called [variable-selection][glossary-variable-selection].
+the response is called [variable selection][glossary-variable-selection].
 
 Ideally, the process of variable selection would involve testing many different
 models, each with a different subset of the predictors, then selecting the best
@@ -451,7 +454,7 @@ model of the bunch, with the meaning of "best" being derived from various
 statistical methods.
 
 Regrettably, there are a total of $$ 2^{p} $$ models that contain subsets of $$
-p $$ predictors. Because of this, an efficient an automated means of choosing a
+p $$ predictors. Because of this, an efficient and automated means of choosing a
 smaller subset of models is needed. There are a number of statistical approaches
 to limiting the range of possible models.
 
@@ -494,8 +497,9 @@ response. This happens because adding another variable to the least squares
 equation will always yield a closer fit to the training data, though it won't
 necessarily yield a closer fit to the test data.
 
-Residual standard error, RSE, can also be used to assess the fit of a multiple
-linear regression model. In general, RSE can be calculated as
+[Residual standard error][glossary-residual-standard-error], RSE, can also be
+used to assess the fit of a multiple linear regression model. In general, RSE
+can be calculated as
 
 $$ \normalsize RSE = \sqrt{\frac{\mathrm{RSS}}{n - p - 1}} $$
 
@@ -516,8 +520,8 @@ plugging the coefficients and predictor values into the multiple linear model
 $$ \normalsize \hat{y} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{1} +
 \hat{\beta_{2}}x_{2} + \ldots + \hat{\beta_{p}}x_{p} . $$
 
-However it should be noted that these predictions will be subject to three types
-of uncertainty.
+However, it should be noted that these predictions will be subject to three
+types of uncertainty.
 
 1. The coefficient estimates, $$ \hat{\beta}_{0}, \hat{\beta}_{1}, \ldots,
 \hat{\beta}_{p}, $$ are only estimates of the actual coefficients $$ \beta_{0},
@@ -534,7 +538,7 @@ non-linear surface.
 3. Even in the case where $$ f(X) $$ and the true values of the
 coefficients, $$ \beta_{0}, \ldots,, \beta_{p} $$ are known, the response value
 cannot be predicted exactly because of the random, irreducible error $$ \epsilon
-$$, in the model. How much $$ \hat{Y} $$ will vary from $$ Y $$ can be
+$$, in the model. How much $$ \hat{Y} $$ will tend to vary from $$ Y $$ can be
 determined using prediction intervals.
 
 Prediction intervals will always be wider than confidence intervals because they
@@ -649,7 +653,7 @@ one-unit change in $$ X_{j} $$ is constant regardless of the value of $$ X_{j}
 
 The additive assumption ignores the possibility of an interaction between
 predictors. One way to account for an interaction effect is to include an
-additional predictor, called an [interaction-term][glossary-interaction-term],
+additional predictor, called an [interaction term][glossary-interaction-term],
 that computes the product of the associated predictors.
 
 ##### Modeling Predictor Interaction
@@ -665,14 +669,14 @@ $$ \beta_{3} $$ can be interpreted as the increase in effectiveness of $$
 
 It is sometimes possible for an interaction term to have a very small p-value
 while the associated main effects, $$ X_{1}, X_{2}, etc. $$, do not. Even in
-such a scenario we should continue to include the main effects.
+such a scenario the main effects should still be included in the model due to
+the [hierarchical principle][glossary-hierarchical-principle].
 
-The [hierarchical principle][glossary-hierarchical-principle] states that, when
-an interaction term is included in the model, the main effects should also be
-included, even if the p-values associated with their coefficients are not
-significant. The reason for this is that $$ X_{1}X_{2} $$ is often correlated
-with $$ X_{1} $$ and $$ X_{2} $$ and removing them tends to change the meaning
-of the interaction.
+The hierarchical principle states that, when an interaction term is included in
+the model, the main effects should also be included, even if the p-values
+associated with their coefficients are not significant. The reason for this is
+that $$ X_{1}X_{2} $$ is often correlated with $$ X_{1} $$ and $$ X_{2} $$ and
+removing them tends to change the meaning of the interaction.
 
 If $$ X_{1}X_{2} $$ is related to the response, then whether or not the
 coefficient estimates of $$ X_{1} $$ or $$ X_{2} $$ are exactly zero is of
@@ -720,7 +724,7 @@ $$ \normalsize Y_{i} = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{1}^{2} +
 \epsilon $$
 
 This extension of the linear model to accommodate non-linear relationships is
-called polynomial regression.
+called [polynomial regression][glossary-polynomial-regression].
 
 #### Common Problems with Linear Regression
 
@@ -737,14 +741,19 @@ If the true relationship between the response and predictors is far from linear,
 then virtually all conclusions that can be drawn from the model are suspect and
 prediction accuracy can be significantly reduced.
 
-Residual plots are a useful graphical tool for identifying non-linearity. For
-simple linear regression this consists of graphing the residuals, $$ e_{i} =
-y_{i} - \hat{y}_{i} $$ versus the predicted or fitted values of $$ \hat{y}_{i} .
-$$
+[Residual plots][glossary-residual-plot] are a useful graphical tool for
+identifying non-linearity. For simple linear regression this consists of
+graphing the residuals, $$ e_{i} = y_{i} - \hat{y}_{i} $$ versus the predicted
+or fitted values of $$ \hat{y}_{i} .  $$
 
 If a residual plot indicates non-linearity in the model, then a simple approach
 is to use non-linear transformations of the predictors, such as $$ \log{x} $$,
 $$ \sqrt{x} $$, or $$ x^{2} $$, in the regression model.
+
+![Residual plot for linear and quadratic fits of same data set][graph-residual-plot]
+
+The example residual plots above suggest that a quadratic fit may be more
+appropriate for the model under scrutiny.
 
 ##### 2. Correlation of error terms
 
@@ -759,9 +768,10 @@ associated with the model will be lower than they should be. In other words,
 correlated error terms can make a model appear to be stronger than it really is.
 
 Correlations in error terms can be the result of time series data, unexpected
-observation relationships and other environmental factors. Observations that are
-obtained at adjacent time points will often have positively correlated errors.
-Good experiment design is crucial to limiting correlated error terms.
+observation relationships, and other environmental factors. Observations that
+are obtained at adjacent time points will often have positively correlated
+errors. Good experiment design is also a crucial factor in limiting correlated
+error terms.
 
 ##### 3. Non-constant variance of error terms
 
@@ -821,7 +831,7 @@ regression, it is possible to have an observation for which each individual
 predictor's values are well within the expected range, but that is unusual in
 terms of the combination of the full set of predictors.
 
-To qualify an observations leverage, the leverage statistic can be computed.
+To qualify an observation's leverage, the leverage statistic can be computed.
 
 A large leverage statistic indicates an observation with high leverage.
 
@@ -889,8 +899,9 @@ average.
 
 #### Parametric Methods Versus Non-Parametric Methods
 
-A non-parametric method akin to linear regression is k-nearest neighbors
-regression which is closely related to the k-nearest neighbors classifier.
+A non-parametric method akin to linear regression is [k-nearest neighbors
+regression][glossary-k-nearest-neighbors-regression] which is closely related to
+the k-nearest neighbors classifier.
 
 Given a value for $$ K $$ and a prediction point $$ x_{0} $$, k-nearest
 neighbors regression first identifies the $$ K $$ observations that are closest
@@ -909,13 +920,14 @@ $$
 When the true relationship is linear, it is difficult for a non-parametric
 approach to compete with linear regression because the non-parametric approach
 incurs a cost in variance that is not offset by a reduction in bias.
-Additionally, in higher dimensions, KNN often performs worse than linear
-regression. This is often due to combining too small an $$ n $$ with too large a
-$$ p $$, resulting in a given observation having no nearby neighbors. This is
-often called the [curse of dimensionality][glossary-curse-of-dimensionality]. In
-other words, the $$ K $$ observations nearest to an observation may be far away
-from $$ x_{0} $$ in a $$ p $$-dimensional space when p is large, leading to a
-poor prediction of $$ f(x_{0}) $$ and a poor KNN fit.
+Additionally, in higher dimensions, K-nearest neighbors regression often
+performs worse than linear regression. This is often due to combining too small
+an $$ n $$ with too large a $$ p $$, resulting in a given observation having no
+nearby neighbors. This is often called the [curse of
+dimensionality][glossary-curse-of-dimensionality]. In other words, the $$ K $$
+observations nearest to an observation may be far away from $$ x_{0} $$ in a $$
+p $$-dimensional space when $$ p $$ is large, leading to a poor prediction of $$
+f(x_{0}) $$ and a poor K-nearest neighbors regression fit.
 
 As a general rule, parametric models will tend to outperform non-parametric
 models when there are only a small number of observations per predictor.
@@ -937,10 +949,11 @@ models when there are only a small number of observations per predictor.
 [glossary-heteroscedasticity]: glossary#heteroscedasticity "stats-learning-notes -- Glossary - Heteroscedasticity"
 [glossary-high-leverage]: glossary#high-leverage "stats-learning-notes -- Glossary - High Leverage"
 [glossary-hierarchical-principle]: glossary#hierarchical-principle "stats-learning-notes -- Glossary - Hierarchical Principle"
-[glossary-hypothesis-test]: glossary#hypothesis-test "stats-learning-notes -- Glossary - Hypothesis Test"
+[glossary-hypothesis-testing]: glossary#hypothesis-testing "stats-learning-notes -- Glossary - Hypothesis Testing"
 [glossary-indicator-variable]: glossary#indicator-variable "stats-learning-notes -- Glossary - Indicator Variable"
 [glossary-interaction-term]: glossary#interaction-term "stats-learning-notes -- Glossary - Interaction Term"
 [glossary-intercept]: glossary#intercept "stats-learning-notes -- Glossary - Intercept"
+[glossary-k-nearest-neighbors-regression]: glossary#k-nearest-neighbors-regression "stats-learning-notes -- Glossary - K-Nearest Neighbors Regression"
 [glossary-least-squares-line]: glossary#least-squares-line "stats-learning-notes -- Glossary - Least Squares Line"
 [glossary-mixed-selection]: glossary#mixed-selection "stats-learning-notes -- Glossary - Mixed Selection"
 [glossary-multicollinearity]: glossary#multicollinearity "stats-learning-notes -- Glossary - Multicollinearity"
@@ -950,11 +963,13 @@ models when there are only a small number of observations per predictor.
 [glossary-null-model]: glossary#null-model "stats-learning-notes -- Glossary - Null Model"
 [glossary-p-value]: glossary#p-value "stats-learning-notes -- Glossary - P-Value"
 [glossary-parameter]: glossary#parameter "stats-learning-notes -- Glossary - Parameter"
+[glossary-polynomial-regression]: glossary#polynomial-regression "stats-learning-notes -- Glossary - Polynomial Regression"
 [glossary-population-regression-line]: glossary#population-regression-line "stats-learning-notes -- Glossary - Population Regression Line"
 [glossary-prediction-interval]: glossary#prediction-interval "stats-learning-notes -- Glossary - Prediction Interval"
 [glossary-outlier]: glossary#outlier "stats-learning-notes -- Glossary - Outlier"
 [glossary-r-squared-statistic]: glossary#r-squared-statistic "stats-learning-notes -- Glossary - R-Squared Statistic"
 [glossary-residual]: glossary#residual "stats-learning-notes -- Glossary - Residual"
+[glossary-residual-plot]: glossary#residual-plot "stats-learning-notes -- Glossary - Residual Plot"
 [glossary-residual-standard-error]: glossary#residual-standard-error "stats-learning-notes -- Glossary - Residual Standard Error"
 [glossary-residual-sum-of-squares]: glossary#residual-sum-of-squares "stats-learning-notes -- Glossary - Residual Sum of Squares"
 [glossary-simple-linear-regression]: glossary#simple-linear-regression "stats-learning-notes -- Glossary - Simple Linear Regression"
@@ -963,10 +978,12 @@ models when there are only a small number of observations per predictor.
 [glossary-studentized-residual]: glossary#studentized-residual "stats-learning-notes -- Glossary - Studentized Residual"
 [glossary-t-distribution]: glossary#t-distribution "stats-learning-notes -- Glossary - T-Distribution"
 [glossary-t-statistic]: glossary#t-statistic "stats-learning-notes -- Glossary - T-Statistic"
+[glossary-total-sum-of-squares]: glossary#total-sum-of-squares "stats-learning-notes -- Glossary - Total Sum of Squares"
 [glossary-unbiased-estimator]: glossary#unbiased-estimator "stats-learning-notes -- Glossary - Unbiased Estimator"
 [glossary-variable-selection]: glossary#variable-selection "stats-learning-notes -- Glossary - Variable Selection"
 [glossary-variance-inflation-factor]: glossary#variance-inflation-factor "stats-learning-notes -- Glossary - Variance Inflation Factor"
 [graph-residual-funnel]: images/residual-funnel.jpg "Residual plot with funnel shape due to non-constant variance of error terms"
+[graph-residual-plot]: images/residual-plot.jpg "Residual plots for linear and quadratic fits of same data set"
 [chapter-02-statistical-learning]: chapter-02-statistical-learning "stats-learning-notes -- Chapter 2 - Statistical Learning"
 [chapter-03-linear-regression]: chapter-03-linear-regression "stats-learning-notes -- Chapter 3 - Linear Regression"
 [chapter-04-classification]: chapter-04-classification "stats-learning-notes -- Chapter 4 - Classification"

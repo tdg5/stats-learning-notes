@@ -5,8 +5,8 @@ use_math: true
 
 ## [Chapter 2 - Statistical Learning][chapter-02-statistical-learning]
 
-[Inputs][glossary-input], also known as predictors, independent variables, features, or more
-generally, variables.
+[Inputs][glossary-input], also known as predictors, independent variables,
+features, or more generally, variables.
 
 [Outputs][glossary-output], also known as response or dependent variable.
 
@@ -16,7 +16,7 @@ predictors $$ x_{1}, x_{2}, \ldots, x_{p} . $$ The assumed relationship between 
 
 $$ \normalsize {Y} = f(X) + \epsilon $$
 
-where $$ {f} $$ is some fixed, but unknown function of $$ {X} $$ and $$ \epsilon
+where $$ f $$ is some fixed, but unknown function of $$ X $$ and $$ \epsilon
 $$ is a random [error term][glossary-irreducible-error] that is independent of
 $$ {X} $$ and has a mean of zero. In such a scenario, $$ f $$ represents the
 systematic information that $$ X $$ provides about $$ Y . $$
@@ -36,23 +36,21 @@ always unknown.
 
 ### Estimating $$ {f} $$
 
-#### Model Interpretability vs. Prediction Accuracy Trade-Off
-
-##### Parametric Methods
+#### Parametric Methods
 
 [Parametric methods][glossary-parametric-methods] utilize a two-step model-based
 approach.
 
 1. First, make an assumption about the functional nature, or shape, of $$ {f} .
-$$ For example, assume that $$ {f} $$ is linear, yielding a linear model.  2.
-Once a model has been selected, use training data to fit, or train, the model.
+$$ For example, assume that $$ {f} $$ is linear, yielding a linear model.
+2.  Once a model has been selected, use training data to fit, or train, the model.
 In the case of a linear model of the form
 
 $$ \normalsize f(x) = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \ldots +
-\beta_{p}x_{p}, $$
+\beta_{p}x_{p} , $$
 
-the training procedure should yield estimates for the parameters $$ \beta_{0},
-\beta_{1}, \beta_{2}, \ldots, \beta_{p} $$ such that
+the training procedure should yield estimates for the parameters $$ \beta_{0},\
+\beta_{1},\ \ldots,\ \beta_{p} $$ such that
 
 $$ \normalsize {Y} \approx f({X}) \approx \beta_{0} + \beta_{1}x_{1} +
 \beta_{2}x_{2} + \ldots + \beta_{p}x_{p}. $$
@@ -83,11 +81,11 @@ assumptions about $$ f $$ and instead seek to estimate $$ f $$ by getting as
 close to the data points as possible without being too coarse or granular,
 preferring smoothness instead.
 
-[Non-parametric][glossary-non-parametric-methods] approaches can fit a wider
-range of possible shapes for $$ {f} $$ since essentially no assumptions about
-the form of $$ {f} $$ are made. However, since non-parametric approaches don't
-simplify the problem of estimating $$ {f} $$, they tend to require a very large
-number of observations to accurately estimate $$ {f} . $$
+[Non-parametric][glossary-non-parametric] approaches can fit a wider
+range of possible shapes for $$ f $$ since essentially no assumptions about
+the form of $$ f $$ are made. However, since non-parametric approaches don't
+simplify the problem of estimating $$ f $$, they tend to require a very large
+number of observations to accurately estimate $$ f . $$
 
 A thin-plate spline is one example of a non-parametric method.
 
@@ -139,8 +137,8 @@ regression setting.
 
 Mean squared error is defined as
 
-$$ \normalsize \frac{1}{n} \sum_{i=1}^{n} \lgroup y_i - \hat{f}(x_{i}) \rgroup
-^{2} $$
+$$ \normalsize \frac{1}{n} \sum_{i=1}^{n} \big \lgroup y_i - \hat{f}(x_{i}) \big
+\rgroup ^{2} $$
 
 The mean squared error will be small when the predicted responses are close to
 the true responses and large if there's a substantial difference between the
@@ -182,7 +180,7 @@ $$ \normalsize \mathrm{E} \lgroup y_{i} - \hat{f}(x_{i}) \rgroup^2 =
 [\mathrm{Bias} \lgroup\hat{f}(x_{i})\rgroup]^2 +
 \mathrm{Var}(\epsilon). $$
 
-To minimize expected test error, it's necessary to choose a method that achieves
+To minimize the expected test error, it's necessary to choose a method that achieves
 both low variance and low bias. It can be seen that the expected test mean
 squared error can never be less than $$ \mathrm{Var}(\epsilon) $$, the
 irreducible error.
@@ -206,9 +204,9 @@ a low variance and a low squared bias.
 #### Assessing Classification Accuracy
 
 In classification scenarios, the most common means of quantifying the accuracy
-of $$ \hat{f} $$ is the training error rate. The training error rate is the
-proportion of errors that are made when applying $$ \hat{f} $$ to the training
-observations. Formally stated as,
+of $$ \hat{f} $$ is the [training error rate][glossary-training-error-rate]. The
+training error rate is the proportion of errors that are made when applying $$
+\hat{f} $$ to the training observations. Formally stated as,
 
 $$ \normalsize \frac{1}{n} \sum_{i=1}^{n} \mathrm{I}(y_{i} \neq \hat{y}) $$
 
@@ -232,9 +230,9 @@ vector $$ x_{0} $$ to the class $$ j $$ for which
 
 $$ \normalsize \mathrm{Pr}(Y=j|X=x_{0}) $$
 
-is largest. That is, the conditional probability that $$ Y=j $$, given the
-observed predictor vector $$ x_{0} . $$ This classifier is called the [Bayes
-Classifier][glossary-bayes-classifier].
+is largest. That is, the class for which the conditional probability that $$ Y=j
+$$, given the observed predictor vector $$ x_{0} , $$ is largest. This classifier
+is called the [Bayes classifier][glossary-bayes-classifier].
 
 In a two-class scenario, this can be restated as $$ \mathrm{Pr}(Y=1|X=x_{0}) >
 0.5 $$ matching class A when true and class B when false.
@@ -258,20 +256,20 @@ unknown, so the Bayes classifier is most often unattainable.
 
 Many modeling techniques try to compute the conditional distribution of $$ Y $$
 given $$ X $$ and then provide estimated classifications based on the highest
-estimated probability. [K-Nearest Neighbors][glossary-k-nearest-neighbors] is
-one such method.
+estimated probability. The [K-nearest neighbors
+classifier][glossary-k-nearest-neighbors-classifier] is one such method.
 
-The K-Nearest Neighbor classifier takes a positive integer $$ K $$ and first
-identifies the $$ K $$ points that are nearest to $$ x_{0} $$, represented by $$
-N_{0} . $$ It next estimates the conditional probability for class $$ j $$
-based on the fraction of points in $$ N_{0} $$ who have a response equal to
-$$ j . $$ Formally, the estimated conditional probability can be stated as
+The K-nearest neighbors classifier takes a positive integer $$ K $$ and first
+identifies the $$ K $$ points that are nearest to $$ x_{0} , $$ represented by
+$$ N_{0} . $$ It next estimates the conditional probability for class $$ j $$
+based on the fraction of points in $$ N_{0} $$ who have a response equal to $$ j
+. $$ Formally, the estimated conditional probability can be stated as
 
 $$ \normalsize \mathrm{Pr}(Y=j|X=x_{0}) =
 \frac{1}{k} \sum_{i \in N_{0}}\mathrm{I}(y_{i}=j) $$
 
-The K-Nearest Neighbor classifier then applies Bayes rule and yields the
-classification with the highest probability.
+The K-Nearest Neighbor classifier then applies [Bayes rule][glossary-bayes-rule]
+and yields the classification with the highest probability.
 
 Despite its simplicity, the K-Nearest Neighbor classifier often yields results
 that are surprisingly close to the optimal Bayes classifier.
@@ -293,6 +291,7 @@ flexibility is critical to the success of the model.
 [glossary-bayes-classifier]: glossary#bayes-classifier "stats-learning-notes -- Glossary - Bayes Classifier"
 [glossary-bayes-decision-boundary]: glossary#bayes-decision-boundary "stats-learning-notes -- Glossary - Bayes Decision Boundary"
 [glossary-bayes-error-rate]: glossary#bayes-error-rate "stats-learning-notes -- Glossary - Bayes Error Rate"
+[glossary-bayes-rule]: glossary#bayes-rule "stats-learning-notes -- Glossary - Bayes Rule"
 [glossary-bias]: glossary#bias "stats-learning-notes -- Glossary - Bias"
 [glossary-bias-variance-trade-off]: glossary#bias-variance-trade-off "stats-learning-notes -- Glossary - Bias-Variance Trade-Off"
 [glossary-classification-problem]: glossary#classification-problem "stats-learning-notes -- Glossary - Classification Problem"
@@ -301,9 +300,9 @@ flexibility is critical to the success of the model.
 [glossary-error-term]: glossary#error-term "stats-learning-notes -- Glossary - Error Term"
 [glossary-input]: glossary#input "stats-learning-notes -- Glossary - Input"
 [glossary-irreducible-error]: glossary#irreducible-error "stats-learning-notes -- Glossary - Irreduicible Error"
-[glossary-k-nearest-neighbors]: glossary#k-nearest-neighbors "stats-learning-notes -- Glossary - K-Nearest Neighbors"
+[glossary-k-nearest-neighbors-classifier]: glossary#k-nearest-neighbors-classifier "stats-learning-notes -- Glossary - K-Nearest Neighbors Classifier"
 [glossary-mean-squared-error]: glossary#mean-squared-error "stats-learning-notes -- Glossary - Mean Squared Error"
-[glossary-non-parametric]: glossary#non-parametic "stats-learning-notes -- Glossary - Non-Parametric"
+[glossary-non-parametric]: glossary#non-parametric "stats-learning-notes -- Glossary - Non-Parametric"
 [glossary-non-parametric-methods]: glossary#non-parametic-methods "stats-learning-notes -- Glossary - Non-Parametric methods"
 [glossary-output]: glossary#output "stats-learning-notes -- Glossary - Output"
 [glossary-overfitting]: glossary#overfitting "stats-learning-notes -- Glossary - Overfitting"
@@ -314,6 +313,7 @@ flexibility is critical to the success of the model.
 [glossary-quantitative-value]: glossary#quantitative-value "stats-learning-notes -- Glossary - Quantitative Value"
 [glossary-supervised-learning]: glossary#supervised-learning "stats-learning-notes -- Glossary - Supervised Learning"
 [glossary-test-mean-squared-error]: glossary#test-mean-squared-error "stats-learning-notes -- Glossary - Test Mean Squared Error"
+[glossary-training-error-rate]: glossary#training-error-rate "stats-learning-notes -- Glossary - Training Error Rate"
 [glossary-training-mean-squared-error]: glossary#training-mean-squared-error "stats-learning-notes -- Glossary - Training Mean Squared Error"
 [glossary-unsupervised-learning]: glossary#unsupervised-learning "stats-learning-notes -- Glossary - Unsupervised Learning"
 [glossary-variance]: glossary#variance "stats-learning-notes -- Glossary - Variance"
