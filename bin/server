@@ -4,5 +4,6 @@ SCRIPT_PATH="`dirname \"$0\"`"
 ENV_FILE_PATH="$SCRIPT_PATH/../dev.env"
 
 test -e $ENV_FILE_PATH && source $ENV_FILE_PATH
+export JEKYLL_GITHUB_TOKEN
 jekyll build
 jekyll serve
