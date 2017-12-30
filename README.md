@@ -191,9 +191,9 @@
 
 ### Elements of Statistical Learning
 
-- [Co-Author Robert Tibshirani's ESL Website][robert-tibshirani-stanford-esl-site]
-- [Elements of Statistical Learning, 2nd Edition, 10th Printing PDF][elements-of-statistical-learning-2nd-edition-10th-printing-pdf-remote]
-  - [Local mirror][elements-of-statistical-learning-2nd-edition-10th-printing-pdf-local]
+- [Co-Author Trevor Hastie's ESL Website][stanford-esl-site]
+- [Elements of Statistical Learning, 2nd Edition, 12th Printing PDF][elements-of-statistical-learning-2nd-edition-12th-printing-pdf-remote]
+  - [Local mirror][elements-of-statistical-learning-2nd-edition-12th-printing-pdf-local]
 
 [gareth-james-usc-islr-site]: http://www-bcf.usc.edu/~gareth/ISL/index.html "An Introduction to Statistical Learning - USC.edu"
 [introduction-to-statistical-learning-6th-printing-pdf-local]: pdf/islr-6th-printing.pdf "An Introduction to Statistical Learning with Applications in R - Corrected 6th Printing PDF"
@@ -201,9 +201,9 @@
 [data-school-islr]: http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/ "In-depth introduction to machine learning in 15 hours of expert videos -- dataschool.io"
 [islr-cover]: images/ISLR.jpg "An Introduction to Statistical Learning with Applications in R Cover"
 
-[robert-tibshirani-stanford-esl-site]: https://statweb.stanford.edu/~tibs/ElemStatLearn/ "Elements of Statistical Learning -- stanford.edu"
-[elements-of-statistical-learning-2nd-edition-10th-printing-pdf-local]: pdf/esl-2nd-edition-10th-printing.pdf "Elements of Statistical Learning, 2nd Edition, 10th Printing PDF"
-[elements-of-statistical-learning-2nd-edition-10th-printing-pdf-remote]: http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf "Elements of Statistical Learning, 2nd Edition, 10th Printing PDF"
+[stanford-esl-site]: https://web.stanford.edu/~hastie/ElemStatLearn/ "Elements of Statistical Learning -- stanford.edu"
+[elements-of-statistical-learning-2nd-edition-12th-printing-pdf-local]: pdf/esl-2nd-edition-12th-printing.pdf "Elements of Statistical Learning, 2nd Edition, 12th Printing PDF"
+[elements-of-statistical-learning-2nd-edition-12th-printing-pdf-remote]: https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf "Elements of Statistical Learning, 2nd Edition, 12th Printing PDF"
 
 [islr-chapter-1-slides]: https://lagunita.stanford.edu/c4x/HumanitiesScience/StatLearning/asset/introduction.pdf "ISLR: Chapter 1 - Slides"
 [islr-chapter-1-slides-local]: pdf/islr-chapter-01-slides.pdf "ISLR: Chapter 1 - Slides"
