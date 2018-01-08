@@ -40,11 +40,16 @@ $$ \normalsize 1 - \mathrm{E} \lgroup \max_{j} \mathrm{Pr}(Y=j|X) \rgroup . $$
 The Bayes error rate can also be described as the ratio of observations that lie
 on the "wrong" side of the decision boundary.
 
-<a id="bayes-rule"></a>
-**[Bayes Rule][#bayes-rule]**:
-
 <a id="bayes-theorem"></a>
-**[Bayes Theorem][#bayes-theorem]**:
+**[Bayes Theorem][#bayes-theorem]**: Describes the probability of an event,
+based on prior knowledge of conditions that might be related to the event. Also
+known as Bayes' law or Bayes' rule.
+
+Bayes' theorem is stated mathematically as
+
+$$ P(A|B) = \frac{P(B|A)P(A)}{P(B)} $$
+
+where $$ A $$ and $$ B $$ are events and $$ P(B) $$ is greater than zero.
 
 <a id="bias"></a>
 **[Bias][#bias]**: The error that is introduced by approximating a potentially
@@ -108,7 +113,12 @@ of values such that there's a 95% chance that the range contains the true
 unknown value of the parameter.
 
 <a id="confounding"></a>
-**[Confounding][#confounding]**:
+**[Confounding][#confounding]**: In general, the scenario in which the result
+obtained with a single predictor does not match the result with multiple
+predictors, especially when there is correlation among the predictors. More
+specifically, confounding describes situations in which the experimental
+controls do not adequately allow for ruling out alternative explanations for the
+observed relationship between the predictors and the response.
 
 <a id="correlation"></a>
 **[Correlation][#correlation]**: A measure of the linear relationship between $$
@@ -136,8 +146,26 @@ grows exponentially with the dimensionality.
 the number of values in the model that are free to vary. The degrees of freedom
 is a quality that summarizes the flexibility of a curve.
 
+<a id="density-function"></a>
+**[Density Function][#density-function]**: A function whose value for any given
+sample in the sample space (the set of possible values taken by the random
+variable) can be interpreted as providing a relative likelihood that the value
+of the random variable would equal that sample.
+
+The density function of $$ X $$ for an observation that comes from the kth class
+is defined as
+
+$$ \normalsize f_{k}(X) = \mathrm{Pr}(X=x|Y=k) . $$
+
+This means that $$ f_{k}(X) $$ should be relatively large if there's a high
+probability that an observation from the kth class features $$ X = x . $$
+Conversely, $$ f_{k}(X) $$ will be relatively small if it is unlikely that an
+observation in class k would feature $$ X = x . $$
+
 <a id="discriminant-analysis"></a>
-**[Discriminant Analysis][#discriminant-analysis]**:
+**[Discriminant Analysis][#discriminant-analysis]**: An alternative to
+regression analysis applied to discrete dependent variables and concerned with
+separating sets of observed values into classes.
 
 <a id="dummy-variable"></a>
 **[Dummy Variable][#dummy-variable]**: A derived variable taking on a value of 0
@@ -357,8 +385,8 @@ estimated conditional probability can be stated as
 $$ \normalsize \mathrm{Pr}(Y=j|X=x_{0}) =
 \frac{1}{k} \sum_{i \in N_{0}}\mathrm{I}(y_{i}=j) $$
 
-The K-Nearest Neighbor classifier then applies [Bayes rule][#bayes-rule] and
-yields the classification with the highest probability.
+The K-Nearest Neighbor classifier then applies [Bayes theorem][#bayes-theorem]
+and yields the classification with the highest probability.
 
 Despite its simplicity, the K-Nearest Neighbor classifier often yields results
 that are surprisingly close to the optimal Bayes classifier.
@@ -396,25 +424,100 @@ line][#population-regression-line], $$ \beta_{0} $$ and $$ \beta_{1} . $$
 **[Leave-One-Out Cross Validation][#leave-one-out-cross-validation]**:
 
 <a id="likelihood-function"></a>
-**[Likelihood Function][#likelihood-function]**:
+**[Likelihood Function][#likelihood-function]**: A function often used to
+estimate parameters from a set of independent observations. For logistic
+regression a common likelihood function takes the form
+
+$$ \normalsize \ell(\beta_{0}, \beta_{1}) = \displaystyle
+\prod_{i:y_{i}=1}p(X_{i}) \times \displaystyle \prod_{j:y_{j}=0}(1-p(X_{j})) .
+$$
+
+Estimates for $$ \beta_{0} $$ and $$ \beta_{1} $$ are chosen so as to maximize
+this likelihood function for logistic regression.
 
 <a id="linear-discriminant-analysis"></a>
-**[Linear Discriminant Analysis][#linear-discriminant-analysis]**:
+**[Linear Discriminant Analysis][#linear-discriminant-analysis]**: While
+[logistic regression][#logistic-regression] models the conditional distribution of the response $$ Y $$
+given the predictor(s) $$ X , $$ linear discriminant analysis takes the approach
+of modeling the distribution of the predictor(s) $$ X $$ separately in each of
+the response classes , $$ Y $$, and then uses [Bayes'
+theorem][#bayes-theorem] to invert these probabilities to estimate the
+conditional distribution.
+
+Linear discriminant analysis is popular when there are more than two response
+classes. Beyond its popularity, linear discriminant analysis also benefits from
+not being susceptible to some of the problems that logistic regression suffers
+from:
+
+- The parameter estimates for logistic regression can be surprisingly unstable
+  when the response classes are well separated. Linear discriminant analysis
+  does not suffer from this problem.
+- Logistic regression is more unstable than linear discriminant analysis when $$
+  n $$ is small and the distribution of the predictors $$ X $$ is approximately
+  normal in each of the response classes.
 
 <a id="log-odds"></a>
-**[Log Odds][#log-odds]**:
+**[Log-Odds][#log-odds]**: Taking a logarithm of both sides of the [logistic
+odds][#odds] equation yields an equation for the log-odds or [logit][#logit],
+
+$$ \normalsize \mathrm{log} \bigg \lgroup \frac{p(X)}{1 - p(X)} \bigg \rgroup =
+\beta_{0} + \beta_{1}X $$
+
+Logistic regression has log-odds that are linear in terms of $$ X . $$
+
+The log-odds equation for multiple logistic regression can be expressed as
+
+$$ \normalsize p(X) = \frac{e^{\beta_{0} + \beta_{1}X_{1} + \ldots +
+\beta_{p}X_{p}}}{1 + e^{\beta_{0} + \beta_{1}X_{1} + \ldots + \beta_{p}X_{p}}} .
+$$
 
 <a id="logistic-function"></a>
-**[Logistic Function][#logistic-function]**:
+**[Logistic Function][#logistic-function]**: A function with a common "S" shaped
+Sigmoid curve guaranteed to return a value between $$ 0 $$ and $$ 1 $$. For
+[logistic regression][#logistic-regression], the logistic function takes the
+form
+
+$$ \normalsize p(X) = \frac{e^{\beta_{0} + \beta_{1}X}}{1 + e^{\beta_{0} +
+\beta_{1}X}} . $$
 
 <a id="logistic-regression"></a>
-**[Logistic Regression][#logistic-regression]**:
+**[Logistic Regression][#logistic-regression]**: A regression model where the
+dependent variable is categorical or qualitative. Logistic regression models the
+probability that $$ y $$ belongs to a particular category rather than modeling
+the response itself. Logistic regression uses a [logistic
+function][#logistic-function] to ensure a prediction between $$ 0 $$ and $$ 1 .
+$$
 
 <a id="logit"></a>
-**[Logit][#logit]**:
+**[Logit][#logit]**: Taking a logarithm of both sides of the [logistic
+odds][#odds] equation yields an equation for the [log-odds][#log-odds] or logit.
+
+$$ \normalsize \mathrm{log} \bigg \lgroup \frac{p(X)}{1 - p(X)} \bigg \rgroup =
+\beta_{0} + \beta_{1}X $$
+
+Logistic regression has log-odds that are linear in terms of $$ X . $$
 
 <a id="maximum-likelihood"></a>
-**[Maximum Likelihood][#maximum-likelihood]**:
+**[Maximum Likelihood][#maximum-likelihood]**: A strategy utilized by [logistic
+regression][#logistic-regression] to estimate regression coefficients.
+
+Maximum likelihood plays out like so: determine estimates for $$ \beta_{0} $$
+and $$ \beta_{1} $$ such that the predicted probability of $$ \hat{p}(x_{i}) $$
+corresponds with the observed classes as closely as possible. Formally, this
+yield an equation called a [likelihood function][#likelihood-function]:
+
+$$ \normalsize \ell(\beta_{0}, \beta_{1}) = \displaystyle
+\prod_{i:y_{i}=1}p(X_{i}) \times \displaystyle \prod_{j:y_{j}=0}(1-p(X_{j})) .
+$$
+
+Estimates for $$ \beta_{0} $$ and $$ \beta_{1} $$ are chosen so as to maximize
+this likelihood function.
+
+Linear regression's least squares approach is actually a special case of maximum
+likelihood.
+
+Maximum likelihood is also used to estimate $$ \beta_{0}, \beta_{1}, \ldots,
+\beta_{p} $$ in the case of multiple logistic regression.
 
 <a id="mean-squared-error"></a>
 **[Mean Squared Error][#mean-squared-error]**: A statistical method for
@@ -470,10 +573,32 @@ represents the average effect of a one-unit increase in $$ X_{j} $$ on $$ Y $$,
 holding all other predictors fixed.
 
 <a id="multiple-logistic-regression"></a>
-**[Multiple Logistic Regression][#multiple-logistic-regression]**:
+**[Multiple Logistic Regression][#multiple-logistic-regression]**: An extension
+of simple logistic regression that accommodates multiple predictors. Multiple
+logistic regression can be generalized as
+
+$$ \normalsize log \bigg \lgroup \frac{p(X)}{1 - p(X)} \bigg \rgroup = \beta_{0}
++ \beta_{1}X_{1} + \ldots + \beta_{p}X_{p} $$
+
+where $$ X = (X_{1}, X_{2}, \ldots, X_{p}) $$ are $$ p $$ predictors.
 
 <a id="multivariate-gaussian-distribution"></a>
-**[Multivariate Gaussian Distribution][#multivariate-gaussian-distribution]**:
+**[Multivariate Gaussian Distribution][#multivariate-gaussian-distribution]**: A
+generalization of the one-dimensional [Gaussian
+distribution][#gaussian-distribution] that assumes that each predictor follows a
+one-dimensional normal distribution with some correlation between the
+predictors. The more correlation between predictors, the more the bell shape of
+the normal distribution will be distorted.
+
+A p-dimensional variable X can be indicated to have a multivariate Gaussian
+distribution with the notation $$ X \sim N(\mu, \Sigma) $$ where $$ E(x) = \mu $$
+is the mean of $$ X $$ (a vector with p components) and $$ \mathrm{Cov}(X) =
+\Sigma $$ is the p x p covariance matrix of $$ X $$.
+
+Multivariate Gaussian density is formally defined as
+
+$$ \normalsize f(x) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}} \exp \big \lgroup
+-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x - \mu) \big \rgroup . $$
 
 <a id="non-parametric"></a>
 **[Non-Parametric][#non-parametric]**: Not involving any assumptions about the
@@ -495,8 +620,7 @@ Gaussian distribution.
 
 <a id="null-hypothesis"></a>
 **[Null Hypothesis][#null-hypothesis]**:
-The most common hypothesis test involves testing the [null
-hypothesis][glossary-null-hypothesis] that states
+The most common hypothesis test involves testing the null hypothesis that states
 
 $$ H_{0} $$: There is no relationship between $$ X $$ and $$ Y $$
 
@@ -518,6 +642,18 @@ confidence that $$ \beta_{1} $$ is non-zero.
 <a id="null-model"></a>
 **[Null Model][#null-model]**: In linear regression, a model that includes an
 intercept, but no predictors.
+
+<a id="odds"></a>
+**[Odds][#odds]**: The [logistic function][#logistic-function] can be rebalanced
+to yield
+
+$$ \normalsize \frac{p(X)}{1 - p(X)} = e^{\beta_{0} + \beta_{1}X} . $$
+
+$$ \frac{p(X)}{1 - p(X)} $$ is known as the odds and takes on a value between
+$$ 0 $$ and infinity.
+
+As an example, a probability of 1 in 5 yields odds of $$ \frac{1}{4} $$ since
+$$ \frac {0.2}{1 - 0.2} = \frac{1}{4} . $$
 
 <a id="outlier"></a>
 **[Outlier][#outlier]**: A point for which $$ y_{i} $$ is far from the value
@@ -593,7 +729,12 @@ describes the best linear approximation to the true relationship between $$ X $$
 and $$ Y $$ for the population.
 
 <a id="posterior-probability"></a>
-**[Posterior Probability][#posterior-probability]**:
+**[Posterior Probability][#posterior-probability]**: Taking into account the
+predictor value for a given observation, the probability that the observation
+belongs to the kth class of a qualitative variable $$ Y $$ that can take on $$ K
+\geq 2 $$ distinct, unordered values. More formally,
+
+$$ p_{k}(x) = \mathrm{Pr}(Y=k|X) . $$
 
 <a id="prediction-interval"></a>
 **[Prediction Interval][#prediction-interval]**: A measure of confidence in the
@@ -603,10 +744,36 @@ because they take into account the uncertainty associated with $$ \epsilon $$,
 the irreducible error.
 
 <a id="prior-probability"></a>
-**[Prior Probability][#prior-probability]**:
+**[Prior Probability][#prior-probability]**: The probability that a given
+observation is associated with the kth class of a qualitative variable $$ Y $$
+that can take on $$ K \geq 2 $$ distinct, unordered values.
 
 <a id="quadratic-discriminant-analysis"></a>
-**[Quadratic Discriminant Analysis][#quadratic-discriminant-analysis]**:
+**[Quadratic Discriminant Analysis][#quadratic-discriminant-analysis]**: An
+alternative approach to linear discriminant analysis that makes most of the same
+assumptions, except that quadratic discriminant analysis assumes that each class
+has its own covariance matrix. This amounts to assuming that an observation from
+the kth class has a distribution of the form
+
+$$ \normalsize X \sim N(\mu_{k}, \Sigma_{k}) $$
+
+where $$ \Sigma_{k} $$ is a covariance matrix for class $$ k $$.
+
+This yields a Bayes classifier that assigns an observation $$ X = x $$ to the
+class with the largest value for
+
+$$ \normalsize \delta_{k}(x) = - \frac{1}{2}(x - \mu_{k})^{T} \Sigma_{k}^{-1} (x
+- \mu_{k}) - \frac{1}{2} \log |\Sigma_{k}| + log \pi_{k} $$
+
+which is equivalent to
+
+$$ \normalsize \delta_{k}(x) = - \frac{1}{2}x^{T} \Sigma_{k}^{-1} + x^{T}
+\Sigma_{k}^{-1}\mu_{k} - \frac{1}{2}\mu_{k}^{T} \Sigma_{k}^{-1} \mu_{k} -
+\frac{1}{2} \log | \Sigma_{k} | + \log \pi_{k} . $$
+
+The quadratic discriminant analysis Bayes classifier gets its name from the fact
+that it is a quadratic function in terms of $$ x . $$
+
 
 <a id="qualitative-value"></a>
 **[Qualitative Value][#qualitative-value]**: A value expressed or expressible as
@@ -717,10 +884,24 @@ $$ \normalsize RSS = (y_{1} - \hat{\beta_{0}} - \hat{\beta_{1}}x_{1})^2 + (y_{2}
 - \hat{\beta_{1}}x_{n})^2 .$$
 
 <a id="roc-curve"></a>
-**[ROC Curve][#roc-curve]**:
+**[ROC Curve][#roc-curve]**: A useful graphic for displaying specificity and
+sensitivity error rates for all possible posterior probability thresholds. ROC
+is a historic acronym that comes from communications theory and stands for
+receiver operating characteristics.
+
+![Example ROC curve][roc-curve]
+
+The overall performance of a classifier summarized over all possible thresholds
+is quantified by the area under the ROC curve.
+
+A more ideal ROC curve will hold more tightly to the top left corner which, in
+turn, will increase the area under the ROC curve. A classifier that performs no
+better than chance will have an area under the ROC curve less than or equal to
+0.5 when evaluated against a test data set.
 
 <a id="sensitivity"></a>
-**[Sensitivity][#sensitivity]**:
+**[Sensitivity][#sensitivity]**: The percentage of observations correctly
+positively classified (true positives).
 
 <a id="simple-linear-regression"></a>
 **[Simple Linear Regression][#simple-linear-regression]**: A model that predicts
@@ -741,7 +922,8 @@ dependent variable, $$ Y , $$ for each one-unit increase in the dependent
 variable, $$ X . $$
 
 <a id="specificity"></a>
-**[Specificity][#specificity]**:
+**[Specificity][#specificity]**: The percentage of observations correctly
+negatively classified (true negatives).
 
 <a id="standard-error"></a>
 **[Standard Error][#standard-error]**: Roughly, describes the average amount
@@ -865,11 +1047,21 @@ regression of $$ X_{j} $$ onto all of the other predictors. If $$
 \mathrm{R}_{x_{j}|x_{-j}} $$ is close to one, the VIF will be large and
 collinearity is present.
 
+<a id="z-statistic"></a>
+**[Z-Statistic][#z-statistic]**: Similar to the [t-statistic][#t-statistic],
+logistic regression measures the accuracy of coefficient estimates using a
+quantity called the z-statistic.  The z-statistic for $$ \beta_{1} $$ is
+represented by
+
+$$ \normalsize \textrm{z-statistic}(\beta_{1}) =
+\frac{\hat{\beta}_{1}}{\mathrm{SE}(\hat{\beta}_{1})} $$
+
+A large z-statistic offers evidence against the null hypothesis.
+
 [#backwards-selection]: #backwards-selection "Backwards Selection"
 [#bayes-classifier]: #bayes-classifier "Bayes Classifier"
 [#bayes-decision-boundary]: #bayes-decision-boundary "Bayes Decision Boundary"
 [#bayes-error-rate]: #bayes-error-rate "Bayes Error Rate"
-[#bayes-rule]: #bayes-rule "Bayes Rule"
 [#bayes-theorem]: #bayes-theorem "Bayes Theorem"
 [#bias]: #bias "Bias"
 [#bias-variance-trade-off]: #bias-variance-trade-off "Bias-Variance Trade-Off"
@@ -884,6 +1076,7 @@ collinearity is present.
 [#cross-validation]: #cross-validation "Cross Validation"
 [#curse-of-dimensionality]: #curse-of-dimensionality "Curse of Dimensionality"
 [#degrees-of-freedom]: #degrees-of-freedom "Degrees of Freedom"
+[#density-function]: #density-function "Density Function"
 [#discriminant-analysis]: #discriminant-analysis "Discriminant Analysis"
 [#dummy-variable]: #dummy-variable "Dummy Variable"
 [#error-term]: #error-term "Error Term"
@@ -925,6 +1118,7 @@ collinearity is present.
 [#non-parametric-methods]: #non-parametric-methods "Non-Parametric Methods"
 [#null-hypothesis]: #null-hypothesis "Null Hypothesis"
 [#null-model]: #null-model "Null Model"
+[#odds]: #odds "Odds"
 [#output]: #output "Output"
 [#outlier]: #outlier "Outlier"
 [#overfitting]: #overfitting "Overfitting"
@@ -967,4 +1161,6 @@ collinearity is present.
 [#variable-selection]: #variable-selection "Variable Selection"
 [#variance]: #variance "Variance"
 [#variance-inflation-factor]: #variance-inflation-factor "Variance Inflation Factor"
+[#z-statistic]: #z-statistic "Z-Statistic"
 [graph-residual-plot]: images/residual-plot.jpg "Residual plots for linear and quadratic fits of same data set"
+[roc-curve]: images/ROC-curve.jpg "Example ROC curve"

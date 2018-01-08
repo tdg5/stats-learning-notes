@@ -268,8 +268,9 @@ based on the fraction of points in $$ N_{0} $$ who have a response equal to $$ j
 $$ \normalsize \mathrm{Pr}(Y=j|X=x_{0}) =
 \frac{1}{k} \sum_{i \in N_{0}}\mathrm{I}(y_{i}=j) $$
 
-The K-Nearest Neighbor classifier then applies [Bayes rule][glossary-bayes-rule]
-and yields the classification with the highest probability.
+The K-Nearest Neighbor classifier then applies [Bayes
+theorem][glossary-bayes-theorem] and yields the classification with the highest
+probability.
 
 Despite its simplicity, the K-Nearest Neighbor classifier often yields results
 that are surprisingly close to the optimal Bayes classifier.
@@ -291,7 +292,7 @@ flexibility is critical to the success of the model.
 [glossary-bayes-classifier]: glossary#bayes-classifier "stats-learning-notes -- Glossary - Bayes Classifier"
 [glossary-bayes-decision-boundary]: glossary#bayes-decision-boundary "stats-learning-notes -- Glossary - Bayes Decision Boundary"
 [glossary-bayes-error-rate]: glossary#bayes-error-rate "stats-learning-notes -- Glossary - Bayes Error Rate"
-[glossary-bayes-rule]: glossary#bayes-rule "stats-learning-notes -- Glossary - Bayes Rule"
+[glossary-bayes-theorem]: glossary#bayes-theorem "stats-learning-notes -- Glossary - Bayes Theorem"
 [glossary-bias]: glossary#bias "stats-learning-notes -- Glossary - Bias"
 [glossary-bias-variance-trade-off]: glossary#bias-variance-trade-off "stats-learning-notes -- Glossary - Bias-Variance Trade-Off"
 [glossary-classification-problem]: glossary#classification-problem "stats-learning-notes -- Glossary - Classification Problem"

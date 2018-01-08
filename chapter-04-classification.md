@@ -9,9 +9,10 @@ use_math: true
 
 ## [Chapter 4 - Classification][chapter-04-classification]
 
-Linear regression could be applied in the case of binary qualitative responses,
-but beyond two levels, choosing a coding scheme is problematic and different
-coding scheme can yield wildly different predictions.
+Though linear regression can be applied in the case of binary qualitative
+responses, difficulties arise beyond two levels. For example, choosing a coding
+scheme is problematic and different coding scheme can yield wildly different
+predictions.
 
 ### Logistic Regression
 
@@ -32,8 +33,8 @@ The logistic function can be rebalanced to yield
 
 $$ \normalsize \frac{p(X)}{1 - p(X)} = e^{\beta_{0} + \beta_{1}X} $$
 
-$$ \frac{p(X)}{1 - p(X)} $$ is known as the odds and takes on a value between
-$$ 0 $$ and infinity.
+$$ \frac{p(X)}{1 - p(X)} $$ is known as the [odds][glossary-odds] and takes on a
+value between $$ 0 $$ and infinity.
 
 As an example, a probability of 1 in 5 yields odds of $$ \frac{1}{4} $$ since
 $$ \frac {0.2}{1 - 0.2} = \frac{1}{4} .$$
@@ -64,7 +65,7 @@ value of $$ X $$.
 Logistic regression uses a strategy called [maximum
 likelihood][glossary-maximum-likelihood] to estimate regression coefficients.
 
-Maximum likelihood plays out like so, determine estimates for $$ \beta_{0} $$
+Maximum likelihood plays out like so: determine estimates for $$ \beta_{0} $$
 and $$ \beta_{1} $$ such that the predicted probability of $$ \hat{p}(x_{i}) $$
 corresponds with the observed classes as closely as possible. Formally, this
 yield an equation called a [likelihood function][glossary-likelihood-function]:
@@ -111,8 +112,8 @@ In general, the estimated intercept, $$ \hat{\beta}_{0} , $$ is of limited
 interest since it mainly captures the ratio of positive and negative
 classifications in the given data set.
 
-Similar to linear regression, dummy variables can be used to accommodate
-qualitative predictors.
+Similar to linear regression, [dummy variables][glossary-dummy-variable] can be
+used to accommodate qualitative predictors.
 
 #### Multiple Logistic Regression
 
@@ -175,8 +176,8 @@ distinct, unordered values, the [prior probability][glossary-prior-probability]
 describes the probability that a given observation is associated with the kth
 class of the response variable $$ Y . $$
 
-The density function of $$ X $$ for an observation that comes from the kth class
-is defined as
+The [density function][glossary-density-function] of $$ X $$ for an observation
+that comes from the kth class is defined as
 
 $$ \normalsize f_{k}(X) = \mathrm{Pr}(X=x|Y=k) . $$
 
@@ -218,8 +219,8 @@ by
 $$ \normalsize f_{k}(X) = \frac{1}{\sqrt{2\pi}\sigma_{k}}\exp \big \lgroup
 -\frac{1}{2\sigma_{k}^{2}}(x-\mu_{k})^{2} \big \rgroup $$
 
-where $$ \mu_{k} $$ is the mean paramter for the kth class and $$ \sigma_{k}^{2}
-$$ is the variable parameter for the kth class.
+where $$ \mu_{k} $$ is the mean parameter for the kth class and $$
+\sigma_{k}^{2} $$ is the variable parameter for the kth class.
 
 The density function can be further simplified by assuming that the variance
 terms, $$ \sigma_{1}^{2}, \ldots, \sigma_{k}^{2} , $$ are all equal in which
@@ -342,8 +343,8 @@ Since, even in the multivariate case, the linear discriminant analysis decision
 rule relates to $$ X $$ in a linear fashion, the name linear discriminant
 analysis holds.
 
-As with other methods, the higher the ratio of parameters, p, to number of
-samples, n, the more likely overfitting will occur.
+As with other methods, the higher the ratio of parameters, $$ p $$, to number of
+samples, $$ n $$, the more likely overfitting will occur.
 
 In general, binary classifiers are subject to two kinds of error: false
 positives and false negatives. A confusion matrix can be a useful way to display
@@ -484,6 +485,8 @@ analysis.
 [glossary-bayes-theorem]: glossary#bayes-theorem "stats-learning-notes -- Glossary - Bayes Theorem"
 [glossary-confounding]: glossary#confounding "stats-learning-notes -- Glossary - Confounding"
 [glossary-discriminant-analysis]: glossary#discriminant-analysis "stats-learning-notes -- Glossary - Discriminant Analysis"
+[glossary-density-function]: glossary#density-function "stats-learning-notes -- Glossary - Density Function"
+[glossary-dummy-variable]: glossary#dummy-variable "stats-learning-notes -- Glossary - Dummy Variable"
 [glossary-gaussian-distribution]: glossary#gaussian-distribution "stats-learning-notes -- Glossary - Gaussian Distribution"
 [glossary-likelihood-function]: glossary#likelihood-function "stats-learning-notes -- Glossary - Likelihood Function"
 [glossary-linear-discriminant-analysis]: glossary#linear-discriminant-analysis "stats-learning-notes -- Glossary - Linear Discriminant Analysis"
@@ -495,10 +498,12 @@ analysis.
 [glossary-multiple-logistic-regression]: glossary#multiple-logistic-regression "stats-learning-notes -- Glossary - Multiple Logistic Regression"
 [glossary-multivariate-gaussian-distribution]: glossary#multivariate-gaussian-distribution "stats-learning-notes -- Glossary - Multivariate Gaussian Distribution"
 [glossary-normal-distribution]: glossary#normal-distribution "stats-learning-notes -- Glossary - Normal Distribution"
+[glossary-odds]: glossary#odds "stats-learning-notes -- Glossary - Odds"
 [glossary-posterior-probability]: glossary#posterior-probability "stats-learning-notes -- Glossary - Posterior Probability"
 [glossary-prior-probability]: glossary#prior-probability "stats-learning-notes -- Glossary - Prior Probability"
 [glossary-quadratic-discriminant-analysis]: glossary#quadratic-discriminant-analysis "stats-learning-notes -- Glossary - Quadratic Discriminant Analysis"
 [glossary-roc-curve]: glossary#roc-curve "stats-learning-notes -- Glossary - ROC Curve"
 [glossary-sensitivity]: glossary#sensitivity "stats-learning-notes -- Glossary - Sensitivity"
 [glossary-specificity]: glossary#specificity "stats-learning-notes -- Glossary - Specificity"
+[glossary-z-statistic]: glossary#z-statistic "stats-learning-notes -- Glossary - Z-Statistic"
 [roc-curve]: images/ROC-curve.jpg "Example ROC curve"
