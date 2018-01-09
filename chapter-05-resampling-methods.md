@@ -119,7 +119,7 @@ $$ CV(k) = \frac{1}{k}\sum_{i=1}^{k} MSE_{i} $$
 It can be shown that leave-one-out cross validation is a special case of K-fold
 cross validation where $$ K = n . $$
 
-Typical values for $$ K $$ are 5 or 10 since these values require for less
+Typical values for $$ K $$ are 5 or 10 since these values require less
 computation than when $$ K $$ is equal to $$ n . $$
 
 Cross validation can be used both to estimate how well a given statistical
@@ -158,7 +158,7 @@ rate and the validation set error rate are defined similarly.
 
 ###  The Bootstrap
 
-[The bootstrap][glossary-bootstrap] is a widely applicable tool that can be used
+The [bootstrap][glossary-bootstrap] is a widely applicable tool that can be used
 to quantify the uncertainty associated with a given estimator or statistical
 learning approach, including those for which it is difficult to obtain a measure
 of variability.

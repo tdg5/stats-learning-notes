@@ -64,7 +64,28 @@ to find a model that has a low test mean squared error and both a low variance
 and a low squared bias.
 
 <a id="bootstrap"></a>
-**[Bootstrap][#bootstrap]**:
+**[Bootstrap][#bootstrap]**: A widely applicable resampling method that can be
+used to quantify the uncertainty associated with a given estimator or
+statistical learning approach, including those for which it is difficult to
+obtain a measure of variability.
+
+The bootstrap generates distinct data sets by repeatedly sampling observations
+from the original data set. These generated data sets can be used to estimate
+variability in lieu of sampling independent data sets from the full population.
+
+The sampling employed by the bootstrap involves randomly selecting $$ n $$
+observations with replacement, which means some observations can be selected
+multiple times while other observations are not included at all.
+
+This process is repeated $$ B $$ times to yield $$ B $$ bootstrap data sets, $$
+Z^{*1}, Z^{*2}, ..., Z_{*B} , $$ which can be used to estimate other quantities
+such as standard error.
+
+For example, the estimated standard error of an estimated quantity $$
+\hat{\alpha} $$ can be computed using the bootstrap as follows:
+
+$$ SE_{B}(\hat{\alpha}) = \sqrt{\frac{1}{B-1}\sum_{r=1}^{B}(\hat{\alpha}^{*r} -
+\frac{1}{B}\sum_{s=1}^{B}\hat{\alpha}^{*s})^{2}} $$
 
 <a id="classification-problem"></a>
 **[Classification Problem][#classification-problem]**: A class of problem that
@@ -129,7 +150,18 @@ $$ \normalsize \mathrm{Cor}(X,Y) = \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} -
 \bar{x})^{2}}\sqrt{\sum_{i=1}^{n}(y_{i}-\bar{y})^{2}}} . $$
 
 <a id="cross-validation"></a>
-**[Cross Validation][#cross-validation]**:
+**[Cross Validation][#cross-validation]**: A resampling method that can be
+used to estimate a given statistical methods test error or to determine the
+appropriate amount of flexibility.
+
+Cross validation can be used both to estimate how well a given statistical
+learning procedure might perform on new data and to estimate the minimum point
+in the estimated test mean squared error curve, which can be useful when
+comparing statistical learning methods or when comparing different levels of
+flexibility for a single statistical learning method.
+
+Cross validation can also be useful when $$ Y $$ is qualitative, in which case
+the number of misclassified observations is used instead of mean squared error.
 
 <a id="curse-of-dimensionality"></a>
 **[Curse of Dimensionality][#curse-of-dimensionality]**: Refers to various
@@ -372,7 +404,37 @@ enforce an upper bound on the accuracy of attempts to predict the dependent
 variable.
 
 <a id="k-fold-cross-validation"></a>
-**[K-Fold Cross Validation][#k-fold-cross-validation]**:
+**[K-Fold Cross Validation][#k-fold-cross-validation]**: A resampling method
+that operates by randomly dividing the set of observations into $$ K $$ groups
+or folds of roughly equal size. Similar to [leave-one-out cross
+validation][#leave-one-out-cross-validation], each of the $$ K $$ folds is used
+as the [validation set][#validation-set] while the other $$ K - 1 $$ folds are
+used as the test set to generate $$ K $$ estimates of the test error.  The
+K-fold cross validation estimated test error comes from the average of these
+estimates.
+
+$$ CV(k) = \frac{1}{k}\sum_{i=1}^{k} MSE_{i} $$
+
+It can be shown that leave-one-out cross validation is a special case of K-fold
+cross validation where $$ K = n . $$
+
+Typical values for $$ K $$ are 5 or 10 since these values require less
+computation than when $$ K $$ is equal to $$ n . $$
+
+There is a [bias-variance trade-off][#bias-variance-trade-off] inherent to the
+choice of $$ K $$ in K-fold cross validation. Typically, values of $$ K = 5 $$
+or $$ K = 10 $$ are used as these values have been empirically shown to produce
+test error rate estimates that suffer from neither excessively high bias nor
+very high variance.
+
+In terms of bias, leave-one-out cross validation is preferable to K-fold cross
+validation and K-fold cross validation is preferable to the validation set
+approach.
+
+In terms of variance, K-fold cross validation where $$ K < n $$ is preferable to
+leave-one-out cross validation and leave-one-out cross validation is preferable
+to the validation set approach.
+
 
 <a id="k-nearest-neighbors-classifier"></a>
 **[K-Nearest Neighbors Classifier][#k-nearest-neighbors-classifier]**: A
@@ -421,7 +483,34 @@ approximations of the unknown coefficients of the [population regression
 line][#population-regression-line], $$ \beta_{0} $$ and $$ \beta_{1} . $$
 
 <a id="leave-one-out-cross-validation"></a>
-**[Leave-One-Out Cross Validation][#leave-one-out-cross-validation]**:
+**[Leave-One-Out Cross Validation][#leave-one-out-cross-validation]**: A
+resampling method similar to the [validation set][#validation-set] approach,
+except instead of splitting the observations evenly, leave-one-out
+cross-validation withholds only a single observation for the validation set.
+This process can be repeated $$ n $$ times with each observation being withheld
+once. This yields $$ n $$ mean squared errors which can be averaged together to
+yield the leave-one-out cross-validation estimate of the test mean squared
+error.
+
+$$ CV(n) = \frac{1}{n}\sum_{i=1}^{n} MSE_{i} $$
+
+Leave-one-out cross validation has much less bias than the validation set
+approach. Leave-one-out cross validation also tends not to overestimate the test
+mean squared error since many more observations are used for training. In
+addition, leave-one-out cross validation is much less variable, in fact, it
+always yields the same result since there's no randomness in the set splits.
+
+Leave-one-out cross validation can be expensive to implement since the model has
+to be fit $$ n $$ times. This can be especially expensive in situations where $$
+n $$ is very large and/or when each individual model is slow to fit.
+
+In the classification setting, the leave-one-out cross validation error rate
+takes the form
+
+$$ CV(n) = \frac{1}{n}\sum_{i=1}^{n}Err_{i} $$
+
+where $$ Err_{i} = I(y \neq \hat{y}_{i}) . $$ The K-fold cross validation error
+rate and the validation set error rate are defined similarly.
 
 <a id="likelihood-function"></a>
 **[Likelihood Function][#likelihood-function]**: A function often used to
@@ -816,7 +905,12 @@ variable or response by modeling a function of one or more independent variables
 or predictors in the presence of an error term.
 
 <a id="resampling-methods"></a>
-**[Resampling Methods][#resampling-methods]**:
+**[Resampling Methods][#resampling-methods]**: Processes of repeatedly drawing
+samples from a data set and refitting a given model on each sample with the goal
+of learning more about the fitted model.
+
+Resampling methods can be expensive since they require repeatedly performing the
+same statistical methods on $$ N $$ different subsets of the data.
 
 <a id="residual"></a>
 **[Residual][#residual]**: A quantity left over at the end of a process, a
@@ -1016,6 +1110,20 @@ generating the model.
 **[Validation Set][#validation-set]**: A randomly selected subset of a data set
 that is withheld for the purpose of validating model fit and estimating test
 error rate.
+
+Though conceptually simple and easy to implement, the validation set approach
+has two potential drawbacks.
+
+1. The estimated test error rate can be highly variable depending on which
+observations fall into the training set and which observations fall into the
+test/validation set.
+
+2. The estimated error rate tends to be overestimated since the given
+statistical method was trained with fewer observations than it would have if
+fewer observations had been set aside for validation.
+
+[Cross-validation][#cross-validation] is a refinement of the validation set
+approach that mitigates these two issues.
 
 <a id="variable-selection"></a>
 **[Variable Selection][#variable-selection]**: The process of removing
