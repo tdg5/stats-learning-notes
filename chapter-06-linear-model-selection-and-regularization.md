@@ -32,9 +32,11 @@ Subset selection involves identifying the subset of the selectors that are
 believed to be related to the response and then fitting a least squares model
 with the reduced set of variables.
 
-Best subset selection involves fitting a separate least squares regression for
-each of the $$ 2^{p} $$ possible combinations of predictors and then selecting
-the best model.
+### Best Subset Selection
+
+[Best subset selection][glossary-best-subset-selection] involves fitting a
+separate least squares regression for each of the $$ 2^{p} $$ possible
+combinations of predictors and then selecting the best model.
 
 Selecting the "best" model is not a trivial process and usually involves a
 two-step procedure, as outlined by the algorithm below:
@@ -45,33 +47,36 @@ yields the sample mean for predictions.
 2. For $$ K = 1, 2, ..., p : $$
    1. Fit all $$ {p \choose k} $$ models that contain exactly $$ k $$ predictors.
    2. Let $$ M_{k} $$ denote the $$ {p \choose k} $$ model that yields the
-      smallest RSS or equivalently the largest $$ R^{2} . $$
+      smallest residual sum of squares or equivalently the largest $$ R^{2} . $$
 
 3. Select the best model from $$ M_{0}, ..., M_{p} $$ using cross-validated
-prediction error, Cp(AIC), BIC, or adjusted $$ R^{2} . $$
+prediction error, Cp (Akaike information criterion), Bayes information
+criterion, or adjusted $$ R^{2} . $$
 
 It should be noted that step 3 of the above algorithm should be performed with
-care because as the number of features used by the models increases, the RSS
-decreases monotonically and the $$ R^{2} $$ increases monotonically. Because of
-this, picking the statistically best model will always yield the model involving
-all of the variables. This stems from the fact that RSS and $$ R^{2} $$ are
-measures of training error and it'd be better to select the best model based on
-low test error. For this reason, step 3 utilizes cross-validated prediction
-error, Cp, BIC, or adjusted R^{2} to select the best models.
+care because as the number of features used by the models increases, the
+residual sum of squares decreases monotonically and the $$ R^{2} $$ increases
+monotonically. Because of this, picking the statistically best model will always
+yield the model involving all of the variables. This stems from the fact that
+residual sum of squares and $$ R^{2} $$ are measures of training error and it'd
+be better to select the best model based on low test error. For this reason,
+step 3 utilizes cross-validated prediction error, Cp, Bayes information
+criterion, or adjusted R^{2} to select the best models.
 
 Best subset selection can also be employed for other learning techniques such as
 logistic regression. For example, in the case of logistic regression, instead of
-using RSS or $$ R^{2} $$ to order models in step 2 of the above algorithm, a
-measure that substitutes for RSS in a broader class of models known as deviance
-is used. Deviance is negative two times the maximized log-likelihood. The
-smaller the deviance, the better the fit of the model.
+using residual sum of squares or $$ R^{2} $$ to order models in step 2 of the
+above algorithm, a measure that substitutes for residual sum of squares in a
+broader class of models known as deviance is used. Deviance is negative two
+times the maximized log-likelihood. The smaller the deviance, the better the fit
+of the model.
 
 Best subset selection has computational limitations since $$ 2^{p} $$ models
 must be considered. As such, best subset selection becomes computationally
 infeasible for values of $$ p $$ greater than ~40. Some computational shortcuts,
 known as branch-and-bound techniques help eliminate some of the model evaluation
 but they only work for least squares linear regression and they still face
-limitations as $$ p $$ gets because it becomes more likely that models are
+limitations as $$ p $$ gets large because it becomes more likely that models are
 encountered that look good on the training data though they may have no
 predictive power on new data. As should be obvious, this leads to overfitting
 and high variance.
@@ -81,10 +86,10 @@ explore a much more restricted set of models.
 
 #### Forward Stepwise Selection
 
-Forward stepwise selection begins with a model that utilizes no predictors and
-successively adds predictors one-at-a-time until the model utilizes all the
-predictors. Specifically, the predictor that yields the greatest additional
-improvement is added to the model at each step.
+[Forward stepwise selection][glossary-forward-stepwise-selection] begins with a
+model that utilizes no predictors and successively adds predictors one-at-a-time
+until the model utilizes all the predictors. Specifically, the predictor that
+yields the greatest additional improvement is added to the model at each step.
 
 An algorithm for forward stepwise selection is outlined below:
 
@@ -93,32 +98,35 @@ An algorithm for forward stepwise selection is outlined below:
 2. For $$ K = 0, 1, ..., (p - 1) : $$
    1. Consider all $$ (p - k) $$ models that augment the predictors of $$ M_{k}
       $$ with one additional parameter.
-   2. Choose the best $$ (p - k) $$ model that yields the smallest RSS or
-   largest $$ R^{2} $$ and call it $$ M_{k + 1} . $$
+   2. Choose the best $$ (p - k) $$ model that yields the smallest residual sum
+      of squares or largest $$ R^{2} $$ and call it $$ M_{k + 1} . $$
 
 3. Select a single best model from the models, $$ M_{0}, M_{1}, ..., M_{p} $$
-using cross-validated prediction error, Cp (AIC), BIC, or adjusted $$ R^{2} . $$
+using cross-validated prediction error, Cp (Akaike information criterion), Bayes
+information criterion, or adjusted $$ R^{2} . $$
 
 Forward stepwise selection involves fitting one null model and $$ (p - k) $$
 models for each iteration of $$ k = 0, 1, ..., (p - 1) . $$ This amounts to
 $$ 1 + \frac{p(p + 1)}{2} $$ models which is a significant improvement over best
-subset selections $$ 2^{p} $$ models.
+subset selection's $$ 2^{p} $$ models.
 
 Forward stepwise selection may not always find the best possible model out of
 all $$ 2^{p} $$ models due to its additive nature. For example, forward stepwise
 selection could not find the best 2-variable model in a data set where the best
 1-variable model utilizes a variable not used by the best 2-variable model.
 
-Forward stepwise selection can be applied in high-dimensional scenarios where $$
-n < p , $$ however it can only construct submodels $$ M_{0}, ..., M_{n - 1} $$
-due to the reliance on least squares regression.
+Forward stepwise selection can be applied in
+[high-dimensional][glossary-high-dimensional] scenarios where $$ n < p , $$
+however it can only construct submodels $$ M_{0}, ..., M_{n - 1} $$ due to the
+reliance on least squares regression.
 
 #### Backward Stepwise Selection
 
-Backward stepwise selection is another efficient alternative to best subset
-selection. Contrary to forward stepwise selection, backward stepwise selcetion
-starts with the full least squares model utilizing all $$ p $$ predictors and
-iteratively removes the least useful predictor with each iteration.
+[Backward stepwise selection][glossary-backward-stepwise-selection] is another
+efficient alternative to best subset selection. Contrary to forward stepwise
+selection, backward stepwise selection starts with the full least squares model
+utilizing all $$ p $$ predictors and iteratively removes the least useful
+predictor with each iteration.
 
 An algorithm for backward stepwise selection:
 
@@ -126,17 +134,18 @@ An algorithm for backward stepwise selection:
 
 2. For $$ k = p, p - 1, ..., 1 : $$
    1. Consider all $$ k $$ models that use $$ k - 1 $$ predictors from $$ M_{k}
-   . $$
-   2. Choose the best of these $$ k $$ models as determined by the smallest RSS
-   or highest $$ R^{2} . $$ Call this model $$ M_{k-1} . $$
+      . $$
+   2. Choose the best of these $$ k $$ models as determined by the smallest
+      residual sum of squares or highest $$ R^{2} . $$ Call this model $$
+      M_{k-1} .  $$
 
 3. Select the single best model from $$ M_{0}, ..., M_{p} $$ using
 cross-validated prediction error, Cp (AIC), BIC, or adjusted $$ R^{2} . $$
 
-Like forward selection, backward selection searches through only $$ 1 +
-\frac{p(p+1)}{2} $$ models, making it useful in scenarios where $$ p $$ is too
-large for best subset selection. Like forward stepwise selection, backward
-stepwise selection is not guaranteed to yield the best possible model.
+Like forward stepwise selection, backward stepwise selection searches through
+only $$ 1 + \frac{p(p+1)}{2} $$ models, making it useful in scenarios where $$ p
+$$ is too large for best subset selection. Like forward stepwise selection,
+backward stepwise selection is not guaranteed to yield the best possible model.
 
 Unlike forward stepwise selection, backward stepwise selection requires that the
 number of samples, $$ n $$, is greater than the number of variables, $$ p , $$
@@ -151,19 +160,20 @@ search over the model space and effectively consider substantially more than $$
 
 #### Hybrid Approaches
 
-Hybrid approaches add variables to the model sequentially, analogous to forward
-stepwise selection, but with each iteration they may also remove any variables
-that no longer offer any improvement to model fit.
+[Hybrid subset selection][glossary-hybrid-subset-selection] methods add
+variables to the model sequentially, analogous to forward stepwise selection,
+but with each iteration they may also remove any variables that no longer offer
+any improvement to model fit.
 
 Hybrid approaches try to better simulate best subset selection while maintaining
 the computational advantages of stepwise approaches.
 
 ### Choosing an Optimal Model
 
-Since $$ R^{2} $$ and RSS are both related to training error, the model with all
-the predictors will always appear to be the best. To combat this, it would be
-better to select the model from the set of  models that yields the lowest
-estimated test error.
+Since $$ R^{2} $$ and residual sum of squares are both related to training
+error, the model with all the predictors will always appear to be the best. To
+combat this, it would be better to select the model from the set of  models that
+yields the lowest estimated test error.
 
 Two common approaches for estimating test error are:
 
@@ -174,40 +184,44 @@ to account for the bias caused by overfitting.
 
 #### Cp, AIC, BIC, and adjusted R-Squared
 
-Recall the training mean squared error ($$ \frac{RSS}{n} $$) usually
+Recall that training mean squared error ($$ \frac{RSS}{n} $$) usually
 underestimates test mean squared error since the least squares approach ensures
-the smallest training RSS. An important difference being that training error
-will decrease as more variables are added, whereas test error may not decrease
-with more variables. This prevents the use of training RSS and $$ R^{2} $$ for
-comparing models with different numbers of variables.
+the smallest training residual sum of squares. An important difference being
+that training error will decrease as more variables are added, whereas test
+error may not decrease with more variables. This prevents the use of training
+residual sum of squares and $$ R^{2} $$ for comparing models with different
+numbers of variables.
 
 There are, however, a number of techniques for adjusting training error
 according to model size which enables comparing models with different numbers of
 variables.
 
-Four of these strategies are: Cp, Akaike information criterion, Bayes
-information criterion, and adjusted $$ R^{2} . $$
+Four of these strategies are: [Cp][glossary-cp], [Akaike information
+criterion][glossary-akaike-information-criterion], [Bayes information
+criterion][glossary-bayes-information-criterion], and [adjusted $$ R^{2}
+$$][glossary-adjusted-r-squared].
 
-For a model containing $$ d $$ predictors fitted with least squares, the Cp
-estimate of test mean squared error is calculated as
+For a model containing $$ d $$ predictors fitted with least squares, the
+[Cp][glossary-cp] estimate of test mean squared error is calculated as
 
 $$ \normalsize Cp = \frac{1}{n}(RSS + 2d\hat{\sigma}^{2}) $$
 
 where $$ \hat{\sigma}^{2} $$ is an estimate of the variance of the error $$
 \epsilon $$ associated with each response measurement. In essence, the Cp
-statistic adds a penalty of $$ 2d\hat{\sigma}^{2} $$ to the training RSS to
-adjust for the tendency for training error to underestimate test error and
-adjust for additional predictors.
+statistic adds a penalty of $$ 2d\hat{\sigma}^{2} $$ to the training residual
+sum of squares to adjust for the tendency for training error to underestimate
+test error and adjust for additional predictors.
 
 It can be shown that if $$ \hat{\sigma}^{2} $$ is an unbiased estimate of $$
 \sigma^{2} $$, then Cp will be an unbiased estimate of test mean squared error.
 As a result, Cp tends to take on small values when test mean square error is
 low, so a model with a low Cp is preferable.
 
-The Aaike information criterion (AIC) is defined for a large class of models fit
-by maximum likelihood. In the case of simple linear regression, when errors
-follow a Gaussian distribution, maximum likelihood and least squares are the
-same thing, in which case, AIC is given by
+The [Akaike information criterion (AIC)][glossary-akaike-information-criterion]
+is defined for a large class of models fit by [maximum
+likelihood][glossary-maximum-likelihood]. In the case of simple linear
+regression, when errors follow a Gaussian distribution, maximum likelihood and
+least squares are the same thing, in which case, AIC is given by
 
 $$ \normalsize AIC = \frac{1}{n\hat{\sigma}^{2}}(RSS + 2d\hat{\sigma}^{2}) $$
 
@@ -215,8 +229,9 @@ This formula omits an additive constant, but even so it can be seen that Cp and
 AIC are proportional for least squares models and as such AIC offers no benefit
 in this case.
 
-For least squares models with $$ d $$ predictors, the Bayesian information
-criterion (BIC), excluding a few irrelevant constants, is given by
+For least squares models with $$ d $$ predictors, the [Bayes information
+criterion (BIC)][glossary-bayes-information-criterion], excluding a few
+irrelevant constants, is given by
 
 $$ \normalsize BIC = \frac{1}{n}(RSS + log(n)d\hat{\sigma}^{2}) . $$
 
@@ -226,11 +241,12 @@ smaller values of BIC are preferable.
 BIC replaces the $$ 2d\hat{\sigma}^{2} $$ penalty imposed by Cp with a penalty
 of $$ log(n)d\hat{\sigma}^{2} $$ where n is the number of observations. Because
 $$ log(n) $$ is greater than 2 for $$ n > 7 , $$ the BIC statistic tends to
-penalize models with more variables more heavily than Co, which in turn results
+penalize models with more variables more heavily than Cp, which in turn results
 in the selection of smaller models.
 
-Adjusted $$ R^{2} $$ is another popular choice for comparing models with
-differing numbers of variables. Recal that $$ R^{2} $$ is defined as
+[Adjusted $$ R^{2} $$][glossary-adjusted-r-squared] is another popular choice
+for comparing models with differing numbers of variables. Recall that $$ R^{2}
+$$ is defined as
 
 $$ \normalsize R^{2} = 1 - \frac{RSS}{TSS} $$
 
@@ -238,55 +254,57 @@ where TSS is the total sum of squares given by
 
 $$ \normalsize TSS = \sum_{i=1}^{n}(y_{i} - \bar{y})^{2} . $$
 
-Since RSS always decreases given more variables, $$ R^{2} $$ will always
-increase given more variables.
+Since the residual sum of squares always decreases given more variables, $$
+R^{2} $$ will always increase given more variables.
 
 For a least squares fitted model with $$ d $$ predictors, adjusted $$ R^{2} $$
 is given by
 
-$$ \normalsize Adjusted R^{2} = 1 - \frac{RSS/(n - d - 1)}{TSS/(n - 1)} . $$
+$$ \normalsize Adjusted\ R^{2} = 1 - \frac{RSS/(n - d - 1)}{TSS/(n - 1)} . $$
 
 Unlike Cp, AIC, and BIC where a smaller value reflects lower test error, for
-adjusted $$ R^{2} , $$ a larger value signifies a lower test error.o
+adjusted $$ R^{2} , $$ a larger value signifies a lower test error.
 
 Maximizing adjusted $$ R^{2} $$ is equivalent to minimizing
-$$ \frac{RSS}{n - d - 1} . $$ Because $$ d $$ appears in the denominator, the number of variables
-may increase or decrease the value of $$ \frac{RSS}{n - d - 1} $$
+$$ \frac{RSS}{n - d - 1} . $$ Because $$ d $$ appears in the denominator, the
+number of variables may increase or decrease the value of $$ \frac{RSS}{n - d -
+1} $$
 
 Adjusted $$ R^{2} $$ aims to penalize models that include unnecessary variables.
 This stems from the idea that after all of the correct variables have been
-added, adding additional noise variables will only decrease RSS slightly. This
-slight decrease is counteracted by the presence of $$ d $$ in the denominator of
-$$ \frac{RSS}{n - d - 1} . $$
+added, adding additional noise variables will only decrease the residual sum of
+squares slightly. This slight decrease is counteracted by the presence of $$ d
+$$ in the denominator of $$ \frac{RSS}{n - d - 1} . $$
 
 Validation and cross validation can be useful in situations where it's hard to
 pinpoint the model's degrees of freedom or when it's hard to estimate the error
 variance, $$ \sigma^{2} . $$
 
-The one-standard-error rule advises that when manly models have low estimated
-test error and its difficult or variable as to which model has the lowest test
-error, one should select the model with the fewest variables that is within one
-standard error of the lowest estimated test error. The rationale being that
-given a set of more or less equally good models, it's often better to pick the
-simpler model.
+The [one-standard-error rule][glossary-one-standard-error-rule] advises that
+when many models have low estimated test error and it's difficult or variable as
+to which model has the lowest test error, one should select the model with the
+fewest variables that is within one standard error of the lowest estimated test
+error. The rationale being that given a set of more or less equally good models,
+it's often better to pick the simpler model.
 
 ### Shrinkage Methods
 
-Shrinkage methods present an alternative to subset selection that uses all the
-predictors, but employs a technique to constrain or regularize the coefficient
-estimates.
+[Shrinkage methods][glossary-shrinkage-methods] present an alternative to subset
+selection that uses all the predictors, but employs a technique to constrain or
+regularize the coefficient estimates.
 
 Constraining coefficient estimates can significantly reduce their variance. Two
-well known techniques of shrinking regression coefficients toward zero are ridge
-regression and the lasso.
+well known techniques of shrinking regression coefficients toward zero are
+[ridge regression][glossary-ridge-regression] and the [lasso][glossary-lasso].
 
 #### Ridge Regression
 
-Ridge regression is very similar to least squares fitting except the
-coefficients are estimated by minimizing a modified quantity.
+[Ridge regression][glossary-ridge-regression] is very similar to least squares
+fitting except the coefficients are estimated by minimizing a modified quantity.
 
 Recall that the least squares fitting procedure estimates the coefficients by
-minimizing the RSS where RSS is given by
+minimizing the residual sum of squares where the residual sum of squares is
+given by
 
 $$ \normalsize RSS = \sum_{i=1}^{n} \bigg\lgroup y_{i} - \beta_{0} -
 \sum_{j=1}^{p}\beta_{j}X_{ij} \bigg\rgroup ^{2} . $$
@@ -299,10 +317,10 @@ $$ \normalsize RSS + \lambda\sum_{j=1}^{p}\beta_{j}^{2} $$
 where $$ \lambda $$ is a tuning parameter.
 
 The second term, $$ \lambda\sum_{j=1}^{p}\beta_{j}^{2} , $$ is referred to as a
-shrinkage penalty. In this case, the penalty is small when the coefficients are
-close to zero, but depending on $$ \lambda $$ and how the coefficients grow. As
-the second term grows, it pushes the coefficient estimates closer to zero,
-thereby shrinking them.
+[shrinkage penalty][glossary-shrinkage-penalty]. In this case, the penalty is
+small when the coefficients are close to zero, but depending on $$ \lambda $$
+and how the coefficients grow. As the second term grows, it pushes the
+coefficient estimates closer to zero, thereby shrinking them.
 
 The tuning parameter serves to control the balance of how the two terms affect
 coefficient estimates. When $$ \lambda $$ is zero, the second term is nullified,
@@ -321,7 +339,7 @@ each variable on the response and as such, this shrinkage should not be applied
 to the intercept coefficient which is a measure of the mean value of the
 response when none of the variables are present.
 
-The $$ \ell_{2} $$ norm of a vector is defined as
+The [$$ \ell_{2} $$ norm][glossary-l-two-norm] of a vector is defined as
 
 $$ \normalsize \|\beta\|_{2} = \sqrt{\sum_{j=1}^{p}\beta_{j}^{2}} $$
 
@@ -333,16 +351,17 @@ norm of $$ \hat{\beta}_{\lambda}^{R} $$ will always decrease as the coefficient
 estimates shrink closer to zero.
 
 An important difference between ridge regression and least squares regression is
-that least squares regression's coefficient estimates are scale equivalent and
-ridge regression's are not. This means that multiplying $$ X $$ by a constant,
-$$ C , $$ leads to a scaling of the least squares coefficient estimates by a
-factor of $$ \frac{1}{C} . $$ Another way of looking at it is that regardless of
-how the jth predictor is scaled, the value of $$ X_{j}\beta_{j} $$ remains the
-same. In contrast, ridge regression coefficients can change dramatically when
-the scale of a given predictor is changed. This means that
-$$ X_{j}\hat{\beta}_{\lambda}^{R} $$ may depend on the scaling of other
-predictors. Because of this, it is best to apply ridge regression after
-standardizing the predictors using the formula below:
+that least squares regression's coefficient estimates are [scale
+equivalent][glossary-scale-equivalent] and ridge regression's are not. This
+means that multiplying $$ X $$ by a constant, $$ C , $$ leads to a scaling of
+the least squares coefficient estimates by a factor of $$ \frac{1}{C} . $$
+Another way of looking at it is that regardless of how the jth predictor is
+scaled, the value of $$ X_{j}\beta_{j} $$ remains the same. In contrast, ridge
+regression coefficients can change dramatically when the scale of a given
+predictor is changed. This means that $$ X_{j}\hat{\beta}_{\lambda}^{R} $$ may
+depend on the scaling of other predictors. Because of this, it is best to apply
+ridge regression after [standardizing][glossary-standardized-values] the
+predictors using the formula below:
 
 $$ \normalsize \widetilde{x}_{ij} =
 \frac{x_{ij}}{\sqrt{\frac{1}{n}\sum_{i=1}^{n}(x_{ij} - \bar{x}_{j})^{2}}} $$
@@ -352,21 +371,20 @@ predictor relative to its estimated standard deviation. As a result, all the
 predictors will have a standard deviation of 1 which will yield a final fit that
 does not depend on the scale of the predictors.
 
-Ridge regression's advantage over least squares stems from the bias-variance
-trade-off. As the tuning parameter $$ \lambda $$ increases, the flexibility of
-the ridge regression fit decreases leading to a decrease in variance, but also
-causing an increase in bias. Since least squares is equivalent to the most
-flexible form of ridge regression (where $$ \lambda = 0 $$) it offers less bias
-at the cost of higher variance. As such, ridge regression is best employed in
-situations where least squares estimates have high variance.
+Ridge regression's advantage over least squares stems from the [bias-variance
+trade-off][glossary-bias-variance-trade-off]. As the tuning parameter $$ \lambda
+$$ increases, the flexibility of the ridge regression fit decreases leading to a
+decrease in variance, but also causing an increase in bias. Since least squares
+is equivalent to the most flexible form of ridge regression (where $$ \lambda =
+0 $$) it offers less bias at the cost of higher variance. As such, ridge
+regression is best employed in situations where least squares estimates have
+high variance.
 
 Ridge regression also offers computational advantages for fixed values of $$
-\lambda . $$ In fact, it can be shown that the computations require to calculate
-ridge regression coefficient estimates for all values of $$ \lambda $$
-simultaneously are almost identical to those for fitting a model using least
+\lambda . $$ In fact, it can be shown that the computational requirements of
+calculating ridge regression coefficient estimates for all values of $$ \lambda
+$$ simultaneously are almost identical to those for fitting a model using least
 squares.
-
-### The Lasso
 
 Compared to subset methods, ridge regression is at a disadvantage when it comes
 to number of predictors used since ridge regression will always use all $$ p $$
@@ -375,8 +393,10 @@ it will never set any of them to exactly zero (except when $$ \lambda = \infty
 $$ ). Though the extra predictors may not hurt prediction accuracy, they can
 make interpretability more difficult, especially when $$ p $$ is large.
 
-The lasso is a more recent alternative to ridge regression that does allow for
-excluding some variables.
+### The Lasso
+
+The [lasso][glossary-lasso] is a more recent alternative to ridge regression
+that allows for excluding some variables.
 
 Coefficient estimates for the lasso are generated by minimizing the quantity
 
@@ -384,9 +404,9 @@ $$ \normalsize RSS + \lambda\sum_{i=1}^{p}|\beta_{j}| $$
 
 The main difference between ridge regression and the lasso is the change in
 penalty. Instead of the $$ \beta_{j}^{2} $$ term of ridge regression, the lasso
-uses the $$ \ell_{1} $$ norm of the coefficient vector $$ \beta $$ as its
-penalty term. The $$ \ell_{1} $$ norm of a coefficient vector $$ \beta $$ is
-given by
+uses the [$$ \ell_{1} $$ norm][glossary-l-one-norm] of the coefficient vector $$
+\beta $$ as its penalty term. The $$ \ell_{1} $$ norm of a coefficient vector $$
+\beta $$ is given by
 
 $$ \normalsize \|\beta\|_{1} = \sum|\beta_{j}| $$
 
@@ -401,7 +421,7 @@ The variable selection of the lasso can be considered a kind of soft
 thresholding.
 
 An alternative viewpoint of ridge regression and the lasso reforms the problem
-in terms of trying to minimize RSS subject to
+in terms of trying to minimize the residual sum of squares subject to
 
 $$ \normalsize \sum_{j=1}^{p}|\beta_{j}| \leq s $$
 
@@ -418,21 +438,23 @@ $$ s $$ that will yield the same coefficient estimates for both perspectives of
 ridge regression.
 
 In both cases, this means that the goal is a set of coefficient estimates such
-that RSS is as small as possible, subject to the requirement that the penalty
-not exceed the budget of $$ s . $$
+that the residual sum of squares is as small as possible, subject to the
+requirement that the penalty not exceed the budget of $$ s . $$
 
 This perspective reveals a close relationship between the lasso, ridge
 regression, and best subset selection. In fact, best subset selection is
-equivalent to trying to minimize RSS with the constraint that 
+equivalent to trying to minimize the residual sum of squares with the constraint
+that
 
 $$ \normalsize \sum_{j=1}^{p}I(\beta_{j} \neq 0) \leq s $$
 
-where $$ I(\beta_{j} \neq 0) $$ is an indicator variable that is equal to one
-when $$ \beta_{j} $$ is non-zero and is equal to zero otherwise. In this case,
-the inequality enforces that no more than $$ s $$ coefficients can be non-zero.
+where $$ I(\beta_{j} \neq 0) $$ is an [indicator
+variable][glossary-indicator-variable] that is equal to one when $$ \beta_{j} $$
+is non-zero and is equal to zero otherwise. In this case, the inequality
+enforces that no more than $$ s $$ coefficients can be non-zero.
 
 Unfortunately, this perspective on best subset selection is still
-computationally infeasible because it replaces considering all $$ {p \choose s}
+computationally infeasible because it requires considering all $$ {p \choose s}
 $$ models containing $$ s $$ predictors. This does however mean that we can
 interpret ridge regression and the lasso as alternatives to best subset
 selection that are more computationally feasible since they replace an
@@ -463,9 +485,9 @@ excessively high variance.
 
 ### Dimension Reduction Methods
 
-Dimension reduction methods are a class of techniques that transform the
-predictors and then fit a least squares model using the transformed variables
-instead of the original predictors.
+[Dimension reduction methods][glossary-dimension-reduction-methods] are a class
+of techniques that transform the predictors and then fit a least squares model
+using the transformed variables instead of the original predictors.
 
 Let $$ Z_{1}, Z_{2}, ..., Z_{m} $$ represent $$ M < P $$ linear combinations of
 the original predictors, $$ p. $$ Formally,
@@ -491,7 +513,7 @@ problem of estimating the $$ p+1 $$ coefficients $$ \theta_{0}, \theta_{1}, ...,
 problem from  $$ P + 1 $$ to $$ M + 1 . $$
 
 This approach can be seen as a special constrained version of the original
-linear regression considering that 
+linear regression considering that
 
 $$ \normalsize \sum_{m=1}^{M} \theta_{m}Z_{im}
 = \sum_{m=1}^{M} \theta_{m} \sum_{j=1}^{p}
@@ -510,7 +532,7 @@ $$ \normalsize \beta_{j} = \sum_{m=1}^{M}\theta_{m}\phi_{jm} . $$
 
 This constraint has the potential to bias the coefficient estimates, but in
 situations where $$ p $$ is large relative to $$ n $$, selecting a value of $$ M
-$$ much less than $$ p $$ can significantly reduce the variance of he fitted
+$$ much less than $$ p $$ can significantly reduce the variance of the fitted
 coefficients.
 
 If $$ M = p $$ and all the linear combinations $$ Z_{m} $$ are linearly
@@ -526,14 +548,15 @@ The difference in dimension reduction methods tends to arise from the means of
 deriving the transformed predictors, $$ Z_{1}, Z_{2}, ..., Z_{M} $$ or the
 selection of the $$ \phi_{jm} $$ coefficients.
 
-Two popular forms of dimension reduction are principal component analysis and
-partial least squares.
+Two popular forms of dimension reduction are [principal component
+analysis][glossary-principal-component-analysis] and [partial least
+squares][glossary-partial-least-squares].
 
-### Principal Components Regression
+### Principal Component Regression
 
-Principal components analysis is a common approach for deriving a
-low-dimensional set of features from a large set of variables. It is also a
-useful tool for unsupervised learning.
+Principal component analysis is a common approach for deriving a low-dimensional
+set of features from a large set of variables. It is also a useful tool for
+unsupervised learning.
 
 Principal component analysis (PCA) is a technique for reducing the dimension of
 an $$ n \times p $$ data matrix $$ X . $$
@@ -575,7 +598,7 @@ constructed.
 
 The second principal component, $$ Z_{2} $$ is a linear combination of the
 variables that is uncorrelated with $$ Z_{1} $$ and that has the largest
-variance subject to this constraint.
+variance subject to that constraint.
 
 It turns out that the constraint that $$ Z_{2} $$ must not be correlated with $$
 Z_{1} $$ is equivalent to the condition that the direction of $$ Z_{2} $$ must
@@ -590,12 +613,12 @@ Constructing additional principal components, in cases where $$ p > 2 $$, would
 successively maximize variance subject to the constraint that the additional
 components be uncorrelated with the previous components.
 
-### The Principal Components Regression Approach
+### The Principal Component Regression Approach
 
-The principal components regression approach first constructs the first $$ M $$
-principal components, $$ Z_{1}, Z_{2}, ..., Z_{M} , $$ and then uses the
-components as the predictors in a linear regression model that is fit with least
-squares.
+The [principal component regression][glossary-principal-component-regression]
+approach first constructs the first $$ M $$ principal components, $$ Z_{1},
+Z_{2}, ..., Z_{M} , $$ and then uses the components as the predictors in a
+linear regression model that is fit with least squares.
 
 The premise behind this approach is that a small number of principal components
 can often suffice to explain most of the variability in the data as well as the
@@ -604,7 +627,7 @@ assumption that the directions in which $$ X_{1}, ..., X_{p} $$ show the most
 variation are the directions that are associated with the predictor $$ Y . $$
 Though not always true, it is true often enough to approximate good results.
 
-In scenarios where the assumption underlying principal components regression
+In scenarios where the assumption underlying principal component regression
 holds true, then the result of fitting a model to $$ Z_{1}, ..., Z_{M} $$ will
 likely be better than the result of fitting a model to $$ X_{1}, ..., X_{p} $$
 since most of the information in the data that relates to the response is
@@ -619,7 +642,7 @@ variance.
 Principal component regression will tend to do better in scenarios where fewer
 principal components are sufficient to capture most of the variation in the
 predictors and the relation with response. The closer $$ M $$ is to $$ p $$, the
-more principal components regression will resemble the results of a least
+more principal component regression will resemble the results of a least
 squares model fit to the original predictors.
 
 It should be noted that principal component regression is not a feature
@@ -657,7 +680,7 @@ Partial least squares (PLS) identifies a new set of features $$ Z_{1}, ...,
 Z_{M} $$ that are linear combinations of the original predictors and then uses
 these $$ M $$ new features to fit a linear model using least squares.
 
-Unlike principal components regression, partial least squares makes use of the
+Unlike principal component regression, partial least squares makes use of the
 response $$ Y $$ to identify new features that not only approximate the original
 predictors well, but that are also related to the response.
 
@@ -682,7 +705,7 @@ original data was used to compute $$ Z_{1} . $$ This iterative approach can be
 repeated $$ M $$ times to identify multiple partial least squares components, $$
 Z_{1}, ..., Z_{M} . $$
 
-Like principal components regression, the number of partial least squares
+Like principal component regression, the number of partial least squares
 directions, $$ M $$, used with partial least squares is generally selected using
 cross validation.
 
@@ -701,7 +724,7 @@ Most statistical techniques for regression and classification are intended for
 low dimensional settings where $$ p \ll n . $$
 
 Data containing more features than observations are often referred to as
-high-dimensional.
+[high-dimensional][glossary-high-dimensional].
 
 When $$ p \geq n , $$ least squares will yield a set of coefficient estimates
 that perfectly fit the data whether or not there is truly a relationship between
@@ -725,19 +748,19 @@ performance in the high-dimensional setting.
 
 Test error tends to increase as the dimension of the problem increases unless
 the additional features are truly associated with the response. This is related
-to the curse of dimensionality, as the additional noise features increase the
-dimensionality of the problem, increasing the risk of overfitting without any
-potential upside.
+to the [curse of dimensionality][glossary-curse-of-dimensionality], as the
+additional noise features increase the dimensionality of the problem, increasing
+the risk of overfitting without any potential upside.
 
-The risk of multicolinearity is also exacerbated in the high-dimensional setting.
-Since any variable in the model an be written as a linear combination of all the
-other variables in the model, it can be extremely difficult to determine which
-variables (if any) are truly predictive of the outcome. Even the best regression
-coefficient estimates can never be identified. The best that can be hoped for is
-that large regression coefficients are assigned to the variables that are truly
-predictive of the outcome.
+The risk of [multicollinearity][glossary-multicollinearity] is also exacerbated in
+the high-dimensional setting.  Since any variable in the model can be written as
+a linear combination of all the other variables in the model, it can be
+extremely difficult to determine which variables (if any) are truly predictive
+of the outcome. Even the best regression coefficient estimates can never be
+identified. The best that can be hoped for is that large regression coefficients
+are assigned to the variables that are truly predictive of the outcome.
 
-In the high dimensional setting, one should **never** use sum of squared errors,
+In the high-dimensional setting, one should **never** use sum of squared errors,
 p-values, $$ R^{2} , $$ or other traditional measures of model fit on the
 training data as evidence of good model fit. MSE or $$ R^{2} $$ of an
 independent test set is a valid measure of model fit, but MSE or $$ R^{2} $$ of
@@ -750,3 +773,30 @@ the training set is certainly not.
 [chapter-05-resampling-methods]: chapter-05-resampling-methods "stats-learning-notes -- Chapter 5 - Resampling Methods"
 [chapter-06-linear-model-selection-and-regularization]: chapter-06-linear-model-selection-and-regularization "stats-learning-notes -- Chapter 6 - Linear Model Selection and Regularization"
 [chapter-07-moving-beyond-linearity]: chapter-07-moving-beyond-linearity "stats-learning-notes -- Chapter 7 - Moving Beyond Linearity"
+[glossary-adjusted-r-squared]: glossary#adjusted-r-squared "stats-learning-notes -- Glossary - Adjusted R**2"
+[glossary-akaike-information-criterion]: glossary#akaike-information-criterion "stats-learning-notes -- Glossary - Akaike Information Criterion"
+[glossary-backward-stepwise-selection]: glossary#backward-stepwise-selection "stats-learning-notes -- Glossary - Backward Stepwise Selection"
+[glossary-bayes-information-criterion]: glossary#bayes-information-criterion "stats-learning-notes -- Glossary - Bayes Information Criterion"
+[glossary-best-subset-selection]: glossary#best-subset-selection "stats-learning-notes -- Glossary - Best Subset Selection"
+[glossary-bias-variance-trade-off]: glossary#bias-variance-trade-off "stats-learning-notes -- Glossary - Bias-Variance Trade-Off"
+[glossary-cp]: glossary#cp "stats-learning-notes -- Glossary - Cp"
+[glossary-curse-of-dimensionality]: glossary#curse-of-dimensionality "stats-learning-notes -- Glossary - Curse of Dimensionality"
+[glossary-dimension-reduction-methods]: glossary#dimension-reduction-methods "stats-learning-notes -- Glossary - Dimension Reduction Methods"
+[glossary-forward-stepwise-selection]: glossary#forward-stepwise-selection "stats-learning-notes -- Glossary - Forward Stepwise Selection"
+[glossary-high-dimensional]: glossary#high-dimensional "stats-learning-notes -- Glossary - High Dimensional"
+[glossary-hybrid-subset-selection]: glossary#hybrid-subset-selection "stats-learning-notes -- Glossary - Hybrid Subset Selection"
+[glossary-indicator-variable]: glossary#indicator-variable "stats-learning-notes -- Glossary - Indicator Variable"
+[glossary-l-one-norm]: glossary#l-one-norm "stats-learning-notes -- Glossary - L1 Norm"
+[glossary-l-two-norm]: glossary#l-two-norm "stats-learning-notes -- Glossary - L2 Norm"
+[glossary-lasso]: glossary#lasso "stats-learning-notes -- Glossary - Lasso"
+[glossary-maximum-likelihood]: glossary#maximum-likelihood "stats-learning-notes -- Glossary - Maximum Likelihood"
+[glossary-multicollinearity]: glossary#multicollinearity "stats-learning-notes -- Glossary - Multicollinearity"
+[glossary-one-standard-error-rule]: glossary#one-standard-error-rule "stats-learning-notes -- Glossary - One-Standard-Error Rule"
+[glossary-partial-least-squares]: glossary#partial-least-squares "stats-learning-notes -- Glossary - Partial Least Squares"
+[glossary-principal-component-analysis]: glossary#principal-component-analysis "stats-learning-notes -- Glossary - Principal Component Analysis"
+[glossary-principal-component-regression]: glossary#principal-component-regression "stats-learning-notes -- Glossary - Principal Component Regression"
+[glossary-ridge-regression]: glossary#ridge-regression "stats-learning-notes -- Glossary - Ridge Regression"
+[glossary-scale-equivalent]: glossary#scale-equivalent "stats-learning-notes -- Glossary - Scale Equivalent"
+[glossary-shrinkage-methods]: glossary#shrinkage-methods "stats-learning-notes -- Glossary - Shrinkage Methods"
+[glossary-shrinkage-penalty]: glossary#shrinkage-penalty "stats-learning-notes -- Glossary - Shrinkage Penalty"
+[glossary-standardized-values]: glossary#standardized-values "stats-learning-notes -- Glossary - Standardized Values"

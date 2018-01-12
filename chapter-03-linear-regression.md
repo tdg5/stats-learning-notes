@@ -466,7 +466,7 @@ yielding the lowest RSS is added to the model one-by-one until some halting
 condition is met. Forward selection is a greedy process and it may include
 extraneous variables.
 
-[Backwards selection][glossary-backwards-selection] begins with a model that
+[Backward selection][glossary-backward-selection] begins with a model that
 includes all the predictors and proceeds by removing the variable with the
 highest p-value each iteration until some stopping condition is met. Backwards
 selection cannot be used when $$ p > n . $$
@@ -936,7 +936,7 @@ models when there are only a small number of observations per predictor.
 
 [Next: Chapter 4 - Classification][chapter-04-classification]
 
-[glossary-backwards-selection]: glossary#backwards-selection "stats-learning-notes -- Glossary - Backwards Selection"
+[glossary-backward-selection]: glossary#backward-selection "stats-learning-notes -- Glossary - Backwards Selection"
 [glossary-coefficient]: glossary#coefficient "stats-learning-notes -- Glossary - Coefficient"
 [glossary-collinearity]: glossary#collinearity "stats-learning-notes -- Glossary - Collinearity"
 [glossary-confidence-interval]: glossary#confidence-interval "stats-learning-notes -- Glossary - Confidence Interval"
