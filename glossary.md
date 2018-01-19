@@ -54,6 +54,31 @@ This formula omits an additive constant, but even so it can be seen that Cp and
 AIC are proportional for least squares models and as such AIC offers no benefit
 in this case.
 
+<a id="backfitting"></a>
+**[Backfitting][#backfitting]**: A method of fitting a model involving multiple
+parameters by repeatedly updating the fit for each predictor in turn, holding
+the others fixed. This approach has the benefit that each time a function is
+updated the fitting method for a variable can be applied to a partial residual.
+Backfitting can be used by [generalized additive
+models][#generalized-additive-model] in situations where least squares cannot
+be used.
+
+A partial residual is the remainder left over after subtracting the products of
+the fixed variables and their respective coefficients from the response. This
+residual can be used as a response in a non-linear regression of the variables
+being updated.
+
+For example, given a model of
+
+$$ y_{i} = f_{1}(x_{i1}) + f_{2}(x_{i2}) + f_{3}(x_{i3}) , $$
+
+a residual for $$ x_{i3} $$ could be computed as
+
+$$ r_{i} = y_{i} - f_{1}(x_{i1}) - f_{2}(x_{i2}) . $$
+
+The yielded residual can then be used as a response in order to fit $$ f_{3} $$
+in a non linear regression on $$ x_{3} . $$
+
 <a id="backward-selection"></a>
 **[Backward Selection][#backward-selection]**: A variable selection method
 that begins with a model that includes all the predictors and proceeds by
@@ -96,6 +121,31 @@ so the full model with all $$ p $$ predictors can be fit.
 Both forward stepwise selection and backward stepwise selection perform a guided
 search over the model space and effectively consider substantially more than $$
 1 + \frac{p(p+1)}{2} $$ models.
+
+<a id="basis-function-approach"></a>
+**[Basis Function Approach][#basis-function-approach]**: Polynomial and
+piecewise constant functions are special cases of a basis function approach. The
+basis function approach utilizes a family of functions or transformations that
+can be applied to a variable $$ X:\ b_{1}(X), b_{2}(X), ..., b_{K}(X) . $$
+
+Instead of fitting a linear model in $$ X , $$ a similar model that applies the
+fixed and known basis functions to $$ X $$ is used:
+
+$$ \normalsize y_{i} = \beta_{0} + \beta_{1}b_{1}(x_{i}) + \beta_{2}b_{2}(x_{i}) + ... +
+\beta_{k}b_{k}(x_{i}) + \epsilon_{i} $$
+
+For polynomial regression, the basis functions are $$ b_{j}(x) = x_{i}^{j} . $$
+For piecewise constant functions the basis functions are $$ b_{j}(x_{i}) =
+I(c_{j} \leq x_{i} < c_{j+1}) . $$
+
+Since the basis function model is just linear regression with predictors $$
+b_{1}(x_{i}), b_{2}(x_{i}), ..., b_{K}(x_{i}) $$ least squares can be used to
+estimate the unknown regression coefficients. Additionally, all the inference
+tools for linear models like standard error for coefficient estimates and
+F-statistics for overall model significance can also be employed in this
+setting.
+
+Many different types of basis functions exist.
 
 <a id="bayes-classifier"></a>
 **[Bayes Classifier][#bayes-classifier]**: A very simple classifier that assigns
@@ -536,6 +586,37 @@ search over the model space and effectively consider substantially more than $$
 distribution represented by a normal curve or bell curve. Also known as a
 normal distribution.
 
+<a id="generalized-additive-model"></a>
+**[Generalized Additive Model][#generalized-additive-model]**: A general
+framework for extending a standard linear model by allowing non-linear functions
+of each of the predictors while maintaining additivity. Generalized additive
+models can be applied with both quantitative and qualitative models.
+
+One way to extend the multiple linear regression model
+
+$$ \normalsize y_{i} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} +\ ...\ +
+\beta_{p}x_{ip} + \epsilon_{i} $$
+
+to allow for non-linear relationships between each feature and the response is
+to replace each linear component, $$ \beta_{j}x_{ij} , $$ with a smooth
+non-linear function $$ f_{j}(x_{ij}) , $$ which would yield the model
+
+$$ \normalsize y_{i} = \beta_{0} + \beta_{1}f_{1}(x_{i1}) +
+\beta_{2}f_{2}(x_{i2}) +\ ...\ + \beta_{p}f_{p}(x_{ip}) + \epsilon_{i} =
+\beta_{0} + \sum_{j=1}^{p} f_{j}(x_{ij}) + \epsilon_{i} $$
+
+This model is additive because a separate $$ f_{j} $$ is calculated for each $$
+x_{i} $$ and then added together.
+
+The additive nature of GAMs makes them more interpretable than some other types
+of models.
+
+GAMs allow for using the many methods of fitting functions to single variables
+as building blocks for fitting an additive model.
+
+[Backfitting][#backfitting] can be used by GAMs in situations where least
+squares cannot be used.
+
 <a id="heteroscedasticity"></a>
 **[Heteroscedasticity][#heteroscedasticity]**: A characteristic of a collection
 of random variables in which there are sub-populations that have different
@@ -692,7 +773,6 @@ In terms of variance, K-fold cross validation where $$ K < n $$ is preferable to
 leave-one-out cross validation and leave-one-out cross validation is preferable
 to the validation set approach.
 
-
 <a id="k-nearest-neighbors-classifier"></a>
 **[K-Nearest Neighbors Classifier][#k-nearest-neighbors-classifier]**: A
 classifier that takes a positive integer $$ K $$ and first identifies the $$ K
@@ -728,6 +808,23 @@ In higher dimensions, K-nearest neighbors regression often performs worse than
 linear regression. This is often due to combining too small an $$ n $$ with too
 large a $$ p $$, resulting in a given observation having no nearby neighbors.
 This is often called the [curse of dimensionality][#curse-of-dimensionality].
+
+<a id="knot"></a>
+**[Knot][#knot]**: For regression splines, one of the $$ K $$ points at which
+the coefficients utilized by the underlying function are changed to better model
+the respective region.
+
+There are a variety of methods for choosing the number and location of the
+knots. Because the regression spline is most flexible in regions that contain a
+lot of knots, one option is to place more knots where the function might vary
+the most and fewer knots where the function might be more stable. Another common
+practice is to place the knots in a uniform fashion. One means of doing this is
+to choose the desired degrees of freedom and then use software or other
+heuristics to place the corresponding number of knots at uniform quantiles of
+the data.
+
+Cross validation is a useful mechanism for determining the appropriate number of
+knots and/or degrees of freedom.
 
 <a id="l-one-norm"></a>
 **[$$ \ell_{1} $$ norm][#l-one-norm]**: The $$ \ell_{1} $$ norm of a vector is
@@ -844,6 +941,15 @@ from:
 - Logistic regression is more unstable than linear discriminant analysis when $$
   n $$ is small and the distribution of the predictors $$ X $$ is approximately
   normal in each of the response classes.
+
+<a id="local-regression"></a>
+**[Local Regression][#local-regression]**: An approach to fitting flexible
+non-linear functions which involves computing the fit at a target point $$ x_{0}
+$$ using only the nearby training observations.
+
+Each new point from which a local regression fit is calculated requires fitting
+a new weighted least squares regression model by minimizing the appropriate
+regression weighting function for a new set of weights.
 
 <a id="log-odds"></a>
 **[Log-Odds][#log-odds]**: Taking a logarithm of both sides of the [logistic
@@ -989,6 +1095,11 @@ Multivariate Gaussian density is formally defined as
 $$ \normalsize f(x) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}} \exp \big \lgroup
 -\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x - \mu) \big \rgroup . $$
 
+<a id="natural-spline"></a>
+**[Natural Spline][#natural-spline]**: A [regression spline][#regression-spline]
+with additional boundary constraints that force the function to be linear in the
+boundary region.
+
 <a id="non-parametric"></a>
 **[Non-Parametric][#non-parametric]**: Not involving any assumptions about the
 form or parameters of a function being modeled.
@@ -1124,6 +1235,9 @@ component regression or ridge regression. Though the supervised dimension
 reduction of partial least squares can reduce bias, it also has the potential to
 increase variance. Because of this, the benefit of partial least squares
 compared to principal component regression is often negligible.
+
+<a id="piecewise-constant-function"></a>
+**[Piecewise Constant Function][#piecewise-constant-function]**:
 
 <a id="polynomial-regression"></a>
 **[Polynomial Regression][#polynomial-regression]**: An extension to the linear
@@ -1266,6 +1380,10 @@ and/or because the inherent $$ \sigma^{2} $$ is high.
 suited to statistical techniques for predicting the value of a dependent
 variable or response by modeling a function of one or more independent variables
 or predictors in the presence of an error term.
+
+<a id="regression-spline"></a>
+**[Regression Spline][#regression-spline]**: A spline that is fit to data using
+a set of spline basis functions, typically fit using least squares.
 
 <a id="resampling-methods"></a>
 **[Resampling Methods][#resampling-methods]**: Processes of repeatedly drawing
@@ -1466,6 +1584,22 @@ one-unit increase in $$ X . $$
 dependent variable, $$ Y , $$ for each one-unit increase in the dependent
 variable, $$ X . $$
 
+<a id="smoothing-spline"></a>
+**[Smoothing Spline][#smoothing-spline]**: An approach to producing a spline
+that utilizes a loss or penalty function to minimize the [residual sum of
+squares][#residual-sum-of-squares] while also ensuring the resulting spline is
+smooth. Commonly this results in a function that minimizes
+
+$$ \normalsize \sum_{i=1}^{n}(y_{i} - g(x_{i}))^{2} + \lambda \int
+g\prime\prime(t)^{2}dt $$
+
+where the term
+
+$$ \normalsize \lambda \int g\prime\prime(t)^{2}dt $$
+
+is a loss function that encourages $$ g $$ to be smooth and less variable and $$
+\lambda $$ is a non-negative tuning parameter.
+
 <a id="specificity"></a>
 **[Specificity][#specificity]**: The percentage of observations correctly
 negatively classified (true negatives).
@@ -1495,6 +1629,47 @@ formula for standardizing predictors is given by:
 
 $$ \normalsize \widetilde{x}_{ij} =
 \frac{x_{ij}}{\sqrt{\frac{1}{n}\sum_{i=1}^{n}(x_{ij} - \bar{x}_{j})^{2}}} $$
+
+<a id="step-function"></a>
+**[Step Function][#step-function]**: A method of modeling non-linearity that
+splits the range of $$ X $$ into bins and fits a different constant to each bin.
+This is equivalent to converting a continuous variable into an ordered
+categorical variable.
+
+First, $$ K $$ cut points, $$ c_{1}, c_{2}, ..., c_{k} , $$ are created in the
+range of $$ X $$ from which $$ K + 1 $$ new variables are created.
+
+$$ C_{0}(X) = I(X < C_{1}) , $$
+
+$$ C_{1}(X) = I(C_{2} \leq X \leq C_{3}) , $$
+
+$$ ... , $$
+
+$$ C_{K} = I(C_{K} \leq X) $$
+
+where $$ I $$ is an indicator function that returns 1 if the condition is true.
+
+It is worth noting that each bin is unique and
+
+$$ \normalsize C_{0}(X) + C_{1}(X) + ... + C_{K}(X) = 1 $$
+
+since each variable only ends up in one of $$ K + 1 $$ intervals.
+
+Once the slices have been selected, a linear model is fit using $$ C_{0}(X),
+C_{1}(X), ..., C_{K}(X) $$ as predictors:
+
+$$ \normalsize y_{i} = \beta_{0} + \beta_{1}C_{1}(X_{i}) + \beta_{2}C_{2}(X_{i}) + ... +
+\beta_{k}C_{k}(X_{i}) + \epsilon_{i} $$
+
+Only one of $$ C_{1}, C_{2}, ..., C_{K} $$ can be non-zero. When $$ X < C , $$
+all the predictors will be zero. This means $$ \beta_{0} $$ can be interpreted
+as the mean value of $$ Y $$ for $$ X < C_{1} . $$ Similarly, for $$ C_{j} \leq
+X < C_{j+1} , $$ the linear model reduces to $$ \beta_{0} + \beta_{j} , $$ so $$
+\beta_{j} $$ represents the average increase in the response for $$ X $$ in $$
+C_{j} \leq X < C_{j+1} $$ compared to $$ X < C_{1} . $$
+
+Unless there are natural breakpoints in the predictors, piecewise constant
+functions can miss the interesting data.
 
 <a id="studentized-residual"></a>
 **[Studentized Residual][#studentized-residual]**: Because the standard
@@ -1630,8 +1805,10 @@ A large z-statistic offers evidence against the null hypothesis.
 
 [#adjusted-r-squared]: #adjusted-r-squared "Adjusted R**2"
 [#akaike-information-criterion]: #akaike-information-criterion "Akaike Information Criterion"
+[#backfitting]: #backfitting "Backfitting"
 [#backward-selection]: #backward-selection "Backward Selection"
 [#backward-stepwise-selection]: #backward-stepwise-selection "Backward Stepwise Selection"
+[#basis-function-approach]: #basis-function-approach "Basis Function Approach"
 [#bayes-classifier]: #bayes-classifier "Bayes Classifier"
 [#bayes-decision-boundary]: #bayes-decision-boundary "Bayes Decision Boundary"
 [#bayes-error-rate]: #bayes-error-rate "Bayes Error Rate"
@@ -1662,6 +1839,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#forward-selection]: #forward-selection "Forward Selection"
 [#forward-stepwise-selection]: #forward-stepwise-selection "Forward Stepwise Selection"
 [#gaussian-distribution]: #gaussian-distribution "Gaussian Distribution"
+[#generalized-additive-model]: #generalized-additive-model "Generalized Additive Model"
 [#heteroscedasticity]: #heteroscedasticity "Heteroscedasticity"
 [#hierarchical-principle]: #hierarchical-principle "Hierarchical Principle"
 [#high-dimensional]: #high-dimensional "High-Dimensional"
@@ -1676,6 +1854,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#k-fold-cross-validation]: #k-fold-cross-validation "K-Fold Cross Validation"
 [#k-nearest-neighbors-classifier]: #k-nearest-neighbors-classifier "K-Nearest Neighbors Classifier"
 [#k-nearest-neighbors-regression]: #k-nearest-neighbors-regression "K-Nearest Neighbors Regression"
+[#knot]: #knot "Knot"
 [#l-one-norm]: #l-one-norm "L1 Norm"
 [#l-two-norm]: #l-two-norm "L2 Norm"
 [#lasso]: #lasso "Lasso"
@@ -1683,6 +1862,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#leave-one-out-cross-validation]: #leave-one-out-cross-validation "Leave One Out Cross Validation"
 [#likelihood-function]: #likelihood-function "Likelihood Function"
 [#linear-discriminant-analysis]: #linear-discriminant-analysis "Linear Discriminant Analysis"
+[#local-regression]: #polynomial-regression "Polynomial Regression"
 [#log-odds]: #log-odds "Log-Odds"
 [#logistic-function]: #logistic-function "Logistic Function"
 [#logistic-regression]: #logistic-regression "Logistic Regression"
@@ -1696,9 +1876,10 @@ A large z-statistic offers evidence against the null hypothesis.
 [#multiple-linear-regression]: #multiple-linear-regression "Multiple Linear Regression"
 [#multiple-logistic-regression]: #multiple-logistic-regression "Multiple Logistic Regression"
 [#multivariate-gaussian-distribution]: #multivariate-gaussian-distribution "Multivariate Gaussian Distribution"
-[#normal-distribution]: #normal-distribution "Normal Distribution"
+[#natural-spline]: #natural-spline "Natural Spline"
 [#non-parametric]: #non-parametric "Non-Parametric"
 [#non-parametric-methods]: #non-parametric-methods "Non-Parametric Methods"
+[#normal-distribution]: #normal-distribution "Normal Distribution"
 [#null-hypothesis]: #null-hypothesis "Null Hypothesis"
 [#null-model]: #null-model "Null Model"
 [#odds]: #odds "Odds"
@@ -1711,6 +1892,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#parametric]: #parametric "Parametric"
 [#parametric-methods]: #parametric-methods "Parametric Methods"
 [#partial-least-squares]: #partial-least-squares "Partial Least Squares"
+[#piecewise-constant-function]: #piecewise-constant-function "Piecewise Constant Function"
 [#polynomial-regression]: #polynomial-regression "Polynomial Regression"
 [#population-regression-line]: #population-regression-line "Population Regression Line"
 [#posterior-probability]: #posterior-probability "Posterior Probability"
@@ -1723,6 +1905,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#quantitative-value]: #quantitative-value "Quantitative Value"
 [#r-squared-statistic]: #r-squared-statistic "R Squared Statistic"
 [#regression-problem]: #regression-problem "Regression Problem"
+[#regression-spline]: #regression-spline "Regression Spline"
 [#resampling-methods]: #resampling-methods "Resampling Methods"
 [#residual]: #residual "Residual"
 [#residual-plot]: #residual-plot "Residual Plot"
@@ -1736,9 +1919,11 @@ A large z-statistic offers evidence against the null hypothesis.
 [#shrinkage-penalty]: #shrinkage-penalty "Shrinkage Penalty"
 [#simple-linear-regression]: #simple-linear-regression "Simple Linear Regression"
 [#slope]: #slope "Slope"
+[#smoothing-spline]: #smoothing-spline "Smoothing Spline"
 [#specificity]: #specificity "Specificity"
 [#standard-error]: #standard-error "Standard Error"
 [#standardized-values]: #standardized-values "Standardized Values"
+[#step-function]: #step-function "Step Function"
 [#studentized-residual]: #studentized-residual "Studentized Residual"
 [#supervised-learning]: #supervised-learning "Supervised Learning"
 [#test-mean-squared-error]: #test-mean-squared-error "Test Mean Squared Error"

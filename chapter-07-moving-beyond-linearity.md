@@ -10,38 +10,40 @@ Regularization][chapter-06-linear-model-selection-and-regularization]
 
 ## [Chapter 7 - Moving Beyond Linearity][chapter-07-moving-beyond-linearity]
 
-Polynomial regression extends the linear model by adding additional predictors
-obtained by raising each of the original predictors to a power. For example,
-cubic regression uses three variables, $$ X $$, $$ X^{2} $$, and $$ X^{3} $$ as
-predictors.
+[Polynomial regression][glossary-polynomial-regression] extends the linear model
+by adding additional predictors obtained by raising each of the original
+predictors to a power. For example, cubic regression uses three variables, $$ X
+$$, $$ X^{2} $$, and $$ X^{3} $$ as predictors.
 
-Step functions split the range of a variable into $$ k $$ distinct regions in
-order to produce a qualitative variable. This has the effect of fitting a
-piecewise constant function.
+[Step functions][glossary-step-function] split the range of a variable into $$ k
+$$ distinct regions in order to produce a
+[qualitative][glossary-qualitative-value] variable. This has the effect of
+fitting a [piecewise constant function][glossary-piecewise-constant-function].
 
-Regression splines are an extension of polynomials and step functions that
-provide more flexibility. Regression splines split the range of $$ X $$ into $$
-k $$ distinct region and within each region a polynomial function is used to fit
-the data. The polynomial functions selected are constrained to ensure they join
-smoothly at region boundaries called knots. With enough regions, regression
-splines can offer an extremely flexible fit.
+[Regression splines][glossary-regression-spline] are an extension of polynomials
+and step functions that provide more flexibility. Regression splines split the
+range of $$ X $$ into $$ k $$ distinct regions and within each region a
+polynomial function is used to fit the data. The polynomial functions selected
+are constrained to ensure they join smoothly at region boundaries called
+[knots][glossary-knot].  With enough regions, regression splines can offer an
+extremely flexible fit.
 
-Smoothing splines are similar to regression splines, but unlike regression
-splines, smoothing splines result from minimizing a residual sum of squares
-criterion subject to a smoothness penalty.
+[Smoothing splines][glossary-smoothing-spline] are similar to regression
+splines, but unlike regression splines, smoothing splines result from minimizing
+a residual sum of squares criterion subject to a smoothness penalty.
 
-Local regression is similar to splines, however the regions are allowed to
-overlap in the local regression scenario. The overlapping regions allow for
-improved smoothness.
+[Local regression][glossary-local-regression] is similar to splines, however the
+regions are allowed to overlap in the local regression scenario. The overlapping
+regions allow for improved smoothness.
 
-Generalized additive models extend splines, local regression, and polynomials to
-deal with multiple predictors.
+[Generalized additive models][glossary-generalized-additive-model] extend
+splines, local regression, and polynomials to deal with multiple predictors.
 
 ### Polynomial Regression
 
-Extending linear regression to accommodate scenarios where the relationship
-between the predictors and the response is non-linear typically involves
-replacing the standard linear model
+Extending [linear regression][glossary-simple-linear-regression] to accommodate
+scenarios where the relationship between the predictors and the response is
+non-linear typically involves replacing the standard linear model
 
 $$ \normalsize y_{i} = \beta_{0} + \beta_{1}X_{i} + \epsilon_{i} $$
 
@@ -74,13 +76,13 @@ $$ \hat{f}(X_{0}) . $$ The estimated pointwise standard error of $$
 
 ### Step Functions
 
-Polynomial functions of the predictors in a linear model imposes a global
+Polynomial functions of the predictors in a linear model impose a global
 structure on the estimated non-linear function of $$ X . $$ Step functions don't
 impose such a global structure.
 
-Step functions split the range of $$ X $$ into bins and fit a different constant
-to each bin. This is equivalent to converting a continuous variable into an
-ordered categorical variable.
+[Step functions][glossary-step-function] split the range of $$ X $$ into bins
+and fit a different constant to each bin. This is equivalent to converting a
+continuous variable into an ordered categorical variable.
 
 First, $$ K $$ cut points, $$ c_{1}, c_{2}, ..., c_{k} , $$ are created in the
 range of $$ X $$ from which $$ K + 1 $$ new variables are created.
@@ -116,15 +118,15 @@ X < C_{j+1} , $$ the linear model reduces to $$ \beta_{0} + \beta_{j} , $$ so $$
 \beta_{j} $$ represents the average increase in the response for $$ X $$ in $$
 C_{j} \leq X < C_{j+1} $$ compared to $$ X < C_{1} . $$
 
-Unless here are natural breakpoints in the predictors, piecewise constant
+Unless there are natural breakpoints in the predictors, piecewise constant
 functions can miss the interesting data.
 
 ### Basis Functions
 
-Polynomial and piecewise constant functions are special cases of a basis
-function approach. The basis function approach utilizes a family of functions or
-transformations that can be applied to a variable $$ X $$: $$ b_{1}(X), b_{2}(X), ...,
-b_{K}(X) . $$
+Polynomial and piecewise constant functions are special cases of a [basis
+function approach][glossary-basis-function-approach]. The basis function
+approach utilizes a family of functions or transformations that can be applied
+to a variable $$ X:\ b_{1}(X), b_{2}(X), ..., b_{K}(X) . $$
 
 Instead of fitting a linear model in $$ X , $$ a similar model that applies the
 fixed and known basis functions to $$ X $$ is used:
@@ -147,9 +149,10 @@ Many different types of basis functions exist.
 
 ### Regression Splines
 
-Piecewise polynomial regression involves fitting separate low-degree polynomials
-over different regions of $$ X , $$ instead of fitting a high-degree polynomial
-over the entire range of $$ X . $$
+The simplest spline is a piecewise polynomial function.  Piecewise polynomial
+regression involves fitting separate low-degree polynomials over different
+regions of $$ X , $$ instead of fitting a high-degree polynomial over the entire
+range of $$ X . $$
 
 For example, a piecewise cubic polynomial is generated by fitting a cubic
 regression in the form
@@ -160,26 +163,24 @@ $$ \normalsize y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}x_{i}^{2} +
 but where the coefficients, $$ \beta_{0}, \beta_{1}, \beta_{2}, \beta_{3} , $$
 differ in different regions of the range of $$ X . $$
 
-The points in the range where the coefficients change are called knots.
+The points in the range where the coefficients change are called
+[knots][glossary-knot].
 
 Assuming no functions are repeated, a range of $$ X $$ split at $$ K $$ knots
 would be fit to $$ K + 1 $$ different functions of the selected type (constant,
 linear, cubic, etc.), one for each region.
 
-In many situations, the number of degrees of freedom in the piecewise context
-can be determined by multiplying the number of parameters ($$ \beta_{0},
-\beta_{1}, ..., \beta_{j} $$) by one more than the number of knots. For a
-piecewise polynomial regression of dimension $$ d , $$ the number of degrees of
-freedom would be
+In many situations, the number of [degrees of
+freedom][glossary-degrees-of-freedom] in the piecewise context can be determined
+by multiplying the number of parameters ($$ \beta_{0}, \beta_{1}, ..., \beta_{j}
+$$) by one more than the number of knots. For a piecewise polynomial regression
+of dimension $$ d , $$ the number of degrees of freedom would be
 
 $$ \normalsize d \times (K+1) $$
 
-Piecewise functions often run into the problem that they aren't continuous as
+Piecewise functions often run into the problem that they aren't continuous at
 the knots. To remedy this, a constraint can be put in place that the fitted
 curve must be continuous. Even then the fitted curve can look unnatural.
-
-When merely continuous isn't sufficient, additional constraints can be put in
-place.
 
 To ensure the fitted curve is not just continuous, but also smooth, additional
 constraints can be placed on the derivatives of the piecewise polynomial.
@@ -190,7 +191,7 @@ derivatives up to degree $$ d - 1 $$ at each knot.
 For example, a cubic spline, requires that each cubic piecewise polynomial is
 constrained at each knot such that the curve is continuous, the first derivative
 is continuous, and the second derivative is continuous. Each constraint imposed
-on the piecewise cubic polynomial effectively frees up one degree of freedom by
+on the piecewise cubic polynomial effectively reclaims one degree of freedom by
 reducing complexity.
 
 In general, a cubic spline with $$ K $$ knots uses a total of $$ 4 + K $$
@@ -233,9 +234,9 @@ Cubic splines are popular because the discontinuity at the knots is not
 detectable by the human eye in most situations.
 
 Splines can suffer from high variance at the outer range of the predictors. To
-combat this, a natural spline can be used. A natural spline is a regression
-spline with additional boundary constraints that force the function to be linear
-in the boundary region.
+combat this, a natural spline can be used. A [natural
+spline][glossary-natural-spline] is a regression spline with additional boundary
+constraints that force the function to be linear in the boundary region.
 
 There are a variety of methods for choosing the number and location of the
 knots. Because the regression spline is most flexible in regions that contain a
@@ -246,8 +247,8 @@ to choose the desired degrees of freedom and then use software or other
 heuristics to place the corresponding number of knots at uniform quantiles of
 the data.
 
-Cross validation is a useful mechanism for determining the appropriate number of
-knots and/or degrees of freedom.
+[Cross validation][glossary-cross-validation] is a useful mechanism for
+determining the appropriate number of knots and/or degrees of freedom.
 
 Regression splines often outperform polynomial regression. Unlike polynomials
 which must use a high dimension to produce a flexible fit, splines can keep the
@@ -257,14 +258,15 @@ most need it which tends to produce more stable estimates.
 
 ### Smoothing Splines
 
-Smoothing splines take a substantially different approach to producing a spline.
-To fit a smooth curve to a data set, it would be deal to find a function $$ g(X)
-$$ that fits the data well with a small RSS. However without any constraints on
-$$ g(X) , $$ it's always possible to produce a $$ g(X) $$ that interpolates all
-of the data and yields an RSS of zero, but is over flexible and over fits the
-data. What is really wanted is a $$ g(X) $$ that makes RSS small while also
-remaining smooth. One way to achieve this is to find a function $$ g(X) $$ that
-minimizes
+[Smoothing splines][glossary-smoothing-spline] take a substantially different
+approach to producing a spline. To fit a smooth curve to a data set, it would
+be ideal to find a function $$ g(X) $$ that fits the data well with a small
+[residual sum of squares][glossary-residual-sum-of-squares]. However without
+any constraints on $$ g(X) , $$ it's always possible to produce a $$ g(X) $$
+that interpolates all of the data and yields an RSS of zero, but is over
+flexible and over fits the data. What is really wanted is a $$ g(X) $$ that
+makes RSS small while also remaining smooth. One way to achieve this is to find
+a function $$ g(X) $$ that minimizes
 
 $$ \normalsize \sum_{i=1}^{n}(y_{i} - g(x_{i}))^{2} + \lambda \int g\prime\prime(t)^{2}dt $$
 
@@ -276,7 +278,7 @@ penalty strategy.
 
 The term
 
-$$ \normalsize \sum_{i=1}^{n}(y_{i} - g(x_{i}))^{2} $$
+$$ \normalsize \lambda \int g\prime\prime(t)^{2}dt $$
 
 is a loss function that encourages $$ g $$ to be smooth and less variable. $$
 g\prime\prime(t) $$ refers to the second derivative of the function $$ g . $$
@@ -309,11 +311,12 @@ squares solution since the loss function aims to minimize the residual sum of
 squares.
 
 At this point it should come as no surprise that the tuning constant, $$ \lambda
-, $$ controls the bias-variance trade-off of the smoothing spline.
+, $$ controls the [bias-variance trade-off][glossary-bias-variance-trade-off] of
+the smoothing spline.
 
 The smoothing spline $$ g(X) $$ has some noteworthy special properties. It is a
 piecewise cubic polynomial with knots at the unique values of $$ x_{1},\ x_{2},\
-...,\ x_{n} $$ that is continuous in its first and second derivatives at each
+...,\ x_{n} , $$ that is continuous in its first and second derivatives at each
 knot. Additionally, $$ g(X) $$ is linear in the regions outside the outer most
 knots. Though the minimal $$ g(X) $$ is a natural cubic spline with knots at $$
 x_{1},\ x_{2},\ ...,\ x_{n} , $$ it is not the same natural cubic spline derived
@@ -346,7 +349,8 @@ particular value of $$ \lambda : $$
 
 $$ \normalsize \hat{g}_{\lambda} = S_{\lambda}y . $$
 
-Using these values, the leave-one-out cross validation error can be calculated
+Using these values, the [leave-one-out cross
+validation][glossary-leave-one-out-cross-validation] error can be calculated
 efficiently via
 
 $$ \normalsize RSS_{cv}(\lambda) = \sum_{i=1}^{n}(y_{i} -
@@ -358,12 +362,12 @@ training observations except for the ith.
 
 ### Local Regression
 
-Local regression is an approach to fitting flexible non-linear functions which
-involves computing the fit at a target point $$ x_{0} $$ using only the nearby
-training observations.
+[Local regression][glossary-local-regression] is an approach to fitting flexible
+non-linear functions which involves computing the fit at a target point $$ x_{0}
+$$ using only the nearby training observations.
 
 Each new point from which a local regression fit is calculated requires fitting
-a new weighted lease squares regression model by minimizing the appropriate
+a new weighted least squares regression model by minimizing the appropriate
 regression weighting function for a new set of weights.
 
 A general algorithm for local regression is
@@ -379,7 +383,7 @@ $$ using the weights calculated earlier by finding coefficients that minimize a
 modified version of the appropriate least squares model. For linear regression
 that modified model is
 
-$$ \normalsize \sum_{i=1}^{n} K_{i0}(y_{i} - \beta_{0} - \beta_{1}x_{i})^{2} $$
+    $$ \normalsize \sum_{i=1}^{n} K_{i0}(y_{i} - \beta_{0} - \beta_{1}x_{i})^{2} $$
 
 4. The fitted value at $$ x_{0} $$ is given by
 
@@ -397,26 +401,28 @@ made.
 
 The most important decision is the size of the span S. The span plays a role
 like $$ \lambda $$ did for smoothing splines, offering some choice with regard
-to bias-variance trade-off. The smaller the span $, the more local, flexible,
-and wiggly the resulting non-linear fit will be. Conversely, a larger value of S
-will lead to a more global fit. Again, cross validation is useful for choosing
-an appropriate value for S.
+to the bias-variance trade-off. The smaller the span S, the more local,
+flexible, and wiggly the resulting non-linear fit will be. Conversely, a larger
+value of S will lead to a more global fit. Again, [cross
+validation][glossary-cross-validation] is useful for choosing an appropriate
+value for S.
 
-In the multiple linear regression setting, local regression can be generalized
-to yield a multiple linear regression model in which some variable coefficients
-are globally static while other variable coefficients are localized. These types
-of varying coefficient models are a useful way of adapting a model to the most
-recently gathered data.
+In the [multiple linear regression][glossary-multiple-linear-regression]
+setting, local regression can be generalized to yield a multiple linear
+regression model in which some variable coefficients are globally static while
+other variable coefficients are localized. These types of varying coefficient
+models are a useful way of adapting a model to the most recently gathered data.
 
 Local regression can also be useful in the multi-dimensional space though the
-curse of dimensionality limits its effectiveness to just a few variables.
+[curse of dimensionality][glossary-curse-of-dimensionality] limits its
+effectiveness to just a few variables.
 
 ### Generalized Additive Models
 
-Generalized additive models (GAM) offer a general framework for extending a
-standard linear model by allowing non-linear functions of each of the predictors
-while maintaining additivity. GAMs can be applied with both quantitative and
-qualitative models.
+[Generalized additive models][glossary-generalized-additive-model] (GAM) offer a
+general framework for extending a standard linear model by allowing non-linear
+functions of each of the predictors while maintaining additivity. GAMs can be
+applied with both quantitative and qualitative models.
 
 One way to extend the multiple linear regression model
 
@@ -440,11 +446,11 @@ of models.
 GAMs allow for using the many methods of fitting functions to single variables
 as building blocks for fitting an additive model.
 
-Backfitting can be used to fit GAMs in situations where least squares cannot be
-used. Backfitting fits a model involving multiple parameters by repeatedly
-updating the fit for each predictor in turn, hold the others fixed. This
-approach has the benefit that each time a function is updated the fitting method
-for a variable can be applied to a partial residual.
+[Backfitting][glossary-backfitting] can be used to fit GAMs in situations where
+least squares cannot be used. Backfitting fits a model involving multiple
+parameters by repeatedly updating the fit for each predictor in turn, hold the
+others fixed. This approach has the benefit that each time a function is updated
+the fitting method for a variable can be applied to a partial residual.
 
 A partial residual is the remainder left over after subtracting the products of
 the fixed variables and their respective coefficients from the response. This
@@ -511,3 +517,23 @@ share all the same pros and cons as their linear regression counterparts.
 [chapter-06-linear-model-selection-and-regularization]: chapter-06-linear-model-selection-and-regularization "stats-learning-notes -- Chapter 6 - Linear Model Selection and Regularization"
 [chapter-07-moving-beyond-linearity]: chapter-07-moving-beyond-linearity "stats-learning-notes -- Chapter 7 - Moving Beyond Linearity"
 [chapter-08-tree-based-methods]: chapter-08-tree-based-methods "stats-learning-notes -- Chapter 8 - Tree Based Methods"
+[glossary-backfitting]: glossary#backfitting "stats-learning-notes -- Glossary - Backfitting"
+[glossary-basis-function-approach]: glossary#basis-function-approach "stats-learning-notes -- Glossary - Basis Function Approach"
+[glossary-bias-variance-trade-off]: glossary#bias-variance-trade-off "stats-learning-notes -- Glossary - Bias-Variane Trade-Off"
+[glossary-cross-validation]: glossary#cross-validation "stats-learning-notes -- Glossary - Cross Validation"
+[glossary-curse-of-dimensionality]: glossary#curse-of-dimensionality "stats-learning-notes -- Glossary - Curse of Dimensionality"
+[glossary-degrees-of-freedom]: glossary#degrees-of-freedom "stats-learning-notes -- Glossary - Degrees of Freedom"
+[glossary-generalized-additive-model]: glossary#generalized-additive-model "stats-learning-notes -- Glossary - Generalized Additive Model"
+[glossary-knot]: glossary#knot "stats-learning-notes -- Glossary - Knot"
+[glossary-leave-one-out-cross-validation]: glossary#leave-one-out-cross-validation "stats-learning-notes -- Glossary - Leave-One-Out Cross Validation"
+[glossary-local-regression]: glossary#local-regression "stats-learning-notes -- Glossary - Local Regression"
+[glossary-multiple-linear-regression]: glossary#multiple-linear-regression "stats-learning-notes -- Glossary - Multiple Linear Regression"
+[glossary-natural-spline]: glossary#natural-spline "stats-learning-notes -- Glossary - Natural Spline"
+[glossary-piecewise-constant-function]: glossary#piecewise-constant-function "stats-learning-notes -- Glossary - Piecewise Constant Function"
+[glossary-polynomial-regression]: glossary#polynomial-regression "stats-learning-notes -- Glossary - Polynomial Regression"
+[glossary-qualitative-value]: glossary#qualitative-value "stats-learning-notes -- Glossary - Qualitative Value"
+[glossary-regression-spline]: glossary#regression-spline "stats-learning-notes -- Glossary - Regression Spline"
+[glossary-residual-sum-of-squares]: glossary#residual-sum-of-squares "stats-learning-notes -- Glossary - Residual Sum of Squares"
+[glossary-simple-linear-regression]: glossary#simple-linear-regression "stats-learning-notes -- Glossary - Simple Linear Regression"
+[glossary-smoothing-spline]: glossary#smoothing-spline "stats-learning-notes -- Glossary - Smoothing Spline"
+[glossary-step-function]: glossary#step-function "stats-learning-notes -- Glossary - Step Function"
