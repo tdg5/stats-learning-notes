@@ -30,9 +30,10 @@ and [Bayes information criterion][#bayes-information-criterion] where a smaller
 value reflects lower test error, for adjusted $$ R^{2} , $$ a larger value
 signifies a lower test error.o
 
-Maximizing adjusted $$ R^{2} $$ is equivalent to minimizing $$ \frac{RSS}{n - d
-- 1} . $$ Because $$ d $$ appears in the denominator, the number of variables
-may increase or decrease the value of $$ \frac{RSS}{n - d - 1} $$
+Maximizing adjusted $$ R^{2} $$ is equivalent to minimizing
+$$ \frac{RSS}{n - d - 1} . $$ Because $$ d $$ appears in the denominator, the
+number of variables may increase or decrease the value of
+$$ \frac{RSS}{n - d - 1} $$
 
 Adjusted $$ R^{2} $$ aims to penalize models that include unnecessary variables.
 This stems from the idea that after all of the correct variables have been
@@ -121,6 +122,37 @@ so the full model with all $$ p $$ predictors can be fit.
 Both forward stepwise selection and backward stepwise selection perform a guided
 search over the model space and effectively consider substantially more than $$
 1 + \frac{p(p+1)}{2} $$ models.
+
+<a id="bagging"></a>
+**[Bagging][#bagging]**: Bootstrap aggregation, or bagging, is a general purpose
+procedure for reducing the variance of statistical learning methods that is
+particularly useful for decision trees.
+
+Formally, bagging aims to reduce variance by calculating $$ \hat{f}^{*1}(x),\
+\hat{f}^{*2},\ ...,\ \hat{f}^{*B} $$ using $$ B $$ separate training sets
+created using [bootstrap][#bootstrap] resampling, and averaging the results of
+the functions to obtain a single, low-variance statistical learning model given
+by
+
+$$ \hat{f}_{avg}(x) = \frac{1}{B}\sum_{b=1}^{B}\hat{f}^{*b}(x) . $$
+
+Bagging can improve predictions for many regression methods, but it's especially
+useful for decision trees.
+
+Bagging is applied to [regression trees][#regression-tree] by constructing $$ B
+$$ regression trees using $$ B $$ bootstrapped training sets and averaging the
+resulting predictions. The constructed trees are grown deep and are not pruned.
+This means each individual tree has high variance, but low bias. Averaging the
+results of the $$ B $$ trees reduces the variance.
+
+In the case of [classification trees][#classification-tree], a similar approach
+can be taken, however instead of averaging the predictions, the prediction is
+determined by the most commonly occurring class among the $$ B $$ predictions or
+the mode value.
+
+The number of trees, $$ B , $$ is not a critical parameter with bagging. Picking
+a large value for $$ B $$ will not lead to overfitting. Typically, a value of
+$$ B $$ is chosen to ensure the variance and error rate of settled down.
 
 <a id="basis-function-approach"></a>
 **[Basis Function Approach][#basis-function-approach]**: Polynomial and
@@ -252,6 +284,61 @@ error][#test-mean-squared-error], called a trade-off because it is a challenge
 to find a model that has a low test mean squared error and both a low variance
 and a low squared bias.
 
+<a id="boosting"></a>
+**[Boosting][#boosting]**: A [decision tree][#decision-tree] method similar to
+[bagging][#bagging], however, where as bagging builds each tree independent of
+the other trees, boosting trees are grown using information from previously
+grown trees. Boosting also differs in that it does not use
+[bootstrap][#bootstrap] sampling. Instead, each tree is fit to a modified
+version of the original data set. Like bagging, boosting combines a large number
+of decision trees, $$ \hat{f}^{*1},\ \hat{f}^{*2},\ ...,\ \hat{f}^{*B} . $$
+
+Each new tree added to a boosting model is fit to the residuals of the model
+instead of the response, $$ Y . $$
+
+Each new decision tree is then added to the fitted function to update the
+residuals. Each of the trees can be small with just a few [terminal
+nodes][#terminal-node], determined by the tuning parameter, $$ d . $$
+
+By repeatedly adding small trees based on the residuals, $$ \hat{f} $$ will
+slowly improve in areas where it does not perform well.
+
+Boosting has three tuning parameters:
+
+- $$ B , $$ the number of trees. Unlike bagging and random forests, boosting can
+  overfit if $$ B $$ is too large, although overfitting tends to occur slowly if
+  at all. Cross validation can be used to select a value for $$ B . $$
+- $$ \lambda , $$ the shrinkage parameter, a small positive number that controls
+  the rate at which the boosting model learns. Typical values are $$ 0.01 $$ or
+  $$ 0.001 , $$ depending on the problem. Very small values of $$ \lambda $$ can
+  require a very large value for $$ B $$ in order to achieve good performance.
+- $$ d , $$ the number of splits in each tree, which controls the complexity of
+  the boosted model. Often $$ d=1 $$ works well, in which case each tree is a
+  stump consisting of one split. This approach yields an additive model since
+  each involves only a single variable. In general terms, $$ d $$ is the
+  interaction depth of the model and it controls the interaction order of the
+  model since $$ d $$ splits can involve at most $$ d $$ variables.
+
+With boosting, because each tree takes into account the trees that came before
+it, smaller trees are often sufficient. Smaller trees also aid interpretability.
+
+An algorithm for boosting regression trees:
+
+1. Set $$ \hat{f}(x)=0 $$ and $$ r_{i} = y_{i} $$ for all $$ i $$ in the
+training set.
+2. For $$ b=1,\ b=2,\ ...,\ b=B , $$ repeat:
+   1. Fit a tree $$ \hat{f}^{b} $$ with $$ d $$ splits ($$ d+1 $$ [terminal
+   nodes][#terminal-node]) to the training data (X, r)
+   2. Update $$ \hat{f} $$ by adding a shrunken version of the new tree:
+
+       $$ \hat{f}(x) \Leftarrow \hat{f}(x) + \lambda\hat{f}^{b}(x) $$
+   3. Update the residuals:
+
+       $$ r_{i} \Leftarrow r_{i} - \lambda\hat{f}^{b}(x_{i}) $$
+3. Output the boosted model,
+
+   $$ \hat{f}(x) = \sum_{b=1}^{B}\lambda\hat{f}^{b}(x) $$
+
 <a id="bootstrap"></a>
 **[Bootstrap][#bootstrap]**: A widely applicable resampling method that can be
 used to quantify the uncertainty associated with a given estimator or
@@ -276,11 +363,38 @@ For example, the estimated standard error of an estimated quantity $$
 $$ SE_{B}(\hat{\alpha}) = \sqrt{\frac{1}{B-1}\sum_{r=1}^{B}(\hat{\alpha}^{*r} -
 \frac{1}{B}\sum_{s=1}^{B}\hat{\alpha}^{*s})^{2}} $$
 
+<a id="branch"></a>
+**[Branch][#branch]**: A segment of a [decision tree][#decision-tree]
+that connect two nodes.
+
 <a id="classification-problem"></a>
 **[Classification Problem][#classification-problem]**: A class of problem that
 is well suited to statistical techniques for determining if an observation is a
 member of a particular class or which of a number of classes the observation
 belongs to.
+
+<a id="classification-tree"></a>
+**[Classification Tree][#classification-tree]**: A type of [decision
+tree][#decision-tree] that is similar to a [regression tree][#regression-tree],
+however it is used to predict a qualitative response.  For a classification
+tree, predictions are made based on the notion that each observation belongs to
+the most commonly occurring class of the training observations in the region to
+which the observation belongs.
+
+When growing a tree, the [Gini index][#gini-index] or
+[cross-entropy][#cross-entropy] are typically used to evaluate the quality of a
+particular split since both methods are more sensitive to node purity than
+classification error rate is.
+
+When pruning a classification tree, any of the three measures can be used,
+though classification error rate tends to be the preferred method if the goal of
+the pruned tree is prediction accuracy.
+
+Compared to linear models, decision trees will tend to do better in scenarios
+where the relationship between the response and the predictors is non-linear and
+complex. In scenarios where the relationship is well approximated by a linear
+model, an approach such as linear regression will tend to better exploit the
+linear structure and outperform decision trees.
 
 <a id="cluster-analysis"></a>
 **[Cluster Analysis][#cluster-analysis]**: The task of grouping a set of
@@ -338,6 +452,34 @@ $$ \normalsize \mathrm{Cor}(X,Y) = \frac{\sum_{i=1}^{n}(x_{i} - \bar{x})(y_{i} -
 \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_{i} -
 \bar{x})^{2}}\sqrt{\sum_{i=1}^{n}(y_{i}-\bar{y})^{2}}} . $$
 
+<a id="cost-complexity-pruning"></a>
+**[Cost Complexity Pruning][#cost-complexity-pruning]**: A strategy for pruning
+[decision trees][#decision-tree] that reduces the possibility space to a
+sequence of trees indexed by a non-negative tuning parameter, $$ \alpha . $$
+
+For each value of $$ \alpha $$ there corresponds a subtree, $$ T \subset T_{0} ,
+$$ such that
+
+$$ \sum_{m=1}^{|T|}\sum_{i:X_{i} \in R_{m}}(y_{i} - \hat{y}_{R_{m}})^{2} +
+\alpha|T| , $$
+
+where $$ |T| $$ indicates the number of terminal nodes in the tree $$ T, $$ $$
+R_{m} $$ is the predictor region corresponding to the mth terminal node and $$
+\hat{y}_{R_{m}} $$ is the predicted response associated with $$ R_{m} $$ (the
+mean of the training observations in $$ R_{m} ). $$
+
+The tuning parameter $$ \alpha $$ acts as a control on the trade-off between
+the subtree's complexity and its fit to the training data. When $$ \alpha $$ is
+zero, then the subtree will equal $$ T_{0} $$ since the training fit is
+unaltered. As $$ \alpha $$ increases, the penalty for having more terminal nodes
+increases, resulting in a smaller subtree.
+
+As $$ \alpha $$ increases from zero, the pruning process proceeds in a nested
+and predictable manner which makes it possible to obtain the whole sequence of
+subtrees as a function of $$ \alpha $$ easily.
+
+Also known as weakest link pruning.
+
 <a id="cp"></a>
 **[Cp][#cp]**: Cp, or Mallow's Cp, is a tool for estimating test error rate from
 the training error rate. For a model containing $$ d $$ predictors fitted with
@@ -359,6 +501,19 @@ low, so a model with a low Cp is preferable.
 Cp and [Akaike information criterion][#akaike-information-criterion] are
 proportional for least squares models and as such AIC offers no benefit over Cp
 in such a scenario.
+
+<a id="cross-entropy"></a>
+**[Cross Entropy][#cross-entropy]**: Borrowed from information theory,
+cross-entropy can be used as a function to determine classification error rate
+in the context of [classification trees][#classification-tree]. Formally defined
+as
+
+$$ D = \sum_{k=1}^{K}\hat{p}_{mk} \mathrm{log}\ \hat{p}_{mk} $$
+
+Since $$ \hat{p}_{mk} $$ must always be between zero and one it reasons that $$
+\hat{p}_{mk} \mathrm{log}\ \hat{p}_{mk} \geq 0 . $$ Like the [Gini
+index][#gini-index], cross-entropy will take on a small value if the mth region
+is pure.
 
 <a id="cross-validation"></a>
 **[Cross Validation][#cross-validation]**: A resampling method that can be
@@ -383,6 +538,29 @@ space increases so fast that the available data become sparse which can be
 problematic for any method that requires statistical significance because the
 amount of data needed to support a statistically sound and reliable result often
 grows exponentially with the dimensionality.
+
+<a id="decision-tree"></a>
+**[Decision Tree][#decision-tree]**: A tree-like structure made from stratifying
+or segmenting the predictor space into a number of simple regions. These
+structures are referred to as trees because the splitting rules used to segment
+the predictor space can be summarized in a tree that is typically drawn upside
+down with the leaves or terminal nodes at the bottom of the tree.
+
+<a id="decision-tree-methods"></a>
+**[Decision Tree Methods][#decision-tree-methods]**: Also known as tree-based
+methods. Strategies for stratifying or segmenting the predictor space into a
+number of simple regions. Predictions are then made using the mean or mode of
+the training observations in the region to which the predictions belong. These
+methods are referred to as trees because the splitting rules used to segment the
+predictor space can be summarized in a tree.
+
+Though tree-based methods are simple and useful for interpretation, they
+typically aren't competitive with the best supervised learning techniques.
+Because of this, approaches such as [bagging][#bagging], [random
+forests][#random-forest], and [boosting][#boosting] have been developed to
+produce multiple trees which are then combined to yield a since consensus
+prediction. Combining a large number of trees can often improve prediction
+accuracy at the cost of some loss in interpretation.
 
 <a id="degrees-of-freedom"></a>
 **[Degrees of Freedom][#degrees-of-freedom]**: A numeric value that quantifies
@@ -481,9 +659,6 @@ $$ \normalsize X_{i2} = \left\{ \begin{array}{cc}
   1&\mathrm{if\ p_{i}\ =\ class\ B}\\
   0&\mathrm{if\ p_{i}\ \ne\ class\ B}
 \end{array} \right. $$
-
-<a id="error-term"></a>
-**[Error Term][#error-term]**:
 
 <a id="f-distribution"></a>
 **[F-Distribution][#f-distribution]**: A continuous probability distribution
@@ -617,6 +792,21 @@ as building blocks for fitting an additive model.
 [Backfitting][#backfitting] can be used by GAMs in situations where least
 squares cannot be used.
 
+<a id="gini-index"></a>
+**[Gini Index][#gini-index]**: A measure of the total variance across
+K classes defined as
+
+$$ G = \sum_{k=1}^{K} \hat{p}_{mk}(1-\hat{p}_{mk}) $$
+
+where $$ \hat{p}_{mk} $$ represents the proportion of the training observations
+in the mth region that are from the kth class.
+
+The Gini index can be viewed as a measure of region purity as a small value
+indicates the region contains mostly observations from a single class.
+
+Often used as a function for assessing classification error rate in the context
+of [classification trees][#classification-tree].
+
 <a id="heteroscedasticity"></a>
 **[Heteroscedasticity][#heteroscedasticity]**: A characteristic of a collection
 of random variables in which there are sub-populations that have different
@@ -638,7 +828,7 @@ coefficient estimates of $$ X_{1} $$ or $$ X_{2} $$ are exactly zero is of
 limited interest.
 
 <a id="high-dimension"></a>
-**[High-Dimensional][#high-dimension]**: A term used to describe scenarios where
+**[High-Dimensional][#high-dimensional]**: A term used to describe scenarios where
 there are more features than observations.
 
 <a id="high-leverage"></a>
@@ -732,6 +922,11 @@ the [hierarchical principle][#hierarchical-principle].
 **[Intercept][#intercept]**: In a linear model, the value of the dependent
 variable, $$ Y , $$ when the independent variable, $$ X , $$ is equal to zero.
 Also described as the point at which a given line intersects with the x-axis.
+
+<a id="internal-node"></a>
+**[Inner Node][#internal-node]**: One of the many points in a [decision
+tree][#decision-tree] where the predictor space is split. Also known as inner
+node, or inode for short, or branch node.
 
 <a id="irreducible-error"></a>
 **[Irreducible Error][#irreducible-error]**: A random error term that is
@@ -1375,6 +1570,75 @@ accounted for very little of the variability of the model.
 An $$ R^{2} $$ value near $$ 0 $$ may occur because the type of model is wrong
 and/or because the inherent $$ \sigma^{2} $$ is high.
 
+<a id="random-forest"></a>
+**[Random Forest][#random-forest]**: Random forests are similar to [bagged
+trees][#bagging], however, random forests introduce a randomized process that
+helps decorrelate trees.
+
+During the random forest tree construction process, each time a split in a tree
+is considered, a random sample of $$ m $$ predictors is chosen from the full set
+of $$ p $$ predictors to be used as candidates for making the split. Only the
+randomly selected $$ m $$ predictors can be considered for splitting the tree in
+that iteration. A fresh sample of $$ m $$ predictors is considered at each
+split. Typically $$ m \approx \sqrt{p} $$ meaning that the number of predictors
+considered at each split is approximately equal to the square root of the total
+number of predictors, $$ p . $$ This means that at each split only a minority of
+the available predictors are considered. This process helps mitigate the
+strength of very strong predictors, allowing more variation in the bagged trees,
+which ultimately helps reduce correlation between trees and better reduces
+variance. In the presence of an overly strong predictor, bagging may not
+outperform a single tree. A random forest would tend to do better in such a
+scenario.
+
+On average, $$ \frac{p - m}{p} $$ of the splits in a random forest will not even
+consider the strong predictor which causes the resulting trees to be less
+correlated. This process is a kind of decorrelation process.
+
+As with [bagging][#bagging], random forests will not overfit as $$ B $$ is
+increased, so a value of $$ B $$ should be selected that allows the error rate
+to settle down.
+
+<a id="recursive-binary-splitting"></a>
+**[Recursive Binary Splitting][#recursive-binary-splitting]**: A top-down
+approach that begins at the top of a [decision-tree][#decision-tree] where all
+the observations belong to a single region, and successively splits the
+predictor space into two new branches. Recursive binary splitting is greedy
+strategy because at each step in the process the best split is made relative to
+that particular step rather than looking ahead and picking a split that will
+result in a better split at some future step.
+
+At each step the predictor $$ X_{j} $$ and the cutpoint $$ s $$ are selected
+such that splitting the predictor space into regions $$ \{X|X_{j} < s\} $$ and
+$$ \{X|X_{j} \geq s\} $$ leads to the greatest possible reduction in the
+residual sum of squares. This means that at each step, all the predictors $$
+X_{1},\ X_{2},\ ...,\ X_{j} $$ and all possible values of the cutpoint $$ s $$
+for each of the predictors are considered. The optimal predictor and cutpoint
+are selected such that the resulting tree has the lowest residual sum of squares
+compared to the other candidate predictors and cutpoints.
+
+More specifically, for any $$ j $$ and $$ s $$ that define the half planes
+
+$$ \normalsize R_{1}(j, s) = \{X|X_{j} < s\} $$
+
+and
+
+$$ \normalsize R_{2}(j, s) = \{X|X_{j} \geq s\} , $$
+
+the goal is to find the $$ j $$ and $$ s $$ that minimize the equation
+
+$$ \sum_{i: x_{i} \in R_{1}(j, s)}(y_{i} - \hat{y}_{R_{1}})^{2} + \sum_{i: x_{i}
+\in R_{2}(j, s)}(y_{i} - \hat{y}_{R_{2}})^{2} $$
+
+where $$ \hat{y}_{R_{1}} $$ and $$ \hat{y}_{R_{2}} $$ are the mean responses for
+the training observations in the respective regions.
+
+Only one region is split each iteration. The process concludes when some halting
+criteria are met.
+
+This process can result in overly complex trees that overfit the data leading to
+poor test performance. A smaller tree often leads to lower variance and better
+interpretation at the cost of a little bias.
+
 <a id="regression-problem"></a>
 **[Regression Problem][#regression-problem]**: A class of problem that is well
 suited to statistical techniques for predicting the value of a dependent
@@ -1384,6 +1648,29 @@ or predictors in the presence of an error term.
 <a id="regression-spline"></a>
 **[Regression Spline][#regression-spline]**: A spline that is fit to data using
 a set of spline basis functions, typically fit using least squares.
+
+<a id="regression-tree"></a>
+**[Regression Tree][#regression-tree]**: A [decision tree][#decision-tree]
+produced in roughly two steps:
+
+1. Divide the predictor space, $$ x_{1},\ x_{2},\ ...,\ x_{p} $$ into $$ J $$
+   distinct and non-overlapping regions, $$ R_{1},\ R_{2},\ ...,\ R_{J} . $$
+2. For every observation that falls into the region $$ R_{j} , $$ make the same
+   prediction, which is the mean value of the response values for the training
+   observations in $$ R_{j} . $$
+
+To determine the appropriate regions, $$ R_{1},\ R_{2},\ ...,\ R_{J} , $$ it is
+preferable to divide the predictor space into high-dimensional rectangles, or
+boxes, for simplicity and ease of interpretation. Ideally the goal would be to
+find regions that minimize the residual sum of squares given by
+
+$$ \normalsize \sum_{j=1}^{J}\sum_{i \in R_{j}}(y_{i} - \hat{y}_{R_{j}})^{2} $$
+
+where $$ \hat{y}_{R_{j}} $$ is the mean response for the training observations
+in the jth box. That said, it is computationally infeasible to consider every
+possible partition of the feature space into $$ J $$ boxes. For this reason, a
+top-down, greedy approach known as [recursive binary
+splitting][#recursive-binary-splitting] is used.
 
 <a id="resampling-methods"></a>
 **[Resampling Methods][#resampling-methods]**: Processes of repeatedly drawing
@@ -1699,6 +1986,11 @@ population standard deviation is unknown.
 **[T-Statistic][#t-statistic]**: A measure of the number of standard deviations
 a quantity a quantity is from zero.
 
+<a id="terminal-node"></a>
+**[Terminal Node][#terminal-node]**: Any node in a tree-like structure, such as
+a [decision tree][#decision-tree], that does not have any children nodes. Also
+known as leaf nodes or outer nodes.
+
 <a id="test-mean-squared-error"></a>
 **[Test Mean Squared Error][#test-mean-squared-error]**: The [mean
 squared error][#mean-squared-error] yielded when comparing a model's predictions
@@ -1808,6 +2100,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#backfitting]: #backfitting "Backfitting"
 [#backward-selection]: #backward-selection "Backward Selection"
 [#backward-stepwise-selection]: #backward-stepwise-selection "Backward Stepwise Selection"
+[#bagging]: #bagging "Bagging"
 [#basis-function-approach]: #basis-function-approach "Basis Function Approach"
 [#bayes-classifier]: #bayes-classifier "Bayes Classifier"
 [#bayes-decision-boundary]: #bayes-decision-boundary "Bayes Decision Boundary"
@@ -1817,17 +2110,24 @@ A large z-statistic offers evidence against the null hypothesis.
 [#best-subset-selection]: #best-subset-selection "Best Subset Selection"
 [#bias]: #bias "Bias"
 [#bias-variance-trade-off]: #bias-variance-trade-off "Bias-Variance Trade-Off"
+[#boosting]: #boosting "Boosting"
 [#bootstrap]: #bootstrap "Bootstrap"
+[#branch]: #branch "Branch"
 [#classification-problem]: #classification-problem "Classification Problem"
+[#classification-tree]: #classification-tree "Classification Tree"
 [#cluster-analysis]: #cluster-analysis "Cluster Analysis"
 [#coefficient]: #coefficient "Coefficient"
 [#collinearity]: #collinearity "Collinearity"
 [#confidence-interval]: #confidence-interval "Confidence Interval"
 [#confounding]: #confounding "Confounding"
 [#correlation]: #correlation "Correlation"
+[#cost-complexity-pruning]: #cost-complexity-pruning "Cost Complexity Pruning"
 [#cp]: #cp "Cp"
+[#cross-entropy]: #cross-entropy "Cross Entropy"
 [#cross-validation]: #cross-validation "Cross Validation"
 [#curse-of-dimensionality]: #curse-of-dimensionality "Curse of Dimensionality"
+[#decision-tree]: #decision-tree "Decision Tree"
+[#decision-tree-methods]: #decision-tree-methods "Decision Tree Methods"
 [#degrees-of-freedom]: #degrees-of-freedom "Degrees of Freedom"
 [#density-function]: #density-function "Density Function"
 [#dimension-reduction-methods]: #dimension-reduction-methods "Dimension Reduction Methods"
@@ -1840,6 +2140,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#forward-stepwise-selection]: #forward-stepwise-selection "Forward Stepwise Selection"
 [#gaussian-distribution]: #gaussian-distribution "Gaussian Distribution"
 [#generalized-additive-model]: #generalized-additive-model "Generalized Additive Model"
+[#gini-index]: #gini-index "Gini Index"
 [#heteroscedasticity]: #heteroscedasticity "Heteroscedasticity"
 [#hierarchical-principle]: #hierarchical-principle "Hierarchical Principle"
 [#high-dimensional]: #high-dimensional "High-Dimensional"
@@ -1850,6 +2151,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#indicator-variable]: #indicator-variable "Indicator Variable"
 [#interaction-term]: #interaction-term "Interaction Term"
 [#intercept]: #intercept "Intercept"
+[#internal-node]: #internal-node "Internal Node"
 [#irreducible-error]: #irreducible-error "Irreducible Error"
 [#k-fold-cross-validation]: #k-fold-cross-validation "K-Fold Cross Validation"
 [#k-nearest-neighbors-classifier]: #k-nearest-neighbors-classifier "K-Nearest Neighbors Classifier"
@@ -1904,8 +2206,11 @@ A large z-statistic offers evidence against the null hypothesis.
 [#qualitative-value]: #qualitative-value "Qualitative Value"
 [#quantitative-value]: #quantitative-value "Quantitative Value"
 [#r-squared-statistic]: #r-squared-statistic "R Squared Statistic"
+[#random-forest]: #random-forest "Random Forest"
+[#recursive-binary-splitting]: #recursive-binary-splitting "Recursive Binary Splitting"
 [#regression-problem]: #regression-problem "Regression Problem"
 [#regression-spline]: #regression-spline "Regression Spline"
+[#regression-tree]: #regression-tree "Regression Tree"
 [#resampling-methods]: #resampling-methods "Resampling Methods"
 [#residual]: #residual "Residual"
 [#residual-plot]: #residual-plot "Residual Plot"
@@ -1926,12 +2231,13 @@ A large z-statistic offers evidence against the null hypothesis.
 [#step-function]: #step-function "Step Function"
 [#studentized-residual]: #studentized-residual "Studentized Residual"
 [#supervised-learning]: #supervised-learning "Supervised Learning"
+[#t-distribution]: #t-distribution "T-Distribution"
+[#t-statistic]: #t-statistic "T-Statistic"
+[#terminal-node]: #terminal-node "Terminal Node"
 [#test-mean-squared-error]: #test-mean-squared-error "Test Mean Squared Error"
 [#total-sum-of-squares]: #total-sum-of-squares "Total Sum of Squares"
 [#training-error-rate]: #training-error-rate "Training Error Rate"
 [#training-mean-squared-error]: #training-mean-squared-error "Training Mean Squared Error"
-[#t-distribution]: #t-distribution "T-Distribution"
-[#t-statistic]: #t-statistic "T-Statistic"
 [#unsupervised-learning]: #unsupervised-learning "Unsupervised Learning"
 [#unbiased-estimator]: #unbiased-estimator "Unbiased Estimator"
 [#validation-set]: #validation-set "Validation Set"

@@ -298,7 +298,6 @@ flexibility is critical to the success of the model.
 [glossary-classification-problem]: glossary#classification-problem "stats-learning-notes -- Glossary - Classification Problem"
 [glossary-cluster-analysis]: glossary#cluster-analysis "stats-learning-notes -- Glossary - Cluster Analysis"
 [glossary-degrees-of-freedom]: glossary#degrees-of-freedom "stats-learning-notes -- Glossary - Degrees of Freedom"
-[glossary-error-term]: glossary#error-term "stats-learning-notes -- Glossary - Error Term"
 [glossary-input]: glossary#input "stats-learning-notes -- Glossary - Input"
 [glossary-irreducible-error]: glossary#irreducible-error "stats-learning-notes -- Glossary - Irreduicible Error"
 [glossary-k-nearest-neighbors-classifier]: glossary#k-nearest-neighbors-classifier "stats-learning-notes -- Glossary - K-Nearest Neighbors Classifier"

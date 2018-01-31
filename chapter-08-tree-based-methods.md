@@ -10,7 +10,8 @@ Linearity][chapter-07-moving-beyond-linearity]
 
 ## [Chapter 8 - Tree-Based Methods][chapter-08-tree-based-methods]
 
-Tree-based methods, also known as decision tree methods, involve stratifying or
+Tree-based methods, also known as [decision tree
+methods][glossary-decision-tree-methods], involve stratifying or
 segmenting the predictor space into a number of simple regions. Predictions are
 then made using the mean or the mode of the training observations in the region
 to which the predictions belong. These methods are referred to as trees because
@@ -19,19 +20,22 @@ tree.
 
 Though tree-based methods are simple and useful for interpretation, they
 typically aren't competitive with the best supervised learning techniques.
-Because of this, approaches such as bagging, random forests, and boosting have
-been developed to produce multiple trees which are then combined to yield a
-since consensus prediction. Combining a large number of trees can often improve
+Because of this, approaches such as [bagging][glossary-bagging], [random
+forests][glossary-random-forest], and [boosting][glossary-boosting] have been
+developed to produce multiple trees which are then combined to yield a since
+consensus prediction. Combining a large number of trees can often improve
 prediction accuracy at the cost of some loss in interpretation.
 
 ### Regression Trees
 
-Decision trees are typically drawn upside down with the leaves or terminal nodes
-at the bottom of the tree. The points in the tree where the predictor space is
-split are referred to as internal nodes. The segments of the tree that connect
-nodes are referred to as branches.
+[Decision trees][glossary-decision-tree] are typically drawn upside down with
+the leaves or [terminal nodes][glossary-terminal-node] at the bottom of the
+tree. The points in the tree where the predictor space is split are referred to
+as [internal nodes][glossary-internal-node]. The segments of the tree that
+connect nodes are referred to as [branches][glossary-branch].
 
-Regression trees are calculated in roughly two steps:
+[Regression trees][glossary-regression-tree] are calculated in roughly two
+steps:
 
 1. Divide the predictor space, $$ x_{1},\ x_{2},\ ...,\ x_{p} $$ into $$ J $$
    distinct and non-overlapping regions, $$ R_{1},\ R_{2},\ ...,\ R_{J} . $$
@@ -42,14 +46,16 @@ Regression trees are calculated in roughly two steps:
 To determine the appropriate regions, $$ R_{1},\ R_{2},\ ...,\ R_{J} , $$ it is
 preferable to divide the predictor space into high-dimensional rectangles, or
 boxes, for simplicity and ease of interpretation. Ideally the goal would be to
-find regions that minimize the residual sum of squares given by
+find regions that minimize the [residual sum of
+squares][glossary-residual-sum-of-squares] given by
 
 $$ \normalsize \sum_{j=1}^{J}\sum_{i \in R_{j}}(y_{i} - \hat{y}_{R_{j}})^{2} $$
 
 where $$ \hat{y}_{R_{j}} $$ is the mean response for the training observations
 in the jth box. That said, it is computationally infeasible to consider every
 possible partition of the feature space into $$ J $$ boxes. For this reason, a
-top-down, greedy approach known as recursive binary splitting is used.
+top-down, greedy approach known as [recursive binary
+splitting][glossary-recursive-binary-splitting] is used.
 
 Recursive binary splitting is considered top-down because it begins at the top
 of the tree where all observations belong to a single region, and successively
@@ -61,7 +67,7 @@ result in a better split at some future step.
 At each step the predictor $$ X_{j} $$ and the cutpoint $$ s $$ are selected
 such that splitting the predictor space into regions $$ \{X|X_{j} < s\} $$ and
 $$ \{X|X_{j} \geq s\} $$ leads to the greatest possible reduction in the
-residual sum of squares. This means that at each step, all the predictors
+residual sum of squares. This means that at each step, all the predictors $$
 X_{1},\ X_{2},\ ...,\ X_{j} $$ and all possible values of the cutpoint $$ s $$
 for each of the predictors are considered. The optimal predictor and cutpoint
 are selected such that the resulting tree has the lowest residual sum of squares
@@ -105,9 +111,9 @@ this is impractical in practice since there a huge number of possible subtrees.
 Computationally it would be preferable to select a small set of subtrees for
 consideration.
 
-Cost complexity pruning, also known as weakest link pruning, reduces the
-possibility space to a sequence of trees indexed by a non-negative tuning
-parameter, $$ \alpha . $$
+[Cost complexity pruning][glossary-cost-complexity-pruning], also known as
+weakest link pruning, reduces the possibility space to a sequence of trees
+indexed by a non-negative tuning parameter, $$ \alpha . $$
 
 For each value of $$ \alpha $$ there corresponds a subtree, $$ T \subset T_{0} ,
 $$ such that
@@ -121,7 +127,7 @@ R_{m} $$ is the predictor region corresponding to the mth terminal node and $$
 mean of the training observations in $$ R_{m} ). $$
 
 The tuning parameter $$ \alpha $$ acts as a control on the trade-off between
-the subtree's complexity its fit to the training data. When $$ \alpha $$ is
+the subtree's complexity and its fit to the training data. When $$ \alpha $$ is
 zero, then the subtree will equal $$ T_{0} $$ since the training fit is
 unaltered. As $$ \alpha $$ increases, the penalty for having more terminal nodes
 increases, resulting in a smaller subtree.
@@ -130,10 +136,10 @@ As $$ \alpha $$ increases from zero, the pruning process proceeds in a nested
 and predictable manner which makes it possible to obtain the whole sequence of
 subtrees as a function of $$ \alpha $$ easily.
 
-Cross-validation or a validation set can be used to select a value of $$ \alpha
-. $$ The selected value can then be used on the full training data set to
-produce a subtree corresponding to $$ \alpha . $$ This process is summarized
-below.
+A validation set or [cross-validation][glossary-cross-validation] can be used to
+select a value of $$ \alpha . $$ The selected value can then be used on the full
+training data set to produce a subtree corresponding to $$ \alpha . $$ This
+process is summarized below.
 
 1. Use recursive binary splitting to grow a large tree from the training data,
    stopping only when each terminal node has fewer than some minimum number of
@@ -152,31 +158,32 @@ below.
 
 ### Classification Trees
 
-A classification tree is similar to a regression tree, however it is used to
-predict a qualitative response. For a classification tree, predictions are made
-based on the notion that each observation belongs to the most commonly occurring
-class of the training observations in the region to which the observation
-belongs.
+A [classification tree][glossary-classification-tree] is similar to a regression
+tree, however it is used to predict a qualitative response. For a classification
+tree, predictions are made based on the notion that each observation belongs to
+the most commonly occurring class of the training observations in the region to
+which the observation belongs.
 
 In interpreting a classification tree, the class proportions within a particular
-terminal node region are often also of interest.
+[terminal node][glossary-terminal-node] region are often also of interest.
 
 Growing a classification tree is similar to growing a regression tree, however
-residual sum of squares cannot be used as a criteria for making binary splits
-and instead classification error rate is used. Classification error rate for a
-given region is defined as the fraction of training observations in that region
-that do not belong to the most common class. Formally,
+[residual sum of squares][glossary-residual-sum-of-squares] cannot be used as a
+criteria for making binary splits and instead classification error rate is used.
+Classification error rate for a given region is defined as the fraction of
+training observations in that region that do not belong to the most common
+class. Formally,
 
 $$ E = 1 - {max}_{k}(\hat{p}_{mk}) $$
 
 where $$ \hat{p}_{mk} $$ represents the proportion of the training observations
 in the mth region that are from the kth class.
 
-In practice, it turns out that classification error is not sensitive enough for
-tree growing and other criteria are preferable.
+In practice, it turns out that classification error rate is not sensitive enough
+for tree growing and other criteria are preferable.
 
-The Gini index is a measure of the total variance across the K classes defined
-as
+The [Gini index][glossary-gini-index] is a measure of the total variance across
+the K classes defined as
 
 $$ G = \sum_{k=1}^{K} \hat{p}_{mk}(1-\hat{p}_{mk}) $$
 
@@ -186,7 +193,8 @@ observations in the mth region that are from the kth class.
 The Gini index can be viewed as a measure of region purity as a small value
 indicates the region contains mostly observations from a single class.
 
-An alternative to the Gini index is cross-entropy, defined as
+An alternative to the Gini index is [cross-entropy][glossary-cross-entropy],
+defined as
 
 $$ D = \sum_{k=1}^{K}\hat{p}_{mk} \mathrm{log}\ \hat{p}_{mk} $$
 
@@ -205,19 +213,22 @@ the pruned tree is prediction accuracy.
 Compared to linear models, decision trees will tend to do better in scenarios
 where the relationship between the response and the predictors is non-linear and
 complex. In scenarios where the relationship is well approximated by a linear
-model, an approach such as linear regression will tend to better exploit the
+model, an approach such as [linear
+regression][glossary-simple-linear-regression] will tend to better exploit the
 linear structure and outperform decision trees.
 
 #### Advantages and Disadvantages of Trees
 
-Advantages:
-- Trees are easy to explain; even easier than linear regression.
+**Advantages**:
+- Trees are easy to explain; even easier than [linear
+  regression][glossary-simple-linear-regression].
 - Trees, arguably, more closely mirror human decision-making processes than
   regression or classification.
 - Trees can be displayed graphically and are easily interpreted by non-experts.
-- Trees don't require dummy variables to model qualitative variables.
+- Trees don't require [dummy variables][glossary-dummy-variable] to model
+  qualitative variables.
 
-Disadvantages:
+**Disadvantages**:
 - Interpretability comes at a cost; trees don't typically have the same
   predictive accuracy as other regression and classification methods.
 - Trees can lack robustness. Small changes in the data can cause large changes
@@ -227,9 +238,9 @@ Aggregating many decision trees using methods such as bagging, random forests,
 and boosting can substantially improve predictive performance and help mitigate
 some of the disadvantages of decision trees.
 
-Bootstrap aggregation, or bagging, is a general purpose procedure for reducing
-the variance of statistical learning methods that is particularly useful for
-decision trees.
+[Bootstrap aggregation, or bagging][glossary-bagging], is a general purpose
+procedure for reducing the variance of statistical learning methods that is
+particularly useful for decision trees.
 
 Given a set of $$ n $$ independent observations, $$ Z_{1},\ Z_{2},\ ...,\ Z_{n}
 , $$ each with a variance of $$ \sigma^{2} , $$ the variance of the mean $$
@@ -239,14 +250,13 @@ taking many training sets from the population, building a separate predictive
 model from each, and then averaging the predictions of each model can reduce
 variance.
 
-More formally, variance could be reduced by calculating $$ \hat{f}^{*1}(x),\
-\hat{f}^{*2},\ ...,\ \hat{f}^{*B} $$ using $$ B $$ separate training sets, and
+More formally, bagging aims to reduce variance by calculating $$
+\hat{f}^{*1}(x),\ \hat{f}^{*2},\ ...,\ \hat{f}^{*B} $$ using $$ B $$ separate
+training sets created using [bootstrap][glossary-bootstrap] resampling, and
 averaging the results of the functions to obtain a single, low-variance
 statistical learning model given by
 
 $$ \hat{f}_{avg}(x) = \frac{1}{B}\sum_{b=1}^{B}\hat{f}^{*b}(x) . $$
-
-This approach is known as bagging.
 
 Bagging can improve predictions for many regression methods, but it's especially
 useful for decision trees.
@@ -262,7 +272,7 @@ instead of averaging the predictions, the prediction is determined by the most
 commonly occurring class among the $$ B $$ predictions or the mode value.
 
 The number of trees, $$ B , $$ is not a critical parameter with bagging. Picking
-a large value for $$ BB $$ will not lead to overfitting. Typically, a value of
+a large value for $$ B $$ will not lead to overfitting. Typically, a value of
 $$ B $$ is chosen to ensure the variance and error rate of settled down.
 
 #### Out of Bag Error Estimation
@@ -276,7 +286,7 @@ obtained by taking each of the out-of-bag observations, evaluating the $$
 out-of-bag prediction, taking the mean/mode of those predictions, and comparing
 it to the value predicted by the bagged model, yielding the out-of-bag error.
 When $$ B $$ is sufficiently large, out-of-bag error is nearly equivalent to
-leave-one-out cross validation.
+[leave-one-out cross validation][glossary-leave-one-out-cross-validation].
 
 #### Variable Importance Measures
 
@@ -288,8 +298,9 @@ metric on the importance of the given predictor for classification models.
 
 ### Random Forests
 
-Random forests are similar to bagged trees, however, random forests introduce a
-randomized process that helps decorrelate trees.
+[Random forests][glossary-random-forest] are similar to [bagged
+trees][glossary-bagging], however, random forests introduce a randomized process
+that helps decorrelate trees.
 
 During the random forest tree construction process, each time a split in a tree
 is considered, a random sample of $$ m $$ predictors is chosen from the full set
@@ -310,17 +321,19 @@ On average, $$ \frac{p - m}{p} $$ of the splits in a random forest will not
 even consider the strong predictor which causes the resulting trees to be less
 correlated. This process is a kind of decorrelation process.
 
-As with bagging, random forests will not overfit as $$ B $$ is increased, so a
-value of $$ B $$ should be selected that allows the error rate to settle down.
+As with [bagging][glossary-bagging], random forests will not overfit as $$ B $$
+is increased, so a value of $$ B $$ should be selected that allows the error
+rate to settle down.
 
 ### Boosting
 
-Boosting works similarly to bagging, however, where as bagging builds each tree
-independent of the other trees, boosting trees are grown using information from
-previously grown trees. Boosting also differs in that it does not use bootstrap
-sampling. Instead, each tree is fit to a modified version of the original data
-set. Like bagging, boosting combines a large number of decision trees, $$
-\hat{f}^{*1},\ \hat{f}^{*2},\ ...,\ \hat{f}^{*B} . $$
+[Boosting][glossary-boosting] works similarly to bagging, however, where as
+bagging builds each tree independent of the other trees, boosting trees are
+grown using information from previously grown trees. Boosting also differs in
+that it does not use [bootstrap][glossary-bootstrap] sampling. Instead, each
+tree is fit to a modified version of the original data set. Like bagging,
+boosting combines a large number of decision trees, $$ \hat{f}^{*1},\
+\hat{f}^{*2},\ ...,\ \hat{f}^{*B} . $$
 
 Each new tree added to a boosting model is fit to the residuals of the model
 instead of the response, $$ Y . $$
@@ -336,7 +349,8 @@ Boosting has three tuning parameters:
 
 - $$ B , $$ the number of trees. Unlike bagging and random forests, boosting can
   overfit if $$ B $$ is too large, although overfitting tends to occur slowly if
-  at all. Cross validation can be used to select a value for $$ B . $$
+  at all. [Cross validation][glossary-cross-validation] can be used to select a
+  value for $$ B . $$
 - $$ \lambda , $$ the shrinkage parameter, a small positive number that controls
   the rate at which the boosting model learns. Typical values are $$ 0.01 $$ or
   $$ 0.001 , $$ depending on the problem. Very small values of $$ \lambda $$ can
@@ -360,10 +374,10 @@ training set.
    nodes) to the training data (X, r)
    2. Update $$ \hat{f} $$ by adding a shrunken version of the new tree:
 
-   $$ \hat{f}(x) \Leftarrow \hat{f}(x) + \lambda\hat{f}^{b}(x) $$
+       $$ \hat{f}(x) \Leftarrow \hat{f}(x) + \lambda\hat{f}^{b}(x) $$
    3. Update the residuals:
 
-   $$ r_{i} \Leftarrow r_{i} - \lambda\hat{f}^{b}(x_{i}) $$
+       $$ r_{i} \Leftarrow r_{i} - \lambda\hat{f}^{b}(x_{i}) $$
 3. Output the boosted model,
 
    $$ \hat{f}(x) = \sum_{b=1}^{B}\lambda\hat{f}^{b}(x) $$
@@ -375,3 +389,23 @@ training set.
 [chapter-07-moving-beyond-linearity]: chapter-07-moving-beyond-linearity "stats-learning-notes -- Chapter 7 - Moving Beyond Linearity"
 [chapter-08-tree-based-methods]: chapter-08-tree-based-methods "stats-learning-notes -- Chapter 8 - Tree Based Methods"
 [chapter-09-support-vector-machines]: chapter-09-support-vector-machines "stats-learning-notes -- Chapter 9 - Support Vector Machines"
+[glossary-bagging]: glossary#bagging "stats-learning-notes -- Glossary - Bagging"
+[glossary-branch]: glossary#branch "stats-learning-notes -- Glossary - Branch"
+[glossary-boosting]: glossary#boosting "stats-learning-notes -- Glossary - Boosting"
+[glossary-bootstrap]: glossary#bootstrap "stats-learning-notes -- Glossary - Bootstrap"
+[glossary-classification-tree]: glossary#classification-tree "stats-learning-notes -- Glossary - Classification Tree"
+[glossary-cost-complexity-pruning]: glossary#cost-complexity-pruning "stats-learning-notes -- Glossary - Cost Complexity Pruning"
+[glossary-cross-entropy]: glossary#cross-entropy "stats-learning-notes -- Glossary - Cross Entropy"
+[glossary-cross-validation]: glossary#cross-validation "stats-learning-notes -- Glossary - Cross Validation"
+[glossary-decision-tree]: glossary#decision-tree "stats-learning-notes -- Glossary - Decision Tree"
+[glossary-decision-tree-methods]: glossary#decision-tree-methods "stats-learning-notes -- Glossary - Decision Tree Methods"
+[glossary-dummy-variable]: glossary#dummy-variable "stats-learning-notes -- Glossary - Dummy Variable"
+[glossary-gini-index]: glossary#gini-index "stats-learning-notes -- Glossary - Gini Index"
+[glossary-internal-node]: glossary#internal-node "stats-learning-notes -- Glossary - Internal Node"
+[glossary-leave-one-out-cross-validation]: glossary#leave-one-out-cross-validation "stats-learning-notes -- Glossary - Leave-One-Out Cross Validation"
+[glossary-random-forest]: glossary#random-forest "stats-learning-notes -- Glossary - Random Forest"
+[glossary-recursive-binary-splitting]: glossary#recursive-binary-splitting "stats-learning-notes -- Glossary - Recursive Binary Splitting"
+[glossary-regression-tree]: glossary#regression-tree "stats-learning-notes -- Glossary - Regression Tree"
+[glossary-residual-sum-of-squares]: glossary#residual-sum-of-squares "stats-learning-notes -- Glossary - Residual Sum of Squares"
+[glossary-simple-linear-regression]: glossary#simple-linear-regression "stats-learning-notes -- Glossary - Simple Linear Regression"
+[glossary-terminal-node]: glossary#terminal-node "stats-learning-notes -- Glossary - Terminal Node"
