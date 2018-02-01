@@ -871,6 +871,29 @@ Hybrid approaches try to better simulate [best subset
 selection][#best-subset-selection] while maintaining the computational
 advantages of stepwise approaches.
 
+<a id="hyperplane"></a>
+**[Hyperplane][#hyperplane]**: In a $$ p $$-dimensional space, a hyperplane is a
+flat affine subspace of dimension $$ p - 1 . $$ For example, in two dimensions,
+a hyperplane is a flat one-dimensional subspace, or in other words, a line. In
+three dimensions, a hyperplane is a plane.
+
+The word affine indicates that the subspace need not pass through the origin.
+
+A $$ p $$-dimensional hyperplane is defined as
+
+$$ \normalsize \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} +\ ...\ +
+\beta_{p}X_{p} = 0 $$
+
+which means that any $$ X = (X_{1},\ X_{2},\ ...,\ X_{p})^{T} $$ for which the
+above hyperplane equation holds is a point on the hyperplane.
+
+If $$ X = (X_{1},\ X_{2},\ ...,\ X_{p})^{T} $$ doesn't fall on the hyperplane,
+then it must fall on one side of the hyperplane or the other. As such, a
+hyperplane can be thought of as dividing a $$ p $$-dimensional space into two
+partitions. Which side of the hyperplane a point falls on can be computed by
+calculating the sign of the result of plugging the point into the hyperplane
+equation.
+
 <a id="hypothesis-testing"></a>
 **[Hypothesis Testing][#hypothesis-testing]**: The process of applying the
 scientific method to produce, test, and iterate on theories. Typical steps
@@ -1187,6 +1210,30 @@ $$ \normalsize \mathrm{log} \bigg \lgroup \frac{p(X)}{1 - p(X)} \bigg \rgroup =
 
 Logistic regression has log-odds that are linear in terms of $$ X . $$
 
+<a id="maximal-margin-classifier"></a>
+**[Maximal Margin Classifier][#maximal-margin-classifier]**: A classifier that
+uses the maximal margin [hyperplane][#hyperplane] to classify test observations.
+The maximal margin hyperplane (also known as the optimal separating hyperplane)
+is the separating hyperplane which has the farthest minimum distance, or margin,
+from the training observations in terms of perpendicular distance.
+
+The maximal margin classifier classifies a test observation $$ x^{*} $$ based on
+the sign of
+
+$$ \normalsize f(x^{*}) = \beta_{0} + \beta_{1}x_{1}^{*} +\ \dots\ +
+\beta_{p}x_{p}^{*} $$
+
+where $$ \beta_{0},\ \beta_{1},\ \dots,\ \beta_{p} $$ are the coefficients of
+the maximal margin hyperplane.
+
+The maximal margin hyperplane represents the mid-line of the widest gap between
+the two classes.
+
+If no separating hyperplane exists, no maximal margin hyperplane exists either.
+However, a soft margin can be used to construct a hyperplane that almost
+separates the classes. This generalization of the maximal margin classifier is
+known as the [support vector classifier][#support-vector-classifier].
+
 <a id="maximum-likelihood"></a>
 **[Maximum Likelihood][#maximum-likelihood]**: A strategy utilized by [logistic
 regression][#logistic-regression] to estimate regression coefficients.
@@ -1375,6 +1422,27 @@ difficult or variable as to which model has the lowest test error, one should
 select the model with the fewest variables that is within one standard error of
 the lowest estimated test error. The rationale being that given a set of more or
 less equally good models, it's often better to pick the simpler model.
+
+<a id="one-versus-all"></a>
+**[One-Versus-All][#one-versus-all]**: Assuming $$ K > 2 , $$
+[one-versus-all][glossary-one-versus-all] fits $$ K $$ SVMs, each time comparing
+one of the $$ K $$ classes to the remaining $$ K - 1 $$ classes.  Assuming a
+test observation $$ x^{*} $$ and coefficients $$ \beta_{0k},\ \beta_{1k},\
+\dots,\ \beta_{pk} $$, resulting from fitting an SVM comparing the kth class
+(coded as $$ +1 $$) to the others (coded as $$ -1 $$), the test observation is
+assigned to the class for which
+
+$$ \normalsize \beta_{0k} + \beta_{1k}X_{1}^{*} +\ \dots\ +\ \beta_{pk}X_{p}^{*} $$
+
+is largest, as this amounts to the highest level of confidence.
+
+<a id="one-versus-one"></a>
+**[One-Versus-One][#one-versus-one]**: Assuming $$ K > 2 , $$
+[one-versus-one][glossary-one-versus-one], or all-pairs, constructs $$ K \choose
+2 $$ SVMs, each of which compares a pair of classes. A test observation would be
+classified using each of the $$ K \choose 2 $$ classifiers, with the final
+classification given by the class most frequently predicted by the $$ K \choose
+2 $$ classifiers.
 
 <a id="output"></a>
 **[Output][#output]**: The result of computing a given function with all of the
@@ -1976,6 +2044,73 @@ generating a model that relates the predictors to the response with the goal of
 accurately predicting future observations or of better inferring the
 relationship between the predictors and the response.
 
+<a id="support-vector-classifier"></a>
+**[Support Vector Classifier][#support-vector-classifier]**: A classifier
+based on a modified version of a [maximal margin
+classifier][#maximal-margin-classifier] that does not require a separating
+[hyperplane][#hyperplane]. Instead, a soft margin is used that almost separates
+the classes.
+
+In general, a perfectly separating hyperplane can be undesirable because it can
+be very sensitive to individual observations. This sensitivity can also be an
+indication of [overfitting][#overfitting].
+
+A classifier based on a hyperplane that doesn't perfectly separate the two
+classes can offer greater robustness to variations in individual observations
+and better classification of most training observations at the cost of
+misclassifying a few training observations.
+
+The support vector classifier, sometimes called a soft margin classifier, allows
+some observations to fall on both the wrong side of the margin and the wrong
+side of the hyperplane.
+
+This flexibility allows the support vector classifier to utilize a hyperplane
+that solves the optimization problem of maximizing $$ M_{\beta_{0},\ \beta_{1},\
+\dots,\ \beta_{p}} $$ subject to
+
+$$ \normalsize \sum_{j=1}^{p}\beta_{j}^{2} = 1 $$
+
+and
+
+$$ \normalsize y_{i}(\beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} +\ \dots\ +
+\beta_{p}x_{ip}) > M(1 - \epsilon_{i}) , $$
+
+where $$ \epsilon_{i} \geq 0 $$ and $$ \sum_{i=1}^{n}\epsilon_{i} \leq C $$
+where $$ C $$ is a non-negative tuning parameter.
+
+Like the maximal margin classifier, $$ M $$ is the width of the margin and the
+focus of the optimization. $$ \epsilon_{1},\ \dots,\ \epsilon_{M} $$ are slack
+variables that allow individual variables to fall on the wrong side of the
+margin and/or hyperplane. As with the maximal margin classifier, once an optimal
+solution has been found, a test observation can be classified based on the sign
+of
+
+$$ \normalsize f(x^{*}) = \beta_{0} + \beta_{1}x_{1}^{*} + \beta_{2}x_{2}^{*} +\
+\dots\ + \beta_{p}x_{p}^{*} . $$
+
+<a id="support-vector-machine"></a>
+**[Support Vector Machine][#support-vector-machine]**: A generalization of a
+simple and intuitive classifier called the [maximal margin
+classifier][#maximal-margin-classifier]. Support vector machines improve upon
+maximal margin classifiers by utilizing a [support vector
+classifier][#support-vector-classifier] which overcomes a limitation of the
+maximal margin classifier which requires that classes must be separable by a
+linear boundary. The use of the support vector classifier allows support vector
+machines to be applied to a wider range of cases than the maximal margin
+classifier. Support vector machines extend the support vector classifier to by
+enlarging the feature space using kernels to accommodate a non-linear boundary
+between classes.
+
+When the support vector classifier is combined with a non-linear kernel, the
+resulting classifier is known as a support vector machine. The non-linear
+function underlying the support vector machine has the form
+
+$$ \normalsize f(x) = \beta_{0} + \sum_{i \in S}\alpha_{i}K(x, x_{i}) . $$
+
+Support vector machines are intended for the binary classification setting in
+which there are two classes, but can be extended to handle more than two
+classes.
+
 <a id="t-distribution"></a>
 **[T-Distribution][#t-distribution]**: Any member of the family of continuous
 probability distributions that arise when estimating the mean of a normally
@@ -2146,6 +2281,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#high-dimensional]: #high-dimensional "High-Dimensional"
 [#high-leverage]: #high-leverage "High Leverage"
 [#hybrid-subset-selection]: #hybrid-subset-selection "Hybrid Subset Selection"
+[#hyperplane]: #hyperplane "Hyperplane"
 [#hypothesis-testing]: #hypothesis-testing "Hypothesis Testing"
 [#input]: #input "Input"
 [#indicator-variable]: #indicator-variable "Indicator Variable"
@@ -2169,6 +2305,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#logistic-function]: #logistic-function "Logistic Function"
 [#logistic-regression]: #logistic-regression "Logistic Regression"
 [#logit]: #logit "Logit"
+[#maximal-margin-classifier]: #maximal-margin-classifier "Maximal Margin Classifier"
 [#maximum-likelihood]: #maximum-likelihood "Maximum Likelihood"
 [#mean-squared-error]: #mean-squared-error "Mean Squared Error"
 [#mixed-selection]: #mixed-selection "Mixed Selection"
@@ -2186,6 +2323,8 @@ A large z-statistic offers evidence against the null hypothesis.
 [#null-model]: #null-model "Null Model"
 [#odds]: #odds "Odds"
 [#one-standard-error-rule]: #one-standard-error-rule "One Standard Error Rule"
+[#one-versus-all]: #one-versus-all "One-Versus-All"
+[#one-versus-one]: #one-versus-one "One-Versus-One"
 [#output]: #output "Output"
 [#outlier]: #outlier "Outlier"
 [#overfitting]: #overfitting "Overfitting"
@@ -2231,6 +2370,8 @@ A large z-statistic offers evidence against the null hypothesis.
 [#step-function]: #step-function "Step Function"
 [#studentized-residual]: #studentized-residual "Studentized Residual"
 [#supervised-learning]: #supervised-learning "Supervised Learning"
+[#support-vector-classifier]: #support-vector-classifier "Support Vector Classifier"
+[#support-vector-machine]: #support-vector-machine "Support Vector Machine"
 [#t-distribution]: #t-distribution "T-Distribution"
 [#t-statistic]: #t-statistic "T-Statistic"
 [#terminal-node]: #terminal-node "Terminal Node"

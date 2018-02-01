@@ -9,14 +9,16 @@ use_math: true
 
 ## [Chapter 9 - Support Vector Machines][chapter-09-support-vector-machines]
 
-Support vector machines (SVMs) are a generalization of a simple and intuitive
-classifier called the maximal margin classifier. Support vector machines improve
-upon maximal margin classifiers by utilizing a support vector classifier which
-overcomes a limitation of the maximal margin classifier which requires that
-classes must be separable by a linear boundary. The use of the support vector
-classifier allows support vector machines to be applied to a wider range of
-cases than the maximal margin classifier. Support vector machines extend the
-support vector classifier to accommodate non-linear class boundaries.
+[Support vector machines (SVMs)][glossary-support-vector-machine] are a
+generalization of a simple and intuitive classifier called the [maximal margin
+classifier][glossary-maximal-margin-classifier]. Support vector machines improve
+upon maximal margin classifiers by utilizing a [support vector
+classifier][glossary-support-vector-classifier] which overcomes a limitation of
+the maximal margin classifier which requires that classes must be separable by a
+linear boundary. The use of the support vector classifier allows support vector
+machines to be applied to a wider range of cases than the maximal margin
+classifier. Support vector machines extend the support vector classifier to
+accommodate non-linear class boundaries.
 
 Support vector machines are intended for the binary classification setting in
 which there are two classes, but can be extended to handle more than two
@@ -24,10 +26,10 @@ classes.
 
 ### Maximal Margin Classifier
 
-In a $$ p $$-dimensional space, a hyperplane is a flat affine subspace of
-dimension $$ p - 1 . $$ For example, in two dimensions, a hyperplane is a flat
-one-dimensional subspace, or in other words, a line. In three dimensions, a
-hyperplane is a plane.
+In a $$ p $$-dimensional space, a [hyperplane][glossary-hyperplane] is a flat
+affine subspace of dimension $$ p - 1 . $$ For example, in two dimensions, a
+hyperplane is a flat one-dimensional subspace, or in other words, a line. In
+three dimensions, a hyperplane is a plane.
 
 The word affine indicates that the subspace need not pass through the origin.
 
@@ -49,7 +51,7 @@ equation.
 #### Classification Using a Separating Hyperplane
 
 Consider an $$ n \times p $$ data matrix $$ X $$ that consists of $$ n $$
-training observations in $$ p $$-dimensional space.
+training observations in $$ p $$-dimensional space,
 
 $$ \normalsize X_{1} =
 \left\lgroup \begin{array}{cc}
@@ -67,8 +69,8 @@ X_{n} =
 
 where each of these observations fall into two classes, or $$ y_{1}, \dots,
 y_{n} \in {-1, 1} $$ where $$ -1 $$ represents one class and $$ 1 $$ represents
-the other. Also available is a test observation, a $$ p $$-vector of observed
-features, $$ x^{*} = (x^{*}_{1}, x^{*}_{2}, \dots, x^{*}_{p}) . $$
+the other. Also available is a test observation constituted of a $$ p $$-vector
+of observed features, $$ x^{*} = (x^{*}_{1}, x^{*}_{2}, \dots, x^{*}_{p}) . $$
 
 Suppose that it is possible to construct a hyperplane that separates the
 training observations perfectly according to their class labels.
@@ -101,7 +103,7 @@ If $$ f(x^{*}) $$ is positive then the test observation is assigned to class 1.
 If $$ f(x^{*}) $$ is negative then the test observation is assigned to class -1.
 Additionally, the magnitude of $$ f(x^{*}) $$ can be used as a measure of
 confidence in the class assignment for $$ x_{*} . $$ If $$ f(x^{*}) $$ is far
-from zero, it is from from the hyperplane and more confidence in the
+from zero, it is far from the hyperplane and more confidence in the
 classification can be had. Conversely, If $$ f(x^{*}) $$ is near to zero then
 the classification is less certain.
 
@@ -120,8 +122,9 @@ terms of perpendicular distance. The minimal distance from the observations to
 the hyperplane is known as the margin. The maximal margin hyperplane is the
 hyperplane that has the farthest minimum distance to the training observations.
 When a maximal margin hyperplane is used to classify test observations it is
-known as a maximal margin classifier. The maximal margin classifier is often
-successful, but can overfit when $$ p $$ is large.
+known as a [maximal margin classifier][glossary-maximal-margin-classifier]. The
+maximal margin classifier is often successful, but can
+[overfit][glossary-overfitting] when $$ p $$ is large.
 
 The maximal margin classifier classifies a test observation $$ x^{*} $$ based on
 the sign of
@@ -194,11 +197,11 @@ yielding a maximal margin hyperplane.
 If no separating hyperplane exists, no maximal margin hyperplane exists either.
 However, a soft margin can be used to construct a hyperplane that almost
 separates the classes. This generalization of the maximal margin classifier is
-known as the support vector classifier.
+known as the [support vector classifier][glossary-support-vector-classifier].
 
 In general, a perfectly separating hyperplane can be undesirable because it can
 be very sensitive to individual observations. This sensitivity can also be an
-indication of overfitting.
+indication of [overfitting][glossary-overfitting].
 
 A classifier based on a hyperplane that doesn't perfectly separate the two
 classes can offer greater robustness to variations in individual observations
@@ -241,7 +244,7 @@ is on the wrong side of the margin and is said to have violated the margin. When
 $$ \epsilon_{i} $$ is greater than 1, the observation is on the wrong side of
 the hyperplane.
 
-The tuning parameter $$ C $$ limits the sim of the slack variables, $$
+The tuning parameter $$ C $$ limits the sum of the slack variables, $$
 \epsilon_{i},\ \dots,\ \epsilon_{n} , $$ and so determines the number and
 severity of the violations to the margin and hyperplane that will be tolerated.
 When $$ C $$ is zero, no budget is available for violations, which means $$
@@ -252,23 +255,25 @@ the hyperplane since $$ \epsilon_{i} $$ will be greater than zero and $$
 \sum_{i=1}^{n} \epsilon_{i} \leq C . $$ As $$ C $$ increases, the margin gets
 wider and more tolerant of violation. As $$ C $$ decreases, the margin gets
 narrower. Like other tuning parameters, $$ C , $$ is generally selected using
-cross validation. Similar to other tuning parameters, $$ C $$ also controls the
-bias-variance trade-off of the statistical learning model. When $$ C $$ is
-small, margins will be narrow and rarely violated which amounts to a classifier
-that is highly fit to the data with low bias, but high variance. Conversely,
-when $$ C $$ is large, the margin is large and more frequently violated which
-amounts to a classifier that is more loosely fit with potentially higher bias,
-and potentially lower variance. Interestingly, only the observations that lie on
-the margin or violate the margin affect the hyperplane and classifier obtained.
-Observations directly on the margin or on the wrong side of the margin for their
-class are known as support vectors since the observations do affect the shape of
-the support vector classifier. This behavior is the reason why the tuning
-parameter $$ C $$ controls the bias-variance trade-off of the support vector
-classifier. When $$ C $$ is large, the margin is wide and more frequently
-violated which means many support vectors contribute to shaping the hyperplane.
-This results in low variance but potentially high bias. Conversely, when $$ C $$
-is small there will be fewer support vectors and the resulting classifier will
-have low bias, but high variance.
+[cross validation][glossary-cross-validation].
+
+Similar to other tuning parameters, $$ C $$ also controls the [bias-variance
+trade-off][glossary-bias-variance-trade-off] of the statistical learning model.
+When $$ C $$ is small, margins will be narrow and rarely violated which amounts
+to a classifier that is highly fit to the data with low bias, but high variance.
+Conversely, when $$ C $$ is large, the margin is large and more frequently
+violated which amounts to a classifier that is more loosely fit with potentially
+higher bias, and potentially lower variance. Interestingly, only the
+observations that lie on the margin or violate the margin affect the hyperplane
+and classifier obtained.  Observations directly on the margin or on the wrong
+side of the margin for their class are known as support vectors since the
+observations do affect the shape of the support vector classifier. This behavior
+is the reason why the tuning parameter $$ C $$ controls the bias-variance
+trade-off of the support vector classifier. When $$ C $$ is large, the margin is
+wide and more frequently violated which means many support vectors contribute to
+shaping the hyperplane.  This results in low variance but potentially high bias.
+Conversely, when $$ C $$ is small there will be fewer support vectors and the
+resulting classifier will have low bias, but high variance.
 
 Because the support vector classifier is based on only a small subset of the
 training observations (the support vectors), it is robust to the behavior of
@@ -277,9 +282,10 @@ those observations that are far from the hyperplane.
 When class boundaries are non-linear, the feature space can be enlarged using
 functions of the predictors such as quadratic, cubic, or interaction terms to
 address the non-linearity. However, computations can become unmanageable in the
-support vector classifier case and because of this, support vector machines were
-introduced to allow for enlarging the feature space used by the support vector
-classifier in a way that leads to efficient calculations.
+support vector classifier case and because of this, [support vector
+machines][glossary-support-vector-machine] were introduced to allow for
+enlarging the feature space used by the support vector classifier in a way that
+leads to efficient calculations.
 
 The support vector machine is an extension of the support vector classifier that
 results from enlarging the feature space using kernels to accommodate a
@@ -382,18 +388,18 @@ Support vector machines don't extend well to more than two classes, but two
 popular approaches for extending SVMs to the $$ K $$-class case are
 one-versus-one and one-versus-all.
 
-Assuming $$ K > 2 , $$ one-versus-one, or all-pairs, constructs $$ K \choose 2
-$$ SVMs, each of which compares a pair of classes. A test observation would be
-classified using each of the $$ K \choose 2 $$ classifiers, with the final
-classification given by the class most frequently predicted by the $$ K \choose
-2 $$ classifiers.
+Assuming $$ K > 2 , $$ [one-versus-one][glossary-one-versus-one], or all-pairs,
+constructs $$ K \choose 2 $$ SVMs, each of which compares a pair of classes. A
+test observation would be classified using each of the $$ K \choose 2 $$
+classifiers, with the final classification given by the class most frequently
+predicted by the $$ K \choose 2 $$ classifiers.
 
-Again, assuming $$ K > 2 , $$ one-versus-all fits $$ K $$ SVMs, each time
-comparing one of the $$ K $$ classes to the remaining $$ K - 1 $$ classes.
-Assuming a test observation $$ x^{*} $$ and coefficients $$ \beta_{0k},\
-\beta_{1k},\ \dots,\ \beta_{pk} $$, resulting from fitting an SVM comparing the
-kth class (coded as $$ +1 $$) to the others (coded as $$ -1 $$), the test
-observation is assigned to the class for which
+Assuming $$ K > 2 , $$ [one-versus-all][glossary-one-versus-all] fits $$
+K $$ SVMs, each time comparing one of the $$ K $$ classes to the remaining
+$$ K - 1 $$ classes.  Assuming a test observation $$ x^{*} $$ and coefficients
+$$ \beta_{0k},\ \beta_{1k},\ \dots,\ \beta_{pk} $$, resulting from fitting an
+SVM comparing the kth class (coded as $$ +1 $$) to the others (coded as $$ -1
+$$), the test observation is assigned to the class for which
 
 $$ \normalsize \beta_{0k} + \beta_{1k}X_{1}^{*} +\ \dots\ +\ \beta_{pk}X_{p}^{*} $$
 
@@ -410,3 +416,12 @@ machine.
 [chapter-08-tree-based-methods]: chapter-08-tree-based-methods "stats-learning-notes -- Chapter 8 - Tree Based Methods"
 [chapter-09-support-vector-machines]: chapter-09-support-vector-machines "stats-learning-notes -- Chapter 9 - Support Vector Machines"
 [chapter-10-unsupervised-learning]: chapter-10-unsupervised-learning "stats-learning-notes -- Chapter 10 - Unsupervised Learning"
+[glossary-bias-variance-trade-off]: glossary#bias-variance-trade-off "stats-learning-notes -- Glossary - Bias-Variance Trade-Off"
+[glossary-cross-validation]: glossary#cross-validation "stats-learning-notes -- Glossary - Cross Validation"
+[glossary-hyperplane]: glossary#hyperplane "stats-learning-notes -- Glossary - Hyperplane"
+[glossary-maximal-margin-classifier]: glossary#maximal-margin-classifier "stats-learning-notes -- Glossary - Maximal Margin Classifier"
+[glossary-one-versus-all]: glossary#one-versus-all "stats-learning-notes -- Glossary - One-Versus-All"
+[glossary-one-versus-one]: glossary#one-versus-one "stats-learning-notes -- Glossary - One-Versus-One"
+[glossary-overfitting]: glossary#overfitting "stats-learning-notes -- Glossary - Overfitting"
+[glossary-support-vector-classifier]: glossary#support-vector-classifier "stats-learning-notes -- Glossary - Support Vector Classifier"
+[glossary-support-vector-machine]: glossary#support-vector-machine "stats-learning-notes -- Glossary - Support Vector Machine"
