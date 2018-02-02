@@ -10,12 +10,13 @@ Machines][chapter-09-support-vector-machines]
 
 ## [Chapter 10 - Unsupervised Learning][chapter-10-unsupervised-learning]
 
-Unlike most of the other learning methods discussed so far, in the unsupervised
-learning scenario, though there are still $$ p $$ predictors and $$ n $$
-observations, there is no response variable $$ Y . $$ Instead, the goal is to
-discover interesting properties of the observations $$ X_{1},\ X_{2},\ \dots,\
-X_{n} . $$ Two popular unsupervised learning techniques are principal component
-analysis and clustering.
+Unlike most of the other learning methods discussed so far, in the [unsupervised
+learning][glossary-unsupervised-learning] scenario, though there are still $$ p
+$$ predictors and $$ n $$ observations, there is no response variable $$ Y . $$
+Instead, the goal is to discover interesting properties of the observations $$
+X_{1},\ X_{2},\ \dots,\ X_{n} . $$ Two popular unsupervised learning techniques
+are [principal component analysis][glossary-principal-component-analysis] and
+[clustering][glossary-cluster-analysis].
 
 Unsupervised learning is often performed as part of exploratory data analysis.
 Results tend to be more subjective without clear goals and without accepted
@@ -24,16 +25,18 @@ is no correct answer to check predictions against.
 
 ### Principal Component Analysis
 
-Principal component analysis (PCA) allows for summarizing a large set of
-correlated variables with a smaller number of representative variables that
-collectively explain most of the variability in the original set of variables.
+[Principal component analysis (PCA)][glossary-principal-component-analysis]
+allows for summarizing a large set of correlated variables with a smaller number
+of representative variables that collectively explain most of the variability in
+the original set of variables.
 
 As discussed earlier, the principal component directions are the directions of
 the feature space along which the data are highly variable. These directions
 also define lines and subspaces that are as close as possible to the data cloud.
 
 Principal component regression is the result of using principal components as
-the predictors in a regression model instead of the original set of variables.
+the predictors in a [regression model][glossary-simple-linear-regression]
+instead of the original set of variables.
 
 Principal component analysis refers to the process used to compute the principal
 components and subsequent use of the components to understand the data.
@@ -97,11 +100,11 @@ is to maximize the sample variance of the $$ n $$ values of $$ z_{i1} . $$
 $$ z_{11},\ z_{21},\ \dots,\ z_{n1} $$ are referred to as the scores of the first
 principal component.
 
-The given optimization problem can be solved via an eigen decomposition, a
+The given optimization problem can be solved via an eigendecomposition, a
 standard technique in linear algebra not covered here.
 
 It is worth noting that units are important for principal component analysis, so
-standardization is often recommended.
+[standardization][glossary-standardized-values] is often recommended.
 
 When interpreted in a geometric setting, the first principal component's loading
 vector $$ \phi_{1} $$ with elements $$ \phi_{11},\ \dots,\ \phi_{p1} $$ defines
@@ -138,13 +141,13 @@ of the data.
 This interpretation extends beyond the first principal component. For example,
 the first two principal components define the plane that is closest to the $$ n
 $$ observations in terms of average squared Euclidean distance. Similarly, the
-first three principal components span the three dimensional hyperplane that is
-closest to the $$ n $$ observations.
+first three principal components span the three dimensional
+[hyperplane][glossary-hyperplane] that is closest to the $$ n $$ observations.
 
 Under this interpretation, the first $$ M $$ principal component score vectors,
 combined with the first $$ M $$ principal component loading vectors provide the
 best $$ M $$-dimensional approximation (in terms of Euclidean distance) to the
-ith observation $$ x_{ij} . $$ This representation takes the form
+ith observation, $$ x_{ij} . $$ This representation takes the form
 
 $$ \normalsize x_{ij} \approx \sum_{m=1}^{M}Z_{im}\phi_{jm} $$
 
@@ -163,9 +166,9 @@ deviation of one before performing principal component analysis.
 Principal components are unique and consistent, though signs may vary depending
 on the calculation method.
 
-The portion of variance explained provides a means of determining how much of
-the variance in the data is not captured by the first $$ M $$ principal
-components.
+The [portion of variance explained][glossary-portion-of-variance-explained]
+provides a means of determining how much of the variance in the data is not
+captured by the first $$ M $$ principal components.
 
 The total variance in the data set assuming the variables have been centered to
 have a mean of zero is defined by
@@ -196,29 +199,31 @@ number of principal components. Another means is to keep taking principal
 components while each new principal component explains a sizable portion of the
 variance. This doesn't always work well.
 
-In supervised learning scenarios, cross validation can be used to tune the
-appropriate number of principal components.
+In supervised learning scenarios, [cross validation][glossary-cross-validation]
+can be used to tune the appropriate number of principal components.
 
 Applying other statistical learning methods to the principal components instead
 of the original variables can yield less noisy results.
 
 ### Clustering methods
 
-Clustering refers to a broad set of techniques for finding subgroups or clusters
-in a data set. What constitutes similar or different tends to depend on the
-domain in question. Clustering is an unsupervised problem when the goal is to
-discover structure and that structure is not known in advance. Clustering looks
-for homogeneous subgroups among the observations.
+[Clustering][glossary-cluster-analysis] refers to a broad set of techniques for
+finding subgroups or clusters in a data set. What constitutes similar or
+different tends to depend on the domain in question. Clustering can be an
+unsupervised problem in scenarios where the goal is to discover structure and
+that structure is not known in advance. Clustering looks for homogeneous
+subgroups among the observations.
 
 There are many kinds of clustering. Two of the most popular clustering
-approaches are k-means clustering and hierarchical clustering. In general,
+approaches are [k-means clustering][glossary-k-means-clustering] and
+[hierarchical clustering][glossary-hierarchical-clustering]. In general,
 observations are clustered by features in order to identify subgroups among the
 observations or features can be clustered by observations to try to find
 subgroups among the features.
 
 #### K-Means Clustering
 
-K-means clustering aims to partition a data set into $$ K $$ distinct,
+[K-means clustering][glossary-k-means-clustering] aims to partition a data set into $$ K $$ distinct,
 non-overlapping clusters, where $$ K $$ is stipulated in advance.
 
 The K-means clustering procedure is built on a few constraints. Given sets
@@ -252,7 +257,8 @@ squared Euclidean distance, defined as
 $$ \normalsize W(C_{k}) = \frac{1}{|C_{k}|}\sum_{i,i^{\prime} \in C_{k}}
 \sum_{j=1}^{p}(x_{ij} - x_{i^{\prime}j})^{2} $$
 
-where $$ \\|C_{k}\\| $$ denotes the number of observations in the kth cluster.
+where $$ \\| C_{k} $$ $$ \\| $$ denotes the number of observations in the kth
+cluster.
 
 Combined with the abstract optimization problem outlined earlier yields
 
@@ -290,19 +296,21 @@ which the objective is smallest.
 
 #### Hierarchical clustering
 
-One disadvantage of K-means clustering is that it requires $$ K $$ to be
-stated in advance. Hierarchical clustering has the advantage over K-means
-clustering that it does not require committing to a particular choice of $$ K $$
-and in addition, it results in a tree-based representation of the observations
-called a dendrogram.
+One disadvantage of K-means clustering is that it requires $$ K $$ to be stated
+in advance. [Hierarchical clustering][glossary-hierarchical-clustering] has the
+advantage over K-means clustering that it does not require committing to a
+particular choice of $$ K $$ and in addition, it results in a tree-based
+representation of the observations called a [dendrogram][glossary-dendrogram].
 
-The most common type of hierarchical clustering is bottom-up or agglomerative
-clustering in which the dendrogram is built starting from the leaves and
-combining clusters up to the trunk. Based on this, it is not hard to see that
-the earlier observations or branches fuse together, the more similar they are.
-Observations that fuse later, near the top of the tree, can be quite different.
-The height at which two observations fuse together is indicative of how
-different the observations are.
+![Example dendrogram][dendrogram]
+
+The most common type of hierarchical clustering is bottom-up or [agglomerative
+clustering][glossary-agglomerative-clustering] in which the dendrogram is built
+starting from the leaves and combining clusters up to the trunk. Based on this,
+it is not hard to see that the earlier observations or branches fuse together,
+the more similar they are. Observations that fuse later, near the top of the
+tree, can be quite different. The height at which two observations fuse
+together is indicative of how different the observations are.
 
 No conclusions about similarity should be made from horizontal proximity as this
 can vary.
@@ -345,13 +353,14 @@ One issue not addressed is how clusters with multiple observations are compared.
 This requires extending the notion of dissimilarity to a pair of groups of
 observations.
 
-Linkage defines the dissimilarity between two groups of observations. There are
-four common types of linkage: complete, average, single, and centroid. Average,
-complete and single linkage are most popular among statisticians. Centroid
-linkage is often used in genomics. Average and complete linkage tend to be
-preferred because they tend to yield more balanced dendrograms. Centroid linkage
-suffers from a major drawback in that an inversion can occur where two clusters
-fuse at a height below either of the individual clusters in the dendrogram.
+[Linkage][glossary-linkage] defines the dissimilarity between two groups of
+observations. There are four common types of linkage: complete, average, single,
+and centroid. Average, complete and single linkage are most popular among
+statisticians. Centroid linkage is often used in genomics. Average and complete
+linkage tend to be preferred because they tend to yield more balanced
+dendrograms. Centroid linkage suffers from a major drawback in that an inversion
+can occur where two clusters fuse at a height below either of the individual
+clusters in the dendrogram.
 
 Complete linkage uses the maximal inter-cluster dissimilarity, calculated by
 computing all of the pairwise dissimilarities between observations in cluster A
@@ -412,3 +421,17 @@ version of K-means clustering can be effective in these scenarios.
 
 [chapter-09-support-vector-machines]: chapter-09-support-vector-machines "stats-learning-notes -- Chapter 9 - Support Vector Machines"
 [chapter-10-unsupervised-learning]: chapter-10-unsupervised-learning "stats-learning-notes -- Chapter 10 - Unsupervised Learning"
+[dendrogram]: images/dendrogram.jpg "Example dendrogram"
+[glossary-agglomerative-clustering]: glossary#agglomerative-clustering "stats-learning-notes -- Glossary - Agglomerative Clustering"
+[glossary-cluster-analysis]: glossary#cluster-analysis "stats-learning-notes -- Glossary - Cluster Analysis"
+[glossary-cross-validation]: glossary#cross-validation "stats-learning-notes -- Glossary - Cross Validation"
+[glossary-dendrogram]: glossary#dendrogram "stats-learning-notes -- Glossary - Dendrogram"
+[glossary-hierarchical-clustering]: glossary#hierarchical-clustering "stats-learning-notes -- Glossary - Hierarchical Clustering"
+[glossary-hyperplane]: glossary#hyperplane "stats-learning-notes -- Glossary - Hyperplane"
+[glossary-k-means-clustering]: glossary#k-means-clustering "stats-learning-notes -- Glossary - K-Means Clustering"
+[glossary-linkage]: glossary#linkage "stats-learning-notes -- Glossary - Linkage"
+[glossary-portion-of-variance-explained]: glossary#portion-of-variance-explained "stats-learning-notes -- Glossary - Portion of Variance Explained"
+[glossary-principal-component-analysis]: glossary#principal-component-analysis "stats-learning-notes -- Glossary - Principal Component Analysis"
+[glossary-simple-linear-regression]: glossary#simple-linear-regression "stats-learning-notes -- Glossary - Simple Linear Regression"
+[glossary-standardized-values]: glossary#standardized-values "stats-learning-notes -- Glossary - Standardized Values"
+[glossary-unsupervised-learning]: glossary#unsupervised-learning "stats-learning-notes -- Glossary - Unsupervised Learning"

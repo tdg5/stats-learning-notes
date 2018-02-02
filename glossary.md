@@ -41,6 +41,17 @@ added, adding additional noise variables will only decrease the residual sum of
 squares slightly. This slight decrease is counteracted by the presence of $$ d
 $$ in the denominator of $$ \frac{RSS}{n - d - 1} . $$
 
+<a id="agglomerative-clustering"></a>
+**[Agglomerative Clustering][#agglomerative-clustering]**: The most common type
+of [hierarchical clustering][#hierarchical-clustering] in which the
+[dendrogram][#dendrogram] is built starting from the [terminal
+nodes][#terminal-nodes] and combining in clusters up to the trunk.
+
+Clusters can be extracted from the dendrogram by making a horizontal cut across
+the dendrogram and taking the distinct sets of observations below the cut. The
+height of the cut to the dendrogram serves a similar role to $$ K $$ in K-means
+clustering: it controls the number of clusters yielded.
+
 <a id="akaike-information-criterion"></a>
 **[Akaike Information Criterion][#akaike-information-criterion]**: A method for
 estimating test error rate from the training error rate. The Akaike information
@@ -567,6 +578,20 @@ accuracy at the cost of some loss in interpretation.
 the number of values in the model that are free to vary. The degrees of freedom
 is a quality that summarizes the flexibility of a curve.
 
+<a id="dendrogram"></a>
+**[Dendrogram][#dendrogram]**: A tree diagram, frequently used in the context of
+[hierarchical clustering][#hierarchical-clustering].
+
+![Example dendrogram][dendrogram]
+
+Dendrograms are attractive because a single dendrogram can be used to obtain any
+number of clusters.
+
+Often people will look at the dendrogram and select a sensible number of
+clusters by eye, depending on the heights of the fusions and the number of
+clusters desired. Unfortunately, the choice of where to cut the dendrogram is
+not always evident.
+
 <a id="density-function"></a>
 **[Density Function][#density-function]**: A function whose value for any given
 sample in the sample space (the set of possible values taken by the random
@@ -815,6 +840,38 @@ regression models that seem stronger than they really are since standard errors,
 confidence intervals, and hypothesis testing all assume that error terms have a
 constant variance.
 
+<a id="hierarchical-clustering"></a>
+**[Hierarchical Clustering][#hierarchical-clustering]**: A clustering method
+that generates clusters by first building a [dendrogram][#dendrogram] then
+obtains clusters by cutting the dendrogram at a height that will yield a
+desirable set of clusters.
+
+The hierarchical clustering dendrogram is obtained by first selecting some sort
+of measure of dissimilarity between the each pair of observations; often
+Euclidean distance is used. Starting at the bottom of the dendrogram, each of
+the $$ n $$ observations is treated as its own cluster. With each iteration, the
+two clusters that are most similar are merged together so there are $$ n - 1 $$
+clusters. This process is repeated until all the observations belong to a single
+cluster and the dendrogram is complete.
+
+The dissimilarity between the two clusters that are merged indicates the height
+in the dendrogram at which the fusion should be placed.
+
+One issue not addressed is how clusters with multiple observations are compared.
+This requires extending the notion of dissimilarity to a pair of groups of
+observations. [Linkage][#linkage] defines the dissimilarity between two groups
+of observations.
+
+The term hierarchical refers to the fact that the clusters obtained by cutting
+the dendrogram at the given height are necessarily nested within the clusters
+obtained by cutting the dendrogram at any greater height.
+
+The hierarchical structure assumption is not always valid. For example,
+splitting a group of people in to sexes and splitting a group of people by race
+yield clusters that aren't necessarily hierarchical in structure. Because of
+this, hierarchical clustering can sometimes yield worse results than K-means
+clustering.
+
 <a id="hierarchical-principle"></a>
 **[Hierarchical Principle][#hierarchical-principle]**: A guiding philosophy that
 states that, when an interaction term is included in the model, the main effects
@@ -991,6 +1048,58 @@ In terms of variance, K-fold cross validation where $$ K < n $$ is preferable to
 leave-one-out cross validation and leave-one-out cross validation is preferable
 to the validation set approach.
 
+<a id="k-means-clustering"></a>
+**[K-Means Clustering][#k-means-clustering]**: A method of [cluster
+analysis][#cluster-analysis] that aims to partition a data set into $$ K $$
+distinct, non-overlapping clusters, where $$ K $$ is stipulated in advance.
+
+The K-means clustering procedure is built on a few constraints. Given sets
+containing the indices of the observations in each cluster, $$ C_{1},\ \dots,
+C_{K} , $$ these sets must satisfy two properties:
+
+1. Each observation belongs to at least one of the $$ K $$ clusters:
+   $$ \normalsize C_{1} \cup C_{2} \cup \dots \cup C_{K} = \{1,\ \dots,\ n\} $$
+2. No observation belongs to more than one cluster. Clusters are
+   non-overlapping.
+   $$ \normalsize C_{k} \cap C_{k^{\prime}} = \{\}\ \mathrm{for\ all\ k,}\ k
+   \neq k^{\prime} $$
+
+In the context of K-means clustering, a good cluster is one for which the
+within-cluster variation is as small as possible. For a cluster $$ C_{k} , $$
+the within-cluster variation, $$ W(C_{k}) , $$ is a measure of the amount by
+which the observations in a cluster differ from each other. As such, an ideal
+cluster would minimize
+
+$$ \normalsize \sum_{k=1}^{K}W(C_{k}) . $$
+
+Informally, this means that the observations should be partitioned into $$ K $$
+clusters such that the total within-cluster variation, summed over all $$ K $$
+clusters, is as small as possible.
+
+In order to solve this optimization problem, it is first necessary to define the
+means by which within-cluster variation will be evaluated. There are many ways
+to evaluate within-cluster variation, but the most common choice tends to be
+squared Euclidean distance, defined as
+
+$$ \normalsize W(C_{k}) = \frac{1}{|C_{k}|}\sum_{i,i^{\prime} \in C_{k}}
+\sum_{j=1}^{p}(x_{ij} - x_{i^{\prime}j})^{2} $$
+
+where $$ \\| C_{k} $$ $$ \\| $$ denotes the number of observations in the kth
+cluster.
+
+Combined with the abstract optimization problem outlined earlier yields
+
+$$ \normalsize \mathrm{Minimize}_{C_{1},\ \dots,\ C_{K}} \bigg \{\sum_{k=1}^{K}\frac{1}{|C_{k}|}\sum_{i,i^{\prime} \in C_{k}}
+\sum_{j=1}^{p}(x_{ij} - x_{i^{\prime}j})^{2} \bigg \} $$
+
+Finding the optimal solution to this problem is computationally infeasible
+unless $$ K $$ and $$ n $$ are very small, since there are almost $$ K^{n} $$
+ways to partition $$ n $$ observations into $$ K $$ clusters. However, a simple
+algorithm exists to find a local optimum.
+
+K-means clustering gets its name from the fact that the cluster centroids are
+computed as means of the observations assigned to each cluster.
+
 <a id="k-nearest-neighbors-classifier"></a>
 **[K-Nearest Neighbors Classifier][#k-nearest-neighbors-classifier]**: A
 classifier that takes a positive integer $$ K $$ and first identifies the $$ K
@@ -1159,6 +1268,34 @@ from:
 - Logistic regression is more unstable than linear discriminant analysis when $$
   n $$ is small and the distribution of the predictors $$ X $$ is approximately
   normal in each of the response classes.
+
+<a id="linkage"></a>
+**[Linkage][#linkage]**: A measure of the dissimilarity between two groups of
+observations.
+
+There are four common types of linkage: complete, average, single,
+and centroid. Average, complete and single linkage are most popular among
+statisticians. Centroid linkage is often used in genomics. Average and complete
+linkage tend to be preferred because they tend to yield more balanced
+dendrograms. Centroid linkage suffers from a major drawback in that an inversion
+can occur where two clusters fuse at a height below either of the individual
+clusters in the dendrogram.
+
+Complete linkage uses the maximal inter-cluster dissimilarity, calculated by
+computing all of the pairwise dissimilarities between observations in cluster A
+and observations in cluster B and taking the largest of those dissimilarities.
+
+Single linkage uses the minimal inter-cluster dissimilarity given by computing
+all the pairwise dissimilarities between observations in clusters A and B and
+taking the smallest of those dissimilarities. Single linkage can result in
+extended trailing clusters where each observation fuses one-at-a-time.
+
+Average linkage uses the mean inter-cluster dissimilarity given by computing all
+pairwise dissimilarities between the observations in cluster A and the
+observations in cluster B and taking the average of those dissimilarities.
+
+Centroid linkage computes the dissimilarity between the centroid for cluster and
+A and the centroid for cluster B.
 
 <a id="local-regression"></a>
 **[Local Regression][#local-regression]**: An approach to fitting flexible
@@ -1519,6 +1656,35 @@ $$ \normalsize Y_{i} = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{1}^{2} +
 describes the best linear approximation to the true relationship between $$ X $$
 and $$ Y $$ for the population.
 
+<a id="portion-of-variance-explained"></a>
+**[Portion of Variance Explained][#portion-of-variance-explained]**: A means of
+determining how much of the variance in the data is not captured by the first $$
+M $$ [principal components][#principal-component-analysis].
+
+The total variance in the data set assuming the variables have been centered to
+have a mean of zero is defined by
+
+$$ \sum_{j=1}^{p}\mathrm{Var}(X_{j}) =
+\sum_{j=1}^{p}\frac{1}{n}\sum_{i=1}^{n}x_{ij}^{2} . $$
+
+The variance explained by the mth principal component is defined as
+
+$$ \frac{1}{n}\sum_{i=1}^{n}z_{im}^{2} =
+\frac{1}{n}\sum_{i=1}^{n}\big(\sum_{j=1}^{p}\phi_{jm}x_{ij}\big)^{2} . $$
+
+From these equations it can be seen that the portion of the variance explained
+for the mth principal component is given by
+
+$$ \normalsize
+\frac{\sum_{i=1}^{n}\big(\sum_{j=1}^{p}\phi_{jm}x_{ij}\big)^{2}}{\sum_{j=1}^{p}\sum_{i=1}^{n}x_{ij}^{2}}
+$$
+
+To compute the cumulative portion of variance explained by the first $$ m $$
+principal components, the individual portions should be summed. In total there
+are $$ \mathrm{Min}(n-1,\ p) $$ principal components and their portion of
+variance explained sums to one.
+
+
 <a id="posterior-probability"></a>
 **[Posterior Probability][#posterior-probability]**: Taking into account the
 predictor value for a given observation, the probability that the observation
@@ -1556,6 +1722,8 @@ as close as possible to the original observations.
 
 Projecting a point onto a line simply involves finding the location on the line
 which is closest to the point.
+
+As many as $$ \mathrm{Min}(n-1, p) $$ principal components can be computed.
 
 <a id="principal-component-regression"></a>
 **[Principal Component Regression][#principal-component-regression]**: A
@@ -2231,6 +2399,7 @@ $$ \normalsize \textrm{z-statistic}(\beta_{1}) =
 A large z-statistic offers evidence against the null hypothesis.
 
 [#adjusted-r-squared]: #adjusted-r-squared "Adjusted R**2"
+[#agglomerative-clustering]: #agglomerative-clustering "Agglomerative Clustering"
 [#akaike-information-criterion]: #akaike-information-criterion "Akaike Information Criterion"
 [#backfitting]: #backfitting "Backfitting"
 [#backward-selection]: #backward-selection "Backward Selection"
@@ -2264,6 +2433,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#decision-tree]: #decision-tree "Decision Tree"
 [#decision-tree-methods]: #decision-tree-methods "Decision Tree Methods"
 [#degrees-of-freedom]: #degrees-of-freedom "Degrees of Freedom"
+[#dendrogram]: #dendrogram "Dendrogram"
 [#density-function]: #density-function "Density Function"
 [#dimension-reduction-methods]: #dimension-reduction-methods "Dimension Reduction Methods"
 [#discriminant-analysis]: #discriminant-analysis "Discriminant Analysis"
@@ -2277,6 +2447,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#generalized-additive-model]: #generalized-additive-model "Generalized Additive Model"
 [#gini-index]: #gini-index "Gini Index"
 [#heteroscedasticity]: #heteroscedasticity "Heteroscedasticity"
+[#hierarchical-clustering]: #hierarchical-clustering "Hierarchical Clustering"
 [#hierarchical-principle]: #hierarchical-principle "Hierarchical Principle"
 [#high-dimensional]: #high-dimensional "High-Dimensional"
 [#high-leverage]: #high-leverage "High Leverage"
@@ -2290,6 +2461,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#internal-node]: #internal-node "Internal Node"
 [#irreducible-error]: #irreducible-error "Irreducible Error"
 [#k-fold-cross-validation]: #k-fold-cross-validation "K-Fold Cross Validation"
+[#k-means-clustering]: #k-means-clustering "K-Means Clustering"
 [#k-nearest-neighbors-classifier]: #k-nearest-neighbors-classifier "K-Nearest Neighbors Classifier"
 [#k-nearest-neighbors-regression]: #k-nearest-neighbors-regression "K-Nearest Neighbors Regression"
 [#knot]: #knot "Knot"
@@ -2300,6 +2472,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#leave-one-out-cross-validation]: #leave-one-out-cross-validation "Leave One Out Cross Validation"
 [#likelihood-function]: #likelihood-function "Likelihood Function"
 [#linear-discriminant-analysis]: #linear-discriminant-analysis "Linear Discriminant Analysis"
+[#linkage]: #linkage "Linkage"
 [#local-regression]: #polynomial-regression "Polynomial Regression"
 [#log-odds]: #log-odds "Log-Odds"
 [#logistic-function]: #logistic-function "Logistic Function"
@@ -2336,6 +2509,7 @@ A large z-statistic offers evidence against the null hypothesis.
 [#piecewise-constant-function]: #piecewise-constant-function "Piecewise Constant Function"
 [#polynomial-regression]: #polynomial-regression "Polynomial Regression"
 [#population-regression-line]: #population-regression-line "Population Regression Line"
+[#portion-of-variance-explained]: #portion-of-variance-explained "Portion of Variance Explained"
 [#posterior-probability]: #posterior-probability "Posterior Probability"
 [#prediction-interval]: #prediction-interval "Prediction Interval"
 [#principal-component-analysis]: #principal-component-analysis "Principal Component Analysis"
@@ -2386,5 +2560,6 @@ A large z-statistic offers evidence against the null hypothesis.
 [#variance]: #variance "Variance"
 [#variance-inflation-factor]: #variance-inflation-factor "Variance Inflation Factor"
 [#z-statistic]: #z-statistic "Z-Statistic"
+[dendrogram]: images/dendrogram.jpg "Example dendrogram"
 [graph-residual-plot]: images/residual-plot.jpg "Residual plots for linear and quadratic fits of same data set"
 [roc-curve]: images/ROC-curve.jpg "Example ROC curve"

@@ -4,11 +4,6 @@
 
 ![An Introduction to Statistical Learning with Applications in R Cover][islr-cover]
 
-## TODO
-
-- Review for errors
-- Add more terms and definitions to glossary
-
 ## Notes
 
 [Chapter 2: Statistical Learning][chapter-02-statistical-learning]
