@@ -853,11 +853,11 @@ more predictor variables are closely related to one another.
 Collinearity can pose problems for linear regression because it can make it hard
 to determine the individual impact of collinear predictors on the response.
 
-Collinearity reduces the accuracy of the regression coefficient estimates, which
-in turn causes the standard error of $$ \hat{\beta}_{j} $$ to grow. Since the
+Collinearity inflates the standard error of $$ \hat{\beta}_{j} $$, which
+reduces the accuracy of the regression coefficient estimates. Since the
 T-statistic for each predictor is calculated by dividing $$ \hat{\beta}_{j} $$
-by its standard error, collinearity results in a decline in the computed
-T-statistic. This may result in a failure to reject
+by its standard error, collinearity shrinks the magnitude of the computed
+T-statistic. This may result in a failure to reject the null hypothesis
 $$ H_{0}: \beta_{j} = 0 $$. As such, collinearity reduces the power of the
 hypothesis test. Because of all this, it is important to address possible
 collinearity problems when fitting the model.

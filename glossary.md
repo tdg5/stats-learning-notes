@@ -424,14 +424,15 @@ more predictor variables are closely related to one another.
 Collinearity can pose problems for linear regression because it can make it hard
 to determine the individual impact of collinear predictors on the response.
 
-Collinearity reduces the accuracy of the regression coefficient estimates, which
-in turn causes the standard error of $$ \hat{\beta}_{j} $$ to grow. Since the
-T-statistic for each predictor is calculated by dividing $$ \hat{\beta}_{j} $$
-by its standard error, collinearity results in a decline in the computed
-T-statistic. This may result in a failure to reject
-$$ H_{0}: \beta_{j} = 0 $$. As such, collinearity reduces the power of the
-hypothesis test. Because of all this, it is important to address possible
-collinearity problems when fitting the model.
+Collinearity inflates the [standard error][#standard-error] of
+$$ \hat{\beta}_{j} $$, which reduces the accuracy of the regression coefficient
+estimates. Since the [T-statistic][#t-statistic] for each predictor is
+calculated by dividing $$ \hat{\beta}_{j} $$ by its standard error, collinearity
+shrinks the magnitude of the computed T-statistic. This may result in a failure
+to reject the [null hypothesis][#null-hypothesis] $$ H_{0}: \beta_{j} = 0 $$.
+As such, collinearity reduces the power of the
+[hypothesis test][#hypothesis-testing]. Because of all this, it is important to
+address possible collinearity problems when fitting the model.
 
 One way to detect collinearity is to generate a correlation matrix of the
 predictors. Any element in the matrix with a large absolute value indicates
@@ -1431,7 +1432,7 @@ exists between three or more variables even if no pair of variables have high
 correlation.
 
 Multicollinearity can be detected by computing the [variance inflation
-factor][variance-inflation-factor].
+factor][#variance-inflation-factor].
 
 <a id="multiple-linear-regression"></a>
 **[Multiple Linear Regression][#multiple-linear-regression]**: An extension of
@@ -2286,8 +2287,8 @@ distributed population in situations where the sample size is small and
 population standard deviation is unknown.
 
 <a id="t-statistic"></a>
-**[T-Statistic][#t-statistic]**: A measure of the number of standard deviations
-a quantity a quantity is from zero.
+**[T-Statistic][#t-statistic]**: A measure of the number of standard errors a
+quantity is from zero.
 
 <a id="terminal-node"></a>
 **[Terminal Node][#terminal-node]**: Any node in a tree-like structure, such as
