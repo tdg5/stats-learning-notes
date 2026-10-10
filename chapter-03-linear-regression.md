@@ -857,8 +857,7 @@ Collinearity reduces the accuracy of the regression coefficient estimates, which
 in turn causes the standard error of $$ \beta_{j} $$ to grow. Since the
 T-statistic for each predictor is calculated by dividing $$ \beta_{j} $$ by its
 standard error, collinearity results in a decline in the true T-statistic. This
-may cause it to appear that $$ \beta_{j} $$ and $$ x_{j} $$ are related to the
-response when they are not. As such, collinearity reduces the effectiveness of
+may result in a failure to reject $$ H_{0}: \beta_{j} = 0 $$. As such, collinearity reduces the power of
 the null hypothesis. Because of all this, it is important to address possible
 collinearity problems when fitting the model.
 
